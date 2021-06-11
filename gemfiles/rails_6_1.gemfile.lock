@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     active_admin_bootstrap (0.1.0)
       activeadmin (>= 2.9.0)
@@ -219,6 +219,7 @@ PLATFORMS
 DEPENDENCIES
   active_admin_bootstrap!
   appraisal
+  rails (~> 6.1.0)
   sqlite3
   standardrb
 

@@ -6,6 +6,8 @@ gemspec
 
 group :development do
   gem "sqlite3"
+  # Test application against different versions
+  gem "appraisal"
 end
 
 group :development, :test do
