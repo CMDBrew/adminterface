@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 gemspec
 
 group :development do
+  gem "pg"
+  gem "mysql2"
   gem "sqlite3"
   # Test application against different versions
   gem "appraisal"
