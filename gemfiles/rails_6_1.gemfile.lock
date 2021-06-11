@@ -1,5 +1,5 @@
 PATH
-  remote: .
+  remote: ..
   specs:
     active_admin_bootstrap (0.1.0)
       activeadmin (>= 2.9.0)
@@ -226,6 +226,7 @@ DEPENDENCIES
   appraisal
   mysql2
   pg
+  rails (~> 6.1.0)
   sqlite3
   standardrb
 
