@@ -1,0 +1,64 @@
+---
+header: navbar-dark bg-dark navbar-expand-lg
+title_bar: navbar-light bg-light
+body: null
+content:
+  index: container
+  show: container
+  form: container
+flash:
+  alert: alert alert-warning
+  notice: alert alert-info
+action_items:
+  group: btn-group
+  item: btn btn-secondary
+float_actions:
+  group: fabs
+  item: btn-fab
+blank_slate: alert alert-secondary text-center
+tabs: nav-tabs
+table_tools:
+  btn: btn btn-sm btn-light
+  scope:
+    tabs: nav-tabs
+    count: badge badge-primary
+  index:
+    tabs: nav-pills nav-sm
+tables:
+  table_for: table
+  index_as_table:
+    wrapper: table-responsive
+    table: table
+    actions:
+      group: btn-group
+      item: btn btn-sm btn-light
+  attributes_table:
+    wrapper: table-responsive
+    table: table text-break
+filter:
+  actions:
+    submit: btn btn-primary
+    cancel: btn btn-link
+form:
+  error: alert alert-danger
+  has_many:
+    item: border mb-3
+    new: btn btn-sm btn-light
+    destroy: text-danger
+  actions:
+    submit: btn btn-primary
+    cancel: btn btn-link
+sidebar_section:
+  wrapper: card
+  header: card-header
+  body: card-body
+panel:
+  wrapper: card
+  header: card-header
+  body: card-body
+active_admin_comments:
+  wrapper: card
+  header: card-header
+  body: card-body
+  submit: btn btn-primary
+  item: null

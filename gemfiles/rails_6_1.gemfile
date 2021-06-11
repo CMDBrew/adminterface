@@ -2,17 +2,19 @@
 
 source "https://rubygems.org"
 
+gem "pg"
+gem "mysql2"
+gem "sqlite3"
 gem "rails", "~> 6.1.0"
 
 group :development do
-  gem "pg"
-  gem "mysql2"
-  gem "sqlite3"
   gem "appraisal"
 end
 
 group :development, :test do
   gem "standardrb"
+  gem "byebug"
+  gem "webrick"
 end
 
 gemspec path: "../"

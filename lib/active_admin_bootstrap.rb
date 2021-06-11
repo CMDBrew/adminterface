@@ -1,6 +1,14 @@
-require "active_admin_bootstrap/version"
-require "active_admin_bootstrap/engine"
+require "activeadmin"
 
+# ActiveAdminBootstrap main file
 module ActiveAdminBootstrap
-  # Your code goes here...
+  autoload :VERSION, "active_admin_bootstrap/version"
+  autoload :CONFIGS, "active_admin_bootstrap/configs"
+
+  # Load Initializers
+  module Initializers
+    autoload :Configurations, "active_admin_bootstrap/initializers/configurations"
+  end
 end
+
+require "active_admin_bootstrap/engine"
