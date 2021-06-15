@@ -1,16 +1,20 @@
 require "test_helper"
 
-module ActiveAdminBootstrap::ConfigurationsTest
+module ConfigurationsTest
   class Base < ActiveSupport::TestCase
     setup do
       @application = ActiveAdmin::Application.new
-      @configs = ActiveAdminBootstrap::CONFIGS
+      @configs = ActiveAdminBootstrap::Configs::DEFAULTS
     end
   end
 
   class DefaultTest < Base
     test "default layouts" do
       assert_equal @configs[:layouts], @application.layouts
+    end
+
+    test "default icons" do
+      assert_equal @configs[:icons], @application.icons
     end
 
     test "default components" do
@@ -29,6 +33,7 @@ module ActiveAdminBootstrap::ConfigurationsTest
   class GlobalTest < Base
     setup do
       @application.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+      @application.icons = {filter: {aside: {open: "open", close: "close"}}}
       @application.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
@@ -41,6 +46,13 @@ module ActiveAdminBootstrap::ConfigurationsTest
       assert_equal "left", @application.layouts[:navigation]
       assert_equal "body", @application.layouts[:filter]
       assert_equal "left", @application.layouts[:sidebar]
+    end
+
+    test "updates icons" do
+      assert_equal(
+        {aside: {open: "open", close: "close"}},
+        @application.icons[:filter].deep_symbolize_keys
+      )
     end
 
     test "updates components" do
@@ -68,6 +80,7 @@ module ActiveAdminBootstrap::ConfigurationsTest
     setup do
       @namespace = ActiveAdmin::Namespace.new(@application, :super_admin)
       @namespace.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+      @namespace.icons = {filter: {aside: {open: "open", close: "close"}}}
       @namespace.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
@@ -87,6 +100,13 @@ module ActiveAdminBootstrap::ConfigurationsTest
       assert_equal "left", @namespace.layouts[:navigation]
       assert_equal "body", @namespace.layouts[:filter]
       assert_equal "left", @namespace.layouts[:sidebar]
+    end
+
+    test "updates icons" do
+      assert_equal(
+        {aside: {open: "open", close: "close"}},
+        @namespace.icons[:filter].deep_symbolize_keys
+      )
     end
 
     test "updates components" do
@@ -116,6 +136,7 @@ module ActiveAdminBootstrap::ConfigurationsTest
       @resource =
         @namespace.register(User) do
           config.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+          config.icons = {filter: {aside: {open: "open", close: "close"}}}
           config.components = {
             active_admin_comments: {input: "string"},
             action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
@@ -127,6 +148,7 @@ module ActiveAdminBootstrap::ConfigurationsTest
 
     test "does not equal the gloabl configs" do
       assert_not_equal @application.layouts, @resource.layouts
+      assert_not_equal @application.icons, @resource.icons
       assert_not_equal @application.components, @resource.components
       assert_not_equal @application.css_classes, @resource.css_classes
       assert_not_equal @application.breakpoints, @resource.breakpoints
@@ -134,6 +156,7 @@ module ActiveAdminBootstrap::ConfigurationsTest
 
     test "does not equal the namespace configs" do
       assert_not_equal @namespace.layouts, @resource.layouts
+      assert_not_equal @namespace.icons, @resource.icons
       assert_not_equal @namespace.components, @resource.components
       assert_not_equal @namespace.css_classes, @resource.css_classes
       assert_not_equal @namespace.breakpoints, @resource.breakpoints
@@ -143,6 +166,13 @@ module ActiveAdminBootstrap::ConfigurationsTest
       assert_equal "left", @resource.layouts[:navigation]
       assert_equal "body", @resource.layouts[:filter]
       assert_equal "left", @resource.layouts[:sidebar]
+    end
+
+    test "updates icons" do
+      assert_equal(
+        {aside: {open: "open", close: "close"}},
+        @resource.icons[:filter].deep_symbolize_keys
+      )
     end
 
     test "updates components" do

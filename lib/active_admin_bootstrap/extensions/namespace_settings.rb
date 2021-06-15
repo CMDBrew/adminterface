@@ -1,18 +1,21 @@
 module ActiveAdmin
   # Overwrite NamespaceSettings - lib/active_admin/namespace_settings.rb
   class NamespaceSettings < DynamicSettingsNode
-    CONFIGS = ActiveAdminBootstrap::CONFIGS
+    CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
 
     # The default site_title content
     register :site_title_proc, nil
 
-    # The default layout
+    # The default layouts
     register :layouts, CONFIGS[:layouts]
+
+    # The default icons
+    register :icons, CONFIGS[:icons]
 
     # The default component configs
     register :components, CONFIGS[:components]
 
-    # The default css_class
+    # The default css_classes
     register :css_classes, CONFIGS[:css_classes]
 
     # The default breakpoints

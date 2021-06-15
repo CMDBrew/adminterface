@@ -6,6 +6,7 @@ content:
   index: container
   show: container
   form: container
+icon: mdi
 flash:
   alert: alert alert-warning
   notice: alert alert-info
@@ -19,22 +20,21 @@ blank_slate: alert alert-secondary text-center
 tabs: nav-tabs
 table_tools:
   btn: btn btn-sm btn-light
-  scope:
+  scopes:
     tabs: nav-tabs
     count: badge badge-primary
-  index:
+  indexes:
     tabs: nav-pills nav-sm
-tables:
-  table_for: table
-  index_as_table:
-    wrapper: table-responsive
-    table: table
-    actions:
-      group: btn-group
-      item: btn btn-sm btn-light
-  attributes_table:
-    wrapper: table-responsive
-    table: table text-break
+table_for: table
+index_as_table:
+  wrapper: table-responsive
+  table: table
+  actions:
+    group: btn-group
+    item: btn btn-sm btn-light
+attributes_table:
+  wrapper: table-responsive
+  table: table text-break
 filter:
   actions:
     submit: btn btn-primary

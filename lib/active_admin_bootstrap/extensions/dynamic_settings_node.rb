@@ -11,9 +11,9 @@ module ActiveAdmin
       private
 
       def merge_defaults(value, name)
-        return value unless ActiveAdminBootstrap::CONFIGS.key?(name)
+        return value unless ActiveAdminBootstrap::Configs::DEFAULTS.key?(name)
 
-        ActiveAdminBootstrap::CONFIGS[name].deep_merge(value)
+        ActiveAdminBootstrap::Configs::DEFAULTS[name].deep_merge(value)
       end
     end
   end

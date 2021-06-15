@@ -1,0 +1,5 @@
+---
+filter:
+  aside:
+    open: magnify
+    close: close
