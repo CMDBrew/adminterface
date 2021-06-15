@@ -18,36 +18,34 @@ module ActiveAdminBootstrap
 
       class_methods do
         def has_css_classes_for(*args)
-          args.each do |key|
-            var_name = "#{key}_css_classes"
-            define_method var_name do
-              return instance_variable_get("@#{var_name}") if instance_variable_defined?("@#{var_name}")
-              instance_variable_set "@#{var_name}", find_css_classes(key)
-            end
+          args.each { |key| define_configs_getter(:css_classes, key) }
+        end
+
+        def has_breakpoints_for(*args)
+          args.each { |key| define_configs_getter(:breakpoints, key) }
+        end
+
+        def has_layouts_for(*args)
+          args.each { |key| define_configs_getter(:layouts, key) }
+        end
+
+        def has_icons_for(*args)
+          args.each { |key| define_configs_getter(:icons, key) }
+        end
+
+        def define_configs_getter(type, key)
+          name = "#{key}_#{type}"
+          define_method name do
+            return instance_variable_get("@#{name}") if instance_variable_defined?("@#{name}")
+            instance_variable_set "@#{name}", find_configs(type, key)
           end
         end
-      end
-
-      def find_layouts(*args)
-        find_configs(:layouts, *args)
-      end
-
-      def find_breakpoints(*args)
-        find_configs(:breakpoints, *args)
-      end
-
-      def find_css_classes(*args)
-        find_configs(:css_classes, *args)
-      end
-
-      def find_icons(*args)
-        find_configs(:icons, *args)
       end
 
       private
 
       def find_configs(key, *args)
-        active_admin_config.send(key).dig(*args).to_s
+        active_admin_config.send(key).dig(*args)
       rescue TypeError => _e
         raise FinderError, "Invalid #{key}: #{args.join(" -> ")}"
       rescue => e

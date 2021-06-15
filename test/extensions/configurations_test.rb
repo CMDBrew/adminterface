@@ -36,7 +36,7 @@ module ConfigurationsTest
       @application.icons = {filter: {aside: {open: "open", close: "close"}}}
       @application.components = {
         active_admin_comments: {input: "string"},
-        action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
+        action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
       }
       @application.css_classes = {header: "navbar-light bg-light"}
       @application.breakpoints = {columns: "lg", index_as_grid: "sm"}
@@ -59,9 +59,9 @@ module ConfigurationsTest
       assert_equal({input: "string"}, @application.components[:active_admin_comments].deep_symbolize_keys)
       assert_equal(
         {
-          new: {display: %i[index], prefix: "fake_icon", css_class: "btn btn-primary"},
-          edit: {display: %i[show], prefix: nil, css_class: nil},
-          destroy: {display: %i[show edit], prefix: nil, css_class: nil}
+          new: {display: %w[index], icon: "fake_icon", css_class: "btn btn-primary"},
+          edit: {display: %w[show], icon: nil, css_class: nil},
+          destroy: {display: %w[show edit], icon: nil, css_class: nil}
         },
         @application.components[:action_items].deep_symbolize_keys
       )
@@ -83,7 +83,7 @@ module ConfigurationsTest
       @namespace.icons = {filter: {aside: {open: "open", close: "close"}}}
       @namespace.components = {
         active_admin_comments: {input: "string"},
-        action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
+        action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
       }
       @namespace.css_classes = {header: "navbar-light bg-light"}
       @namespace.breakpoints = {columns: "lg", index_as_grid: "sm"}
@@ -113,9 +113,9 @@ module ConfigurationsTest
       assert_equal({input: "string"}, @namespace.components[:active_admin_comments].deep_symbolize_keys)
       assert_equal(
         {
-          new: {display: %i[index], prefix: "fake_icon", css_class: "btn btn-primary"},
-          edit: {display: %i[show], prefix: nil, css_class: nil},
-          destroy: {display: %i[show edit], prefix: nil, css_class: nil}
+          new: {display: %w[index], icon: "fake_icon", css_class: "btn btn-primary"},
+          edit: {display: %w[show], icon: nil, css_class: nil},
+          destroy: {display: %w[show edit], icon: nil, css_class: nil}
         },
         @namespace.components[:action_items].deep_symbolize_keys
       )
@@ -139,7 +139,7 @@ module ConfigurationsTest
           config.icons = {filter: {aside: {open: "open", close: "close"}}}
           config.components = {
             active_admin_comments: {input: "string"},
-            action_items: {new: {prefix: "fake_icon"}, destroy: {display: %i[show edit]}}
+            action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
           }
           config.css_classes = {header: "navbar-light bg-light"}
           config.breakpoints = {columns: "lg", index_as_grid: "sm"}
@@ -179,9 +179,9 @@ module ConfigurationsTest
       assert_equal({input: "string"}, @resource.components[:active_admin_comments].deep_symbolize_keys)
       assert_equal(
         {
-          new: {display: %i[index], prefix: "fake_icon", css_class: "btn btn-primary"},
-          edit: {display: %i[show], prefix: nil, css_class: nil},
-          destroy: {display: %i[show edit], prefix: nil, css_class: nil}
+          new: {display: %w[index], icon: "fake_icon", css_class: "btn btn-primary"},
+          edit: {display: %w[show], icon: nil, css_class: nil},
+          destroy: {display: %w[show edit], icon: nil, css_class: nil}
         },
         @resource.components[:action_items].deep_symbolize_keys
       )

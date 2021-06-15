@@ -1,5 +1,5 @@
 ---
 filter:
   aside:
-    open: magnify
     close: close
+    open: magnify
