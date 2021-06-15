@@ -13,3 +13,20 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.file_fixture_path = ActiveSupport::TestCase.fixture_path + "/files"
   ActiveSupport::TestCase.fixtures :all
 end
+
+# Base class for testing ActiveAdmin
+require "supports/active_admin/integration_test_helper"
+require "supports/active_admin/namespace_test_helper"
+
+class ActiveAdminTest < ActiveSupport::TestCase
+  include ActiveAdmin::IntegrationTestHelper
+  include ActiveAdmin::NamespaceTestHelper
+
+  def assert_html(expected, actual)
+    assert_equal unify_html(expected), unify_html(actual)
+  end
+
+  def unify_html(html)
+    html.split("\n").map(&:strip).join.gsub(/>\s+</, "><")
+  end
+end
