@@ -5,6 +5,8 @@ module ActiveAdmin
       class Index < Base
         include ::ActiveAdminBootstrap::Configs::Finders
 
+        FILTER_OPTS = %w[sidebar table_tools aside].freeze
+
         has_css_classes_for :table_tools
         has_layouts_for :filter
         has_icons_for :filter

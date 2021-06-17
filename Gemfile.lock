@@ -4,6 +4,7 @@ PATH
     active_admin_bootstrap (0.1.0)
       activeadmin (>= 2.9.0)
       rails (>= 6.0)
+      sass-rails
 
 GEM
   remote: https://rubygems.org/
@@ -90,6 +91,7 @@ GEM
     crass (1.0.6)
     docile (1.4.0)
     erubi (1.10.0)
+    ffi (1.15.1)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
@@ -197,6 +199,16 @@ GEM
       rubocop-ast (>= 0.4.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
+    sass-rails (6.0.0)
+      sassc-rails (~> 2.1, >= 2.1.1)
+    sassc (2.4.0)
+      ffi (~> 1.9)
+    sassc-rails (2.1.2)
+      railties (>= 4.0.0)
+      sassc (>= 2.0)
+      sprockets (> 3.0)
+      sprockets-rails
+      tilt
     simplecov (0.21.2)
       docile (~> 1.1)
       simplecov-html (~> 0.11)
@@ -217,6 +229,7 @@ GEM
     standardrb (1.0.0)
       standard
     thor (1.1.0)
+    tilt (2.0.10)
     tzinfo (2.0.4)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.0.0)

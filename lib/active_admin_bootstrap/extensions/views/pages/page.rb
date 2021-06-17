@@ -9,8 +9,8 @@ module ActiveAdmin
             params[:controller].tr("/", "_"),
             "active_admin", "logged_in", "page",
             active_admin_namespace.name.to_s + "_namespace",
-            active_admin_config.body_class,
-            "layout-navigation-#{active_admin_config.navigation}"
+            body_css_classes,
+            "layout-navigation-#{navigation_layouts}"
           ]
         end
       end

@@ -6,7 +6,7 @@ module ActiveAdmin
         include ::ActiveAdminBootstrap::Configs::Finders
 
         has_css_classes_for :body, :content, :flash
-        has_layouts_for :sidebar
+        has_layouts_for :sidebar, :navigation
 
         SIDEBAR_OPTS = %w[left right].freeze
 
@@ -39,7 +39,7 @@ module ActiveAdmin
               build_flash_messages
               build_unsupported_browser
               build_page_content
-              build_extra_components
+              # build_extra_components
             end
           end
         end
@@ -55,7 +55,7 @@ module ActiveAdmin
         def build_page_content
           div id: "active_admin_content" do
             contents = %i[build_body_content build_sidebar_content]
-            contents.reverse! if active_admin_config.sidebar_position&.eql?(SIDEBAR_OPTS[0])
+            contents.reverse! if sidebar_layouts&.eql?(SIDEBAR_OPTS[0])
             contents.each { |x| send(x) }
           end
         end
@@ -104,7 +104,7 @@ module ActiveAdmin
             "active_admin", "logged_in",
             active_admin_namespace.name.to_s + "_namespace",
             body_css_classes,
-            "layout-navigation-#{active_admin_config.navigation}",
+            "layout-navigation-#{navigation_layouts}",
             sidebar_class
           ]
         end

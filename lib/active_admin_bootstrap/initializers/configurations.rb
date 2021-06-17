@@ -7,7 +7,9 @@ module ActiveAdminBootstrap
         config.before_configuration do |_app|
           require_relative("../extensions/dynamic_settings_node")
           require_relative("../extensions/namespace_settings")
-          require_relative("../extensions/resource")
+
+          ActiveAdmin::Resource.send :include, ::ActiveAdminBootstrap::Configs::Configurable
+          ActiveAdmin::Page.send :include, ::ActiveAdminBootstrap::Configs::Configurable
         end
       end
     end
