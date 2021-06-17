@@ -3,9 +3,6 @@ module ActiveAdmin
   class NamespaceSettings < DynamicSettingsNode
     CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
 
-    # The default site_title content
-    register :site_title_proc, nil
-
     # The default layouts
     register :layouts, CONFIGS[:layouts]
 

@@ -9,7 +9,7 @@ class AttributesTableTest < ActiveAdminTest
     @component = render_arbre_component do
       attributes_table_for(OpenStruct.new(id: 1, name: "john")) do
         row(:id)
-        row(:name)
+        row(:name, class: "custom-name-class")
       end
     end
   end
@@ -30,11 +30,11 @@ class AttributesTableTest < ActiveAdminTest
     html =
       <<~ERB
         <table border="0" cellspacing="0" cellpadding="0" class="#{default_css_classes[:table]}">
-          <tr class="row-id">
+          <tr class="row row-id">
             <th>Id</th>
             <td>1</td>
           </tr>
-          <tr class="row-name">
+          <tr class="row custom-name-class">
             <th>Name</th>
             <td>john</td>
           </tr>

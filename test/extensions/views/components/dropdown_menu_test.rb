@@ -7,6 +7,9 @@ class DropDownMenuTest < ActiveAdminTest
         item "link 1", "#"
         item_divider
         item "link 2", "https://www.example.com", class: "text-danger"
+        item_html do
+          h1 "hello"
+        end
       end
     end
   end
@@ -25,9 +28,16 @@ class DropDownMenuTest < ActiveAdminTest
         <a class=" dropdown-toggle dropdown_menu_button" data-toggle="dropdown" href="#">test</a>
         <div class="dropdown_menu_list_wrapper">
           <ul class=" dropdown-menu dropdown_menu_list">
-            <li><a class="dropdown-item" href="#">link 1</a></li>
+            <li>
+              <a class="dropdown-item" href="#">link 1</a>
+            </li>
             <li class="dropdown-divider"></li>
-            <li><a class="dropdown-item text-danger" href="https://www.example.com">link 2</a></li>
+            <li>
+              <a class="dropdown-item text-danger" href="https://www.example.com">link 2</a>
+            </li>
+            <li>
+              <h1>hello</h1>
+            </li>
           </ul>
         </div>
       ERB

@@ -8,10 +8,10 @@ class ActionItemsTest < ActiveAdminTest
   setup do
     @component = render_arbre_component do
       action_items [
-        ::ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
+        ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
           link_to "publish", "#"
         end,
-        ::ActiveAdmin::ActionItem.new(:unpublish) do
+        ActiveAdmin::ActionItem.new(:unpublish) do
           link_to "unpublish", "#"
         end
       ]

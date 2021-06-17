@@ -3,6 +3,7 @@ require "simplecov"
 
 SimpleCov.start :rails do
   add_filter "test"
+  add_filter "lib/active_admin_bootstrap/version"
 end
 
 SimpleCov.minimum_coverage 90

@@ -45,12 +45,14 @@ module ActiveAdminBootstrap
       private
 
       def find_configs(key, *args)
-        active_admin_config.send(key).dig(*args)
-      rescue TypeError => _e
-        raise FinderError, "Invalid #{key}: #{args.join(" -> ")}"
+        configs.try(key).dig(*args)
+      end
+
+      def configs
+        active_admin_config
       rescue => e
         Rails.logger.info "#{e.class}: active_admin_config is not available for #{self.class}"
-        ActiveAdmin.application.try(key).dig(*args)
+        ActiveAdmin.application
       end
     end
   end

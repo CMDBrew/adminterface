@@ -30,9 +30,9 @@ module ActiveAdmin
         super(*args, options, &block)
       end
 
-      def item_html(item)
+      def item_html
         within @menu do
-          li item
+          li { yield }
         end
       end
     end

@@ -9,6 +9,15 @@ module PanelTest
     setup do
       @component = render_arbre_component do
         panel "panel title" do
+          header_action do
+            div class: "btn-group" do
+              safe_join [
+                link_to("Link A", "/fake/path"),
+                link_to("Link B", "/fake/path")
+              ]
+            end
+          end
+
           h1 "test"
           para "this is a panel"
         end
@@ -33,6 +42,12 @@ module PanelTest
           <div class="panel-header #{default_css_classes[:header]}">
             <div class="title">
               <h5>panel title</h5>
+            </div>
+            <div class="actions">
+              <div class="btn-group">
+                <a href="/fake/path">Link A</a>
+                <a href="/fake/path">Link B</a>
+              </div>
             </div>
           </div>
           <div class="panel-body #{default_css_classes[:body]}">

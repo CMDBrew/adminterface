@@ -26,7 +26,7 @@ module ActiveAdmin
         end
 
         if url
-          text_node link_to menu_label, url, item.html_options
+          text_node link_to menu_label, url, **item.html_options
         else
           span menu_label, item.html_options
         end

@@ -27,14 +27,18 @@ module ActiveAdmin
             span scope_name(scope)
             if options[:scope_count] && scope.show_count
               span get_scope_count(scope),
-                class: "count #{count_class(scope)} #{table_tools_css_classes.dig(:scopes, :count)}".strip
+                class: "count #{count_class(scope)}".strip
             end
           end
         end
       end
 
       def count_class(scope)
-        get_scope_count(scope).positive? ? "positive" : "empty"
+        if get_scope_count(scope).positive?
+          table_tools_css_classes.dig(:scopes, :counts, :positive)
+        else
+          table_tools_css_classes.dig(:scopes, :counts, :zero)
+        end
       end
 
       def classes_for_scope(scope)

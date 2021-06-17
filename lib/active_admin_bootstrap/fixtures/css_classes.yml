@@ -65,7 +65,9 @@ table_tools:
   indexes:
     tabs: nav-pills nav-sm
   scopes:
-    count: badge bg-primary
+    counts:
+      zero: d-none
+      positive: badge bg-primary
     tabs: nav-pills nav-sm
 tabs: nav-tabs
 title_bar: navbar-light bg-light
