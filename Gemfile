@@ -19,3 +19,8 @@ group :development, :test do
   gem "byebug"
   gem "webrick"
 end
+
+group :test do
+  # For test coverage reports
+  gem "simplecov", require: false
+end

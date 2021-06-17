@@ -1,3 +1,12 @@
+# Add SimpleCov for coverage reports
+require "simplecov"
+
+SimpleCov.start :rails do
+  add_filter "test"
+end
+
+SimpleCov.minimum_coverage 90
+
 # Configure Rails Environment
 ENV["RAILS_ENV"] = "test"
 

@@ -17,4 +17,8 @@ group :development, :test do
   gem "webrick"
 end
 
+group :test do
+  gem "simplecov", require: false
+end
+
 gemspec path: "../"
