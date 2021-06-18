@@ -39,17 +39,8 @@ module ActiveAdmin
               build_flash_messages
               build_unsupported_browser
               build_page_content
-              # build_extra_components
             end
           end
-        end
-
-        def build_extra_components
-          div id: "bottom-nav" do
-            float_actions(float_actions_for_action) unless skip_float_actions?
-          end
-
-          htmls(htmls_for_action) unless skip_htmls?
         end
 
         def build_page_content
@@ -73,28 +64,6 @@ module ActiveAdmin
           return if skip_sidebar?
 
           div sidebar(sidebar_sections_for_action, class: "container"), id: "sidebar"
-        end
-
-        def htmls_for_action
-          if active_admin_config&.htmls?
-            active_admin_config.htmls_for(params[:action], self)
-          else []
-          end
-        end
-
-        def float_actions_for_action
-          if active_admin_config&.float_actions?
-            active_admin_config.float_actions_for(params[:action], self)
-          else []
-          end
-        end
-
-        def skip_htmls?
-          htmls_for_action.empty? || assigns[:skip_htmls] == true
-        end
-
-        def skip_float_actions?
-          float_actions_for_action.empty? || assigns[:skip_float_actions] == true
         end
 
         def body_classes

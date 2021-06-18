@@ -24,9 +24,6 @@ filter:
 flash:
   alert: alert alert-warning
   notice: alert alert-info
-float_actions:
-  group: fabs
-  item: btn-fab
 form:
   actions:
     cancel: btn btn-link
