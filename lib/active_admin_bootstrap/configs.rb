@@ -53,6 +53,10 @@ module ActiveAdminBootstrap
           args.each { |key| define_configs_getter(:layouts, key) }
         end
 
+        def has_components_for(*args)
+          args.each { |key| define_configs_getter(:components, key) }
+        end
+
         def has_icons_for(*args)
           args.each { |key| define_configs_getter(:icons, key) }
         end

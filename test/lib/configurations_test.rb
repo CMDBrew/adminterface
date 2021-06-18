@@ -33,7 +33,7 @@ module ConfigurationsTest
   class GlobalTest < Base
     setup do
       @application.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-      @application.icons = {filter: {aside: {open: "open", close: "close"}}}
+      @application.icons = {filters: {aside: {open: "open", close: "close"}}}
       @application.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -51,7 +51,7 @@ module ConfigurationsTest
     test "updates icons" do
       assert_equal(
         {aside: {open: "open", close: "close"}},
-        @application.icons[:filter].deep_symbolize_keys
+        @application.icons[:filters].deep_symbolize_keys
       )
     end
 
@@ -80,7 +80,7 @@ module ConfigurationsTest
     setup do
       @namespace = ActiveAdmin::Namespace.new(@application, :super_admin)
       @namespace.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-      @namespace.icons = {filter: {aside: {open: "open", close: "close"}}}
+      @namespace.icons = {filters: {aside: {open: "open", close: "close"}}}
       @namespace.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -105,7 +105,7 @@ module ConfigurationsTest
     test "updates icons" do
       assert_equal(
         {aside: {open: "open", close: "close"}},
-        @namespace.icons[:filter].deep_symbolize_keys
+        @namespace.icons[:filters].deep_symbolize_keys
       )
     end
 
@@ -136,7 +136,7 @@ module ConfigurationsTest
       @resource =
         @namespace.register(User) do
           config.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-          config.icons = {filter: {aside: {open: "open", close: "close"}}}
+          config.icons = {filters: {aside: {open: "open", close: "close"}}}
           config.components = {
             active_admin_comments: {input: "string"},
             action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -171,7 +171,7 @@ module ConfigurationsTest
     test "updates icons" do
       assert_equal(
         {aside: {open: "open", close: "close"}},
-        @resource.icons[:filter].deep_symbolize_keys
+        @resource.icons[:filters].deep_symbolize_keys
       )
     end
 

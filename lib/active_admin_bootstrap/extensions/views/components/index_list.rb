@@ -24,7 +24,7 @@ module ActiveAdmin
         name = index_class.index_name
 
         a(href: url_with_params,
-          class: "#{classes_for_link(index_class)} index-mode-#{name}",
+          class: "index-mode-#{name} #{classes_for_link(index_class)}",
           title: name) do
           span I18n.t("active_admin.index_list.#{name}", default: name.to_s.titleize)
         end

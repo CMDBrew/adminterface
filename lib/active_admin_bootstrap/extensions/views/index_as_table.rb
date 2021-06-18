@@ -92,6 +92,8 @@ module ActiveAdmin
         class TableActions < ActiveAdmin::Component
           include ::ActiveAdminBootstrap::Configs::Finders
 
+          has_css_classes_for :index_as_table
+
           def default_class_name
             "table_actions #{index_as_table_css_classes.dig(:actions, :group)}".strip
           end

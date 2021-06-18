@@ -17,10 +17,13 @@ end
 group :development, :test do
   gem "standardrb"
   gem "byebug"
-  gem "webrick"
+  gem "puma"
 end
 
 group :test do
+  # For system and integration tests
+  gem "capybara"
+  gem "webdrivers"
   # For test coverage reports
   gem "simplecov", require: false
 end

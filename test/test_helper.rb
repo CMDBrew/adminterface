@@ -25,8 +25,8 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
 end
 
 # Base class for testing ActiveAdmin
-require "supports/active_admin/integration_test_helper"
-require "supports/active_admin/namespace_test_helper"
+require "support/active_admin/integration_test_helper"
+require "support/active_admin/namespace_test_helper"
 
 class ActiveSupport::TestCase < Minitest::Test
   def assert_html(expected, actual)
@@ -41,4 +41,9 @@ end
 class ActiveAdminTest < ActiveSupport::TestCase
   include ActiveAdmin::IntegrationTestHelper
   include ActiveAdmin::NamespaceTestHelper
+
+  teardown do
+    ActiveAdmin.unload!
+    Rails.cache.clear
+  end
 end

@@ -20,6 +20,7 @@ class IndexAsTableTest < ActiveAdminTest
       @page_presenter ||= ActiveAdmin::PagePresenter.new(columns: 2) do
         column :id
         column :name
+        actions(defaults: true)
       end
     end
 
@@ -64,16 +65,23 @@ class IndexAsTableTest < ActiveAdminTest
               <tr>
                 <th class="sortable col col-id"><a href="/fake/path">Id</a></th>
                 <th class="sortable col col-name"><a href="/fake/path">Name</a></th>
+                <th class="col col-actions"></th>
               </tr>
             </thead>
             <tbody>
               <tr class="odd" id="open_struct_1">
                 <td class="col col-id">1</td>
                 <td class="col col-name">john</td>
+                <td class="col col-actions">
+                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}"></div>
+                </td>
               </tr>
               <tr class="even" id="open_struct_2">
                 <td class="col col-id">2</td>
                 <td class="col col-name">mary</td>
+                <td class="col col-actions">
+                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}"></div>
+                </td>
               </tr>
             </tbody>
           </table>
