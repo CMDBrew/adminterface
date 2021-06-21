@@ -1,19 +1,19 @@
 ---
 action_items:
-  new:
-    display:
-      - :index
-    prefix: null
-    css_class: btn btn-primary
-  edit:
-    display:
-      - :show
-    prefix: null
-    css_class: null
   destroy:
-    display:
-      - :show
-    prefix: null
     css_class: null
+    display:
+      - show
+    icon: null
+  edit:
+    css_class: null
+    display:
+      - show
+    icon: null
+  new:
+    css_class: btn btn-primary
+    display:
+      - index
+    icon: null
 active_admin_comments:
   input: text

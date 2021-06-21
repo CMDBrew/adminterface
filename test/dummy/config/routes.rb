@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
+  ActiveAdmin.routes(self)
   resources :users
-  mount ActiveAdminBootstrap::Engine => "/active_admin_bootstrap"
 end

@@ -1,64 +1,70 @@
 ---
-header: navbar-dark bg-dark navbar-expand-lg
-title_bar: navbar-light bg-light
-body: null
-content:
-  index: container
-  show: container
-  form: container
-flash:
-  alert: alert alert-warning
-  notice: alert alert-info
 action_items:
   group: btn-group
   item: btn btn-secondary
-float_actions:
-  group: fabs
-  item: btn-fab
+active_admin_comments:
+  body: card-body
+  header: card-header
+  item: null
+  submit: btn btn-primary
+  wrapper: card
+attributes_table:
+  table: table text-break
+  wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
-tabs: nav-tabs
-table_tools:
-  btn: btn btn-sm btn-light
-  scope:
-    tabs: nav-tabs
-    count: badge badge-primary
-  index:
-    tabs: nav-pills nav-sm
-tables:
-  table_for: table
-  index_as_table:
-    wrapper: table-responsive
-    table: table
-    actions:
-      group: btn-group
-      item: btn btn-sm btn-light
-  attributes_table:
-    wrapper: table-responsive
-    table: table text-break
+body: null
+content:
+  form: container
+  index: container
+  show: container
 filter:
   actions:
-    submit: btn btn-primary
     cancel: btn btn-link
+    submit: btn btn-primary
+flash:
+  alert: alert alert-warning
+  notice: alert alert-info
 form:
+  actions:
+    cancel: btn btn-link
+    submit: btn btn-primary
   error: alert alert-danger
   has_many:
+    destroy: text-danger
     item: border mb-3
     new: btn btn-sm btn-light
-    destroy: text-danger
+header: navbar-dark bg-dark navbar-expand-lg
+icon: mdi
+index_as_table:
   actions:
-    submit: btn btn-primary
-    cancel: btn btn-link
-sidebar_section:
-  wrapper: card
-  header: card-header
-  body: card-body
+    group: btn-group
+    item: btn btn-sm btn-light
+  table: table
+  wrapper: table-responsive
+index_as_grid:
+  group: row
+  item: d-flex flex-column
 panel:
-  wrapper: card
-  header: card-header
   body: card-body
-active_admin_comments:
-  wrapper: card
   header: card-header
+  wrapper: card
+sidebar_section:
   body: card-body
-  submit: btn btn-primary
-  item: null
+  header: card-header
+  wrapper: card
+status_tag:
+  'no': badge bg-danger
+  unset: badge bg-light
+  'yes': badge bg-success
+table_for: table
+table_tools:
+  btn: btn btn-sm btn-light
+  indexes:
+    tabs: nav-pills nav-sm
+  scopes:
+    counts:
+      zero: d-none
+      positive: badge bg-primary
+    tabs: nav-pills nav-sm
+tabs: nav-tabs
+title_bar: navbar-light bg-light

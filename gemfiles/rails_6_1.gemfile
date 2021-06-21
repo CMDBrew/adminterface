@@ -14,7 +14,13 @@ end
 group :development, :test do
   gem "standardrb"
   gem "byebug"
-  gem "webrick"
+  gem "puma"
+end
+
+group :test do
+  gem "capybara"
+  gem "webdrivers"
+  gem "simplecov", require: false
 end
 
 gemspec path: "../"

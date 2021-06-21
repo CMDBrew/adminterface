@@ -5,6 +5,8 @@ module ActiveAdminBootstrap
 
     # Initializers
     include ::ActiveAdminBootstrap::Initializers::Configurations
+    include ::ActiveAdminBootstrap::Initializers::Resource
+    include ::ActiveAdminBootstrap::Initializers::Views
 
     # Override ActiveAdmin defaults
     config.before_initialize do
