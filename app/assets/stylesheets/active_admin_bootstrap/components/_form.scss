@@ -1,0 +1,160 @@
+.formtastic {
+  .errors { margin-bottom: 0; }
+  .hidden { display: none; }
+  .inline-errors { color: $danger; }
+  .inline-hint { color: $secondary; }
+
+  li.has-many-inputs,
+  fieldset.inputs,
+  fieldset.actions {
+    & > ol {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  fieldset.actions {
+    ol {
+      display: flex;
+      align-items: flex-end;
+      -webkit-box-orient: horizontal;
+      -webkit-box-align: end;
+      -webkit-box-direction: reverse;
+      flex-direction: row-reverse;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: map-get($spacers, 2);
+      &:first-child { margin: 0; }
+    }
+  }
+
+  fieldset.columns > ol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  fieldset.has_many_fields {
+    &.ui-sortable-placeholder {
+      z-index: 11;
+      background: $form-sortable-helper-bg !important;
+      visibility: visible !important;
+      box-sizing: border-box;
+      @include box-shadow(none);
+    }
+
+    &.ui-sortable-helper {
+      height: auto !important;
+      opacity: 1 !important;
+      .has-many-inputs li:not(:first-child) { display: none; }
+    }
+
+    & > ol {
+      display: flex;
+      flex-direction: row;
+
+      li {
+        &.handle {
+          display: flex;
+          align-items: center;
+          padding: map-get($spacers, 2);
+          color: $text-muted;
+          cursor: move;
+
+          &::before {
+            @extend %aa-icon;
+            content: map-get($aa-icons, 'sortable-handle');
+          }
+        }
+
+        &.has-many-inputs {
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          padding: map-get($spacers, 2) $spacer;
+          > ol:first-child { flex: 1; }
+        }
+      }
+
+      .has_many_delete {
+        input[type='checkbox']:checked + label { color: $danger; }
+
+        label.form-check-label {
+          padding-left: $spacer;
+
+          span,
+          i {
+            display: none;
+          }
+
+          &::after {
+            @extend %aa-icon;
+            content: map-get($aa-icons, 'delete');
+          }
+        }
+      }
+
+      .has_many_remove {
+        padding-left: $spacer;
+        font-size: 0;
+
+        &::after {
+          @extend %aa-icon;
+          content: map-get($aa-icons, 'remove');
+        }
+      }
+    }
+
+    > ol li.has-many-inputs { padding: 0; }
+    > ol { flex-direction: row; }
+
+    > ol li.handle {
+      align-items: flex-start;
+      padding: 0;
+      padding-right: $spacer;
+    }
+
+    .columns { margin: 0 calc(-#{$grid-gutter-width} / 2); }
+    .has_many_delete { margin-bottom: 0; }
+  }
+
+  li.input { list-style: none; }
+  .choices-group { @extend %list-unstyled; }
+
+  .fragments {
+    legend { margin-bottom: 0; }
+    legend.label { font-size: $font-size-base; }
+
+    .input-fragment {
+      .field_with_error {
+        display: flex;
+        width: 100%;
+      }
+    }
+  }
+
+  .input-group {
+    .field_with_errors {
+      width: 100%;
+      margin-right: 0 !important;
+    }
+  }
+
+  .fragments-group {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0 calc(-#{$spacer} / 4) !important;
+    list-style: none;
+
+    .fragment {
+      flex: 1;
+      padding: 0 $spacer / 4;
+      margin-bottom: $spacer;
+    }
+  }
+}

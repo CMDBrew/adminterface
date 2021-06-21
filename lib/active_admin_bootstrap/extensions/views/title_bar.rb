@@ -7,14 +7,17 @@ module ActiveAdmin
       has_css_classes_for :title_bar
 
       def build(namespace, title, action_items)
-        super(id: "title_bar", class: "navbar #{title_bar_css_classes}".strip)
+        super(id: "title_bar", class: "navbar #{title_bar_css_classes[:wrapper]}".strip)
         @title = title
         @action_items = action_items
         @namespace = namespace
-        build_header_toggler
-        site_title @namespace
-        build_titlebar_left
-        build_titlebar_right
+
+        div class: title_bar_css_classes[:container] do
+          build_header_toggler
+          site_title @namespace
+          build_titlebar_left
+          build_titlebar_right
+        end
       end
 
       def tag_name

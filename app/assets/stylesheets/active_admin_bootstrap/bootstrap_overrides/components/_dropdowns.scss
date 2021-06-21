@@ -1,0 +1,21 @@
+.dropdown-toggle {
+  &::after { vertical-align: middle; }
+  &.no-caret::after { content: none; }
+}
+
+.dropdown-item {
+  &:not(a) {
+    padding: 0;
+
+    & > a { padding: $dropdown-item-padding-y $dropdown-item-padding-x; }
+  }
+
+  a {
+    display: block;
+
+    &,
+    &:hover {
+      text-decoration: none;
+    }
+  }
+}

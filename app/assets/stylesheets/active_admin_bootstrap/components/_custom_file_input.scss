@@ -1,0 +1,25 @@
+.custom-file-input-group {
+  display: flex;
+  flex-direction: row;
+
+  .custom-file-preview {
+    position: relative;
+    flex-shrink: 0;
+    width: $input-height;
+    height: $input-height;
+    margin-right: map-get($spacers, 2);
+    overflow: hidden;
+    border: $input-border-width solid $input-border-color;
+    border-radius: $border-radius !important;
+
+    &:empty { display: none; }
+
+    img {
+      position: absolute;
+      top: 0;
+      left: 50%;
+      height: 100%;
+      @include transform(translateX(-50%));
+    }
+  }
+}

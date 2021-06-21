@@ -30,25 +30,27 @@ class HeaderTest < ActiveAdminTest
     assert @component.class_list.include?("header")
     assert @component.class_list.include?("navbar")
 
-    default_css_classes.split.each do |klass|
+    default_css_classes[:wrapper].split.each do |klass|
       assert @component.class_list.include?(klass)
     end
   end
 
   test "#content" do
     html =
-      <<~HTML
-        <div class="navbar-brand site_title">
-          <div class="title">Awesome Admin</div>
+      <<~ERB
+        <div class="#{default_css_classes[:container]}">
+          <div class="navbar-brand site_title">
+            <div class="title">Awesome Admin</div>
+          </div>
+          <button class="navbar-toggler" data-target="#header-nav" data-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="header-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav" id="main-nav"></ul>
+            <ul class="navbar-nav" id="utility-nav"></ul>
+          </div>
         </div>
-        <button class="navbar-toggler" data-target="#header-nav" data-toggle="collapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="header-nav" class="collapse navbar-collapse">
-          <ul class="navbar-nav" id="main-nav"></ul>
-          <ul class="navbar-nav" id="utility-nav"></ul>
-        </div>
-      HTML
+      ERB
     assert_html html, @component.content
   end
 end

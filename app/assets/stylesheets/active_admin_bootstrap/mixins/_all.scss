@@ -1,0 +1,33 @@
+// sass-lint:disable no-vendor-prefixes
+@mixin animation($value) {
+  animation: #{$value};
+  -webkit-animation: #{$value};
+}
+
+@mixin non-selectable {
+  user-select: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+}
+
+@mixin transition($value...) {
+  transition: #{$value};
+  -webkit-transition: #{$value};
+}
+
+@mixin transform($value...) {
+  transform: #{$value};
+  -webkit-transform: #{$value};
+}
+
+@mixin clip-path($value...) {
+  -webkit-clip-path: #{$value};
+  clip-path: #{$value};
+}
+
+@mixin appearance($value) {
+  appearance: $value;
+  -webkit-appearance: $value;
+  -moz-appearance: $value;
+}

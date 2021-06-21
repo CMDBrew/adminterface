@@ -1,0 +1,131 @@
+$trix-toolbar-btn-group-border-color: $border-color !default;
+$trix-toolbar-btn-group-bg: $light !default;
+$trix-toolbar-btn-active-bg: $component-active-bg !default;
+$trix-toolbar-btn-active-color: $component-active-color !default;
+
+$trix-content-pre-bg: $gray-200 !default;
+$trix-content-pre-color: inherit !default;
+$trix-content-blockquote-bg: $gray-200 !default;
+$trix-content-attachment-caption-color: $secondary !default;
+$trix-content-attachment-border-color: $border-color !default;
+
+$trix-input-dialog-bg: $modal-content-bg !default;
+$trix-input-dialog-border: $modal-content-border-width solid $modal-content-border-color !default;
+$trix-input-dialog-border-radius: $modal-content-border-radius !default;
+$trix-input-dialog-invalid-color: $danger !default;
+
+$trix-icon-size: 20px !default;
+$trix-icons: (
+  'attached': '\F03E2',
+  'format-bold': '\F0264',
+  'format-italic': '\F0277',
+  'format-strikethrough': '\F0280',
+  'format-quote': '\F027E',
+  'format-font-size': '\F027F',
+  'format-code': '\F0174',
+  'format-bullet-list': '\F0279',
+  'format-number-list': '\F027B',
+  'format-indent-increase': '\F0276',
+  'format-indent-decrease': '\F0275',
+  'link': '\F0337',
+  'undo': '\F054C',
+  'redo': '\F044E',
+) !default;
+
+trix-editor {
+  background: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-width: 0 0 $input-border-width;
+  &:empty:not(:focus)::before { color: $input-placeholder-color; }
+}
+
+trix-toolbar {
+  .trix-button-row {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+
+  .trix-button-group {
+    margin-left: 0 !important;
+    background: $trix-toolbar-btn-group-bg;
+    border: 1px solid $trix-toolbar-btn-group-border-color;
+
+    &:not(:last-child) {
+      margin-right: 1.5vw;
+    }
+
+    .trix-button {
+      height: auto;
+      padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+      color: color-yiq($trix-toolbar-btn-group-bg);
+      border-bottom: 0;
+
+      &:not(:first-child) {
+        border-left: 1px solid $border-color;
+      }
+
+      &.trix-active {
+        color: $trix-toolbar-btn-active-color;
+        background: $trix-toolbar-btn-active-bg;
+      }
+    }
+  }
+
+  .trix-button-group-spacer { display: none; }
+
+  .trix-input--dialog {
+    background-color: $trix-input-dialog-bg;
+    border: $trix-input-dialog-border;
+    border-radius: $trix-input-dialog-border-radius;
+
+    &.validate:invalid {
+      border-color: $trix-input-dialog-invalid-color;
+      box-shadow: none;
+    }
+  }
+
+  .trix-button--icon::before {
+    @extend %aa-icon;
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    font-size: $trix-icon-size;
+    text-indent: 0;
+    background-image: none;
+    @include transform(translate(-50%, -50%));
+  }
+
+  .trix-button--icon-attach::before { content: map-get($trix-icons, 'attached'); }
+  .trix-button--icon-bold::before { content: map-get($trix-icons, 'format-bold'); }
+  .trix-button--icon-italic::before { content: map-get($trix-icons, 'format-italic'); }
+  .trix-button--icon-link::before { content: map-get($trix-icons, 'link'); }
+  .trix-button--icon-strike::before { content: map-get($trix-icons, 'format-strikethrough'); }
+  .trix-button--icon-quote::before { content: map-get($trix-icons, 'format-quote'); }
+  .trix-button--icon-heading-1::before { content: map-get($trix-icons, 'format-font-size'); }
+  .trix-button--icon-code::before { content: map-get($trix-icons, 'format-code'); }
+  .trix-button--icon-bullet-list::before { content: map-get($trix-icons, 'format-bullet-list'); }
+  .trix-button--icon-number-list::before { content: map-get($trix-icons, 'format-number-list'); }
+  .trix-button--icon-undo::before { content: map-get($trix-icons, 'undo'); }
+  .trix-button--icon-redo::before { content: map-get($trix-icons, 'redo'); }
+  .trix-button--icon-decrease-nesting-level::before { content: map-get($trix-icons, 'format-indent-decrease'); }
+  .trix-button--icon-increase-nesting-level::before { content: map-get($trix-icons, 'format-indent-increase'); }
+}
+
+.trix-content {
+  img {
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  blockquote { border-left-color: $trix-content-blockquote-bg; }
+
+  pre {
+    color: $trix-content-pre-color;
+    white-space: pre !important;
+    background: $trix-content-pre-bg;
+  }
+
+  .attachment__caption { color: $trix-content-attachment-caption-color; }
+  .attachment--file { border-color: $trix-content-attachment-border-color; }
+}

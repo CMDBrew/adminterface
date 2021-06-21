@@ -1,0 +1,5 @@
+#sidebar {
+  width: 100%;
+  background: $sidebar-bg;
+  @include media-breakpoint-up($sidebar-breakpoint) { width: $sidebar-width; }
+}

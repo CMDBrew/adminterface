@@ -8,6 +8,7 @@ gemspec
 gem "pg"
 gem "mysql2"
 gem "sqlite3"
+gem "webpacker", "~> 5.0", require: ENV["SPROCKETS"] != "true"
 
 group :development do
   # Test application against different versions

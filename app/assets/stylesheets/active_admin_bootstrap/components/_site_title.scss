@@ -1,0 +1,17 @@
+.site_title {
+  display: block;
+
+  .title {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    * {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  .image { height: $site-title-logo-height; }
+  img + span { margin-left: map-get($spacers, 2); }
+}

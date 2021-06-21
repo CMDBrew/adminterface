@@ -33,7 +33,9 @@ form:
     destroy: text-danger
     item: border mb-3
     new: btn btn-sm btn-light
-header: navbar-dark bg-dark navbar-expand-lg
+header:
+  wrapper: navbar-dark bg-dark navbar-expand-lg
+  container: container-fluid
 icon: mdi
 index_as_table:
   actions:
@@ -67,4 +69,6 @@ table_tools:
       positive: badge bg-primary
     tabs: nav-pills nav-sm
 tabs: nav-tabs
-title_bar: navbar-light bg-light
+title_bar:
+  wrapper: navbar-light bg-light
+  container: container-fluid

@@ -1,0 +1,28 @@
+%layout-navigation-top {
+  $_header-height: map-get($layout-navigation-top, 'header');
+  $_title-bar-height: map-get($layout-navigation-top, 'title_bar');
+
+  grid-template-areas:
+    "header"
+    "title_bar"
+    "content";
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: minmax($_header-height, auto) $_title-bar-height minmax(0, 1fr);
+
+  #header {
+    grid-area: header;
+    overflow-y: visible;
+  }
+
+  #title_bar { grid-area: title_bar; }
+  #wrapper { grid-area: content; }
+
+  @include media-breakpoint-up($aside-breakpoint) {
+    $_header-height: map-get($layout-navigation-top, 'header');
+    $_title-bar-height: map-get($layout-navigation-top, 'title_bar');
+    #aside-filters { top: calc(#{$_header-height} + #{$_title-bar-height}); }
+  }
+}
+
+body.layout-navigation-top { @extend %layout-navigation-top; }

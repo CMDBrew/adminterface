@@ -1,0 +1,19 @@
+.scopes,
+.table_tools {
+  margin-bottom: $spacer;
+}
+
+.scope_ctrls {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  & > * {
+    padding: 0;
+    margin: 0;
+
+    &:not(:first-child) { margin-left: $spacer; }
+  }
+}
+
+.scope > span { vertical-align: middle; }

@@ -1,0 +1,22 @@
+.panel {
+  margin-bottom: calc(#{$grid-gutter-width} / 2);
+  overflow: hidden;
+
+  .panel-header {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+
+    &:empty { display: none; }
+
+    .title {
+      @extend %text-truncate;
+      flex: 1;
+      white-space: normal;
+
+      h5 { margin-bottom: 0; }
+      & + .actions { margin-left: $spacer; }
+    }
+  }
+}

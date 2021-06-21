@@ -17,13 +17,15 @@ module ActiveAdmin
         @menu = menu
         @utility_menu = @namespace.fetch_menu(:utility_navigation)
 
-        build_navigations
+        div class: header_css_classes[:container] do
+          build_navigations
+        end
       end
 
       private
 
       def build_navigations
-        add_class "navbar #{header_css_classes}".strip
+        add_class "navbar #{header_css_classes[:wrapper]}".strip
         site_title @namespace
         navbar_toggler
         navbar_nav
