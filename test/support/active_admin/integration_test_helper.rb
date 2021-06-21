@@ -48,6 +48,10 @@ module ActiveAdmin::IntegrationTestHelper
     def current_active_admin_user?
       false
     end
+
+    def compiled_method_container
+      self.class
+    end
   end
 
   # Returns a fake action view instance to use with our renderers
