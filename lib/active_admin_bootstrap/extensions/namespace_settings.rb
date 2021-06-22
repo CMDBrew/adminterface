@@ -1,21 +1,31 @@
-module ActiveAdmin
-  # Overwrite NamespaceSettings - lib/active_admin/namespace_settings.rb
-  class NamespaceSettings < DynamicSettingsNode
-    CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
+module ActiveAdminBootstrap
+  module Extensions
+    module NamespaceSettings
+      extend ActiveSupport::Concern
 
-    # The default layouts
-    register :layouts, CONFIGS[:layouts]
+      CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
 
-    # The default icons
-    register :icons, CONFIGS[:icons]
+      included do
+        # The default layouts
+        register :layouts, CONFIGS[:layouts]
 
-    # The default component configs
-    register :components, CONFIGS[:components]
+        # The default icons
+        register :icons, CONFIGS[:icons]
 
-    # The default css_classes
-    register :css_classes, CONFIGS[:css_classes]
+        # The default component configs
+        register :components, CONFIGS[:components]
 
-    # The default breakpoints
-    register :breakpoints, CONFIGS[:breakpoints]
+        # The default css_classes
+        register :css_classes, CONFIGS[:css_classes]
+
+        # The default breakpoints
+        register :breakpoints, CONFIGS[:breakpoints]
+      end
+    end
   end
+end
+
+# Overwrite lib/active_admin/namespace_settings.rb
+ActiveAdmin::NamespaceSettings.class_eval do
+  include ActiveAdminBootstrap::Extensions::NamespaceSettings
 end

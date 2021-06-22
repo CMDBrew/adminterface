@@ -43,14 +43,14 @@ module PanelTest
             <div class="title">
               <h5>panel title</h5>
             </div>
-            <div class="actions">
+            <div class="header_action">
               <div class="btn-group">
                 <a href="/fake/path">Link A</a>
                 <a href="/fake/path">Link B</a>
               </div>
             </div>
           </div>
-          <div class="panel-body #{default_css_classes[:body]}">
+          <div class="panel_contents panel-body #{default_css_classes[:body]}">
             <h1>test</h1>
             <p>this is a panel</p>
           </div>
@@ -77,7 +77,7 @@ module PanelTest
       html =
         <<~ERB
           <div class="panel-header #{default_css_classes[:header]} header"></div>
-          <div class="panel-body #{default_css_classes[:body]} body">
+          <div class="panel_contents panel-body #{default_css_classes[:body]} body">
             <h1>test</h1>
             <p>this is a panel</p>
           </div>

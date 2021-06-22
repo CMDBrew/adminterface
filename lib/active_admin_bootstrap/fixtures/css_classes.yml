@@ -12,11 +12,12 @@ attributes_table:
   table: table text-break
   wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
-body: null
-content:
-  form: container
-  index: container
-  show: container
+html:
+  body: null
+  container:
+    form: container
+    index: container
+    show: container
 filter:
   actions:
     cancel: btn btn-link

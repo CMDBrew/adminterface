@@ -39,7 +39,7 @@ class HeaderTest < ActiveAdminTest
     html =
       <<~ERB
         <div class="#{default_css_classes[:container]}">
-          <div class="navbar-brand site_title">
+          <div class="site_title navbar-brand">
             <div class="title">Awesome Admin</div>
           </div>
           <button class="navbar-toggler" data-target="#header-nav" data-toggle="collapse">

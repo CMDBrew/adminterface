@@ -8,8 +8,12 @@ module ActiveAdminBootstrap
           require_relative("../extensions/dynamic_settings_node")
           require_relative("../extensions/namespace_settings")
 
-          ActiveAdmin::Resource.send :include, ::ActiveAdminBootstrap::Configs::Configurable
-          ActiveAdmin::Page.send :include, ::ActiveAdminBootstrap::Configs::Configurable
+          ActiveAdmin::Views::FormtasticProxy.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::Views::TableFor.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::Views::Pages::Base.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::Component.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::Resource.send :include, ActiveAdminBootstrap::Configs::Configurable
+          ActiveAdmin::Page.send :include, ActiveAdminBootstrap::Configs::Configurable
         end
       end
     end

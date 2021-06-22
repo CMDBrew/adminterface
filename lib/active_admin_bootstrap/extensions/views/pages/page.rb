@@ -1,12 +1,18 @@
-module ActiveAdmin
-  module Views
-    module Pages
-      # Overwrite activeadmin/lib/active_admin/views/pages/page.rb
-      class Page < Base
-        def body_classes
-          super.add "page"
+module ActiveAdminBootstrap
+  module Extensions
+    module Views
+      module Pages
+        module Page
+          def body_classes
+            super.add "page"
+          end
         end
       end
     end
   end
+end
+
+# Overwrite lib/active_admin/views/pages/page.rb
+ActiveAdmin::Views::Pages::Page.class_eval do
+  prepend ActiveAdminBootstrap::Extensions::Views::Pages::Page
 end

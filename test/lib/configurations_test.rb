@@ -39,7 +39,7 @@ module ConfigurationsTest
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
       }
       @application.css_classes = {header: "navbar-light bg-light"}
-      @application.breakpoints = {columns: "lg", index_as_grid: "sm"}
+      @application.breakpoints = {column: "lg", index_as_grid: "sm"}
     end
 
     test "updates layouts" do
@@ -72,7 +72,7 @@ module ConfigurationsTest
     end
 
     test "updates breakpoints" do
-      assert_equal({columns: "lg", index_as_grid: "sm"}, @application.breakpoints.deep_symbolize_keys)
+      assert_equal({column: "lg", index_as_grid: "sm"}, @application.breakpoints.deep_symbolize_keys)
     end
   end
 
@@ -86,7 +86,7 @@ module ConfigurationsTest
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
       }
       @namespace.css_classes = {header: "navbar-light bg-light"}
-      @namespace.breakpoints = {columns: "lg", index_as_grid: "sm"}
+      @namespace.breakpoints = {column: "lg", index_as_grid: "sm"}
     end
 
     test "does not equal the gloabl configs" do
@@ -126,7 +126,7 @@ module ConfigurationsTest
     end
 
     test "updates breakpoints" do
-      assert_equal({columns: "lg", index_as_grid: "sm"}, @namespace.breakpoints.deep_symbolize_keys)
+      assert_equal({column: "lg", index_as_grid: "sm"}, @namespace.breakpoints.deep_symbolize_keys)
     end
   end
 
@@ -142,7 +142,7 @@ module ConfigurationsTest
             action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
           }
           config.css_classes = {header: "navbar-light bg-light"}
-          config.breakpoints = {columns: "lg", index_as_grid: "sm"}
+          config.breakpoints = {column: "lg", index_as_grid: "sm"}
         end
     end
 
@@ -192,7 +192,7 @@ module ConfigurationsTest
     end
 
     test "updates breakpoints" do
-      assert_equal({columns: "lg", index_as_grid: "sm"}, @resource.breakpoints.deep_symbolize_keys)
+      assert_equal({column: "lg", index_as_grid: "sm"}, @resource.breakpoints.deep_symbolize_keys)
     end
   end
 end

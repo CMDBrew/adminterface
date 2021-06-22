@@ -1,6 +1,12 @@
 require "test_helper"
 
 class IndexAsTableTest < ActiveAdminTest
+  class IndexAsTableController < ActionView::TestCase::TestController
+    def action_methods
+      %w[show edit destroy]
+    end
+  end
+
   class IndexAsTableResource < ActiveAdmin::Resource
     def batch_actions
       []
@@ -27,6 +33,20 @@ class IndexAsTableTest < ActiveAdminTest
     def url_for(*_args)
       "/fake/path"
     end
+
+    alias_method :resource_path, :url_for
+    alias_method :edit_resource_path, :url_for
+
+    def authorized?(*_args)
+      true
+    end
+  end
+
+  def mock_action_view(base = MockActionView)
+    controller = IndexAsTableController.new
+    # this line needed because of rails bug https://github.com/rails/rails/commit/d8e98897b5703ac49bf0764da71a06d64ecda9b0
+    controller.params = ActionController::Parameters.new
+    base.new(view_paths, {}, controller)
   end
 
   def application
@@ -73,14 +93,22 @@ class IndexAsTableTest < ActiveAdminTest
                 <td class="col col-id">1</td>
                 <td class="col col-name">john</td>
                 <td class="col col-actions">
-                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}"></div>
+                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}">
+                    <a class="view_link member_link #{default_css_classes.dig(:actions, :item)}" title="View" href="/fake/path">View</a>
+                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :item)}" title="Edit" href="/fake/path">Edit</a>
+                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :item)}" title="Delete" data-message="#{I18n.t(:delete_message, scope: "active_admin")}" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
+                  </div>
                 </td>
               </tr>
               <tr class="even" id="open_struct_2">
                 <td class="col col-id">2</td>
                 <td class="col col-name">mary</td>
                 <td class="col col-actions">
-                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}"></div>
+                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}">
+                    <a class="view_link member_link #{default_css_classes.dig(:actions, :item)}" title="View" href="/fake/path">View</a>
+                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :item)}" title="Edit" href="/fake/path">Edit</a>
+                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :item)}" title="Delete" data-message="#{I18n.t(:delete_message, scope: "active_admin")}" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
+                  </div>
                 </td>
               </tr>
             </tbody>

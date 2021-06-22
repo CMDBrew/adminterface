@@ -41,7 +41,7 @@ class SidebarSectionTest < ActiveAdminTest
             <h5>Help</h5>
           </div>
         </div>
-        <div class="panel-body #{default_css_classes[:body]}">
+        <div class="panel_contents panel-body #{default_css_classes[:body]}">
           <h1>test</h1>
           <p>this is a sidebar_section</p>
         </div>

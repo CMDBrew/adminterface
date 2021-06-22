@@ -16,7 +16,7 @@
       white-space: normal;
 
       h5 { margin-bottom: 0; }
-      & + .actions { margin-left: $spacer; }
+      & + .header_action { margin-left: $spacer; }
     }
   }
 }

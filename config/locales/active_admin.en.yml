@@ -1,4 +1,4 @@
 ---
 en:
   active_admin:
-    delete_confirmation_message: Deleting records cannot be recovered. Do you still want to continue?
+    delete_message: Deleting records cannot be recovered. Do you still want to continue?

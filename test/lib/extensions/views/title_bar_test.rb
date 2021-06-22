@@ -31,8 +31,14 @@ class TitleBarTest < ActiveAdminTest
     @component =
       render_arbre_component({namespace: namespace}, mock_action_view(TitleBarView)) do
         title_bar namespace, "Awesome Title", [
-          ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class", group: "status") do
             link_to "publish", "#"
+          end,
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class", group: "status") do
+            link_to "unpublish", "#"
+          end,
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
+            link_to "visit", "#"
           end
         ]
       end
@@ -57,7 +63,7 @@ class TitleBarTest < ActiveAdminTest
           <button class="navbar-toggler header-toggler">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="navbar-brand site_title">
+          <div class="site_title navbar-brand">
             <div class="title"></div>
           </div>
           <div id="titlebar_left">
@@ -68,6 +74,10 @@ class TitleBarTest < ActiveAdminTest
           <div id="titlebar_right">
             <div class="action_items #{action_items_css_classes[:group]}">
               <a class="#{action_items_css_classes[:item]}" href="#">publish</a>
+              <a class="#{action_items_css_classes[:item]}" href="#">unpublish</a>
+            </div>
+            <div class="action_items #{action_items_css_classes[:group]}">
+              <a class="#{action_items_css_classes[:item]}" href="#">visit</a>
             </div>
           </div>
         </div>

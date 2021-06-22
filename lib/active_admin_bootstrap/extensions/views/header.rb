@@ -1,49 +1,53 @@
-module ActiveAdmin
-  module Views
-    # Overwrite activeadmin/lib/active_admin/views/header.rb
-    class Header < Component
-      include ::ActiveAdminBootstrap::Configs::Finders
+module ActiveAdminBootstrap
+  module Extensions
+    module Views
+      module Header
+        ID = "header-nav".freeze
 
-      has_css_classes_for :header
+        def tag_name
+          :nav
+        end
 
-      def tag_name
-        :nav
-      end
+        private
 
-      def build(namespace, menu)
-        super(id: "header")
+        def build_navigations
+          add_class "navbar #{header_css_classes[:wrapper]}".squish
+          site_title @namespace
+          navbar_toggler
+          navbar_nav
+        end
 
-        @namespace = namespace
-        @menu = menu
-        @utility_menu = @namespace.fetch_menu(:utility_navigation)
+        def navbar_nav
+          div id: ID, class: "collapse navbar-collapse" do
+            global_navigation @menu, id: "main-nav", class: "navbar-nav"
+            utility_navigation @utility_menu, id: "utility-nav", class: "navbar-nav"
+          end
+        end
 
-        div class: header_css_classes[:container] do
-          build_navigations
+        def navbar_toggler
+          button(class: "navbar-toggler", 'data-target': "##{ID}", 'data-toggle': "collapse") do
+            span class: "navbar-toggler-icon"
+          end
         end
       end
+    end
+  end
+end
 
-      private
+# Overwrite lib/active_admin/views/header.rb
+ActiveAdmin::Views::Header.class_eval do
+  prepend ActiveAdminBootstrap::Extensions::Views::Header
+  has_css_classes_for :header
 
-      def build_navigations
-        add_class "navbar #{header_css_classes[:wrapper]}".strip
-        site_title @namespace
-        navbar_toggler
-        navbar_nav
-      end
+  def build(namespace, menu)
+    super(id: "header")
 
-      def navbar_nav
-        div id: "header-nav", class: "collapse navbar-collapse" do
-          global_navigation @menu, id: "main-nav", class: "navbar-nav"
-          utility_navigation @utility_menu, id: "utility-nav", class: "navbar-nav"
-        end
-      end
+    @namespace = namespace
+    @menu = menu
+    @utility_menu = @namespace.fetch_menu(:utility_navigation)
 
-      def navbar_toggler
-        button(class: "navbar-toggler",
-               'data-target': "#header-nav", 'data-toggle': "collapse") do
-          span class: "navbar-toggler-icon"
-        end
-      end
+    div class: header_css_classes[:container] do
+      build_navigations
     end
   end
 end
