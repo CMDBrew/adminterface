@@ -28,7 +28,7 @@ module ActiveAdminBootstrap
         end
 
         def build_item(item)
-          div class: "#{column_klass} #{index_as_grid_css_classes[:item]}".strip, for: item do
+          div class: "#{column_klass} #{index_as_grid_css_classes[:item]}".squish, for: item do
             instance_exec(item, &@page_presenter.block)
           end
         end

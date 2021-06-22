@@ -9,7 +9,7 @@ module ActiveAdminBootstrap
             li html_options.merge(class: "nav-item") do
               if @http
                 params[:tab] ||= @default_tab || fragment
-                link_to title, url_for(tab: fragment), class: "nav-link #{current_tab?(fragment) ? "active" : nil}".strip
+                link_to title, url_for(tab: fragment), class: "nav-link #{current_tab?(fragment) ? "active" : nil}".squish
               else
                 link_to title, "##{fragment}", class: "nav-link"
               end

@@ -15,7 +15,7 @@ module ActiveAdminBootstrap
 
       module Column
         def assign_column_span
-          set_attribute :class, "#{column_klass} #{css_class}".strip
+          set_attribute :class, "#{column_klass} #{css_class}".squish
         end
 
         def column_klass
