@@ -7,7 +7,8 @@ $layout-navigation-top: map-merge(
   (
     'header': 64px,
     'title_bar': 64px
-  ), $layout-navigation-top
+  ),
+  $layout-navigation-top
 );
 
 $layout-navigation-drawer:  map-merge(
@@ -15,7 +16,8 @@ $layout-navigation-drawer:  map-merge(
     'header': 300px,
     'title_bar': 64px,
     'breakpoint': lg
-  ), $layout-navigation-drawer
+  ),
+  $layout-navigation-drawer
 );
 
 $layout-navigation-drawer-dismissible:  map-merge(
@@ -23,7 +25,8 @@ $layout-navigation-drawer-dismissible:  map-merge(
     'header': 300px,
     'title_bar': 64px,
     'breakpoint': lg
-  ), $layout-navigation-drawer-dismissible
+  ),
+  $layout-navigation-drawer-dismissible
 );
 
 // Logged Out

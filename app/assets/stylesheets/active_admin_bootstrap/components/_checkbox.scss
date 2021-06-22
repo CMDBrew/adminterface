@@ -3,6 +3,7 @@
 
   .checkbox-icon {
     @extend %aa-icon;
+
     margin-right: map-get($spacers, 1);
     color: $secondary;
   }

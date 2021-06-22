@@ -4,7 +4,7 @@
   "description": "Add Bootstrap themes and common UI components for ActiveAdmin",
   "main": "src/all.js",
   "files": [
-  "src/*"
+    "src/*"
   ],
   "repository": "#",
   "author": "I-Lung Lee <ilung@hey.com>",
@@ -21,9 +21,12 @@
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4"
+    "rollup-plugin-uglify": "^6.0.4",
+    "stylelint": "^13.13.1",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
-    "aab-bootstrap": "npm:bootstrap@^5.0.1"
+    "aa-bootstrap": "npm:bootstrap@^5.0.1"
   }
 }

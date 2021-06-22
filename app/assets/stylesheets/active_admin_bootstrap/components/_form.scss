@@ -44,6 +44,7 @@
       background: $form-sortable-helper-bg !important;
       visibility: visible !important;
       box-sizing: border-box;
+
       @include box-shadow(none);
     }
 
@@ -67,6 +68,7 @@
 
           &::before {
             @extend %aa-icon;
+
             content: map-get($aa-icons, 'sortable-handle');
           }
         }
@@ -93,6 +95,7 @@
 
           &::after {
             @extend %aa-icon;
+
             content: map-get($aa-icons, 'delete');
           }
         }
@@ -104,6 +107,7 @@
 
         &::after {
           @extend %aa-icon;
+
           content: map-get($aa-icons, 'remove');
         }
       }
