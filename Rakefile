@@ -13,6 +13,15 @@ Rake::TestTask.new(:test) do |t|
   t.verbose = false
 end
 
+# Prepare webpack for dummy
+task :prepare_assets do
+  system "rm -rf test/dummy/public/packs"
+  system "rm -rf test/dummy/public/packs-test"
+  system "yarn install"
+  system "yarn build"
+  system "(cd test/dummy && yarn install)"
+end
+
 # Custom Rails stats command
 task stats: :statsetup
 task :statsetup do
