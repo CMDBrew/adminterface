@@ -1,0 +1,33 @@
+$flatpickr-day-border-radius: $border-radius !default;
+$flatpickr-day-bg: $gray-200 !default;
+$flatpickr-day-hover-bg: $gray-200 !default;
+$flatpickr-day-selected-bg: $component-active-bg !default;
+
+.flatpickr-calendar {
+  .flatpickr-day { border-radius: $flatpickr-day-border-radius; }
+
+  .flatpickr-months {
+    .flatpickr-prev-month,
+    .flatpickr-next-month {
+      padding: 5px 10px;
+    }
+  }
+
+  .flatpickr-day.selected {
+    background: $flatpickr-day-selected-bg;
+    border-color: $flatpickr-day-selected-bg;
+    color: color-contrast($flatpickr-day-selected-bg);
+  }
+
+  .flatpickr-day.today {
+    background: $flatpickr-day-bg;
+    border-color: $flatpickr-day-bg;
+    color: color-contrast($flatpickr-day-bg);
+  }
+
+  .flatpickr-day:hover {
+    background: $flatpickr-day-hover-bg;
+    border-color: $flatpickr-day-hover-bg;
+    color: color-contrast($flatpickr-day-hover-bg);
+  }
+}

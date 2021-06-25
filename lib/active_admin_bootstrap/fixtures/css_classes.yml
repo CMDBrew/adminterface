@@ -1,7 +1,7 @@
 ---
 action_items:
   group: btn-group
-  item: btn btn-secondary
+  item: btn btn-light
 active_admin_comments:
   body: card-body
   header: card-header
@@ -12,19 +12,16 @@ attributes_table:
   table: table text-break
   wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
-html:
-  body: null
-  container:
-    form: container
-    index: container
-    show: container
-filter:
+filters:
   actions:
     cancel: btn btn-link
     submit: btn btn-primary
 flash:
   alert: alert alert-warning
   notice: alert alert-info
+footer:
+  body: bg-light rounded p-2 small text-muted
+  wrapper: mt-3 text-center
 form:
   actions:
     cancel: btn btn-link
@@ -35,25 +32,35 @@ form:
     item: border mb-3
     new: btn btn-sm btn-light
 header:
-  wrapper: navbar-dark bg-dark navbar-expand-lg
   container: container-fluid
-icon: mdi
+  wrapper: navbar-dark bg-primary navbar-expand-lg
+html:
+  body: null
+  container:
+    form: container
+    index: container
+    show: container
+icon: bi
+index_as_grid:
+  group: row
+  item: d-flex flex-column
 index_as_table:
   actions:
     group: btn-group
     item: btn btn-sm btn-light
   table: table
   wrapper: table-responsive
-index_as_grid:
-  group: row
-  item: d-flex flex-column
 panel:
   body: card-body
-  header: card-header
+  header:
+    title: h5 mb-0
+    wrapper: card-header
   wrapper: card
 sidebar_section:
   body: card-body
-  header: card-header
+  header:
+    title: h5 mb-0
+    wrapper: card-header
   wrapper: card
 status_tag:
   'no': badge bg-danger
@@ -66,10 +73,10 @@ table_tools:
     tabs: nav-pills nav-sm
   scopes:
     counts:
-      zero: d-none
       positive: badge bg-primary
+      zero: d-none
     tabs: nav-pills nav-sm
 tabs: nav-tabs
 title_bar:
-  wrapper: navbar-light bg-light
   container: container-fluid
+  wrapper: navbar-light bg-white border shadow-sm

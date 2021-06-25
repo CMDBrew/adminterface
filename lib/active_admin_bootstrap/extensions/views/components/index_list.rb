@@ -36,7 +36,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/index_list.rb
+# Overwrite activeadmin/lib/active_admin/views/components/index_list.rb
 ActiveAdmin::Views::IndexList.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::IndexList
   has_css_classes_for :table_tools

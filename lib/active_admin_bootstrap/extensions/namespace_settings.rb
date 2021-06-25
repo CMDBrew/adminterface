@@ -25,7 +25,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/namespace_settings.rb
+# Overwrite activeadmin/lib/active_admin/namespace_settings.rb
 ActiveAdmin::NamespaceSettings.class_eval do
   include ActiveAdminBootstrap::Extensions::NamespaceSettings
 end

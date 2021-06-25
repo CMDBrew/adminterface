@@ -15,7 +15,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/table_for.rb
+# Overwrite activeadmin/lib/active_admin/views/components/table_for.rb
 ActiveAdmin::Views::TableFor.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::TableFor
   has_css_classes_for :table_for

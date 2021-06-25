@@ -1,4 +1,4 @@
-# Overwrite lib/active_admin/views/components/menu.rb
+# Overwrite activeadmin/lib/active_admin/views/components/menu.rb
 ActiveAdmin::Views::Menu.class_eval do
   def build(menu, options = {})
     dropdown = options.delete(:dropdown) { false }

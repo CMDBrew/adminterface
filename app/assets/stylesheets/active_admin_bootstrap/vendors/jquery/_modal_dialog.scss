@@ -1,0 +1,76 @@
+$jquery-ui-dialog-btn-cancel-bg: $white !default;
+$jquery-ui-dialog-btn-confirm-bg: $primary !default;
+$jquery-ui-dialog-box-shadow: $modal-content-box-shadow-sm-up !default;
+$jquery-ui-dialog-zindex: $zindex-modal !default;
+$jquery-ui-dialog-overlay-zindex: $zindex-modal-backdrop !default;
+$jquery-ui-dialog-overlay-bg: $modal-backdrop-bg !default;
+$jquery-ui-dialog-overlay-opacity: $modal-backdrop-opacity !default;
+
+%modal-content {
+  @extend .modal-content;
+}
+
+.ui-widget-overlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: $jquery-ui-dialog-overlay-zindex;
+  background: $jquery-ui-dialog-overlay-bg;
+  opacity: $jquery-ui-dialog-overlay-opacity;
+}
+
+.ui-dialog {
+  @extend .modal-content;
+
+  position: fixed;
+  z-index: $jquery-ui-dialog-zindex;
+  width: $modal-md !important;
+  max-width: calc(100vw - #{$spacer} * 2);
+  border: 0;
+
+  @include box-shadow($jquery-ui-dialog-box-shadow);
+
+  .ui-dialog-titlebar {
+    @extend .modal-header;
+
+    .ui-dialog-title {
+      @extend .modal-title;
+      @extend h5;
+    }
+  }
+
+  .body {
+    @extend .modal-body;
+  }
+
+  .ui-dialog-buttonpane {
+    @extend .modal-footer;
+  }
+
+  form {
+    ol,
+    ul,
+    li {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  .ui-dialog-buttonset {
+    $_cancel-color: $jquery-ui-dialog-btn-cancel-bg;
+    $_submit-color: $jquery-ui-dialog-btn-confirm-bg;
+
+    .btn:not(:last-child) { margin-right: map-get($spacers, 2); }
+    .btn-cancel { @include button-variant($_cancel-color, $_cancel-color); }
+    .btn-submit { @include button-variant($_submit-color, $_submit-color); }
+  }
+}
+
+.active_admin_dialog.ui-dialog {
+  .ui-dialog-titlebar-close {
+    display: none;
+  }
+}

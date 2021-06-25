@@ -7,20 +7,15 @@ module ActiveAdminBootstrap
         breakpoints: YAML.load_file(Engine.root.join("#{path}/breakpoints.yml").to_s),
         components: YAML.load_file(Engine.root.join("#{path}/components.yml").to_s),
         css_classes: YAML.load_file(Engine.root.join("#{path}/css_classes.yml").to_s),
-        icons: YAML.load_file(Engine.root.join("#{path}/icons.yml").to_s),
         layouts: YAML.load_file(Engine.root.join("#{path}/layouts.yml").to_s)
       )
     }.call.freeze
 
     module Configurable
-      attr_writer :layouts, :icons, :components, :css_classes, :breakpoints
+      attr_writer :layouts, :components, :css_classes, :breakpoints
 
       def layouts
         namespace.layouts.deep_merge(@layouts || {})
-      end
-
-      def icons
-        namespace.icons.deep_merge(@icons || {})
       end
 
       def components
@@ -55,10 +50,6 @@ module ActiveAdminBootstrap
 
         def has_components_for(*args)
           args.each { |key| define_configs_getter(:components, key) }
-        end
-
-        def has_icons_for(*args)
-          args.each { |key| define_configs_getter(:icons, key) }
         end
 
         def define_configs_getter(type, key)

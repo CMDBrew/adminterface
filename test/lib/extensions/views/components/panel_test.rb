@@ -39,10 +39,8 @@ module PanelTest
     test "#html" do
       html =
         <<~ERB
-          <div class="panel-header #{default_css_classes[:header]}">
-            <div class="title">
-              <h5>panel title</h5>
-            </div>
+          <div class="panel-header #{default_css_classes.dig(:header, :wrapper)}">
+            <div class="title #{default_css_classes.dig(:header, :title)}">panel title</div>
             <div class="header_action">
               <div class="btn-group">
                 <a href="/fake/path">Link A</a>
@@ -76,7 +74,7 @@ module PanelTest
     test "#content" do
       html =
         <<~ERB
-          <div class="panel-header #{default_css_classes[:header]} header"></div>
+          <div class="panel-header #{default_css_classes.dig(:header, :wrapper)} header"></div>
           <div class="panel_contents panel-body #{default_css_classes[:body]} body">
             <h1>test</h1>
             <p>this is a panel</p>

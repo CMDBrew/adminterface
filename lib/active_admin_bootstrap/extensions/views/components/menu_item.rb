@@ -14,13 +14,17 @@ module ActiveAdminBootstrap
               label
             end
           end
+
+          def item_class(item)
+            "#{item.html_options[:class]} #{item.current?(assigns[:current_tab]) ? "active" : nil}".squish
+          end
         end
       end
     end
   end
 end
 
-# Overwrite lib/active_admin/views/components/menu_item.rb
+# Overwrite activeadmin/lib/active_admin/views/components/menu_item.rb
 ActiveAdmin::Views::MenuItem.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::MenuItem
   attr_reader :icon
@@ -40,16 +44,17 @@ ActiveAdmin::Views::MenuItem.class_eval do
       item.html_options.reverse_merge!(class: "nav-link")
     end
 
-    add_class "active" if item.current? assigns[:current_tab]
+    add_class "active" if item.current?(assigns[:current_tab])
 
     if item.items.any?
       item.html_options.merge!(class: "nav-link dropdown-toggle", "data-toggle": "dropdown")
     end
 
     if url
-      text_node link_to menu_label, url, **item.html_options
+      item_options = item.html_options.merge(class: item_class(item)).delete_if { |_k, v| v.blank? }
+      text_node link_to(menu_label, url, **item_options)
     else
-      span menu_label, item.html_options
+      span menu_label, item.html_options.merge(class: "navbar-text")
     end
 
     return unless item.items.any?

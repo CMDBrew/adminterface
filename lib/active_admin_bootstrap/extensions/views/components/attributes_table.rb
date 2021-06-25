@@ -10,6 +10,11 @@ module ActiveAdminBootstrap
           def default_class_name
             "#{super} #{attributes_table_css_classes[:wrapper]}".squish
           end
+
+          def tr(options = {})
+            options[:class] = options[:class].split.reject { |x| x.eql?("row") }.join(" ")
+            super(options)
+          end
         end
       end
     end

@@ -7,7 +7,9 @@ module ActiveAdminBootstrap
 
   # Load Initializers
   module Initializers
+    autoload :BatchActions, "active_admin_bootstrap/initializers/batch_actions"
     autoload :Configurations, "active_admin_bootstrap/initializers/configurations"
+    autoload :Formtastic, "active_admin_bootstrap/initializers/formtastic"
     autoload :Resource, "active_admin_bootstrap/initializers/resource"
     autoload :Views, "active_admin_bootstrap/initializers/views"
   end

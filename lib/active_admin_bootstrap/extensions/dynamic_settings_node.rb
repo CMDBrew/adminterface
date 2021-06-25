@@ -18,7 +18,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/dynamic_settings_node.rb
+# Overwrite activeadmin/lib/active_admin/dynamic_settings_node.rb
 ActiveAdmin::DynamicSettingsNode.class_eval do
   class << self
     prepend ActiveAdminBootstrap::Extensions::DynamicSettingsNode

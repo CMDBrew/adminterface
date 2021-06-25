@@ -1,6 +1,19 @@
 .attributes_table {
-  .table { background: transparent; }
   .empty { color: $text-muted; }
-  th { width: $attribute-table-key-width; }
-  td { text-align: left; }
+
+  .table {
+    background: transparent;
+    & > tbody > tr > th { padding-left: 0; }
+    & > tbody > tr > td { padding-right: 0; }
+
+    & > tbody > tr:first-child {
+      td,
+      th {
+        border-top: 0;
+      }
+    }
+
+    th { width: $attribute-table-key-width; }
+    td { text-align: left; }
+  }
 }

@@ -77,6 +77,10 @@ module MenuTest
   end
 
   class WithIconTest < Base
+    def icons_css_classes
+      @icons_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :icon)
+    end
+
     setup do
       menu.add label: "Reports", url: "/admin/reports", icon: "icon-main" do |m|
         m.add label: "A Sub Reports", url: "/admin/a-sub-reports", icon: "icon-sub"
@@ -85,24 +89,24 @@ module MenuTest
 
     test "#content" do
       html =
-        <<~HTML
+        <<~ERB
           <ul>
             <li class="nav-item has_nested dropdown" id="reports">
               <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/admin/reports">
-                <i class="aa-icon mdi icon-main"></i>
+                <i class="aa-icon #{icons_css_classes} icon-main"></i>
                 Reports
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown-item" id="a_sub_reports">
                   <a href="/admin/a-sub-reports">
-                    <i class="aa-icon mdi icon-sub"></i>
+                    <i class="aa-icon #{icons_css_classes} icon-sub"></i>
                     A Sub Reports
                   </a>
                 </li>
               </ul>
             </li>
           </ul>
-        HTML
+        ERB
       assert_html html, menu_component
     end
   end

@@ -13,11 +13,14 @@
  *= require_self
  */
 
-@import 'aa-bootstrap/scss/bootstrap';
-@import './meta/vars';
-@import './placeholders/all';
-@import './mixins/all';
-@import './helpers/all';
-@import './bootstrap_overrides/all';
-@import './layouts/all';
-@import './components/all';
+@import "./vendors/bootstrap/variables";
+@import "~aa-bootstrap/scss/bootstrap";
+@import '~bootstrap-icons/font/bootstrap-icons';
+@import '~flatpickr/dist/flatpickr';
+@import "./meta/variables";
+@import "./placeholders/all";
+@import "./mixins/all";
+@import "./helpers/all";
+@import "./vendors/all";
+@import "./layouts/all";
+@import "./components/all";

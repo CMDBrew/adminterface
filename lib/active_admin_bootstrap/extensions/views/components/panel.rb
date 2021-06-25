@@ -6,7 +6,11 @@ module ActiveAdminBootstrap
           def build_title(title)
             return if title.blank?
 
-            div h5(title.to_s), class: "title"
+            div title.to_s, class: default_title_class
+          end
+
+          def default_title_class
+            "title #{panel_css_classes.dig(:header, :title)}".squish
           end
 
           def default_wrapper_class
@@ -14,7 +18,7 @@ module ActiveAdminBootstrap
           end
 
           def default_header_class
-            "panel-header #{panel_css_classes[:header]}".squish
+            "panel-header #{panel_css_classes.dig(:header, :wrapper)}".squish
           end
 
           def default_body_class
@@ -37,7 +41,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/panel.rb
+# Overwrite activeadmin/lib/active_admin/views/components/panel.rb
 ActiveAdmin::Views::Panel.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::Panel
   has_css_classes_for :panel

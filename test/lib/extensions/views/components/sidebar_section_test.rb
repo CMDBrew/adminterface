@@ -36,10 +36,8 @@ class SidebarSectionTest < ActiveAdminTest
   test "#content" do
     html =
       <<~ERB
-        <div class="panel-header #{default_css_classes[:header]}">
-          <div class="title">
-            <h5>Help</h5>
-          </div>
+        <div class="panel-header #{default_css_classes.dig(:header, :wrapper)}">
+          <div class="title #{default_css_classes.dig(:header, :title)}">Help</div>
         </div>
         <div class="panel_contents panel-body #{default_css_classes[:body]}">
           <h1>test</h1>

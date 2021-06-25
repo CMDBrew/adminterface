@@ -25,7 +25,7 @@ module ActiveAdminBootstrap
         end
 
         def navbar_toggler
-          button(class: "navbar-toggler", 'data-target': "##{ID}", 'data-toggle': "collapse") do
+          button(class: "navbar-toggler", 'data-bs-target': "##{ID}", 'data-bs-toggle': "collapse") do
             span class: "navbar-toggler-icon"
           end
         end
@@ -34,7 +34,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/header.rb
+# Overwrite activeadmin/lib/active_admin/views/header.rb
 ActiveAdmin::Views::Header.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Header
   has_css_classes_for :header

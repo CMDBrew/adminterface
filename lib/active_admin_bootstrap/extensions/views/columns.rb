@@ -26,7 +26,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/columns.rb
+# Overwrite activeadmin/lib/active_admin/views/columns.rb
 ActiveAdmin::Views::Columns.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Columns
 

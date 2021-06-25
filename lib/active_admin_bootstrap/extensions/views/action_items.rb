@@ -10,6 +10,14 @@ module ActiveAdminBootstrap
           text_node super(*args, options, &block)
         end
 
+        def icon_html(icon)
+          return if icon.blank?
+
+          Arbre::Context.new({}, self) do
+            aa_icon(icon)
+          end
+        end
+
         def default_class_name
           "#{super} #{action_items_css_classes[:group]}".squish
         end
@@ -18,7 +26,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/action_items.rb
+# Overwrite activeadmin/lib/active_admin/views/action_items.rb
 ActiveAdmin::Views::ActionItems.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::ActionItems
   has_css_classes_for :action_items

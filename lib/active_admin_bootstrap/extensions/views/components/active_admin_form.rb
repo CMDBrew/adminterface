@@ -18,7 +18,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/active_admin_form.rb
+# Overwrite activeadmin/lib/active_admin/views/active_admin_form.rb
 ActiveAdmin::Views::ActiveAdminForm.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::ActiveAdminForm
   has_css_classes_for :form

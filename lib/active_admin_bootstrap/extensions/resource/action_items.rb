@@ -6,16 +6,24 @@ module ActiveAdminBootstrap
           super.sort_by { |x| [x.group, x.priority] }
         end
 
+        def add_default_action_items
+          add_default_new_action_item
+          add_default_edit_action_item
+          add_default_destroy_action_item
+        end
+
         # Adds the default New link on index
         def add_default_new_action_item
-          add_action_item :new, only: proc { components.dig(:action_items, :new, :display) } do
+          add_action_item :new, only: proc { components.dig(:action_items, :new, :display)&.map(&:to_sym) } do
             if controller.action_methods.include?("new") && authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
+              icon = active_admin_config.components.dig(:action_items, :new, :icon)
+
               link_to(
-                safe_join([active_admin_config.components.dig(:action_items, :new, :prefix)&.html_safe, content_tag(:span, localizer.t(:new_model))]),
+                safe_join([icon_html(icon), content_tag(:span, localizer.t(:new_model))]),
                 new_resource_path,
                 title: localizer.t(:new_model),
-                class: active_admin_config.components.dig(:action_items, :new, :class)
+                class: active_admin_config.components.dig(:action_items, :new, :css_class)
               )
             end
           end
@@ -23,14 +31,16 @@ module ActiveAdminBootstrap
 
         # Adds the default Edit link on show
         def add_default_edit_action_item
-          add_action_item :edit, only: proc { components.dig(:action_items, :edit, :display) } do
+          add_action_item :edit, only: proc { components.dig(:action_items, :edit, :display)&.map(&:to_sym) } do
             if controller.action_methods.include?("edit") && authorized?(ActiveAdmin::Auth::UPDATE, resource)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
+              icon = active_admin_config.components.dig(:action_items, :edit, :icon)
+
               link_to(
-                safe_join([active_admin_config.components.dig(:action_items, :edit, :prefix)&.html_safe, content_tag(:span, localizer.t(:edit_model))]),
+                safe_join([icon_html(icon), content_tag(:span, localizer.t(:edit_model))]),
                 edit_resource_path(resource),
                 title: localizer.t(:edit_model),
-                class: active_admin_config.components.dig(:action_items, :edit, :class)
+                class: active_admin_config.components.dig(:action_items, :edit, :css_class)
               )
             end
           end
@@ -38,13 +48,16 @@ module ActiveAdminBootstrap
 
         # Adds the default Destroy link on show
         def add_default_destroy_action_item
-          add_action_item :destroy, only: proc { components.dig(:action_items, :destroy, :display) } do
+          add_action_item :destroy, only: proc { components.dig(:action_items, :destroy, :display)&.map(&:to_sym) } do
             if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)
+              localizer = ActiveAdmin::Localizers.resource(active_admin_config)
+              icon = active_admin_config.components.dig(:action_items, :destroy, :icon)
+
               link_to(
-                safe_join([active_admin_config.components.dig(:action_items, :destroy, :prefix)&.html_safe, content_tag(:span, localizer.t(:delete_model))]),
+                safe_join([icon_html(icon), content_tag(:span, localizer.t(:delete_model))]),
                 resource_path(resource),
                 title: localizer.t(:delete_model),
-                class: active_admin_config.components.dig(:action_items, :destroy, :class),
+                class: active_admin_config.components.dig(:action_items, :destroy, :css_class),
                 method: :delete, data: {confirm: localizer.t(:delete_confirmation), message: localizer.t(:delete_confirmation_message)}
               )
             end
@@ -82,7 +95,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/resource/action_items.rb
+# Overwrite activeadmin/lib/active_admin/resource/action_items.rb
 ActiveAdmin::Resource::ActionItems.module_eval do
   prepend ActiveAdminBootstrap::Extensions::Resource::ActionItems
 end

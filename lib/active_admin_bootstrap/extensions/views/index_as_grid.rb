@@ -45,7 +45,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/index_as_grid.rb
+# Overwrite activeadmin/lib/active_admin/views/index_as_grid.rb
 ActiveAdmin::Views::IndexAsGrid.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::IndexAsGrid
   has_css_classes_for :index_as_grid

@@ -23,6 +23,7 @@ module ActiveAdminBootstrap
           require_relative("../extensions/views/components/status_tag")
           require_relative("../extensions/views/components/table_for")
           require_relative("../extensions/views/components/tabs")
+          require_relative("../extensions/views/footer")
           require_relative("../extensions/views/header")
           require_relative("../extensions/views/index_as_grid")
           require_relative("../extensions/views/index_as_table")

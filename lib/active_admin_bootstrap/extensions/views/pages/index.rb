@@ -47,7 +47,8 @@ module ActiveAdminBootstrap
 
           def aside_filter_action
             ActiveAdmin::ActionItem.new(:filter, only: :index, group: 90) do
-              link_to aa_icon(active_admin_config.icons.dig(:filters, :aside, :open)), "#",
+              localizer = ActiveAdmin::Localizers.resource(active_admin_config)
+              link_to localizer.t(:filter_model), "#",
                 id: "aside-filters-toggler",
                 data: {toggle: "collapse", target: "#aside-filters"},
                 title: I18n.t(:filters, scope: "active_admin.sidebars")
@@ -59,9 +60,7 @@ module ActiveAdminBootstrap
             return unless filter_layouts.eql?("aside")
 
             div id: "aside-filters", class: "collapse" do
-              a aa_icon(active_admin_config.icons.dig(:filters, :aside, :close)),
-                id: "aside-close", href: "#",
-                'data-toggle': "collapse", 'data-target': "#aside-filters"
+              a "", id: "aside-close", href: "#", "data-bs-toggle": "collapse", "data-bs-target": "#aside-filters"
               filter_sections.collect { |x| sidebar_section(x) }
             end
           end
@@ -125,10 +124,9 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/pages/index.rb
+# Overwrite activeadmin/lib/active_admin/views/pages/index.rb
 ActiveAdmin::Views::Pages::Index.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Index
   has_css_classes_for :table_tools
   has_layouts_for :filter
-  has_icons_for :filter
 end

@@ -1,0 +1,21 @@
+.nav + .tab-content { margin-top: $spacer; }
+
+.nav-tabs {
+  flex-wrap: nowrap;
+  white-space: nowrap;
+  overflow-x: auto;
+  overflow-y: hidden;
+  border-bottom: 0;
+  position: relative;
+
+  .nav-link { position: relative; }
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-bottom: $nav-tabs-border-width solid $nav-tabs-border-color;
+  }
+}

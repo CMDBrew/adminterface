@@ -19,7 +19,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/status_tag.rb
+# Overwrite activeadmin/lib/active_admin/views/components/status_tag.rb
 ActiveAdmin::Views::StatusTag.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::StatusTag
   has_css_classes_for :status_tag

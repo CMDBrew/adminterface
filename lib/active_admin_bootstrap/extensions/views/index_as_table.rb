@@ -50,7 +50,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/index_as_table.rb
+# Overwrite activeadmin/lib/active_admin/views/index_as_table.rb
 ActiveAdmin::Views::IndexAsTable.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::IndexAsTable
   has_css_classes_for :index_as_table

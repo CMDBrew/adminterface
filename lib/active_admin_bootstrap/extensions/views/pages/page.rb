@@ -12,7 +12,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/pages/page.rb
+# Overwrite activeadmin/lib/active_admin/views/pages/page.rb
 ActiveAdmin::Views::Pages::Page.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Page
 end

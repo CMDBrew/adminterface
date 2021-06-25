@@ -52,7 +52,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/title_bar.rb
+# Overwrite activeadmin/lib/active_admin/views/title_bar.rb
 ActiveAdmin::Views::TitleBar.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::TitleBar
   has_css_classes_for :title_bar

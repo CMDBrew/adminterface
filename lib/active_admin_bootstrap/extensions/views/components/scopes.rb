@@ -46,7 +46,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/scopes.rb
+# Overwrite activeadmin/lib/active_admin/views/components/scopes.rb
 ActiveAdmin::Views::Scopes.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::Scopes
   has_css_classes_for :table_tools

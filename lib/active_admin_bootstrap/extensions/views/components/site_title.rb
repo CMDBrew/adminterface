@@ -26,7 +26,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/components/site_title.rb
+# Overwrite activeadmin/lib/active_admin/views/components/site_title.rb
 ActiveAdmin::Views::SiteTitle.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::SiteTitle
 

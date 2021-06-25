@@ -4,7 +4,9 @@ module ActiveAdminBootstrap
     isolate_namespace ActiveAdminBootstrap
 
     # Initializers
+    include ::ActiveAdminBootstrap::Initializers::BatchActions
     include ::ActiveAdminBootstrap::Initializers::Configurations
+    include ::ActiveAdminBootstrap::Initializers::Formtastic
     include ::ActiveAdminBootstrap::Initializers::Resource
     include ::ActiveAdminBootstrap::Initializers::Views
 

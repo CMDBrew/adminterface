@@ -1,7 +1,11 @@
-%layout-navigation-top {
-  $_header-height: map-get($layout-navigation-top, 'header');
-  $_title-bar-height: map-get($layout-navigation-top, 'title_bar');
+$_header: map-get($layout-navigation-top, 'header');
+$_header-height: map-get($_header, 'height');
+$_header-zindex: map-get($_header, "z-index");
+$_title-bar: map-get($layout-navigation-top, 'title_bar');
+$_title-bar-height: map-get($_title-bar, 'height');
+$_title-bar-zindex: map-get($_title-bar, "z-index");
 
+%layout-navigation-top {
   grid-template-areas:
     "header"
     "title_bar"
@@ -13,14 +17,17 @@
   #header {
     grid-area: header;
     overflow-y: visible;
+    z-index: $_header-zindex;
   }
 
-  #title_bar { grid-area: title_bar; }
+  #title_bar {
+    grid-area: title_bar;
+    z-index: $_title-bar-zindex;
+  }
+
   #wrapper { grid-area: content; }
 
   @include media-breakpoint-up($aside-breakpoint) {
-    $_header-height: map-get($layout-navigation-top, 'header');
-    $_title-bar-height: map-get($layout-navigation-top, 'title_bar');
     #aside-filters { top: calc(#{$_header-height} + #{$_title-bar-height}); }
   }
 }

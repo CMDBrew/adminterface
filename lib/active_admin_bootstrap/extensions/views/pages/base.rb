@@ -97,7 +97,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/pages/base.rb
+# Overwrite activeadmin/lib/active_admin/views/pages/base.rb
 ActiveAdmin::Views::Pages::Base.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash

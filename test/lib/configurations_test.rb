@@ -13,10 +13,6 @@ module ConfigurationsTest
       assert_equal @configs[:layouts], @application.layouts
     end
 
-    test "default icons" do
-      assert_equal @configs[:icons], @application.icons
-    end
-
     test "default components" do
       assert_equal @configs[:components], @application.components
     end
@@ -33,7 +29,6 @@ module ConfigurationsTest
   class GlobalTest < Base
     setup do
       @application.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-      @application.icons = {filters: {aside: {open: "open", close: "close"}}}
       @application.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -46,13 +41,6 @@ module ConfigurationsTest
       assert_equal "left", @application.layouts[:navigation]
       assert_equal "body", @application.layouts[:filter]
       assert_equal "left", @application.layouts[:sidebar]
-    end
-
-    test "updates icons" do
-      assert_equal(
-        {aside: {open: "open", close: "close"}},
-        @application.icons[:filters].deep_symbolize_keys
-      )
     end
 
     test "updates components" do
@@ -80,7 +68,6 @@ module ConfigurationsTest
     setup do
       @namespace = ActiveAdmin::Namespace.new(@application, :super_admin)
       @namespace.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-      @namespace.icons = {filters: {aside: {open: "open", close: "close"}}}
       @namespace.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -100,13 +87,6 @@ module ConfigurationsTest
       assert_equal "left", @namespace.layouts[:navigation]
       assert_equal "body", @namespace.layouts[:filter]
       assert_equal "left", @namespace.layouts[:sidebar]
-    end
-
-    test "updates icons" do
-      assert_equal(
-        {aside: {open: "open", close: "close"}},
-        @namespace.icons[:filters].deep_symbolize_keys
-      )
     end
 
     test "updates components" do
@@ -136,7 +116,6 @@ module ConfigurationsTest
       @resource =
         @namespace.register(User) do
           config.layouts = {navigation: "left", filter: "body", sidebar: "left"}
-          config.icons = {filters: {aside: {open: "open", close: "close"}}}
           config.components = {
             active_admin_comments: {input: "string"},
             action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -148,7 +127,6 @@ module ConfigurationsTest
 
     test "does not equal the gloabl configs" do
       assert_not_equal @application.layouts, @resource.layouts
-      assert_not_equal @application.icons, @resource.icons
       assert_not_equal @application.components, @resource.components
       assert_not_equal @application.css_classes, @resource.css_classes
       assert_not_equal @application.breakpoints, @resource.breakpoints
@@ -156,7 +134,6 @@ module ConfigurationsTest
 
     test "does not equal the namespace configs" do
       assert_not_equal @namespace.layouts, @resource.layouts
-      assert_not_equal @namespace.icons, @resource.icons
       assert_not_equal @namespace.components, @resource.components
       assert_not_equal @namespace.css_classes, @resource.css_classes
       assert_not_equal @namespace.breakpoints, @resource.breakpoints
@@ -166,13 +143,6 @@ module ConfigurationsTest
       assert_equal "left", @resource.layouts[:navigation]
       assert_equal "body", @resource.layouts[:filter]
       assert_equal "left", @resource.layouts[:sidebar]
-    end
-
-    test "updates icons" do
-      assert_equal(
-        {aside: {open: "open", close: "close"}},
-        @resource.icons[:filters].deep_symbolize_keys
-      )
     end
 
     test "updates components" do

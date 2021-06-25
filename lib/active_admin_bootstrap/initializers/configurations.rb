@@ -11,7 +11,11 @@ module ActiveAdminBootstrap
           ActiveAdmin::Views::FormtasticProxy.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::Views::TableFor.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::Views::Pages::Base.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::FormBuilder.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::HasManyBuilder.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::Component.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::ViewHelpers.send :include, ActiveAdminBootstrap::Configs::Finders
+
           ActiveAdmin::Resource.send :include, ActiveAdminBootstrap::Configs::Configurable
           ActiveAdmin::Page.send :include, ActiveAdminBootstrap::Configs::Configurable
         end

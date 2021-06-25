@@ -20,7 +20,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/views/pages/form.rb
+# Overwrite activeadmin/lib/active_admin/views/pages/form.rb
 ActiveAdmin::Views::Pages::Form.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Form
   alias_method :form_section, :active_admin_form_for

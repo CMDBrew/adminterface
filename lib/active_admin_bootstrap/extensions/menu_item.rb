@@ -9,7 +9,7 @@ module ActiveAdminBootstrap
   end
 end
 
-# Overwrite lib/active_admin/menu_item.rb
+# Overwrite activeadmin/lib/active_admin/menu_item.rb
 ActiveAdmin::MenuItem.class_eval do
   prepend ActiveAdminBootstrap::Extensions::MenuItem
   attr_reader :icon

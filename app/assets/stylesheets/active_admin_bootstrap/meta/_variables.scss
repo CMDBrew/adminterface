@@ -5,26 +5,32 @@ $layout-navigation-drawer-dismissible: () !default;
 
 $layout-navigation-top: map-merge(
   (
-    'header': 64px,
-    'title_bar': 64px
+    header: (
+      height: 64px,
+      z-index: $zindex-fixed
+    ),
+    title_bar: (
+      height: 54px,
+      z-index: $zindex-fixed - 1
+    )
   ),
   $layout-navigation-top
 );
 
 $layout-navigation-drawer:  map-merge(
   (
-    'header': 300px,
-    'title_bar': 64px,
-    'breakpoint': lg
+    "header": 300px,
+    "title_bar": 64px,
+    "breakpoint": lg
   ),
   $layout-navigation-drawer
 );
 
 $layout-navigation-drawer-dismissible:  map-merge(
   (
-    'header': 300px,
-    'title_bar': 64px,
-    'breakpoint': lg
+    "header": 300px,
+    "title_bar": 64px,
+    "breakpoint": lg
   ),
   $layout-navigation-drawer-dismissible
 );
@@ -52,22 +58,17 @@ $attribute-table-key-width: 30% !default;
 $form-sortable-helper-bg: rgba($warning, 0.12) !default;
 
 // Icon
-$aa-icon-font-family: 'Material Design Icons' !default;
+$aa-icon-font-family: "bootstrap-icons" !default;
 $aa-icon-size: 24px !default;
 $aa-icons: (
-  'checkbox-outline': '\F0131',
-  'checkbox-intermediate': '\F0375',
-  'checkbox-checked': '\F0132',
-  'radiobox-outline': '\F043D',
-  'radiobox-checked': '\F043E',
-  'sortable-handle': '\F12F0',
-  'sorted-asc': '\F005D',
-  'sorted-desc': '\F0045',
-  'chevron-left': '\F0141',
-  'chevron-right': '\F0142',
-  'filters': '\F0236',
-  'remove': '\F0156',
-  'delete': '\F0376',
+  "sortable-handle": "\f145",
+  "sorted-asc": "\f145",
+  "sorted-desc": "\f124",
+  "chevron-left": "\F0141",
+  "chevron-right": "\F0142",
+  "filters": "\F0236",
+  "remove": "\F0156",
+  "delete": "\F0376",
 ) !default;
 $custom-icons: () !default;
 $aa-icons: map-merge($aa-icons, $custom-icons);
@@ -75,10 +76,10 @@ $aa-icons: map-merge($aa-icons, $custom-icons);
 // Thumbnails
 $thumbnail-default-size: sm !default;
 $thumbnail-sizes: (
-  'xs': 24px,
-  'sm': 32px,
-  'md': 64px,
-  'lg': 128px,
+  "xs": 24px,
+  "sm": 32px,
+  "md": 64px,
+  "lg": 128px,
 ) !default;
 
 // Datepicker
