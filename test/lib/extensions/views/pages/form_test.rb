@@ -3,11 +3,6 @@ require "test_helper"
 module FormPageTest
   class Base < ActiveAdminTest
     class FormPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
-      def active_admin_config
-        @active_admin_config ||=
-          active_admin_namespace.resources.find { |x| x.resource_name.param_key.eql?("user") }
-      end
-
       def resource
         User.new
       end
@@ -39,14 +34,17 @@ module FormPageTest
   end
 
   class PartialTest < Base
-    setup do
-      load_resources do
-        ActiveAdmin.register(User) do
-          form partial: {plain: "plain text form!"}
-        end
+    class PartialView < FormPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            form partial: {plain: "plain text form!"}
+          end
       end
+    end
 
-      @page = render_arbre_component({}, mock_action_view(FormPageView)) do
+    setup do
+      @page = render_arbre_component({}, mock_action_view(PartialView)) do
         insert_tag ActiveAdmin::Views::Pages::Form
       end
     end
@@ -58,22 +56,25 @@ module FormPageTest
   end
 
   class MultipleFormTest < Base
-    setup do
-      load_resources do
-        ActiveAdmin.register(User) do
-          form multiple: true do
-            form_section [:admin, resource] do |f|
-              f.input :name
-            end
+    class MultipleFormView < FormPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            form multiple: true do
+              form_section [:admin, resource] do |f|
+                f.input :name
+              end
 
-            form_section [:admin, resource] do |f|
-              f.input :name
+              form_section [:admin, resource] do |f|
+                f.input :name
+              end
             end
           end
-        end
       end
+    end
 
-      @page = render_arbre_component({}, mock_action_view(FormPageView)) do
+    setup do
+      @page = render_arbre_component({}, mock_action_view(MultipleFormView)) do
         insert_tag active_admin_application.view_factory["new_page"]
       end
     end

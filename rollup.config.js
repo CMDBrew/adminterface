@@ -1,8 +1,8 @@
-import resolve from 'rollup-plugin-node-resolve';
-import commonjs from 'rollup-plugin-commonjs';
-import babel from 'rollup-plugin-babel';
-import { uglify } from 'rollup-plugin-uglify';
-import { stripIndent } from 'common-tags';
+import resolve from 'rollup-plugin-node-resolve'
+import commonjs from 'rollup-plugin-commonjs'
+import babel from 'rollup-plugin-babel'
+import { uglify } from 'rollup-plugin-uglify'
+import { stripIndent } from 'common-tags'
 
 const uglifyOptions = {
   mangle: false,
@@ -17,24 +17,25 @@ const uglifyOptions = {
        */
       //= require aab-bootstrap
     ` + '\n'
-  },
-};
+  }
+}
 
 export default {
   input: 'app/javascript/active_admin_bootstrap/base.js',
   output: {
     file: 'app/assets/javascripts/active_admin_bootstrap/base.js',
     format: 'umd',
-    name: 'ActiveAdminBootstrap',
+    name: 'ActiveAdminBootstrap'
   },
   plugins: [
     resolve(),
     commonjs(),
     babel(),
-    uglify(uglifyOptions),
+    uglify(uglifyOptions)
   ],
   // Use client's yarn dependencies instead of bundling everything
   external: [
     'aab-bootstrap',
-  ],
-};
+    'bootstrap-icons'
+  ]
+}

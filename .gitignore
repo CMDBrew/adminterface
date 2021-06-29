@@ -14,3 +14,4 @@
 /coverage
 node_modules/
 src/
+yarn-error.log

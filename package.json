@@ -11,22 +11,32 @@
   "license": "MIT",
   "scripts": {
     "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/active_admin_bootstrap src/stylesheets && cp -R app/javascript/active_admin_bootstrap/* src"
+    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/active_admin_bootstrap src/stylesheets && cp -R app/javascript/active_admin_bootstrap/* src",
+    "test": "standard",
+    "fix": "standard --fix"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "common-tags": "^1.8.0",
+    "resolve-url-loader": "^4.0.0",
     "rollup": "^2.26.4",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-uglify": "^6.0.4",
+    "standard": "^16.0.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
-    "aa-bootstrap": "npm:bootstrap@^5.0.1"
+    "@activeadmin/activeadmin": "^2.9.0",
+    "@popperjs/core": "^2.9.2",
+    "aa-bootstrap": "npm:bootstrap@^5.0.1",
+    "bootstrap-icons": "^1.5.0",
+    "flatpickr": "^4.6.9",
+    "jquery": "^3.6.0",
+    "tom-select": "^1.7.5"
   }
 }

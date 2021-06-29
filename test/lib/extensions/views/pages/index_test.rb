@@ -67,6 +67,8 @@ class IndexPageTest < ActiveAdminTest
 
   test "filter table_tools" do
     load_resources do
+      ActiveAdmin.application.batch_actions = true
+
       ActiveAdmin.register(User) do
         config.layouts = {filter: "table_tools"}
       end

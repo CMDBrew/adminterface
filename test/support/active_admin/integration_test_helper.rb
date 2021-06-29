@@ -27,6 +27,8 @@ module ActiveAdmin::IntegrationTestHelper
   #
   def load_resources
     ActiveAdmin.unload!
+    ActiveAdmin.application.authentication_method = false
+    ActiveAdmin.application.current_user_method = false
     yield
     reload_menus!
     reload_routes!
