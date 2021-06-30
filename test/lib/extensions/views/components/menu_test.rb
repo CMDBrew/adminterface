@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module MenuTest
-  class Base < ActiveAdminTest
+  class Base < ActiveAdmin::BaseTestCase
     def menu
       @menu ||= ActiveAdmin::Menu.new
     end

@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class SidebarSectionTest < ActiveAdminTest
+class SidebarSectionTest < ActiveAdmin::BaseTestCase
   def default_css_classes
     @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :sidebar_section)
   end

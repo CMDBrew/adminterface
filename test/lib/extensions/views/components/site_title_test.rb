@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module SiteTitleTest
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     setup do
       namespace =
         stub_namespace(site_title: "Hello World", site_title_image: nil, site_title_link: nil)
@@ -30,7 +30,7 @@ module SiteTitleTest
     end
   end
 
-  class WithLinkTest < ActiveAdminTest
+  class WithLinkTest < ActiveAdmin::BaseTestCase
     setup do
       namespace = stub_namespace(site_title: "Hello World", site_title_image: nil, site_title_link: "https://www.example.com")
 
@@ -51,7 +51,7 @@ module SiteTitleTest
     end
   end
 
-  class WithImageTest < ActiveAdminTest
+  class WithImageTest < ActiveAdmin::BaseTestCase
     setup do
       namespace =
         stub_namespace(

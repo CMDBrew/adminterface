@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class PaginatedCollectionTest < ActiveAdminTest
+class PaginatedCollectionTest < ActiveAdmin::BaseTestCase
   class PaginatedCollectionResource < ActiveAdmin::Resource; end
 
   class PaginatedCollectionView < ::ActiveAdmin::IntegrationTestHelper::MockActionView

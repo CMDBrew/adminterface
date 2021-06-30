@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class IndexAsGridTest < ActiveAdminTest
+class IndexAsGridTest < ActiveAdmin::BaseTestCase
   class IndexAsGridResource < ActiveAdmin::Resource
     def batch_actions
       []

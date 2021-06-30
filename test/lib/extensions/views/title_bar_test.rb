@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class TitleBarTest < ActiveAdminTest
+class TitleBarTest < ActiveAdmin::BaseTestCase
   class TitleBarView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def active_admin_config
       @active_admin_config ||= active_admin_namespace.register(User)

@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class ActiveAdminFormTest < ActiveAdminTest
+class ActiveAdminFormTest < ActiveAdmin::BaseTestCase
   class ActiveAdminFormView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def admin_users_path
       "fake/path"

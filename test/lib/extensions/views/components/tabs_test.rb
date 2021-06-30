@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module TabsTest
-  class DefaultTabsTest < ActiveAdminTest
+  class DefaultTabsTest < ActiveAdmin::BaseTestCase
     def default_css_classes
       @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :tabs)
     end
@@ -45,7 +45,7 @@ module TabsTest
     end
   end
 
-  class HttpTabsTest < ActiveAdminTest
+  class HttpTabsTest < ActiveAdmin::BaseTestCase
     class HttpTabsView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
       def url_for(*args)
         options = args.extract_options!

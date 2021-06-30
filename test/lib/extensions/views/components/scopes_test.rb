@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module ScopesTest
-  class Base < ActiveAdminTest
+  class Base < ActiveAdmin::BaseTestCase
     class ScopesView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
       def active_admin_config
         @active_admin_config ||= active_admin_application.namespace(:admin).register(User)

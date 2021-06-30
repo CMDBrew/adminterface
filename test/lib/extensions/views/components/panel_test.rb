@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module PanelTest
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     def default_css_classes
       @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :panel)
     end
@@ -57,7 +57,7 @@ module PanelTest
     end
   end
 
-  class WithOptionsTest < ActiveAdminTest
+  class WithOptionsTest < ActiveAdmin::BaseTestCase
     def default_css_classes
       @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :panel)
     end

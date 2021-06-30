@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class IndexAsTableTest < ActiveAdminTest
+class IndexAsTableTest < ActiveAdmin::BaseTestCase
   class IndexAsTableController < ActionView::TestCase::TestController
     def action_methods
       %w[show edit destroy]

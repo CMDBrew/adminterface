@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module ColumnsTest
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     setup do
       @component = render_arbre_component do
         columns do
@@ -36,7 +36,7 @@ module ColumnsTest
     end
   end
 
-  class WithColumnOptionsTest < ActiveAdminTest
+  class WithColumnOptionsTest < ActiveAdmin::BaseTestCase
     setup do
       @component = render_arbre_component do
         columns do

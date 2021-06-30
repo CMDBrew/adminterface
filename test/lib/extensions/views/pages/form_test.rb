@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module FormPageTest
-  class Base < ActiveAdminTest
+  class Base < ActiveAdmin::BaseTestCase
     class FormPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
       def resource
         User.new

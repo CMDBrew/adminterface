@@ -1,4 +1,4 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module BasePageTest
   class PageResource < ActiveAdmin::Page
@@ -31,7 +31,7 @@ module BasePageTest
     end
   end
 
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     setup do
       @page = render_arbre_component({}, mock_action_view(PageView)) do
         insert_tag ActiveAdmin::Views::Pages::Base
@@ -59,7 +59,7 @@ module BasePageTest
     end
   end
 
-  class SidebarOptionsTest < ActiveAdminTest
+  class SidebarOptionsTest < ActiveAdmin::BaseTestCase
     test "invalid sidebar options" do
       assert_raises StandardError do
         @page = render_arbre_component({}, mock_action_view(PageView)) do

@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class DropDownMenuTest < ActiveAdminTest
+class DropDownMenuTest < ActiveAdmin::BaseTestCase
   setup do
     @component = render_arbre_component do
       dropdown_menu("test") do

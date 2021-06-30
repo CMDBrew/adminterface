@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class HeaderTest < ActiveAdminTest
+class HeaderTest < ActiveAdmin::BaseTestCase
   def application
     @application ||= ActiveAdmin::Application.new
   end

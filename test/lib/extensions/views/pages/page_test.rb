@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class PageTest < ActiveAdminTest
+class PageTest < ActiveAdmin::BaseTestCase
   class PageResource < ActiveAdmin::Page
     module Routes
       def admin_pagetest_path

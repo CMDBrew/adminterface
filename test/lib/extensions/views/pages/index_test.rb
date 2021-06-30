@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class IndexPageTest < ActiveAdminTest
+class IndexPageTest < ActiveAdmin::BaseTestCase
   class IndexPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def active_admin_config
       @active_admin_config ||=
