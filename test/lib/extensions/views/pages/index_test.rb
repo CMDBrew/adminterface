@@ -1,6 +1,6 @@
 require "test_case/active_admin/base_test_case"
 
-class IndexPageTest < ActiveAdmin::BaseTestCase
+module IndexPageTest
   class IndexPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def active_admin_config
       @active_admin_config ||=
@@ -32,51 +32,73 @@ class IndexPageTest < ActiveAdmin::BaseTestCase
     end
   end
 
-  def search
-    @search ||= User.ransack(name_equals: "john")
-  end
-
-  def render
-    render_arbre_component({search: search}, mock_action_view(IndexPageView)) do
-      insert_tag ActiveAdmin::Views::Pages::Index
+  class Base < ActiveAdmin::BaseTestCase
+    def search
+      @search ||= User.ransack(name_equals: "john")
     end
-  end
 
-  test "raise error if invalid" do
-    load_resources do
-      ActiveAdmin.register(User) do
-        config.layouts = {filter: "random"}
+    def default_css_classes
+      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :html)
+    end
+
+    def render(helpers = IndexPageView)
+      render_arbre_component({search: search}, mock_action_view(helpers)) do
+        insert_tag ActiveAdmin::Views::Pages::Index
       end
     end
-
-    assert_raises(StandardError) { render }
   end
 
-  test "filter aside" do
-    load_resources do
-      ActiveAdmin.register(User) do
-        config.layouts = {filter: "aside"}
+  class BaseTest < Base
+    setup do
+      load_resources do
+        ActiveAdmin.register(User) do
+          config.layouts = {filter: "sidebar"}
+        end
       end
+
+      @page = Capybara.string(render.to_s)
     end
 
-    @page = render
-    body = Capybara.string(@page.find_by_tag("body").first.to_s)
-    assert body.has_selector?("#aside-filters")
-    assert body.has_selector?("#aside-filters-toggler")
+    test "container class" do
+      assert_equal default_css_classes.dig(:container, :index), @page.find("#main > div")[:class]
+    end
   end
 
-  test "filter table_tools" do
-    load_resources do
-      ActiveAdmin.application.batch_actions = true
-
-      ActiveAdmin.register(User) do
-        config.layouts = {filter: "table_tools"}
+  class SidebarTest < Base
+    test "raise error if invalid" do
+      load_resources do
+        ActiveAdmin.register(User) do
+          config.layouts = {filter: "random"}
+        end
       end
+
+      assert_raises(StandardError) { render }
     end
 
-    @page = render
-    body = Capybara.string(@page.find_by_tag("body").first.to_s)
-    assert body.has_selector?("#table-tools-filters")
-    assert body.has_selector?("#table-tools-filters-toggler")
+    test "filter aside" do
+      load_resources do
+        ActiveAdmin.register(User) do
+          config.layouts = {filter: "aside"}
+        end
+      end
+
+      body = Capybara.string(render.find_by_tag("body").first.to_s)
+      assert body.has_selector?("#aside-filters")
+      assert body.has_selector?("#aside-filters-toggler")
+    end
+
+    test "filter table_tools" do
+      load_resources do
+        ActiveAdmin.application.batch_actions = true
+
+        ActiveAdmin.register(User) do
+          config.layouts = {filter: "table_tools"}
+        end
+      end
+
+      body = Capybara.string(render.find_by_tag("body").first.to_s)
+      assert body.has_selector?("#table-tools-filters")
+      assert body.has_selector?("#table-tools-filters-toggler")
+    end
   end
 end

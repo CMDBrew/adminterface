@@ -1,39 +1,70 @@
 require "test_case/active_admin/base_test_case"
 
 module FormPageTest
-  class Base < ActiveAdmin::BaseTestCase
-    class FormPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
-      def resource
-        User.new
-      end
+  class FormPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
+    def resource
+      User.new
+    end
 
-      def active_admin_namespace
-        @active_admin_namespace ||= active_admin_application.namespace(:admin)
-      end
+    def active_admin_namespace
+      @active_admin_namespace ||= active_admin_application.namespace(:admin)
+    end
 
-      def params
-        @params ||= ActionController::Parameters.new(controller: "admin/users", action: "edit")
-      end
+    def params
+      @params ||= ActionController::Parameters.new(controller: "admin/users", action: "edit")
+    end
 
-      def current_menu
-        active_admin_config.navigation_menu
-      end
+    def current_menu
+      active_admin_config.navigation_menu
+    end
 
-      def authorized?(_action, _subject = nil)
-        true
-      end
+    def authorized?(_action, _subject = nil)
+      true
+    end
 
-      def collection_path
-        "fake/path"
-      end
+    def collection_path
+      "fake/path"
+    end
 
-      def url_for(*_args)
-        "fake/path"
-      end
+    def url_for(*_args)
+      "fake/path"
     end
   end
 
-  class PartialTest < Base
+  class BaseTest < ActiveAdmin::BaseTestCase
+    class BaseView < FormPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            form do |f|
+              f.inputs do
+                f.input :name
+              end
+
+              f.actions
+            end
+          end
+      end
+    end
+
+    def default_css_classes
+      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :html)
+    end
+
+    setup do
+      page = render_arbre_component({}, mock_action_view(BaseView)) do
+        insert_tag ActiveAdmin::Views::Pages::Form
+      end.to_s
+
+      @page = Capybara.string(page)
+    end
+
+    test "container class" do
+      assert_equal default_css_classes.dig(:container, :form), @page.find("#main > div")[:class]
+    end
+  end
+
+  class PartialTest < ActiveAdmin::BaseTestCase
     class PartialView < FormPageView
       def active_admin_config
         @active_admin_config ||=
@@ -55,7 +86,7 @@ module FormPageTest
     end
   end
 
-  class MultipleFormTest < Base
+  class MultipleFormTest < ActiveAdmin::BaseTestCase
     class MultipleFormView < FormPageView
       def active_admin_config
         @active_admin_config ||=
@@ -75,7 +106,7 @@ module FormPageTest
 
     setup do
       @page = render_arbre_component({}, mock_action_view(MultipleFormView)) do
-        insert_tag active_admin_application.view_factory["new_page"]
+        insert_tag ActiveAdmin::Views::Pages::Form
       end
     end
 

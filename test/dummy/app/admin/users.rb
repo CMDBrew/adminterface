@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   #   permitted
   # end
 
-  # filter :name, as: :range
+  filter :name, as: :date_picker
 
   form do |f|
     f.inputs do

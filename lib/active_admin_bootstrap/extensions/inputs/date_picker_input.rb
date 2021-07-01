@@ -5,7 +5,10 @@ module ActiveAdminBootstrap
         include Base
 
         def input_html_options
-          super.merge(data: {"aa-datepicker": {enableTime: false, altFormat: "Y-m-d"}})
+          opts = super
+          opts[:class] = "#{opts[:class]} form-control".squish
+          opts[:data] = {"aa-datepicker": {enableTime: false, altFormat: "Y-m-d"}}
+          opts
         end
       end
     end

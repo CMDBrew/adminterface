@@ -69,4 +69,29 @@ module BasePageTest
       end
     end
   end
+
+  class FlashMessagesTest < ActiveAdmin::BaseTestCase
+    class PageWithFlashMessages < ActiveAdmin::Views::Pages::Base
+      def flash_messages
+        {alert: "Alert message", notice: ["First notice message", "Second notice message"]}
+      end
+    end
+
+    def default_css_classes
+      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :flash)
+    end
+
+    test "shows all flash messages" do
+      div = PageWithFlashMessages.new.send :build_flash_messages
+      html =
+        <<~ERB
+          <div class="flashes">
+            <div class="flash flash_alert #{default_css_classes[:alert]}">Alert message</div>
+            <div class="flash flash_notice #{default_css_classes[:notice]}">First notice message</div>
+            <div class="flash flash_notice #{default_css_classes[:notice]}">Second notice message</div>
+          </div>
+        ERB
+      assert_html html, div
+    end
+  end
 end
