@@ -42,10 +42,30 @@ module ActiveAdmin::IntegrationTestHelper
     arbre(assigns, helpers, &block).children.first
   end
 
+  # Mock ActionText
+  module MockActionText
+    include ActionText::TagHelper
+
+    class MockApp
+      def rails_direct_uploads_url
+        "fake/path"
+      end
+
+      def rails_service_blob_url(*_args)
+        "fake/path"
+      end
+    end
+
+    def main_app
+      MockApp.new
+    end
+  end
+
   # A mock action view to test view helpers
   class MockActionView < ::ActionView::Base
     include ActiveAdmin::ViewHelpers
     include Rails.application.routes.url_helpers
+    include MockActionText
 
     def current_active_admin_user?
       false
