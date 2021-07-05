@@ -10,6 +10,13 @@ gem "mysql2"
 gem "sqlite3"
 gem "webpacker", "~> 5.0"
 
+# Use Factory to create fake data
+gem "faker"
+gem "factory_bot_rails"
+
+# Use Devise for authentication
+gem "devise"
+
 group :development do
   # Test application against different versions
   gem "appraisal"

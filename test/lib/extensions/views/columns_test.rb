@@ -23,7 +23,7 @@ module ColumnsTest
     test "#component" do
       html =
         <<~HTML
-          <div class="row">
+          <div class="row g-3">
             <div class="col-md">
               <span>Column #1</span>
             </div>
@@ -50,7 +50,7 @@ module ColumnsTest
     test "#component" do
       html =
         <<~HTML
-          <div class="row">
+          <div class="row g-3">
             <div class="col-md-8 custom-column">
               <span>Column #1</span>
             </div>

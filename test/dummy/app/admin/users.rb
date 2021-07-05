@@ -1,46 +1,77 @@
 ActiveAdmin.register User do
-  # See permitted parameters documentation:
-  # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
-  #
-  # Uncomment all parameters which should be permitted for assignment
-  #
-  # permit_params :name
-  #
-  # or
-  #
-  # permit_params do
-  #   permitted = [:name]
-  #   permitted << :other if params[:action] == 'create' && current_user.admin?
-  #   permitted
-  # end
+  menu priority: 4
 
-  filter :name, as: :date_picker
+  permit_params :name, :email, :password
+
+  filter :name
+  filter :email
+  filter :created_at
+
+  index do
+    selectable_column
+    id_column
+    column :name
+    column :email
+    column :created_at
+    actions
+  end
+
+  show do
+    panel "Order History" do
+      table_for(user.orders) do
+        column("Order", sortable: :id) do |order|
+          link_to "##{order.id}", admin_order_path(order)
+        end
+        column("State") { |order| status_tag(order.state) }
+        column("Date", sortable: :checked_out_at) do |order|
+          pretty_format(order.checked_out_at)
+        end
+        column("Total") { |order| number_to_currency order.total_price }
+      end
+    end
+
+    panel "Address Book" do
+      table_for(user.user_addresses) do
+        column("Fullname") do |a|
+          link_to a.fullname.to_s, admin_user_user_address_path(user.id, a.id)
+        end
+        column("Address") do |a|
+          span a.address_line1.to_s
+          br a.address_line2.to_s
+        end
+        column :city
+        column :state
+        column :country
+        column :zipcode
+        tr class: "action_items" do
+          td link_to("New Address", new_admin_user_user_address_path(user), class: :button)
+        end
+      end
+    end
+    active_admin_comments
+  end
 
   form do |f|
-    f.inputs do
-      f.input :biography, as: :rich_text
-      f.input :name, as: :color, label: "color"
-      f.input :name, as: :boolean, label: "boolean"
-      f.input :name, as: :switch, label: "switch"
-      f.input :name, as: :datalist, collection: %w[a b], floating: true, label: "datalist"
-      f.input :name, as: :email, floating: true, label: "email"
-      f.input :name, as: :password, floating: true, label: "password"
-      f.input :name, as: :search, floating: true, label: "search"
-      f.input :name, as: :url, floating: true, label: "url"
-      f.input :name, as: :range, label: "range"
-      f.input :name, as: :phone, floating: true, label: "phone"
-      f.input :name, as: :radio, collection: %w[a b], inline: true, label: "radio"
-      f.input :name, as: :check_boxes, collection: %w[a b], inline: true, label: "check_boxes"
-      f.input :name, as: :string, floating: true, label: "string"
-      f.input :name, as: :select, collection: %w[mary john], floating: true, label: "select"
-      f.input :name, as: :tom_select, collection: %w[mary john], label: "tom_select (single)"
-      f.input :name, as: :tom_select, collection: %w[mary john], label: "tom_select (multiple)", multiple: true
-      f.input :name, as: :number, floating: true, label: "nummber"
-      f.input :created_at, as: :date_picker, floating: true, label: "date_picker"
-      f.input :created_at, as: :datepicker, floating: true, label: "datepicker"
-      f.input :created_at, as: :time_picker, floating: true, label: "time_picker"
-      f.input :created_at, as: :datetime_picker, floating: true, label: "datetime_picker"
+    panel do
+      f.inputs do
+        f.input :name
+        f.input :password, input_html: {autocomplete: "new-password"}
+        f.input :email
+      end
+      f.actions
     end
-    f.actions
+  end
+
+  sidebar "Customer Details", only: :show do
+    attributes_table_for user, :name, :email, :created_at
+  end
+
+  sidebar "Order History", only: :show do
+    attributes_table_for user do
+      row("Total Orders") { user.orders.complete.count }
+      row("Total Value") do
+        number_to_currency user.orders.complete.sum(:total_price)
+      end
+    end
   end
 end

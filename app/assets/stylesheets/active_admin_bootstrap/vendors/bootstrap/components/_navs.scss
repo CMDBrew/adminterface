@@ -8,7 +8,11 @@
   border-bottom: 0;
   position: relative;
 
-  .nav-link { position: relative; }
+  .nav-link {
+    position: relative;
+
+    & > * { vertical-align: middle; }
+  }
 
   &::before {
     content: "";

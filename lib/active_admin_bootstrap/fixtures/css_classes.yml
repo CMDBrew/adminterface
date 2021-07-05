@@ -43,7 +43,7 @@ html:
     page: container
 icon: bi
 index_as_grid:
-  group: row
+  group: row g-3
   item: d-flex flex-column
 index_as_table:
   actions:
@@ -76,7 +76,7 @@ table_tools:
     counts:
       positive: badge bg-primary
       zero: d-none
-    tabs: nav-pills nav-sm
+    tabs: nav-tabs
 tabs: nav-tabs
 title_bar:
   container: container-fluid

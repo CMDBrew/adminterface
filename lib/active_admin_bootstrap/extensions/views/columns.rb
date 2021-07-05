@@ -3,7 +3,7 @@ module ActiveAdminBootstrap
     module Views
       module Columns
         def default_class_name
-          "row"
+          "row g-3"
         end
 
         protected
