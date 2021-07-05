@@ -8,7 +8,6 @@ module ActiveAdminBootstrap
           require_relative("../extensions/form_builder")
           require_relative("../extensions/inputs/base")
           require_relative("../extensions/inputs/base/choices")
-          require_relative("../extensions/inputs/base/floatish")
         end
 
         initializer "inputs" do |_app|

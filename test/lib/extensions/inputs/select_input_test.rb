@@ -38,19 +38,3 @@ class SelectInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingSelectInputTest < ActiveAdmin::InputTestCase
-  include SelectInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :interests, as: :select, collection: %w[movies], floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

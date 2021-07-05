@@ -15,7 +15,6 @@ end
 module ActiveAdmin
   module Inputs
     class DatetimePickerInput < ::Formtastic::Inputs::DatetimePickerInput
-      include ::ActiveAdminBootstrap::Extensions::Inputs::Base::Floatish
       include ::ActiveAdminBootstrap::Extensions::Inputs::DatetimePickerInput
     end
   end

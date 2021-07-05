@@ -38,19 +38,3 @@ class SearchInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingSearchInputTest < ActiveAdmin::InputTestCase
-  include SearchInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :keyword, as: :search, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

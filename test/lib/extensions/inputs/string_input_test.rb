@@ -38,19 +38,3 @@ class StringInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingStringInputTest < ActiveAdmin::InputTestCase
-  include StringInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :name, as: :string, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

@@ -11,7 +11,6 @@ end
 module ActiveAdmin
   module Inputs
     class StringInput < ::Formtastic::Inputs::StringInput
-      include ::ActiveAdminBootstrap::Extensions::Inputs::Base::Floatish
       include ::ActiveAdminBootstrap::Extensions::Inputs::StringInput
     end
   end

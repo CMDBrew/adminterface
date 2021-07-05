@@ -38,19 +38,3 @@ class PhoneInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingPhoneInputTest < ActiveAdmin::InputTestCase
-  include PhoneInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :telephone, as: :phone, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

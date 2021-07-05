@@ -11,7 +11,6 @@ end
 module ActiveAdmin
   module Inputs
     class TimePickerInput < ::Formtastic::Inputs::TimePickerInput
-      include ::ActiveAdminBootstrap::Extensions::Inputs::Base::Floatish
       include ::ActiveAdminBootstrap::Extensions::Inputs::TimePickerInput
     end
   end

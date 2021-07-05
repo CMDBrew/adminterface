@@ -16,14 +16,7 @@ end
 module ActiveAdmin
   module Inputs
     class SelectInput < ::Formtastic::Inputs::SelectInput
-      include ::ActiveAdminBootstrap::Extensions::Inputs::Base::Floatish
       include ::ActiveAdminBootstrap::Extensions::Inputs::SelectInput
-
-      def to_floating_html
-        input_wrapping do
-          select_html << label_html
-        end
-      end
     end
   end
 end

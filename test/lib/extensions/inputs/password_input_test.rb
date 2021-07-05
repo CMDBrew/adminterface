@@ -38,19 +38,3 @@ class PasswordInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingPasswordInputTest < ActiveAdmin::InputTestCase
-  include PasswordInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :secret, as: :password, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

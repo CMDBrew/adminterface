@@ -45,19 +45,3 @@ class DatetimePickerInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingDatetimePickerInputTest < ActiveAdmin::InputTestCase
-  include DatetimePickerInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :updated_at, as: :datetime_picker, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

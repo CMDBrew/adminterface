@@ -38,19 +38,3 @@ class UrlInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingUrlInputTest < ActiveAdmin::InputTestCase
-  include UrlInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :website, as: :url, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

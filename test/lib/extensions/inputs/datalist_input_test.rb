@@ -43,19 +43,3 @@ class DatalistInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingDatalistInputTest < ActiveAdmin::InputTestCase
-  include DatalistInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :friend, as: :datalist, collection: %w[tom jerry], floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end

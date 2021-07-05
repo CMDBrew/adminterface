@@ -38,19 +38,3 @@ class DatelistInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
-
-class FloatingDatelistInputTest < ActiveAdmin::InputTestCase
-  include EmailInputScenarios
-
-  setup do
-    @form = build_form do |f|
-      f.inputs do
-        f.input :email, as: :email, floating: true
-      end
-    end
-  end
-
-  test "floating wrapper class" do
-    assert find_wrapper(@form)[:class].include?("form-floating")
-  end
-end
