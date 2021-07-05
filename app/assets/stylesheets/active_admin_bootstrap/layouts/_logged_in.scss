@@ -1,11 +1,13 @@
 body.logged_in {
   @extend %layout-scrollable;
+
   overflow-x: hidden;
 
   #wrapper { position: relative; }
 
   #main,
-  #sidebar {
+  #sidebar-left,
+  #sidebar-right {
     padding: $spacer 0;
   }
 

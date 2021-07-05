@@ -1,4 +1,11 @@
 ---
+html:
+  main:
+    html_options:
+      page: null
+      index: null
+      show: null
+      form: null
 action_items:
   destroy:
     css_class: null

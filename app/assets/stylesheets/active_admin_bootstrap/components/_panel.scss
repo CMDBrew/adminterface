@@ -1,6 +1,5 @@
 .panel {
   margin-bottom: calc(#{$grid-gutter-width} / 2);
-  overflow: hidden;
 
   .panel-header {
     display: flex;
@@ -12,6 +11,7 @@
 
     .title {
       @extend %text-truncate;
+
       flex: 1;
       white-space: normal;
 

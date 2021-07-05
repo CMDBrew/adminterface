@@ -1,4 +1,4 @@
 ---
 filter: sidebar
 navigation: top
-sidebar: right
+default_sidebar: right

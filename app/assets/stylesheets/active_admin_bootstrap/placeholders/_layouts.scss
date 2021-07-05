@@ -6,26 +6,30 @@
 
   #active_admin_content,
   #main,
-  #sidebar {
+  #sidebar-left,
+  #sidebar-right {
     height: 100%;
   }
 
   #main,
   #header,
-  #sidebar {
+  #sidebar-left,
+  #sidebar-right {
     overflow-y: auto;
   }
 
   @include media-breakpoint-down($sidebar-breakpoint) {
     #active_admin_content,
     #main,
-    #sidebar {
+    #sidebar-left,
+    #sidebar-right {
       height: auto;
     }
 
     #main,
     #header,
-    #sidebar {
+    #sidebar-left,
+    #sidebar-right {
       overflow: visible;
     }
 

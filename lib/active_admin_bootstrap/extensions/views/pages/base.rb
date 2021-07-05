@@ -3,13 +3,7 @@ module ActiveAdminBootstrap
     module Views
       module Pages
         module Base
-          SIDEBAR_OPTS = %w[left right].freeze
-
           def build(*args)
-            unless SIDEBAR_OPTS.include?(sidebar_layouts)
-              raise "Invalid layout option for sidebar. Available options are: #{SIDEBAR_OPTS.join(", ")}"
-            end
-
             super
             build_breakpoint_helpers
           end
@@ -38,14 +32,14 @@ module ActiveAdminBootstrap
 
           def build_page_content
             div id: "active_admin_content" do
-              contents = %i[build_body_content build_sidebar_content]
-              contents.reverse! if sidebar_layouts&.eql?(SIDEBAR_OPTS[0])
-              contents.each { |x| send(x) }
+              build_left_sidebar_content
+              build_body_content
+              build_right_sidebar_content
             end
           end
 
           def build_body_content
-            div id: "main", class: sidebar_class do
+            div main_html_options do
               div class: content_wrapper_class do
                 build_main_content_wrapper
                 footer active_admin_namespace
@@ -53,10 +47,30 @@ module ActiveAdminBootstrap
             end
           end
 
-          def build_sidebar_content
-            return if skip_sidebar?
+          def build_left_sidebar_content
+            return if skip_left_sidebar?
 
-            div sidebar(sidebar_sections_for_action, class: "container"), id: "sidebar"
+            div sidebar(sidebar_sections_for_action_for_position("left"), class: "container"), id: "sidebar-left"
+          end
+
+          def build_right_sidebar_content
+            return if skip_right_sidebar?
+
+            div sidebar(sidebar_sections_for_action_for_position("right"), class: "container"), id: "sidebar-right"
+          end
+
+          def skip_left_sidebar?
+            skip_sidebar? || sidebar_sections_for_action_for_position("left").empty?
+          end
+
+          def skip_right_sidebar?
+            skip_sidebar? || sidebar_sections_for_action_for_position("right").empty?
+          end
+
+          def sidebar_sections_for_action_for_position(position)
+            sections = sidebar_sections_for_action.select { |x| x.position.eql?(position) }
+            sections += sidebar_sections_for_action.select { |x| x.position.blank? } if default_sidebar_layouts.eql?(position)
+            sections
           end
 
           def body_classes
@@ -79,6 +93,23 @@ module ActiveAdminBootstrap
             end
           end
 
+          def main_html_options
+            options =
+              case self.class.to_s
+              when "ActiveAdmin::Views::Pages::Index"
+                html_components.dig(:main, :html_options, :index)
+              when "ActiveAdmin::Views::Pages::Form"
+                html_components.dig(:main, :html_options, :form)
+              when "ActiveAdmin::Views::Pages::Show"
+                html_components.dig(:main, :html_options, :show)
+              when "ActiveAdmin::Views::Pages::Page"
+                html_components.dig(:main, :html_options, :page)
+              end || {}
+            options[:class] = "#{sidebar_class} #{options[:class]}".squish
+            options[:id] = "main"
+            options
+          end
+
           def content_wrapper_class
             klass =
               case self.class.to_s
@@ -88,6 +119,8 @@ module ActiveAdminBootstrap
                 html_css_classes.dig(:container, :form)
               when "ActiveAdmin::Views::Pages::Show"
                 html_css_classes.dig(:container, :show)
+              when "ActiveAdmin::Views::Pages::Page"
+                html_css_classes.dig(:container, :page)
               end
             klass || "container"
           end
@@ -101,5 +134,6 @@ end
 ActiveAdmin::Views::Pages::Base.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash
-  has_layouts_for :sidebar, :navigation
+  has_layouts_for :default_sidebar, :navigation
+  has_components_for :html
 end

@@ -28,7 +28,7 @@ module ConfigurationsTest
 
   class GlobalTest < Base
     setup do
-      @application.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+      @application.layouts = {navigation: "left", filter: "body", default_sidebar: "left"}
       @application.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -40,7 +40,7 @@ module ConfigurationsTest
     test "updates layouts" do
       assert_equal "left", @application.layouts[:navigation]
       assert_equal "body", @application.layouts[:filter]
-      assert_equal "left", @application.layouts[:sidebar]
+      assert_equal "left", @application.layouts[:default_sidebar]
     end
 
     test "updates components" do
@@ -67,7 +67,7 @@ module ConfigurationsTest
   class NamespaceTest < Base
     setup do
       @namespace = ActiveAdmin::Namespace.new(@application, :super_admin)
-      @namespace.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+      @namespace.layouts = {navigation: "left", filter: "body", default_sidebar: "left"}
       @namespace.components = {
         active_admin_comments: {input: "string"},
         action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -86,7 +86,7 @@ module ConfigurationsTest
     test "updates layouts" do
       assert_equal "left", @namespace.layouts[:navigation]
       assert_equal "body", @namespace.layouts[:filter]
-      assert_equal "left", @namespace.layouts[:sidebar]
+      assert_equal "left", @namespace.layouts[:default_sidebar]
     end
 
     test "updates components" do
@@ -115,7 +115,7 @@ module ConfigurationsTest
       @namespace = ActiveAdmin::Namespace.new(@application, :admin)
       @resource =
         @namespace.register(User) do
-          config.layouts = {navigation: "left", filter: "body", sidebar: "left"}
+          config.layouts = {navigation: "left", filter: "body", default_sidebar: "left"}
           config.components = {
             active_admin_comments: {input: "string"},
             action_items: {new: {icon: "fake_icon"}, destroy: {display: %w[show edit]}}
@@ -142,7 +142,7 @@ module ConfigurationsTest
     test "updates layouts" do
       assert_equal "left", @resource.layouts[:navigation]
       assert_equal "body", @resource.layouts[:filter]
-      assert_equal "left", @resource.layouts[:sidebar]
+      assert_equal "left", @resource.layouts[:default_sidebar]
     end
 
     test "updates components" do

@@ -59,17 +59,6 @@ module BasePageTest
     end
   end
 
-  class SidebarOptionsTest < ActiveAdmin::BaseTestCase
-    test "invalid sidebar options" do
-      assert_raises StandardError do
-        @page = render_arbre_component({}, mock_action_view(PageView)) do
-          active_admin_config.layouts = {sidebar: "bottom"}
-          insert_tag ActiveAdmin::Views::Pages::Base
-        end
-      end
-    end
-  end
-
   class FlashMessagesTest < ActiveAdmin::BaseTestCase
     class PageWithFlashMessages < ActiveAdmin::Views::Pages::Base
       def flash_messages

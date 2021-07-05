@@ -28,4 +28,12 @@ end
 ActiveAdmin::Views::SidebarSection.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::SidebarSection
   has_css_classes_for :sidebar_section
+
+  def build(section)
+    @section = section
+    super(@section.title, section.options)
+    add_class @section.custom_class if @section.custom_class
+    self.id = @section.id
+    build_sidebar_content
+  end
 end

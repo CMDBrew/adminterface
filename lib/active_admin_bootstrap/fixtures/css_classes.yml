@@ -40,6 +40,7 @@ html:
     form: container
     index: container
     show: container
+    page: container
 icon: bi
 index_as_grid:
   group: row

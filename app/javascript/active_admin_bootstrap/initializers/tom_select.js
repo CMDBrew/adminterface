@@ -7,8 +7,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const defaults = {
       plugins: ['remove_button', 'restore_on_backspace'],
       persist: false,
-      createOnBlur: true,
-      create: true
+      createOnBlur: false,
+      create: false
     }
 
     /* eslint-disable no-new */
