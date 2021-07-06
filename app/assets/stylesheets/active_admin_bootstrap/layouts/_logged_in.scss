@@ -20,9 +20,10 @@ body.logged_in {
       width: 100%;
 
       @include media-breakpoint-up($sidebar-breakpoint) {
-        &.without_sidebar { flex: 1; }
-        &.with_sidebar { flex: 1 1 $sidebar-width; }
-        &.with_sidebar { max-width: calc(100% - #{$sidebar-width}); }
+        &.without-sidebar { flex: 1; }
+        &.with-right-sidebar:not(.with-left-sidebar) { max-width: calc(100% - #{$sidebar-right-width}); }
+        &.with-left-sidebar:not(.with-right-sidebar) { max-width: calc(100% - #{$sidebar-left-width}); }
+        &.with-left-sidebar.with-right-sidebar { max-width: calc(100% - #{$sidebar-left-width} - #{$sidebar-right-width}); }
       }
     }
   }

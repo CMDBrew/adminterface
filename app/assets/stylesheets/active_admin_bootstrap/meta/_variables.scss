@@ -41,15 +41,20 @@ $logged-out-logo-height: 64px !default;
 // Site Title
 $site-title-logo-height: 32px !default;
 
+// Breadcrumb
+$breadcrumb-item-max-width: 200px !default;
+
 // Sidebar
-$sidebar-width: 320px !default;
-$sidebar-bg: $body-bg !default;
 $sidebar-breakpoint: lg !default;
+$sidebar-left-width: 320px !default;
+$sidebar-left-bg: $body-bg !default;
+$sidebar-right-width: 320px !default;
+$sidebar-right-bg: $body-bg !default;
 
 // Aside
 $aside-breakpoint: lg !default;
-$aside-width: $sidebar-width !default;
-$aside-bg: $sidebar-bg !default;
+$aside-width: 320px !default;
+$aside-bg: $body-bg !default;
 
 // Attributes Table
 $attribute-table-key-width: 30% !default;

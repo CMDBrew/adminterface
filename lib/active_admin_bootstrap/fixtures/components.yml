@@ -1,11 +1,4 @@
 ---
-html:
-  main:
-    html_options:
-      page: null
-      index: null
-      show: null
-      form: null
 action_items:
   destroy:
     css_class: null
@@ -24,3 +17,5 @@ action_items:
     icon: null
 active_admin_comments:
   input: text
+flash:
+  dismissible: true

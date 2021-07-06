@@ -78,7 +78,11 @@ module ActiveAdminBootstrap
           end
 
           def sidebar_class
-            skip_sidebar? ? "without_sidebar" : "with_sidebar"
+            classes = []
+            classes.push "with-left-sidebar" unless skip_left_sidebar?
+            classes.push "with-right-sidebar" unless skip_right_sidebar?
+            classes.push "without-sidebar" if classes.empty?
+            classes.join(" ")
           end
 
           def build_flash_messages
@@ -87,24 +91,26 @@ module ActiveAdminBootstrap
             div class: "flashes" do
               flash_messages.each do |type, messages|
                 [*messages].each do |message|
-                  div message, class: "flash flash_#{type} #{flash_css_classes[:default]} #{flash_css_classes[type.to_sym]}".squish
+                  div class: "flash flash_#{type} alert #{flash_css_classes[type.to_sym]} #{flash_dismissible_class}".squish do
+                    text_node(message)
+                    button(class: "btn-close", "data-bs-dismiss": "alert", "aria-label": "Close") if flash_dismissible?
+                  end
                 end
               end
             end
           end
 
+          def flash_dismissible?
+            flash_components[:dismissible].eql?(true)
+          end
+
+          def flash_dismissible_class
+            return unless flash_dismissible?
+            "alert-dismissible"
+          end
+
           def main_html_options
-            options =
-              case self.class.to_s
-              when "ActiveAdmin::Views::Pages::Index"
-                html_components.dig(:main, :html_options, :index)
-              when "ActiveAdmin::Views::Pages::Form"
-                html_components.dig(:main, :html_options, :form)
-              when "ActiveAdmin::Views::Pages::Show"
-                html_components.dig(:main, :html_options, :show)
-              when "ActiveAdmin::Views::Pages::Page"
-                html_components.dig(:main, :html_options, :page)
-              end || {}
+            options = config[:main] || {}
             options[:class] = "#{sidebar_class} #{options[:class]}".squish
             options[:id] = "main"
             options
@@ -135,5 +141,5 @@ ActiveAdmin::Views::Pages::Base.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash
   has_layouts_for :default_sidebar, :navigation
-  has_components_for :html
+  has_components_for :flash
 end

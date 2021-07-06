@@ -75,9 +75,15 @@ module BasePageTest
       html =
         <<~ERB
           <div class="flashes">
-            <div class="flash flash_alert #{default_css_classes[:alert]}">Alert message</div>
-            <div class="flash flash_notice #{default_css_classes[:notice]}">First notice message</div>
-            <div class="flash flash_notice #{default_css_classes[:notice]}">Second notice message</div>
+            <div class="flash flash_alert alert #{default_css_classes[:alert]} alert-dismissible">
+              Alert message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="flash flash_notice alert #{default_css_classes[:notice]} alert-dismissible">
+              First notice message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="flash flash_notice alert #{default_css_classes[:notice]} alert-dismissible">
+              Second notice message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
           </div>
         ERB
       assert_html html, div

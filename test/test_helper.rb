@@ -30,6 +30,6 @@ class ActiveSupport::TestCase < Minitest::Test
   end
 
   def unify_html(html)
-    html.split("\n").map(&:strip).join.gsub(/>\s+</, "><")
+    html.split("\n").map(&:strip).join.gsub(/\s+/, " ").gsub(/>\s+</, "><")
   end
 end

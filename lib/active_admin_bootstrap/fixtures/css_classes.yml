@@ -17,8 +17,9 @@ filters:
     cancel: btn btn-link
     submit: btn btn-primary
 flash:
-  alert: alert alert-warning
-  notice: alert alert-info
+  alert: alert-warning
+  error: alert-danger
+  notice: alert-info
 footer:
   body: bg-light rounded p-2 small text-muted
   wrapper: mt-3 text-center
@@ -39,8 +40,8 @@ html:
   container:
     form: container
     index: container
-    show: container
     page: container
+    show: container
 icon: bi
 index_as_grid:
   group: row g-3
