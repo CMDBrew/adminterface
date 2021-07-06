@@ -21,7 +21,7 @@ ActiveAdmin.register Product do
       f.input :description
       f.input :author
       f.input :price
-      f.input :available_on
+      f.input :available_on, as: :date_picker
       f.input :image, as: :file
 
       f.actions

@@ -19,12 +19,14 @@ ActiveAdmin.register Order do
 
   show do
     panel "Invoice" do
-      table_for(order.line_items) do |t|
-        t.column("Product") { |item| auto_link item.product }
-        t.column("Price") { |item| number_to_currency item.price }
-        tr class: "odd" do
-          td "Total:", style: "text-align: right;"
-          td number_to_currency(order.total_price)
+      div class: "table-responsive" do
+        table_for(order.line_items) do |t|
+          t.column("Product") { |item| auto_link item.product }
+          t.column("Price") { |item| number_to_currency item.price }
+          tr class: "odd" do
+            td "Total:", style: "text-align: right;"
+            td number_to_currency(order.total_price)
+          end
         end
       end
     end
