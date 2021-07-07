@@ -38,3 +38,25 @@ class SearchInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
+
+class SearchInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :keyword, as: :search, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="search"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :keyword, as: :search, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="search"] + span.input-group-text')
+  end
+end

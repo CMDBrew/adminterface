@@ -38,3 +38,25 @@ class UrlInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
+
+class UrlInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :website, as: :url, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="url"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :website, as: :url, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="url"] + span.input-group-text')
+  end
+end

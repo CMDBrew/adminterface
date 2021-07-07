@@ -3,6 +3,8 @@ module ActiveAdminBootstrap
     module Inputs
       module StringInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
       end
     end
   end

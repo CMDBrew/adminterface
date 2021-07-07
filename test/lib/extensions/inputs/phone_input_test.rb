@@ -38,3 +38,25 @@ class PhoneInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
+
+class PhoneInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :telephone, as: :phone, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="tel"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :telephone, as: :phone, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="tel"] + span.input-group-text')
+  end
+end

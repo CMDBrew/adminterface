@@ -3,6 +3,12 @@ module ActiveAdminBootstrap
     module Inputs
       module ColorInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
+
+        def input_html
+          builder.color_field(method, input_html_options)
+        end
 
         def input_html_options
           opts = super

@@ -3,6 +3,12 @@ module ActiveAdminBootstrap
     module Inputs
       module EmailInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
+
+        def input_html
+          builder.email_field(method, input_html_options)
+        end
       end
     end
   end

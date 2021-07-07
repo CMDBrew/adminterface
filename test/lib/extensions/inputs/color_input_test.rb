@@ -28,3 +28,25 @@ class ColorInputTest < ActiveAdmin::InputTestCase
     )
   end
 end
+
+class ColorInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :favorite_color, as: :color, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="color"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :favorite_color, as: :color, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="color"] + span.input-group-text')
+  end
+end

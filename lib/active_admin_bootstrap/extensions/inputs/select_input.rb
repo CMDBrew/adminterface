@@ -3,6 +3,17 @@ module ActiveAdminBootstrap
     module Inputs
       module SelectInput
         include Base
+        prepend Base::Groupish
+
+        def to_html
+          input_wrapping do
+            label_html << input_html
+          end
+        end
+
+        def input_html
+          select_html
+        end
 
         def input_html_options
           opts = options[:input_html] || {}

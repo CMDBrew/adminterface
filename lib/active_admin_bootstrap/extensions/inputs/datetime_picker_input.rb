@@ -3,6 +3,8 @@ module ActiveAdminBootstrap
     module Inputs
       module DatetimePickerInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
 
         def input_html_options
           super.merge(data: {"aa-datepicker": {enableTime: true, altFormat: "Y-m-d, h:i K"}})

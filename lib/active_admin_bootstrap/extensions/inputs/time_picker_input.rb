@@ -3,6 +3,8 @@ module ActiveAdminBootstrap
     module Inputs
       module TimePickerInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
       end
     end
   end

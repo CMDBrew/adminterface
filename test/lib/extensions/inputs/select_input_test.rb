@@ -38,3 +38,25 @@ class SelectInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
+
+class SelectInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :interests, as: :select, collection: %w[movies], prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?(".input-group span.input-group-text + select.form-select")
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :interests, as: :select, collection: %w[movies], append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?(".input-group select.form-select + span.input-group-text")
+  end
+end

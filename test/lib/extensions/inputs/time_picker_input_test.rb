@@ -38,3 +38,25 @@ class TimePickerInputTest < ActiveAdmin::InputTestCase
     end
   end
 end
+
+class TimePickerInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :updated_at, as: :time_picker, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="time"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :updated_at, as: :time_picker, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="time"] + span.input-group-text')
+  end
+end

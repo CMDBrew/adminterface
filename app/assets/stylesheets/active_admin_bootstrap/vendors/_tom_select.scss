@@ -1,0 +1,6 @@
+.input-group {
+  .ts-control:nth-child(2) {
+    border-top-left-radius: $input-border-radius !important;
+    border-bottom-left-radius: $input-border-radius !important;
+  }
+}

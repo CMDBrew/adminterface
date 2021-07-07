@@ -27,7 +27,7 @@ module EmailInputScenarios
   end
 end
 
-class DatelistInputTest < ActiveAdmin::InputTestCase
+class EmailInputTest < ActiveAdmin::InputTestCase
   include EmailInputScenarios
 
   setup do
@@ -36,5 +36,27 @@ class DatelistInputTest < ActiveAdmin::InputTestCase
         f.input :email, as: :email
       end
     end
+  end
+end
+
+class EmailInputGroupingTest < ActiveAdmin::InputTestCase
+  test "renders prepend" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :email, as: :email, prepend: content_tag(:span, "prepend text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group span.input-group-text + input.form-control[type="email"]')
+  end
+
+  test "renders append" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :email, as: :email, append: content_tag(:span, "append text", class: "input-group-text")
+      end
+    end
+
+    assert form.has_selector?('.input-group input.form-control[type="email"] + span.input-group-text')
   end
 end

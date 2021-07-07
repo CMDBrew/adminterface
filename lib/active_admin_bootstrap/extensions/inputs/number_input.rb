@@ -3,6 +3,12 @@ module ActiveAdminBootstrap
     module Inputs
       module NumberInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
+
+        def input_html
+          builder.number_field(method, input_html_options)
+        end
       end
     end
   end

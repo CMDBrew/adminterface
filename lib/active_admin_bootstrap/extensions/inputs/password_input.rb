@@ -3,6 +3,12 @@ module ActiveAdminBootstrap
     module Inputs
       module PasswordInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
+
+        def input_html
+          builder.password_field(method, input_html_options)
+        end
       end
     end
   end

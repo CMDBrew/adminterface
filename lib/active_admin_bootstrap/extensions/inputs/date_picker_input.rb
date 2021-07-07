@@ -3,6 +3,8 @@ module ActiveAdminBootstrap
     module Inputs
       module DatePickerInput
         include Base
+        include Base::Stringish
+        prepend Base::Groupish
 
         def input_html_options
           opts = super
