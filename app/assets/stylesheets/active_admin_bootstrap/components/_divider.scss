@@ -1,0 +1,28 @@
+%divider {
+  flex: 1;
+  height: 1px;
+  background-color: currentColor;
+  color: $hr-color;
+  opacity: $hr-opacity;
+  content: "";
+
+  @include transform(translateY(-50%));
+}
+
+.divider {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  &::before {
+    @extend %divider;
+
+    margin-right: $spacer;
+  }
+
+  &::after {
+    @extend %divider;
+
+    margin-left: $spacer;
+  }
+}

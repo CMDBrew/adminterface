@@ -66,7 +66,7 @@ sidebar_section:
   wrapper: card
 status_tag:
   'no': badge bg-danger
-  unset: badge bg-light
+  unset: badge bg-danger
   'yes': badge bg-success
 table_for: table
 table_tools:

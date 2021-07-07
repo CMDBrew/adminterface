@@ -1,3 +1,8 @@
+//***** Logged Out
+$logged-out-bg: $light !default;
+$logged-out-logo-height: 64px !default;
+
+//***** Logged In
 // Layout
 $layout-navigation-top: () !default;
 $layout-navigation-drawer: () !default;
@@ -34,9 +39,6 @@ $layout-navigation-drawer-dismissible:  map-merge(
   ),
   $layout-navigation-drawer-dismissible
 );
-
-// Logged Out
-$logged-out-logo-height: 64px !default;
 
 // Site Title
 $site-title-logo-height: 32px !default;

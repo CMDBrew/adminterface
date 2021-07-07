@@ -1,0 +1,10 @@
+<%- if devise_mapping.omniauthable? %>
+  <div class="d-grid gap-2">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= link_to t('active_admin.devise.links.sign_in_with_omniauth_provider', provider: provider.to_s.titleize),
+            omniauth_authorize_path(resource_name, provider), class: "btn btn-light" %>
+    <% end -%>
+  </div>
+
+  <div class="divider my-4"><%= I18n.t(:divider, scope: "active_admin.devise.omniauth") %></div>
+<% end -%>

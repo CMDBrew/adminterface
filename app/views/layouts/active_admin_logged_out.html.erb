@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="<%=I18n.locale%>">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+    <title><%= [@page_title, ActiveAdmin.application.site_title(self)].compact.join(" | ") %></title>
+
+    <% ActiveAdmin.application.stylesheets.each do |style, options| %>
+      <% if ActiveAdmin.application.use_webpacker %>
+        <%= stylesheet_pack_tag style, **options %>
+      <% else %>
+        <%= stylesheet_link_tag style, **options %>
+      <% end %>
+    <% end %>
+    <% ActiveAdmin.application.javascripts.each do |path| %>
+      <% if ActiveAdmin.application.use_webpacker %>
+        <%= javascript_pack_tag path %>
+      <% else %>
+        <%= javascript_include_tag path %>
+      <% end %>
+    <% end %>
+
+    <%= favicon_link_tag ActiveAdmin.application.favicon if ActiveAdmin.application.favicon %>
+
+    <% ActiveAdmin.application.meta_tags_for_logged_out_pages.each do |name, content| %>
+      <%= tag(:meta, name: name, content: content) %>
+    <% end %>
+
+    <%= csrf_meta_tag %>
+  </head>
+  <body class="d-flex flex-column justify-content-center min-vh-100 py-4 active_admin logged_out <%= controller.action_name %>">
+    <div class="container-fluid">
+      <div class="row" id="content_wrapper">
+        <div class="col-md-6 col-lg-5 col-xl-4 mx-auto">
+          <div id="active_admin_content">
+            <div class="site-title-wrap mb-3">
+              <%= site_title ActiveAdmin.application %>
+            </div>
+            <div class="card panel">
+              <h5 class="card-header"><%= yield :title %></h5>
+              <div class="card-body">
+                <%= flashes_html %>
+                <%= render "active_admin/devise/shared/omniauth" %>
+                <%= yield %>
+              </div>
+              <div class="card-footer">
+                <%= render "active_admin/devise/shared/links" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <%= footer ActiveAdmin.application %>
+    </div>
+  </body>
+</html>

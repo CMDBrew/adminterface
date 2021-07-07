@@ -9,6 +9,8 @@ gem "webpacker", "~> 5.0"
 gem "faker"
 gem "factory_bot_rails"
 gem "devise"
+gem "omniauth"
+gem "omniauth-oauth2"
 gem "rails", "~> 6.0.0"
 
 group :development do
@@ -19,6 +21,8 @@ group :development, :test do
   gem "standardrb"
   gem "byebug"
   gem "puma"
+  gem "letter_opener"
+  gem "letter_opener_web", "~> 1.0"
 end
 
 group :test do

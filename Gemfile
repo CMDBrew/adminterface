@@ -16,6 +16,9 @@ gem "factory_bot_rails"
 
 # Use Devise for authentication
 gem "devise"
+# Use OmniAuth for OAuth
+gem "omniauth"
+gem "omniauth-oauth2"
 
 group :development do
   # Test application against different versions
@@ -26,6 +29,9 @@ group :development, :test do
   gem "standardrb"
   gem "byebug"
   gem "puma"
+  # Use Letter Opener to debug email on development
+  gem "letter_opener"
+  gem "letter_opener_web", "~> 1.0"
 end
 
 group :test do

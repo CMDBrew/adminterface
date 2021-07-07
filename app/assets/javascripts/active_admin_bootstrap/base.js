@@ -4882,4 +4882,9 @@
     }
   }
   defineJQueryPlugin(Toast);
+  function commonjsRequire() {
+    throw new Error("Dynamic requires are not currently supported by rollup-plugin-commonjs");
+  }
+  const initializers = commonjsRequire.context(".", true, /\.js$/);
+  initializers.keys().forEach(initializers);
 });

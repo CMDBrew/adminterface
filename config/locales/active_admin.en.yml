@@ -5,3 +5,6 @@ en:
     batch_actions:
       delete_message: Deleted records cannot be recovered. Do you still want to continue?
     filter_model: Find %{model}
+    devise:
+      omniauth:
+        divider: Or

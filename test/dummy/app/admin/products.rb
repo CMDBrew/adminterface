@@ -17,6 +17,7 @@ ActiveAdmin.register Product do
     f.inputs do
       f.semantic_errors
 
+      f.input :featured, as: :switch
       f.input :title
       f.input :description
       f.input :author

@@ -1,0 +1,19 @@
+<% content_for :title do %>
+  <%= title t("active_admin.devise.unlock.title") %>
+<% end %>
+
+<%= devise_error_messages! %>
+<%= active_admin_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+  f.inputs do
+    f.input :email
+  end
+  f.actions do
+    f.action :submit,
+             label: t("active_admin.devise.unlock.submit"),
+             wrapper_html: {class: "d-block w-100"},
+             button_html: {
+               value: t("active_admin.devise.unlock.submit"),
+               class: "btn btn-primary w-100"
+             }
+  end
+end %>
