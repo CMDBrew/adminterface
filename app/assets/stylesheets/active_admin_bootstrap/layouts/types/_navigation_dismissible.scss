@@ -58,6 +58,7 @@
   }
 
   $_breakpoint: (nth(map-keys($grid-breakpoints), index(map-keys($grid-breakpoints), map-get($layout-navigation-drawer-dismissible, 'breakpoint')) - 1));
+
   @include media-breakpoint-down($_breakpoint) {
     &.header-active {
       grid-template-columns: $_header-width 100vw;

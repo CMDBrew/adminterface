@@ -17,9 +17,9 @@ end
 task :prepare_assets do
   system "rm -rf test/dummy/public/packs"
   system "rm -rf test/dummy/public/packs-test"
-  system "yarn install"
+  system "yarn install --frozen-lockfile"
   system "yarn build"
-  system "(cd test/dummy && yarn install)"
+  system "(cd test/dummy && yarn install --frozen-lockfile)"
 end
 
 # Custom Rails stats command

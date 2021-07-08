@@ -15,7 +15,8 @@ const uglifyOptions = {
       /**
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/active_admin_bootstrap/' and run \`yarn build\`
        */
-      //= require aab-bootstrap
+      //= require bootstrap
+      //= require bootstrap-icons
     ` + '\n'
   }
 }
@@ -35,7 +36,7 @@ export default {
   ],
   // Use client's yarn dependencies instead of bundling everything
   external: [
-    'aab-bootstrap',
+    'bootstrap',
     'bootstrap-icons'
   ]
 }

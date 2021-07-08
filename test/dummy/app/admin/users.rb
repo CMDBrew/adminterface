@@ -67,14 +67,14 @@ ActiveAdmin.register User do
   end
 
   sidebar "Customer Details", only: :show do
-    attributes_table_for user, :name, :email, :created_at
+    attributes_table_for resource, :name, :email, :created_at
   end
 
   sidebar "Order History", only: :show do
-    attributes_table_for user do
-      row("Total Orders") { user.orders.complete.count }
+    attributes_table_for resource do
+      row("Total Orders") { resource.orders.complete.count }
       row("Total Value") do
-        number_to_currency user.orders.complete.sum(:total_price)
+        number_to_currency resource.orders.complete.sum(:total_price)
       end
     end
   end

@@ -4,7 +4,6 @@ PATH
     active_admin_bootstrap (0.1.0)
       activeadmin (>= 2.9.0)
       rails (>= 6.0)
-      sass-rails
 
 GEM
   remote: https://rubygems.org/
@@ -129,7 +128,7 @@ GEM
     faraday-net_http (1.0.1)
     faraday-net_http_persistent (1.1.0)
     faraday-patron (1.0.0)
-    ffi (1.15.1)
+    ffi (1.15.3)
     formtastic (4.0.0)
       actionpack (>= 5.2.0)
     formtastic_i18n (0.7.0)
@@ -167,10 +166,6 @@ GEM
       addressable (~> 2.7)
     letter_opener (1.7.0)
       launchy (~> 2.2)
-    letter_opener_web (1.4.0)
-      actionmailer (>= 3.2)
-      letter_opener (~> 1.0)
-      railties (>= 3.2)
     loofah (2.10.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -272,8 +267,6 @@ GEM
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.4)
     rubyzip (2.3.0)
-    sass-rails (6.0.0)
-      sassc-rails (~> 2.1, >= 2.1.1)
     sassc (2.4.0)
       ffi (~> 1.9)
     sassc-rails (2.1.2)
@@ -342,13 +335,13 @@ DEPENDENCIES
   factory_bot_rails
   faker
   letter_opener
-  letter_opener_web (~> 1.0)
   mysql2
   omniauth
   omniauth-oauth2
   pg
   puma
   rails (~> 6.0.0)
+  sassc-rails
   simplecov
   sqlite3
   standardrb

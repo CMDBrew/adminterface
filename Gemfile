@@ -26,12 +26,12 @@ group :development do
 end
 
 group :development, :test do
+  gem "sassc-rails"
   gem "standardrb"
   gem "byebug"
   gem "puma"
   # Use Letter Opener to debug email on development
   gem "letter_opener"
-  gem "letter_opener_web", "~> 1.0"
 end
 
 group :test do

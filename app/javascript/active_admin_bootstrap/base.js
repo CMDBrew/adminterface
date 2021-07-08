@@ -1,2 +1,2 @@
-import 'aa-bootstrap'
+import 'bootstrap'
 import './initializers'

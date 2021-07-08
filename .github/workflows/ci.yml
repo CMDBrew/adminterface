@@ -7,9 +7,28 @@ on:
   push:
     branches:
       - master
+
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler: default
+          bundler-cache: true
+
+      - name: Run linters
+        run: |
+          bundle exec rails prepare_assets
+          yarn lint
+
   sqlite:
     runs-on: ubuntu-latest
+    needs: lint
     strategy:
       matrix:
         ruby: ['2.7', '3.0']
@@ -21,7 +40,7 @@ jobs:
       BUNDLE_PATH_RELATIVE_TO_CWD: true
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -30,13 +49,11 @@ jobs:
           bundler: default
           bundler-cache: true
 
-      - name: StandardRb check
-        run: bundle exec standardrb
-
       - name: Run tests
         env:
-          DATABASE_URL: "sqlite3:noticed_test"
+          DATABASE_URL: "sqlite3:active_admin_bootstrap_test"
           RAILS_ENV: test
+          NODE_ENV: test
         run: |
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
@@ -44,6 +61,7 @@ jobs:
 
   mysql:
     runs-on: ubuntu-latest
+    needs: lint
     strategy:
       matrix:
         ruby: ['2.7', '3.0']
@@ -64,7 +82,7 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -73,19 +91,18 @@ jobs:
           bundler: default
           bundler-cache: true
 
-      - name: StandardRb check
-        run: bundle exec standardrb
-
       - name: Run tests
         env:
           DATABASE_URL: mysql2://root:password@127.0.0.1:3306/test
           RAILS_ENV: test
+          NODE_ENV: test
         run: |
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
           bundle exec rails test
 
   postgres:
+    needs: lint
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -107,7 +124,7 @@ jobs:
         ports: ['5432:5432']
 
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v2
 
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
@@ -116,13 +133,11 @@ jobs:
           bundler: default
           bundler-cache: true
 
-      - name: StandardRb check
-        run: bundle exec standardrb
-
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
           RAILS_ENV: test
+          NODE_ENV: test
         run: |
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
