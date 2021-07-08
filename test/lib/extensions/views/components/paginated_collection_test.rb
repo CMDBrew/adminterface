@@ -64,9 +64,7 @@ class PaginatedCollectionTest < ActiveAdmin::BaseTestCase
         <div id="index_footer">
           <div class="pagination_per_page">
             <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <label class="input-group-text">Per page: </label>
-              </div>
+              <span class="input-group-text">Per page: </span>
               <select class="form-select">
                 <option value="1">1</option>
                 <option value="5" selected="selected">5</option>

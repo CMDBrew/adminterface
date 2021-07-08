@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
   menu priority: 4
+  config.per_page = [10, 30]
 
   permit_params :name, :email, :password
 

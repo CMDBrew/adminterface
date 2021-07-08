@@ -8,9 +8,7 @@ module ActiveAdminBootstrap
           def build_per_page_select
             div class: "pagination_per_page" do
               div class: "input-group input-group-sm" do
-                div class: "input-group-prepend" do
-                  label I18n.t("active_admin.pagination.per_page"), class: "input-group-text"
-                end
+                span I18n.t("active_admin.pagination.per_page"), class: "input-group-text"
 
                 select(class: "form-select") do
                   @per_page.each do |per_page|
