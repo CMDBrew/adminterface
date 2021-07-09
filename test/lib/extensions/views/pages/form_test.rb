@@ -145,6 +145,7 @@ module FormPageTest
       assert has_many_content.has_selector?("li.handle")
       assert has_many_content.has_selector?("li.has-many-inputs fieldset.inputs")
       assert has_many_content.has_selector?("ol.has-many-actions")
+      assert has_many_content.has_selector?(".has-many-list")
     end
   end
 end

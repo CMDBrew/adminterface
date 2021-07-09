@@ -62,7 +62,10 @@ $aside-bg: $body-bg !default;
 $attribute-table-key-width: 30% !default;
 
 // Form
-$form-sortable-helper-bg: rgba($warning, 0.12) !default;
+$form-sortable-placeholder-bg: rgba($info, 0.12) !default;
+$form-sortable-drag-bg: $white !default;
+$form-sortable-placeholder-max-height: none !default;
+$form-sortable-drag-max-height: 140px !default;
 
 // Icon
 $aa-icon-font-family: "bootstrap-icons" !default;

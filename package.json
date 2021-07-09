@@ -37,6 +37,7 @@
     "bootstrap-icons": "^1.5.0",
     "flatpickr": "^4.6.9",
     "jquery": "^3.6.0",
+    "sortablejs": "^1.14.0",
     "tom-select": "^1.7.5"
   }
 }

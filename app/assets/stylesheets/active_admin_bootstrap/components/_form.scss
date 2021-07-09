@@ -143,19 +143,26 @@
   }
 
   fieldset.has_many_fields {
-    &.ui-sortable-placeholder {
+    &.sortable-placeholder {
       z-index: 11;
-      background: $form-sortable-helper-bg !important;
-      visibility: visible !important;
+      background: $form-sortable-placeholder-bg;
+      visibility: visible;
       box-sizing: border-box;
 
-      @include box-shadow(none);
+      &[draggable="true"] {
+        max-height: $form-sortable-placeholder-max-height;
+        overflow: hidden;
+      }
     }
 
-    &.ui-sortable-helper {
-      height: auto !important;
-      opacity: 1 !important;
-      .has-many-inputs li:not(:first-child) { display: none; }
+    &.sortable-drag {
+      background: $form-sortable-drag-bg;
+      box-sizing: border-box;
+
+      &[draggable="true"] {
+        max-height: $form-sortable-drag-max-height;
+        overflow: hidden;
+      }
     }
 
     & > ol {

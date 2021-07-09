@@ -1,6 +1,6 @@
 import $ from 'jquery'
 import 'jquery-ui/ui/widgets/dialog'
-import 'jquery-ui/ui/widgets/sortable'
+// import 'jquery-ui/ui/widgets/sortable'
 import 'jquery-ui/ui/widget'
 import 'jquery-ujs'
 
@@ -10,7 +10,7 @@ import '@activeadmin/activeadmin/src/ext/jquery-ui'
 // import '@activeadmin/activeadmin/src/initializers/checkbox-toggler'
 // import '@activeadmin/activeadmin/src/initializers/dropdown-menu'
 // import '@activeadmin/activeadmin/src/initializers/filters'
-import '@activeadmin/activeadmin/src/initializers/has-many'
+// import '@activeadmin/activeadmin/src/initializers/has-many'
 // import '@activeadmin/activeadmin/src/initializers/per-page'
 // import '@activeadmin/activeadmin/src/initializers/table-checkbox-toggler'
 

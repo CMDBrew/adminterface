@@ -48,6 +48,21 @@ module ActiveAdminBootstrap
         template.concat form_fields(form_builder, parent, &block)
       end
 
+      def content_has_many(&block)
+        form_block = proc do |form_builder|
+          render_has_many_form(form_builder, options[:parent], &block)
+        end
+
+        template.assigns[:has_many_block] = true
+        contents =
+          template.content_tag :div, class: "has-many-list" do
+            without_wrapper { inputs(options, &form_block) }
+          end.html_safe
+
+        js = new_record ? js_for_has_many(options[:class], &form_block) : ""
+        contents << js
+      end
+
       def form_fields(form_builder, parent)
         index = parent && form_builder.send(:parent_child_index, parent)
         template.content_tag :li, class: "has-many-inputs" do
