@@ -11,7 +11,7 @@ import '@activeadmin/activeadmin/src/ext/jquery-ui'
 // import '@activeadmin/activeadmin/src/initializers/dropdown-menu'
 // import '@activeadmin/activeadmin/src/initializers/filters'
 import '@activeadmin/activeadmin/src/initializers/has-many'
-import '@activeadmin/activeadmin/src/initializers/per-page'
+// import '@activeadmin/activeadmin/src/initializers/per-page'
 // import '@activeadmin/activeadmin/src/initializers/table-checkbox-toggler'
 
 import ModalDialog from '@activeadmin/activeadmin/src/lib/modal-dialog'
