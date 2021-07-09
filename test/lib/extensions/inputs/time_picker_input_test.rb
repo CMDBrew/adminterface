@@ -4,7 +4,7 @@ module TimePickerInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.time_picker")
+    @wrapper ||= form.find(".input.time_picker")
   end
 
   included do

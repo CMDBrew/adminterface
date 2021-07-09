@@ -4,7 +4,7 @@ module TextInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.text")
+    @wrapper ||= form.find(".input.text")
   end
 
   included do

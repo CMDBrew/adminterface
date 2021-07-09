@@ -84,7 +84,7 @@ module SiteTitleTest
       setup do
         namespace =
           stub_namespace(site_title: "Hello World", site_title_image: nil,
-                         site_title_image_logged_out: nil, site_title_link: nil)
+            site_title_image_logged_out: nil, site_title_link: nil)
 
         @component =
           render_arbre_component({namespace: namespace}, mock_action_view) do
@@ -114,7 +114,7 @@ module SiteTitleTest
       setup do
         namespace =
           stub_namespace(site_title: "Hello World", site_title_image: nil,
-                         site_title_image_logged_out: nil, site_title_link: "https://www.example.com")
+            site_title_image_logged_out: nil, site_title_link: "https://www.example.com")
 
         @component =
           render_arbre_component({namespace: namespace}, mock_action_view) do

@@ -4,7 +4,7 @@ module EmailInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.email")
+    @wrapper ||= form.find(".input.email")
   end
 
   included do

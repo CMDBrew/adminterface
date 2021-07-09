@@ -8,7 +8,7 @@ class SwitchInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.switch .form-check.form-switch")
+    @wrapper = @form.find(".input.switch .form-check.form-switch")
   end
 
   test "wrapper" do

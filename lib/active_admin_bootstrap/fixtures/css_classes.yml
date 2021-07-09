@@ -29,9 +29,10 @@ form:
     submit: btn btn-primary
   error: alert alert-danger
   has_many:
-    destroy: text-danger
-    item: border mb-3
-    new: btn btn-sm btn-light
+    heading: h5
+    destroy: text-secondary
+    item: border rounded mb-3 p-3
+    new: null
 header:
   container: container-fluid
   wrapper: navbar-dark bg-primary navbar-expand-lg

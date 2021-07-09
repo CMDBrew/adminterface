@@ -174,7 +174,7 @@
           &::before {
             @extend %aa-icon;
 
-            content: map-get($aa-icons, 'sortable-handle');
+            content: map-get($aa-icons, 'form-has-many-sortable-handle');
           }
         }
 
@@ -198,10 +198,10 @@
             display: none;
           }
 
-          &::after {
+          &::before {
             @extend %aa-icon;
 
-            content: map-get($aa-icons, 'delete');
+            content: map-get($aa-icons, 'form-has-many-destroy');
           }
         }
       }
@@ -210,10 +210,10 @@
         padding-left: $spacer;
         font-size: 0;
 
-        &::after {
+        &::before {
           @extend %aa-icon;
 
-          content: map-get($aa-icons, 'remove');
+          content: map-get($aa-icons, 'form-has-many-destroy');
         }
       }
     }
@@ -222,6 +222,5 @@
     .has_many_delete { margin-bottom: 0; }
   }
 
-  li.input { list-style: none; }
   .choices-group { @extend %list-unstyled; }
 }

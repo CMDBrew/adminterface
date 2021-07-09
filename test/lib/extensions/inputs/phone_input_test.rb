@@ -4,7 +4,7 @@ module PhoneInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.phone")
+    @wrapper ||= form.find(".input.phone")
   end
 
   included do

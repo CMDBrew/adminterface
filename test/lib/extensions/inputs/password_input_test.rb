@@ -4,7 +4,7 @@ module PasswordInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.password")
+    @wrapper ||= form.find(".input.password")
   end
 
   included do

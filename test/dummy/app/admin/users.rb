@@ -2,7 +2,10 @@ ActiveAdmin.register User do
   menu priority: 4
   config.per_page = [10, 30]
 
-  permit_params :name, :email, :password
+  permit_params :name, :email, :password,
+    user_addresses_attributes: %i[
+      id fullname address_line1 address_line2 city state zip_code country
+    ]
 
   filter :name
   filter :email
@@ -46,7 +49,7 @@ ActiveAdmin.register User do
           column :city
           column :state
           column :country
-          column :zipcode
+          column :zip_code
           tr class: "action_items" do
             td link_to("New Address", new_admin_user_user_address_path(user), class: :button)
           end
@@ -62,6 +65,17 @@ ActiveAdmin.register User do
         f.input :name
         f.input :password, input_html: {autocomplete: "new-password"}
         f.input :email
+        f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+          k.inputs do
+            k.input :fullname
+            k.input :address_line1
+            k.input :address_line2
+            k.input :city
+            k.input :state
+            k.input :zip_code
+            k.input :country, as: :string
+          end
+        end
       end
       f.actions
     end

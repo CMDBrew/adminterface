@@ -4,7 +4,7 @@ module SelectInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.select")
+    @wrapper ||= form.find(".input.select")
   end
 
   included do

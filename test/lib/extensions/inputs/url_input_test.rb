@@ -4,7 +4,7 @@ module UrlInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.url")
+    @wrapper ||= form.find(".input.url")
   end
 
   included do

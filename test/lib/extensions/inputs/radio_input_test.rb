@@ -8,7 +8,7 @@ class RadioInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.radio .choices")
+    @wrapper = @form.find(".input.radio .choices")
   end
 
   test "wrapper" do

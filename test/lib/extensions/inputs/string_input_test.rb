@@ -4,7 +4,7 @@ module StringInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.string")
+    @wrapper ||= form.find(".input.string")
   end
 
   included do

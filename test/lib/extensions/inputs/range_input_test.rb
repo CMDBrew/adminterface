@@ -8,7 +8,7 @@ class RangeInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.range")
+    @wrapper = @form.find(".input.range")
   end
 
   test "wrapper" do

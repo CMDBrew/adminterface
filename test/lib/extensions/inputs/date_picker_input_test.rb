@@ -4,7 +4,7 @@ module DatePickerInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.date_picker")
+    @wrapper ||= form.find(".input.date_picker")
   end
 
   included do

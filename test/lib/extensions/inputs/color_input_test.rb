@@ -8,7 +8,7 @@ class ColorInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.color")
+    @wrapper = @form.find(".input.color")
   end
 
   test "wrapper" do

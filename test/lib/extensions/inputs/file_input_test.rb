@@ -4,7 +4,7 @@ module FileInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.file")
+    @wrapper ||= form.find(".input.file")
   end
 
   included do

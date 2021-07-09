@@ -14,8 +14,8 @@
     tr.selected td { background: $table-active-bg; }
 
     th.sortable {
-      &.sorted-asc a::before { content: map-get($aa-icons, 'sorted-asc'); }
-      &.sorted-desc a::before { content: map-get($aa-icons, 'sorted-desc'); }
+      &.sorted-asc a::before { content: map-get($aa-icons, 'table-sorted-asc'); }
+      &.sorted-desc a::before { content: map-get($aa-icons, 'table-sorted-desc'); }
 
       a {
         position: relative;

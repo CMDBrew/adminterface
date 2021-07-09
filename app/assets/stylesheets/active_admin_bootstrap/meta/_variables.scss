@@ -68,14 +68,10 @@ $form-sortable-helper-bg: rgba($warning, 0.12) !default;
 $aa-icon-font-family: "bootstrap-icons" !default;
 $aa-icon-size: 24px !default;
 $aa-icons: (
-  "sortable-handle": "\f145",
-  "sorted-asc": "\f145",
-  "sorted-desc": "\f124",
-  "chevron-left": "\F0141",
-  "chevron-right": "\F0142",
-  "filters": "\F0236",
-  "remove": "\F0156",
-  "delete": "\F0376",
+  "table-sorted-asc": "\f145",
+  "table-sorted-desc": "\f124",
+  "form-has-many-sortable-handle": "\f3fe",
+  "form-has-many-destroy": "\f62a",
 ) !default;
 $custom-icons: () !default;
 $aa-icons: map-merge($aa-icons, $custom-icons);

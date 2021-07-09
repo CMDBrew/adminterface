@@ -115,4 +115,36 @@ module FormPageTest
       assert_equal 2, page.all("form").count
     end
   end
+
+  class HasManyFormTest < ActiveAdmin::BaseTestCase
+    class HasManyFormView < FormPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            form do |f|
+              f.object.user_addresses.new
+              f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+                k.inputs do
+                  k.input :fullname
+                end
+              end
+            end
+          end
+      end
+    end
+
+    setup do
+      @page = render_arbre_component({}, mock_action_view(HasManyFormView)) do
+        insert_tag ActiveAdmin::Views::Pages::Form
+      end
+    end
+
+    test "body #content" do
+      page = Capybara.string(@page.to_s)
+      has_many_content = page.find("div.has_many_container.user_addresses")
+      assert has_many_content.has_selector?("li.handle")
+      assert has_many_content.has_selector?("li.has-many-inputs fieldset.inputs")
+      assert has_many_content.has_selector?("ol.has-many-actions")
+    end
+  end
 end

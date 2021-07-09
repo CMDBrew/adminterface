@@ -4,7 +4,7 @@ module SearchInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.search")
+    @wrapper ||= form.find(".input.search")
   end
 
   included do

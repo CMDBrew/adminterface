@@ -23,3 +23,17 @@ ActiveAdmin::Views::ActiveAdminForm.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::ActiveAdminForm
   has_css_classes_for :form
 end
+
+ActiveAdmin::Views::SemanticInputsProxy.class_eval do
+  def build(form_builder, *args, &block)
+    html_options = args.extract_options!
+    html_options[:class] ||= "inputs"
+    legend = args.shift if args.first.is_a?(::String)
+    legend = html_options.delete(:name) if html_options.key?(:name)
+    legend_tag = legend ? "<legend><span>#{legend}</span></legend>" : ""
+    fieldset_attrs = html_options.map { |k, v| %(#{k}="#{v}") }.join(" ")
+    @opening_tag = "<fieldset #{fieldset_attrs}>#{legend_tag}"
+    @closing_tag = "</fieldset>"
+    super(*(args << html_options), &block)
+  end
+end

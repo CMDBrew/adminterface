@@ -13,6 +13,7 @@ module ActiveAdminBootstrap
           ActiveAdmin::Views::Pages::Base.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::FormBuilder.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::HasManyBuilder.send :include, ActiveAdminBootstrap::Configs::Finders
+          ActiveAdmin::HasManyBuilder.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::Component.send :include, ActiveAdminBootstrap::Configs::Finders
           ActiveAdmin::ViewHelpers.send :include, ActiveAdminBootstrap::Configs::Finders
 

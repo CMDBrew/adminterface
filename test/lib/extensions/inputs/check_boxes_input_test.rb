@@ -8,7 +8,7 @@ class CheckBoxesInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.check_boxes .choices")
+    @wrapper = @form.find(".input.check_boxes .choices")
   end
 
   test "wrapper" do

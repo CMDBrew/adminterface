@@ -10,8 +10,8 @@ ActiveAdmin.register UserAddress do
         f.input :address_line2
         f.input :city
         f.input :state
-        f.input :zipcode
-        f.input :country
+        f.input :zip_code
+        f.input :country, as: :string
       end
       f.actions
     end

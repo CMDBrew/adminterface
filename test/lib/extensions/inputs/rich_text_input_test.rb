@@ -8,7 +8,7 @@ class RichTextInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.rich_text")
+    @wrapper = @form.find(".input.rich_text")
   end
 
   test "wrapper" do

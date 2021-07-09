@@ -2,7 +2,7 @@ require "test_case/active_admin/input_test_case"
 
 class TomSelectInputTest < ActiveAdmin::InputTestCase
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.tom_select")
+    @wrapper ||= form.find(".input.tom_select")
   end
 
   setup do

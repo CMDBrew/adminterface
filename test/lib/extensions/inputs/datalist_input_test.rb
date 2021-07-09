@@ -4,7 +4,7 @@ module DatalistInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.datalist")
+    @wrapper ||= form.find(".input.datalist")
   end
 
   included do

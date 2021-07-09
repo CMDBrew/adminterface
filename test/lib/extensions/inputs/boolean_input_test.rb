@@ -8,7 +8,7 @@ class BooleanInputTest < ActiveAdmin::InputTestCase
       end
     end
 
-    @wrapper = @form.find("li.input.boolean .form-check")
+    @wrapper = @form.find(".input.boolean .form-check")
   end
 
   test "wrapper" do

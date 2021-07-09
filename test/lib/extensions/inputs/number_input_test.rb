@@ -4,7 +4,7 @@ module NumberInputScenarios
   extend ActiveSupport::Concern
 
   def find_wrapper(form)
-    @wrapper ||= form.find("li.input.number")
+    @wrapper ||= form.find(".input.number")
   end
 
   included do
