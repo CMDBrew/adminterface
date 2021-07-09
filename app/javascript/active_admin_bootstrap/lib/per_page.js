@@ -1,4 +1,4 @@
-import { queryStringToParams, hasTurbolinks, turbolinksVisit, toQueryString } from '@activeadmin/activeadmin/src/lib/utils'
+import { queryStringToParams, hasTurbolinks, turbolinksVisit, toQueryString } from './utils'
 
 class PerPage {
   static _update (event) {

@@ -1,3 +1,5 @@
+/* global Event */
+
 import ModalDialog from '@activeadmin/activeadmin/src/lib/modal-dialog'
 import CheckboxToggler from '../lib/checkbox_toggler'
 import TableCheckboxToggler from '../lib/table_checkbox_toggler'
@@ -15,7 +17,7 @@ class BatchActions {
   }
 
   _bindLinks () {
-    const confirmEvent = new window.Event('confirm:complete')
+    const confirmEvent = new Event('confirm:complete')
     const $elements = this.element.querySelectorAll(`${this.options.batchActionSelector} li a`)
 
     $elements.forEach((el) => {
@@ -64,7 +66,7 @@ class BatchActions {
     const $batchActionSelector = this.element.querySelector(this.options.batchActionSelector)
     const $toggleAll = this.element.querySelector(this.options.toggler)
     const $checkboxes = this.element.querySelectorAll(`${this.options.collection} input[type="checkbox"]`)
-    const $toggler = $batchActionSelector.querySelector('.dropdown-toggle')
+    const $toggler = this.element.querySelector(`${this.options.batchActionSelector} .dropdown-toggle`)
 
     if ($batchActionSelector && $toggleAll) {
       if ($indexTable) {

@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const $filterForm = document.querySelector('.filter_form')
   const $selectAndSearch = document.querySelectorAll('.filter_form_field.select_and_search select')
 
-  $clearFilterBtn.addEventListener('click', Filters._clearForm)
-  $filterForm.addEventListener('submit', Filters._disableEmptyInputFields)
+  if ($clearFilterBtn) $clearFilterBtn.addEventListener('click', Filters._clearForm)
+  if ($filterForm) $filterForm.addEventListener('submit', Filters._disableEmptyInputFields)
   $selectAndSearch.forEach((select) => select.addEventListener('change', Filters._setSearchType))
 })

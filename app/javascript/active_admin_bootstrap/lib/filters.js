@@ -1,5 +1,4 @@
-import { queryStringToParams, hasTurbolinks, turbolinksVisit, toQueryString } from '@activeadmin/activeadmin/src/lib/utils'
-import { serializeArray } from './utils'
+import { queryStringToParams, hasTurbolinks, turbolinksVisit, toQueryString, serializeArray } from './utils'
 
 class Filters {
   static _clearForm (event) {
