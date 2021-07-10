@@ -7,6 +7,9 @@ import TableCheckboxToggler from '../lib/table_checkbox_toggler'
 class BatchActions {
   constructor (element) {
     this.element = element
+    this.events = {
+      confirm: new Event('confirm:complete')
+    }
     this.options = {
       batchActionSelector: '.batch_actions_selector',
       collection: '.paginated_collection',
@@ -17,7 +20,6 @@ class BatchActions {
   }
 
   _bindLinks () {
-    const confirmEvent = new Event('confirm:complete')
     const $elements = this.element.querySelectorAll(`${this.options.batchActionSelector} li a`)
 
     $elements.forEach((el) => {
@@ -30,7 +32,7 @@ class BatchActions {
 
         if ((message = el.dataset.confirm)) {
           ModalDialog(message, JSON.parse(el.dataset.inputs), inputs => {
-            el.dispatchEvent(confirmEvent, inputs)
+            el.dispatchEvent(this.events.confirm, inputs)
           })
         }
       })
@@ -41,7 +43,7 @@ class BatchActions {
     const $elements = this.element.querySelectorAll(`${this.options.batchActionSelector} li a`)
 
     $elements.forEach((el) => {
-      el.addEventListener('confirm:complete', (e, inputs) => {
+      el.addEventListener(this.events.confirm.type, (e, inputs) => {
         let value
         const $batchActionInputs = document.getElementById('batch_action_inputs')
 
