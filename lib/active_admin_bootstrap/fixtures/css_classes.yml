@@ -79,6 +79,9 @@ table_tools:
       positive: badge bg-primary
       zero: d-none
     tabs: nav-tabs
+  modal_dialog:
+    ok: btn btn-primary
+    cancel: btn btn-link
 tabs: nav-tabs
 title_bar:
   container: container-fluid

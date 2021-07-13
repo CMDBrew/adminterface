@@ -29,7 +29,7 @@ class ModalDialog {
       afterOpen: new Event('modal_dialog:after_open')
     }
 
-    this.options = { ...options, ...defaults }
+    this.options = { ...defaults, ...options }
     this._bind()
   }
 

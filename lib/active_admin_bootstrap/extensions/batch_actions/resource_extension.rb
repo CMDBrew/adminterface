@@ -27,8 +27,26 @@ module ActiveAdminBootstrap
     end
 
     module BatchAction
-      def message
-        @options[:message]
+      def modal_dialog
+        @modal_dialog ||= find_modal_dialog
+      end
+
+      private
+
+      def find_modal_dialog
+        options = @options[:modal_dialog] || {}
+        {
+          buttons: {
+            ok: {
+              text: I18n.t(:ok, scope: "active_admin.batch_actions.buttons"),
+              class: table_tools_css_classes.dig(:modal_dialog, :ok)
+            },
+            cancel: {
+              text: I18n.t(:cancel, scope: "active_admin.batch_actions.buttons"),
+              class: table_tools_css_classes.dig(:modal_dialog, :cancel)
+            }
+          }
+        }.deep_merge(options)
       end
     end
   end
@@ -40,5 +58,7 @@ ActiveAdmin::BatchActions::ResourceExtension.module_eval do
 end
 
 ActiveAdmin::BatchAction.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::BatchAction
+  has_css_classes_for :table_tools
 end

@@ -14,6 +14,10 @@ ActiveAdmin.register User do
   batch_action :flag, form: {
     name: {as: :string},
     updated_at: {as: :date_picker}
+  }, modal_dialog: {
+    buttons: {
+      ok: {class: "btn btn-danger", text: "Confirm!!!"}
+    }
   } do |ids, inputs|
     # inputs is a hash of all the form fields you requested
     redirect_to collection_path, notice: [ids, inputs].to_s

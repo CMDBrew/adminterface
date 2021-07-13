@@ -1,7 +1,11 @@
 ---
 en:
   active_admin:
-    filter_model: Find %{model}
+    batch_actions:
+      buttons:
+        cancel: Cancel
+        ok: Confirm
     devise:
       omniauth:
         divider: Or
+    filter_model: Find %{model}

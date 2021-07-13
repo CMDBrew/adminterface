@@ -27,13 +27,14 @@ class BatchActions {
     $elements.forEach((el) => {
       el.addEventListener('click', (e) => {
         const el = e.target
+        const modalDialogOptions = JSON.parse(el.dataset.aaModalDialog || '{}')
         let message
 
         e.stopPropagation()
         e.preventDefault()
 
         if ((message = el.dataset.confirm)) {
-          this.modal = new ModalDialog(message, JSON.parse(el.dataset.inputs), {}, function (inputs) {
+          this.modal = new ModalDialog(message, JSON.parse(el.dataset.inputs), modalDialogOptions, function (inputs) {
             const event = _self.events.confirm
             event.detail = { inputs }
             el.dispatchEvent(event)
