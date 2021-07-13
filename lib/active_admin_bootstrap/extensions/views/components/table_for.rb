@@ -17,6 +17,7 @@ end
 
 # Overwrite activeadmin/lib/active_admin/views/components/table_for.rb
 ActiveAdmin::Views::TableFor.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::Views::Components::TableFor
   has_css_classes_for :table_for
 end

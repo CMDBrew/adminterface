@@ -152,6 +152,7 @@ end
 
 # Overwrite activeadmin/lib/active_admin/form_builder.rb
 ActiveAdmin::FormBuilder.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::FormBuilder
   has_css_classes_for :form
   configure :default_text_area_height, 3
@@ -159,6 +160,7 @@ ActiveAdmin::FormBuilder.class_eval do
 end
 
 ActiveAdmin::HasManyBuilder.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::HasManyBuilder
   has_css_classes_for :form
 end

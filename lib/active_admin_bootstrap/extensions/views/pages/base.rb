@@ -138,6 +138,7 @@ end
 
 # Overwrite activeadmin/lib/active_admin/views/pages/base.rb
 ActiveAdmin::Views::Pages::Base.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash
   has_layouts_for :default_sidebar, :navigation
