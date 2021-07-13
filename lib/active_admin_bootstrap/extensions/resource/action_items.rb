@@ -52,13 +52,25 @@ module ActiveAdminBootstrap
             if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
               icon = active_admin_config.components.dig(:action_items, :destroy, :icon)
+              confirm_dialog_config = {
+                buttons: {
+                  ok: {
+                    text: I18n.t(:ok, scope: "active_admin.confirm_dialog"),
+                    class: active_admin_config.css_classes.dig(:confirm_dialog, :ok)
+                  },
+                  cancel: {
+                    text: I18n.t(:cancel, scope: "active_admin.confirm_dialog"),
+                    class: active_admin_config.css_classes.dig(:confirm_dialog, :cancel)
+                  }
+                }
+              }
 
               link_to(
                 safe_join([icon_html(icon), content_tag(:span, localizer.t(:delete_model))]),
                 resource_path(resource),
                 title: localizer.t(:delete_model),
                 class: active_admin_config.components.dig(:action_items, :destroy, :css_class),
-                method: :delete, data: {confirm: localizer.t(:delete_confirmation)}
+                method: :delete, data: {confirm: localizer.t(:delete_confirmation), "aa-confirm-dialog": confirm_dialog_config}
               )
             end
           end

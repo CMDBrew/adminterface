@@ -14,7 +14,7 @@ ActiveAdmin.register User do
   batch_action :flag, form: {
     name: {as: :string},
     updated_at: {as: :date_picker}
-  }, modal_dialog: {
+  }, confirm_dialog: {
     buttons: {
       ok: {class: "btn btn-danger", text: "Confirm!!!"}
     }

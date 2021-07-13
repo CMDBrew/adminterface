@@ -39,7 +39,8 @@ class TableCheckboxToggler extends CheckboxToggler {
   }
 
   _didClickCell (cell) {
-    cell.parentNode.querySelector('input[type="checkbox"]').click()
+    const $checkbox = cell.parentNode.querySelector('input[type="checkbox"]')
+    if ($checkbox) $checkbox.click()
   }
 }
 

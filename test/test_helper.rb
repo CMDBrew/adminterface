@@ -32,4 +32,8 @@ class ActiveSupport::TestCase < Minitest::Test
   def unify_html(html)
     html.split("\n").map(&:strip).join.gsub(/\s+/, " ").gsub(/>\s+</, "><")
   end
+
+  def escape_hash(hash)
+    CGI.escapeHTML(hash.to_json)
+  end
 end

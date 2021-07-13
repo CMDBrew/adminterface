@@ -23,7 +23,7 @@ module ActiveAdminBootstrap
                 "data-action": batch_action.sym,
                 "data-confirm": confirmation_text,
                 "data-inputs": render_in_context(self, batch_action.inputs).to_json,
-                "data-aa-modal-dialog": render_in_context(self, batch_action.modal_dialog).to_json
+                "data-aa-confirm-dialog": render_in_context(self, batch_action.confirm_dialog).to_json
               }
 
               default_title = render_or_call_method_or_proc_on(self, batch_action.title)

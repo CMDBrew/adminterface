@@ -27,7 +27,7 @@ class BatchActions {
     $elements.forEach((el) => {
       el.addEventListener('click', (e) => {
         const el = e.target
-        const modalDialogOptions = JSON.parse(el.dataset.aaModalDialog || '{}')
+        const modalDialogOptions = JSON.parse(el.dataset.aaConfirmDialog || '{}')
         let message
 
         e.stopPropagation()

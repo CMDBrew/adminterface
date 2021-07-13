@@ -32,7 +32,27 @@ module ActiveAdminBootstrap
         def item(*args)
           options = args.extract_options!
           options[:class] = "#{options[:class]} #{index_as_table_css_classes.dig(:actions, :item)}".squish
+          options["data-aa-confirm-dialog"] = confirm_dialog_config.to_json if confirm?(options)
           text_node link_to(*args, options)
+        end
+
+        def confirm?(options)
+          options.dig(:data, :confirm).present?
+        end
+
+        def confirm_dialog_config
+          {
+            buttons: {
+              ok: {
+                text: I18n.t(:ok, scope: "active_admin.confirm_dialog"),
+                class: confirm_dialog_css_classes[:ok]
+              },
+              cancel: {
+                text: I18n.t(:cancel, scope: "active_admin.confirm_dialog"),
+                class: confirm_dialog_css_classes[:cancel]
+              }
+            }
+          }
         end
       end
     end
@@ -53,4 +73,5 @@ end
 ActiveAdmin::Views::IndexAsTable::IndexTableFor::TableActions.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::TableActions
   has_css_classes_for :index_as_table
+  has_css_classes_for :confirm_dialog
 end

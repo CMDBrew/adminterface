@@ -2,9 +2,12 @@
 en:
   active_admin:
     batch_actions:
-      buttons:
+      confirm_dialog:
         cancel: Cancel
         ok: Confirm
+    confirm_dialog:
+      cancel: Cancel
+      ok: Confirm
     devise:
       omniauth:
         divider: Or

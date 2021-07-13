@@ -27,23 +27,23 @@ module ActiveAdminBootstrap
     end
 
     module BatchAction
-      def modal_dialog
-        @modal_dialog ||= find_modal_dialog
+      def confirm_dialog
+        @confirm_dialog ||= find_confirm_dialog
       end
 
       private
 
-      def find_modal_dialog
-        options = @options[:modal_dialog] || {}
+      def find_confirm_dialog
+        options = @options[:confirm_dialog] || {}
         {
           buttons: {
             ok: {
-              text: I18n.t(:ok, scope: "active_admin.batch_actions.buttons"),
-              class: table_tools_css_classes.dig(:modal_dialog, :ok)
+              text: I18n.t(:ok, scope: "active_admin.batch_actions.confirm_dialog"),
+              class: table_tools_css_classes.dig(:confirm_dialog, :ok)
             },
             cancel: {
-              text: I18n.t(:cancel, scope: "active_admin.batch_actions.buttons"),
-              class: table_tools_css_classes.dig(:modal_dialog, :cancel)
+              text: I18n.t(:cancel, scope: "active_admin.batch_actions.confirm_dialog"),
+              class: table_tools_css_classes.dig(:confirm_dialog, :cancel)
             }
           }
         }.deep_merge(options)
