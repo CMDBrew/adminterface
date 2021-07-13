@@ -1,7 +1,7 @@
 import flatpickr from 'flatpickr'
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-aa-datepicker]').forEach((element) => {
+const FlatpickerInit = function (element) {
+  element.querySelectorAll('[data-aa-datepicker]').forEach((element) => {
     const options = JSON.parse(element.dataset.aaDatepicker || {})
 
     const defaults = {
@@ -13,4 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     flatpickr(element, { ...defaults, ...options })
   })
-})
+}
+
+document.addEventListener('DOMContentLoaded', () => FlatpickerInit(document))
+
+export default FlatpickerInit

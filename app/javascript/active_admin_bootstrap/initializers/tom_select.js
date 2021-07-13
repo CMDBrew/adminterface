@@ -1,7 +1,7 @@
 import TomSelect from 'tom-select'
 
-document.addEventListener('DOMContentLoaded', () => {
-  document.querySelectorAll('[data-aa-tom-select]').forEach((element) => {
+const TomSelectInit = function (element) {
+  element.querySelectorAll('[data-aa-tom-select]').forEach((element) => {
     const options = JSON.parse(element.dataset.aaTomSelect || {})
 
     const defaults = {
@@ -15,4 +15,8 @@ document.addEventListener('DOMContentLoaded', () => {
     new TomSelect(element, { ...defaults, ...options })
     /* eslint-enable no-new */
   })
-})
+}
+
+document.addEventListener('DOMContentLoaded', () => TomSelectInit(document))
+
+export default TomSelectInit

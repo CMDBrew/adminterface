@@ -1,0 +1,4 @@
+#modal-dialog-confirm {
+  #dialog-message { margin-bottom: 0; }
+  #dialog-message + #modal-dialog-confirm-form:not(:empty) { margin-top: $spacer; }
+}

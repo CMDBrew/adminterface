@@ -76,7 +76,9 @@ class HasMany {
         this._bindEvents(fieldset)
         this._recomputePosition()
 
-        return parent.dispatchEvent(this.events.addAfter, [fieldset, parent])
+        const addAfterEvent = this.events.addAfter
+        addAfterEvent.detail = { fieldset, parent }
+        return parent.dispatchEvent(this.events.addAfter)
       }
     })
   }
@@ -86,13 +88,17 @@ class HasMany {
       const el = e.target
       const parent = this.element
       const fieldset = el.closest(this.options.item)
+      const removeBeforeEvent = this.events.removeBefore
+      const removeAfterEvent = this.events.removeAfter
 
       e.preventDefault()
       this._recomputePosition()
 
-      parent.dispatchEvent(this.events.removeBefore, [fieldset, parent])
+      removeBeforeEvent.detail = { fieldset, parent }
+      removeAfterEvent.detail = { fieldset, parent }
+      parent.dispatchEvent(removeBeforeEvent)
       fieldset.remove()
-      return parent.dispatchEvent(this.events.removeAfter, [fieldset, parent])
+      return parent.dispatchEvent(removeAfterEvent)
     })
   }
 

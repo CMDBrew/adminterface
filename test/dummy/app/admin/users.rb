@@ -11,6 +11,14 @@ ActiveAdmin.register User do
   filter :email
   filter :created_at
 
+  batch_action :flag, form: {
+    name: {as: :string},
+    updated_at: {as: :date_picker}
+  } do |ids, inputs|
+    # inputs is a hash of all the form fields you requested
+    redirect_to collection_path, notice: [ids, inputs].to_s
+  end
+
   index do
     selectable_column
     id_column

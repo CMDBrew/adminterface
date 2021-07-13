@@ -1,12 +1,13 @@
 /* global Event */
 
-import ModalDialog from '@activeadmin/activeadmin/src/lib/modal-dialog'
-import CheckboxToggler from '../lib/checkbox_toggler'
-import TableCheckboxToggler from '../lib/table_checkbox_toggler'
+import ModalDialog from './modal_dialog'
+import CheckboxToggler from './checkbox_toggler'
+import TableCheckboxToggler from './table_checkbox_toggler'
 
 class BatchActions {
   constructor (element) {
     this.element = element
+    this.modal = null
     this.events = {
       confirm: new Event('confirm:complete')
     }
@@ -21,6 +22,7 @@ class BatchActions {
 
   _bindLinks () {
     const $elements = this.element.querySelectorAll(`${this.options.batchActionSelector} li a`)
+    const _self = this
 
     $elements.forEach((el) => {
       el.addEventListener('click', (e) => {
@@ -31,8 +33,10 @@ class BatchActions {
         e.preventDefault()
 
         if ((message = el.dataset.confirm)) {
-          ModalDialog(message, JSON.parse(el.dataset.inputs), inputs => {
-            el.dispatchEvent(this.events.confirm, inputs)
+          this.modal = new ModalDialog(message, JSON.parse(el.dataset.inputs), {}, function (inputs) {
+            const event = _self.events.confirm
+            event.detail = { inputs }
+            el.dispatchEvent(event)
           })
         }
       })
@@ -43,9 +47,10 @@ class BatchActions {
     const $elements = this.element.querySelectorAll(`${this.options.batchActionSelector} li a`)
 
     $elements.forEach((el) => {
-      el.addEventListener(this.events.confirm.type, (e, inputs) => {
+      el.addEventListener(this.events.confirm.type, function (e) {
         let value
         const $batchActionInputs = document.getElementById('batch_action_inputs')
+        const inputs = (e.detail || {}).inputs
 
         e.stopPropagation()
         e.preventDefault()

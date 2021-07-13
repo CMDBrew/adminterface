@@ -58,7 +58,7 @@ module ActiveAdminBootstrap
                 resource_path(resource),
                 title: localizer.t(:delete_model),
                 class: active_admin_config.components.dig(:action_items, :destroy, :css_class),
-                method: :delete, data: {confirm: localizer.t(:delete_confirmation), message: localizer.t(:delete_confirmation_message)}
+                method: :delete, data: {confirm: localizer.t(:delete_confirmation)}
               )
             end
           end

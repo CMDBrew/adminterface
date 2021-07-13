@@ -24,6 +24,22 @@ function queryStringToParams () {
     })
 }
 
+function toHTMLAttrString (obj) {
+  const object = obj || {}
+  const arr = []
+  Object.keys(object).forEach((key) => {
+    let value = object[key]
+
+    if (typeof (value) === 'object') {
+      value = JSON.stringify(value)
+    }
+
+    arr.push(`${key}='${value}'`)
+  })
+
+  return arr.join(' ')
+}
+
 function toQueryString (params) {
   const encode = (value) => encodeURIComponent(value || '')
 
@@ -58,11 +74,20 @@ function serializeArray (form) {
   return arr
 }
 
+function serializeObject (form) {
+  return serializeArray(form).reduce((obj, item) => {
+    obj[item.name] = item.value
+    return obj
+  }, {})
+}
+
 export {
-  serializeArray,
   hasTurbolinks,
-  turbolinksVisit,
   queryString,
   queryStringToParams,
-  toQueryString
+  serializeArray,
+  serializeObject,
+  toHTMLAttrString,
+  toQueryString,
+  turbolinksVisit
 }

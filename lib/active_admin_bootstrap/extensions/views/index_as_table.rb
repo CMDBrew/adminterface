@@ -22,17 +22,6 @@ module ActiveAdminBootstrap
           options = args.extract_options!
           super(*args, options.merge(button: {class: index_as_table_css_classes.dig(:actions, :item)}), &block)
         end
-
-        def item(*args)
-          localizer = ActiveAdmin::Localizers.resource(active_admin_config)
-          options = args.extract_options!
-          options[:data].reverse_merge!(message: localizer.t(:delete_message)) if delete_link?(options)
-          super(*args.push(options))
-        end
-
-        def delete_link?(options)
-          options[:method].eql?(:delete) && options.dig(:data, :confirm)
-        end
       end
 
       module TableActions
