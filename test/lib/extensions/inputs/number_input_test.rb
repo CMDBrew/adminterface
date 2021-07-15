@@ -39,7 +39,7 @@ class NumberInputTest < ActiveAdmin::InputTestCase
   end
 end
 
-class NumberPickerInputGroupingTest < ActiveAdmin::InputTestCase
+class NumberInputGroupingTest < ActiveAdmin::InputTestCase
   test "renders prepend" do
     form = build_form do |f|
       f.inputs do
