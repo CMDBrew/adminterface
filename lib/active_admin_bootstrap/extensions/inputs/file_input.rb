@@ -4,6 +4,7 @@ module ActiveAdmin
       include ::ActiveAdminBootstrap::Extensions::Inputs::Base
       prepend ::ActiveAdminBootstrap::Extensions::Inputs::Base::Groupish
 
+      # @TODO: use custom component so we can change the translations in I18n YAML files
       def to_html
         input_wrapping do
           label_html << input_html

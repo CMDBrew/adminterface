@@ -6,6 +6,7 @@ module ActiveAdminBootstrap
         include Base::Stringish
         prepend Base::Groupish
 
+        # @TODO: allow modifying js configs
         def input_html_options
           opts = super
           opts[:class] = "#{opts[:class]} form-control".squish
