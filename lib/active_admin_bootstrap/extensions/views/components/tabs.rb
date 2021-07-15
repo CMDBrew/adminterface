@@ -9,7 +9,7 @@ module ActiveAdminBootstrap
             li html_options.merge(class: "nav-item") do
               if @http
                 params[:tab] ||= @default_tab || fragment
-                link_to title, url_for(tab: fragment), class: toggler_class(fragment)
+                link_to title, url_for(tab: fragment, anchor: id, anchor_id: id), class: toggler_class(fragment)
               else
                 link_to title, "##{fragment}", class: toggler_class(fragment), data: {"bs-toggle": "tab", "bs-target": "##{fragment}"}
               end
@@ -20,6 +20,21 @@ module ActiveAdminBootstrap
             fragment = options.fetch(:id, fragmentize(title))
             options = options.reverse_merge(id: fragmentize(title))
             div(options.merge(class: tab_pane_class(fragment)), &block)
+          end
+
+          def default_css_class
+            tabs_css_classes
+          end
+
+          def nav_html_options
+            nav_html[:class] = "nav #{default_css_class} #{nav_html[:class]}".squish
+            nav_html[:role] = "tablist"
+            nav_html
+          end
+
+          def content_html_options
+            content_html[:class] = "tab-content #{content_html[:class]}".squish
+            content_html
           end
 
           private
@@ -45,13 +60,17 @@ end
 ActiveAdmin::Views::Tabs.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::Tabs
   has_css_classes_for :tabs
+  attr_accessor :nav_html, :content_html, :id
 
   def build(options = {}, &_block)
-    klass = options.delete(:class) { tabs_css_classes }
+    @nav_html = options.delete(:nav_html) || {}
+    @content_html = options.delete(:content_html) || {}
     @http = options.delete(:http) { false }
     @default_tab = options.delete(:default)
+    @id = options[:id]
+    super(options)
 
-    @menu = ul(class: "nav #{klass}", role: "tablist")
-    @tabs_content = div(class: "tab-content")
+    @menu = ul(**nav_html_options)
+    @tabs_content = div(**content_html_options)
   end
 end

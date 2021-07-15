@@ -35,6 +35,16 @@ module ActiveAdminBootstrap
               safe_join(html)
             end
           end
+
+          def header_html_options
+            header_html[:class] = "#{default_header_class} #{header_html[:class]}".squish
+            header_html
+          end
+
+          def body_html_options
+            body_html[:class] = "panel_contents #{default_body_class} #{body_html[:class]}".squish
+            body_html
+          end
         end
       end
     end
@@ -45,14 +55,17 @@ end
 ActiveAdmin::Views::Panel.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Components::Panel
   has_css_classes_for :panel
+  attr_accessor :header_html, :body_html
 
-  def build(title = nil, attributes = {})
-    header_class = attributes.delete(:header_class)
-    body_class = attributes.delete(:body_class)
-    super(attributes)
+  def build(*args)
+    options = args.extract_options!
+    title = args.first
+    @header_html = options.delete(:header_html) || {}
+    @body_html = options.delete(:body_html) || {}
+    super(options)
     add_class default_wrapper_class
 
-    @title = div(build_title(title), class: "#{default_header_class} #{header_class}".squish)
-    @contents = div(class: "panel_contents #{default_body_class} #{body_class}".squish)
+    @title = div(build_title(title), **header_html_options)
+    @contents = div(**body_html_options)
   end
 end

@@ -12,6 +12,7 @@ attributes_table:
   table: table text-break
   wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
+columns: g-3
 confirm_dialog:
   cancel: btn btn-link
   ok: btn btn-primary
@@ -75,11 +76,11 @@ status_tag:
 table_for: table
 table_tools:
   btn: btn btn-sm btn-light
-  indexes:
-    tabs: nav-pills nav-sm
   confirm_dialog:
     cancel: btn btn-link
     ok: btn btn-primary
+  indexes:
+    tabs: nav-pills nav-sm
   scopes:
     counts:
       positive: badge bg-primary

@@ -64,7 +64,7 @@ module PanelTest
 
     setup do
       @component = render_arbre_component do
-        panel "", {header_class: "header", body_class: "body"} do
+        panel "", header_html: {class: "header"}, body_html: {class: "body"} do
           h1 "test"
           para "this is a panel"
         end

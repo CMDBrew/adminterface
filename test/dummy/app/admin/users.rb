@@ -33,7 +33,7 @@ ActiveAdmin.register User do
   end
 
   show do
-    panel "Order History" do
+    panel do
       div class: "table-responsive" do
         table_for(user.orders) do
           column("Order", sortable: :id) do |order|

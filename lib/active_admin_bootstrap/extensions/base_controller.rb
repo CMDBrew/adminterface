@@ -2,7 +2,7 @@ module ActiveAdminBootstrap
   module Extensions
     module BaseController
       def default_url_options
-        super.merge(tab: params[:tab])
+        super.merge(tab: params[:tab], anchor: params[:anchor_id])
       end
 
       private
@@ -16,6 +16,7 @@ module ActiveAdminBootstrap
 
       def reset_tab
         params.delete(:tab)
+        params.delete(:anchor_id)
       end
 
       def should_reset_tab?

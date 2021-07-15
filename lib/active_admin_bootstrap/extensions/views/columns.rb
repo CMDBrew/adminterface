@@ -2,8 +2,13 @@ module ActiveAdminBootstrap
   module Extensions
     module Views
       module Columns
+        def build(...)
+          super(...)
+          add_class "row"
+        end
+
         def default_class_name
-          "row g-3"
+          columns_css_classes
         end
 
         protected
@@ -29,6 +34,7 @@ end
 # Overwrite activeadmin/lib/active_admin/views/columns.rb
 ActiveAdmin::Views::Columns.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Columns
+  has_css_classes_for :columns
 
   protected
 
@@ -39,7 +45,7 @@ end
 
 ActiveAdmin::Views::Column.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Column
-  has_breakpoints_for :column
+  has_breakpoints_for :columns
 
   attr_reader :size, :span_size, :css_class
 
@@ -47,7 +53,7 @@ ActiveAdmin::Views::Column.class_eval do
     options = options.dup
     @css_class = options.delete(:class)
     @span_size = options.delete(:span)
-    @size = options.delete(:size) { column_breakpoints }
+    @size = options.delete(:size) { columns_breakpoints }
     super(options)
   end
 end
