@@ -5,10 +5,11 @@
 [components.yml]: ../lib/active_admin_bootstrap/fixtures/components.yml
 
 # General Configuration <!-- omit in toc -->
-We've kept the existing functionalities and add some enhancements (marked with ✨) to the configurations. Please see [ActiveAdmin] for basic configurations.
+We've kept the existing functionalities and add some enhancements to the configurations. Please see [ActiveAdmin] for basic configurations.
 
-- [Customzing the CSS Classes✨](#customzing-the-css-classes)
-- [Customzing the Components✨](#customzing-the-components)
+- [SiteTitle image for logged out pagess](#sitetitle-image-for-logged-out-pagess)
+- [CSS Classes](#css-classes)
+- [Components](#components)
   - [ActionItems](#actionitems)
   - [ActiveAdminComments](#activeadmincomments)
   - [Columns](#columns)
@@ -17,18 +18,24 @@ We've kept the existing functionalities and add some enhancements (marked with �
   - [Header](#header)
   - [IndexAsGrid](#indexasgrid)
   - [Sidebar](#sidebar)
-- [Pro Tips✨](#pro-tips)
+- [Pro Tips](#pro-tips)
   - [Loading Configs From YAML files](#loading-configs-from-yaml-files)
   - [Global Settings](#global-settings)
   - [Namespace Settings](#namespace-settings)
   - [Resource Settings](#resource-settings)
 
-## Customzing the CSS Classes✨
+## SiteTitle image for logged out pagess
+We've added an extra options for logo displays for the logged out pages.
+- `site_title_image_logged_out:`
+  - Type: `String`, `Symbol`, or `Proc`
+  - Note: It fallbacks to `site_title_image:` if not specified
+
+## CSS Classes
 We've updated ActiveAdmin's components with [Bootstrap] classes. Specify the changes you want to make, and we will merge your configs with the defaults.
 
 - **Defaults**: [css_classes.yml]
 
-## Customzing the Components✨
+## Components
 Customize how components should behave.
 
 - **Defaults**: [components.yml]
@@ -98,7 +105,7 @@ Customize how components should behave.
   - Type: `String`
   - Available Options: `left`, or `right`
 
-## Pro Tips✨
+## Pro Tips
 ### Loading Configs From YAML files
 You can load your configs from YAML files to keep things tidy ✌️.
 

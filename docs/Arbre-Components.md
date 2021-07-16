@@ -7,24 +7,24 @@
 [Bootstrap/layout/grid]: https://getbootstrap.com/docs/5.0/layout/grid/
 
 # ArbreComponents <!-- omit in toc -->
-We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements (marked with ✨). Please see [ActiveAdmin] for more information on components configurations.
+We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements. Please see [ActiveAdmin] for basic configurations.
 
 - [Panels](#panels)
-  - [Title is not required✨](#title-is-not-required)
-  - [Header and Body HTML options✨](#header-and-body-html-options)
+  - [Title is not required](#title-is-not-required)
+  - [Header and Body HTML options](#header-and-body-html-options)
 - [Columns](#columns)
-  - [Gutter✨](#gutter)
-  - [Sizing✨](#sizing)
+  - [Gutter](#gutter)
+  - [Sizing](#sizing)
 - [Table For](#table-for)
-  - [Overflow & Scrolling✨](#overflow--scrolling)
+  - [Overflow & Scrolling](#overflow--scrolling)
 - [Tabs](#tabs)
-  - [Nav and Content HTML Options✨](#nav-and-content-html-options)
-  - [HTTP Tabs✨](#http-tabs)
+  - [Nav and Content HTML Options](#nav-and-content-html-options)
+  - [HTTP Tabs](#http-tabs)
 
 ## Panels
 - **Configuration**: [ActiveAdmin/arbre-components/panels]
 
-### Title is not required✨
+### Title is not required
 We've removed the requirements for title. If you don't pass in title or pass in an empty value the panel header will not be visible.
 
 ```ruby
@@ -39,7 +39,7 @@ show do
 end
 ```
 
-### Header and Body HTML options✨
+### Header and Body HTML options
 You can pass in `:header_html` and `:body_html` to add additional attributes to the panel's header and body, respectively.
 
 ```ruby
@@ -55,7 +55,7 @@ We've replaced columns from using inline css to using [Bootstrap/layout/grid].
 
 - **Configuration**: [ActiveAdmin/arbre-components/columns]
 
-### Gutter✨
+### Gutter
 You can change the gutter between columns by passing in your own gutter class.
 ```ruby
 columns(class: "g-5") do
@@ -80,7 +80,7 @@ Will output
 </div>
 ```
 
-### Sizing✨
+### Sizing
 ❗️ `:max_width` and `:min_width` options no longer works.
 
 ```ruby
@@ -109,7 +109,7 @@ Will output
 ## Table For
 - **Configuration**: [ActiveAdmin/arbre-components/table_for]
 
-### Overflow & Scrolling✨
+### Overflow & Scrolling
 By usings [Bootstrap]'s `.table-responsive`, you can add scrolling to your table.
 
 ```ruby
@@ -128,7 +128,7 @@ We've replaced jQuery tabs with [Bootstrap].
 
 - **Configuration**: [ActiveAdmin/arbre-components/tabs]
 
-### Nav and Content HTML Options✨
+### Nav and Content HTML Options
 You can pass in `:nav_html` and `:content_html` to add additional attributes to the tab's nav and content, respectively.
 
 ```ruby
@@ -138,7 +138,7 @@ tabs nav_html: {class: "my-tabs-nav"}, content_html: {class: "my-tabs-content"} 
 end
 ```
 
-### HTTP Tabs✨
+### HTTP Tabs
 Sometimes, you would want the page to refresh when viewing another tab. To achieve that, you can pass in `http: true` to the tabs.
 If you add an `:id` to the tab, it will automatically set as the anchor for the nav links.
 

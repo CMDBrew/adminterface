@@ -38,7 +38,7 @@
 [Trix]: https://trix-editor.org/
 
 # Customizing the Form <!-- omit in toc -->
-We've kept the existing functionalities and applied [Bootstrap] styles with some additional inputs types and enhancements (marked with ✨). Please see [Formtastic] and [ActiveAdmin] for more information on basic configurations.
+We've kept the existing functionalities and applied [Bootstrap] styles with some additional inputs types and enhancements (marked with ✨). Please see [Formtastic] and [ActiveAdmin] for basic configurations.
 
 - [Form](#form)
   - [Multiple Forms](#multiple-forms)
