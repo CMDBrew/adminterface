@@ -69,12 +69,12 @@ module ActiveAdminBootstrap
 
           def sidebar_sections_for_action_for_position(position)
             sections = sidebar_sections_for_action.select { |x| x.position.eql?(position) }
-            sections += sidebar_sections_for_action.select { |x| x.position.blank? } if default_sidebar_layouts.eql?(position)
+            sections += sidebar_sections_for_action.select { |x| x.position.blank? } if sidebar_position.eql?(position)
             sections
           end
 
           def body_classes
-            super.add "#{html_css_classes[:body]} layout-navigation-#{navigation_layouts} #{sidebar_class}".squish
+            super.add "#{html_css_classes[:body]} layout-navigation-#{header_position} #{sidebar_class}".squish
           end
 
           def sidebar_class
@@ -130,6 +130,14 @@ module ActiveAdminBootstrap
               end
             klass || "container"
           end
+
+          def sidebar_position
+            sidebar_components[:position]
+          end
+
+          def header_position
+            header_components[:position]
+          end
         end
       end
     end
@@ -141,6 +149,5 @@ ActiveAdmin::Views::Pages::Base.class_eval do
   include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash
-  has_layouts_for :default_sidebar, :navigation
-  has_components_for :flash
+  has_components_for :flash, :sidebar, :header
 end

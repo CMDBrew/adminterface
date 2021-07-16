@@ -14,13 +14,13 @@ module ActiveAdminBootstrap
 
         # Adds the default New link on index
         def add_default_new_action_item
-          add_action_item :new, only: proc { components.dig(:action_items, :new, :display)&.map(&:to_sym) } do
+          add_action_item :new, only: proc { components.dig(:action_items, :new, :only)&.map(&:to_sym) } do
             if controller.action_methods.include?("new") && authorized?(ActiveAdmin::Auth::CREATE, active_admin_config.resource_class)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
-              icon = active_admin_config.components.dig(:action_items, :new, :icon)
+              icon_class = active_admin_config.components.dig(:action_items, :new, :icon_class)
 
               link_to(
-                safe_join([icon_html(icon), content_tag(:span, localizer.t(:new_model))]),
+                safe_join([icon_html(icon_class), content_tag(:span, localizer.t(:new_model))]),
                 new_resource_path,
                 title: localizer.t(:new_model),
                 class: active_admin_config.components.dig(:action_items, :new, :css_class)
@@ -31,13 +31,13 @@ module ActiveAdminBootstrap
 
         # Adds the default Edit link on show
         def add_default_edit_action_item
-          add_action_item :edit, only: proc { components.dig(:action_items, :edit, :display)&.map(&:to_sym) } do
+          add_action_item :edit, only: proc { components.dig(:action_items, :edit, :only)&.map(&:to_sym) } do
             if controller.action_methods.include?("edit") && authorized?(ActiveAdmin::Auth::UPDATE, resource)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
-              icon = active_admin_config.components.dig(:action_items, :edit, :icon)
+              icon_class = active_admin_config.components.dig(:action_items, :edit, :icon_class)
 
               link_to(
-                safe_join([icon_html(icon), content_tag(:span, localizer.t(:edit_model))]),
+                safe_join([icon_html(icon_class), content_tag(:span, localizer.t(:edit_model))]),
                 edit_resource_path(resource),
                 title: localizer.t(:edit_model),
                 class: active_admin_config.components.dig(:action_items, :edit, :css_class)
@@ -48,10 +48,10 @@ module ActiveAdminBootstrap
 
         # Adds the default Destroy link on show
         def add_default_destroy_action_item
-          add_action_item :destroy, only: proc { components.dig(:action_items, :destroy, :display)&.map(&:to_sym) } do
+          add_action_item :destroy, only: proc { components.dig(:action_items, :destroy, :only)&.map(&:to_sym) } do
             if controller.action_methods.include?("destroy") && authorized?(ActiveAdmin::Auth::DESTROY, resource)
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
-              icon = active_admin_config.components.dig(:action_items, :destroy, :icon)
+              icon_class = active_admin_config.components.dig(:action_items, :destroy, :icon_class)
               confirm_dialog_config = {
                 buttons: {
                   ok: {
@@ -66,7 +66,7 @@ module ActiveAdminBootstrap
               }
 
               link_to(
-                safe_join([icon_html(icon), content_tag(:span, localizer.t(:delete_model))]),
+                safe_join([icon_html(icon_class), content_tag(:span, localizer.t(:delete_model))]),
                 resource_path(resource),
                 title: localizer.t(:delete_model),
                 class: active_admin_config.components.dig(:action_items, :destroy, :css_class),

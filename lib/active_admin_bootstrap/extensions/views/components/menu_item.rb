@@ -47,7 +47,7 @@ ActiveAdmin::Views::MenuItem.class_eval do
     add_class "active" if item.current?(assigns[:current_tab])
 
     if item.items.any?
-      item.html_options.merge!(class: "nav-link dropdown-toggle", "data-toggle": "dropdown")
+      item.html_options.merge!(class: "nav-link dropdown-toggle", "data-bs-toggle": "dropdown")
     end
 
     if url

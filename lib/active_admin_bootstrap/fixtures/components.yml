@@ -2,20 +2,34 @@
 action_items:
   destroy:
     css_class: null
-    display:
+    icon_class: null
+    only:
       - show
-    icon: null
   edit:
     css_class: null
-    display:
+    icon_class: null
+    only:
       - show
-    icon: null
   new:
     css_class: btn btn-primary
-    display:
+    icon_class: null
+    only:
       - index
-    icon: null
 active_admin_comments:
   input: text
+columns:
+  breakpoint: md
+filter:
+  position: sidebar
 flash:
   dismissible: true
+header:
+  css_class:
+    top: navbar-dark bg-primary navbar-expand-lg
+    drawer: navbar-dark bg-primary
+    drawer_dismissible: navbar-light bg-light
+  position: top
+index_as_grid:
+  breakpoint: lg
+sidebar:
+  position: right

@@ -30,7 +30,8 @@ class HeaderTest < ActiveAdmin::BaseTestCase
     assert @component.class_list.include?("header")
     assert @component.class_list.include?("navbar")
 
-    default_css_classes[:wrapper].split.each do |klass|
+    class_list = default_css_classes[:wrapper] || ""
+    class_list.split.each do |klass|
       assert @component.class_list.include?(klass)
     end
   end
@@ -38,7 +39,7 @@ class HeaderTest < ActiveAdmin::BaseTestCase
   test "#content" do
     html =
       <<~ERB
-        <div class="#{default_css_classes[:container]}">
+        <div class="header-container #{default_css_classes[:container]}">
           <div class="site_title navbar-brand">
             <div class="title">Awesome Admin</div>
           </div>

@@ -1,84 +1,13 @@
-%layout-navigation-drawer {
-  $_header-width: map-get($layout-navigation-drawer, 'header');
-  $_title-bar-height: map-get($layout-navigation-drawer, 'title_bar');
+$_header-width: map-get($layout-navigation-drawer, 'header');
+$_titlebar-height: map-get($layout-navigation-drawer, 'title_bar');
+$_breakpoint: map-get($layout-navigation-drawer, 'breakpoint');
 
-  display: grid;
-  grid-template-areas:
-    "header title_bar"
-    "header content";
-  grid-template-columns: 0 minmax(0, 1fr);
-  grid-template-rows: $_title-bar-height minmax(0, 1fr);
-  overflow: hidden;
+body.layout-navigation-drawer {
+  #header .site_title { height: $_titlebar-height; }
 
-  .breakpoint-up-helper,
-  .breakpoint-down-helper {
-    display: none;
-  }
+  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint);
 
-  #wrapper {
-    height: 100%;
-    grid-area: content;
-  }
-
-  #title_bar {
-    grid-area: title_bar;
-
-    .navbar-toggler {
-      display: block;
-      margin-right: $spacer;
-    }
-  }
-
-  #header {
-    display: none;
-    height: 100% !important;
-    grid-area: header;
-
-    .site_title { height: map-get($layout-navigation-drawer, 'title_bar'); }
-    .navbar-toggler { display: none; }
-    .collapse { display: block !important; }
-
-    .nav-link {
-      padding-right: 0;
-      padding-left: 0;
-    }
-
-    #header-nav {
-      width: 100%;
-
-      .navbar-nav {
-        display: block;
-        width: 100%;
-      }
-    }
-  }
-
-  $_breakpoint: (nth(map-keys($grid-breakpoints), index(map-keys($grid-breakpoints), map-get($layout-navigation-drawer, 'breakpoint')) - 1));
-
-  @include media-breakpoint-down($_breakpoint) {
-    &.header-active {
-      grid-template-columns: $_header-width 100vw;
-      #header { display: block; }
-      .float-actions { display: none; }
-    }
-
-    .breakpoint-down-helper { display: block; }
-  }
-
-  @include media-breakpoint-up(map-get($layout-navigation-drawer, 'breakpoint')) {
-    grid-template-areas:
-      "header title_bar"
-      "header content";
-    grid-template-columns: $_header-width minmax(0, 1fr);
-
-    .breakpoint-up-helper { display: block; }
-    #header { display: block; }
+  @include media-breakpoint-up($_breakpoint) {
     #title_bar .navbar-toggler { display: none; }
   }
-
-  @include media-breakpoint-up($aside-breakpoint) {
-    #aside-filters { top: map-get($layout-navigation-drawer, 'title_bar'); }
-  }
 }
-
-body.layout-navigation-drawer { @extend %layout-navigation-drawer; }

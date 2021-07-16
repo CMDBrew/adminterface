@@ -52,7 +52,7 @@ module IndexPageTest
     setup do
       load_resources do
         ActiveAdmin.register(User) do
-          config.layouts = {filter: "sidebar"}
+          config.components = {filter: {position: "sidebar"}}
         end
       end
 
@@ -64,41 +64,49 @@ module IndexPageTest
     end
   end
 
-  class SidebarTest < Base
-    test "raise error if invalid" do
-      load_resources do
-        ActiveAdmin.register(User) do
-          config.layouts = {filter: "random"}
-        end
+  class FiltersTest < Base
+    class InvalidPositionView < IndexPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            config.components = {filter: {position: "random"}}
+          end
       end
+    end
 
-      assert_raises(StandardError) { render }
+    test "raise error if invalid" do
+      assert_raises(StandardError) { render(InvalidPositionView) }
+    end
+
+    class AsidePositionView < IndexPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            config.components = {filter: {position: "aside"}}
+          end
+      end
     end
 
     test "filter aside" do
-      load_resources do
-        ActiveAdmin.register(User) do
-          config.layouts = {filter: "aside"}
-        end
-      end
+      body = Capybara.string(render(AsidePositionView).find_by_tag("body").first.to_s)
+      assert body.has_selector?("#filters")
+      assert body.has_selector?("#filters-toggler")
+    end
 
-      body = Capybara.string(render.find_by_tag("body").first.to_s)
-      assert body.has_selector?("#aside-filters")
-      assert body.has_selector?("#aside-filters-toggler")
+    class TableToolsPositionView < IndexPageView
+      def active_admin_config
+        @active_admin_config ||=
+          active_admin_namespace.register(User) do
+            config.components = {filter: {position: "table_tools"}}
+            config.batch_actions = true
+          end
+      end
     end
 
     test "filter table_tools" do
-      load_resources do
-        ActiveAdmin.application.batch_actions = true
-
-        ActiveAdmin.register(User) do
-          config.layouts = {filter: "table_tools"}
-        end
-      end
-
-      body = Capybara.string(render.find_by_tag("body").first.to_s)
-      assert body.has_selector?("#table-tools-filters")
-      assert body.has_selector?("#table-tools-filters-toggler")
+      body = Capybara.string(render(TableToolsPositionView).find_by_tag("body").first.to_s)
+      assert body.has_selector?("#filters")
+      assert body.has_selector?("#filters-toggler")
     end
   end
 end

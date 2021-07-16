@@ -1,0 +1,30 @@
+$_header-width: map-get($layout-navigation-drawer-dismissible, 'header');
+$_titlebar-height: map-get($layout-navigation-drawer-dismissible, 'title_bar');
+$_breakpoint: map-get($layout-navigation-drawer-dismissible, 'breakpoint');
+$_media-breakpoint-up-drawer-active-grid-template: $_header-width minmax(0, 1fr);
+
+body.layout-navigation-drawer_dismissible {
+  #title_bar .site_title { display: block; }
+
+  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint);
+
+  @include media-breakpoint-down($_breakpoint) {
+    #title_bar .site_title { display: none; }
+  }
+
+  @include media-breakpoint-up($_breakpoint) {
+    grid-template-areas:
+      "title_bar title_bar"
+      "header content";
+
+    &.header-active {
+      grid-template-columns: 0 minmax(0, 1fr);
+      #header { display: none; }
+    }
+
+    #header {
+      padding: $spacer 0;
+      .site_title { display: none; }
+    }
+  }
+}

@@ -39,7 +39,7 @@ form:
     new: null
 header:
   container: container-fluid
-  wrapper: navbar-dark bg-primary navbar-expand-lg
+  wrapper: null
 html:
   body: null
   container:

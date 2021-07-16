@@ -3,7 +3,7 @@ module ActiveAdminBootstrap
     module Views
       module IndexAsGrid
         def size
-          @page_presenter[:size] || index_as_grid_breakpoints
+          @page_presenter[:size] || index_as_grid_components[:breakpoint]
         end
 
         protected
@@ -49,5 +49,5 @@ end
 ActiveAdmin::Views::IndexAsGrid.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::IndexAsGrid
   has_css_classes_for :index_as_grid
-  has_breakpoints_for :index_as_grid
+  has_components_for :index_as_grid
 end

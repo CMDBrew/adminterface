@@ -6,7 +6,7 @@ module ActiveAdminBootstrap
           FILTER_OPTS = %w[sidebar table_tools aside].freeze
 
           def main_content
-            unless FILTER_OPTS.include?(filter_layouts)
+            unless FILTER_OPTS.include?(filter_position)
               raise "Invalid layouts -> filter. Available options are: #{FILTER_OPTS.join(", ")}"
             end
 
@@ -37,7 +37,7 @@ module ActiveAdminBootstrap
           private
 
           def action_items_for_action
-            if filter_layouts.eql?("aside")
+            if filter_position.eql?("aside")
               items = super << aside_filter_action
               items.sort_by { |x| [x.group, x.priority] }
             else
@@ -49,39 +49,39 @@ module ActiveAdminBootstrap
             ActiveAdmin::ActionItem.new(:filter, only: :index, group: 90) do
               localizer = ActiveAdmin::Localizers.resource(active_admin_config)
               link_to localizer.t(:filter_model), "#",
-                id: "aside-filters-toggler",
-                data: {toggle: "collapse", target: "#aside-filters"},
+                id: "filters-toggler",
+                data: {"bs-toggle": "collapse", "bs-target": "#filters"},
                 title: I18n.t(:filters, scope: "active_admin.sidebars")
             end
           end
 
           def build_aside
             return if filter_sections.blank?
-            return unless filter_layouts.eql?("aside")
+            return unless filter_position.eql?("aside")
 
-            div id: "aside-filters", class: "collapse" do
-              a "", id: "aside-close", href: "#", "data-bs-toggle": "collapse", "data-bs-target": "#aside-filters"
+            div id: "filters", class: "collapse aside" do
+              button "", type: "button", id: "filters-close", class: "btn-close", href: "#", "data-bs-toggle": "collapse", "data-bs-target": "#filters"
               filter_sections.collect { |x| sidebar_section(x) }
             end
           end
 
           def build_table_tools_filters
             return if filter_sections.blank?
-            return unless filter_layouts.eql?("table_tools")
+            return unless filter_position.eql?("table_tools")
 
-            div id: "table-tools-filters", class: "collapse" do
+            div id: "filters", class: "collapse table-tools" do
               filter_sections.collect { |x| sidebar_section(x) }
             end
           end
 
           def build_table_tools_filter_toggler
             return if filter_sections.blank?
-            return unless filter_layouts.eql?("table_tools")
+            return unless filter_position.eql?("table_tools")
 
-            div id: "table-tools-filters-toggler" do
+            div id: "filters-toggler" do
               a span(I18n.t("active_admin.sidebars.filters")),
                 href: "#", class: "filter_toggler #{table_tools_css_classes[:btn]}",
-                'data-toggle': "collapse", 'data-target': "#filter"
+                'data-bs-toggle': "collapse", 'data-bs-target': "#filters"
             end
           end
 
@@ -112,11 +112,15 @@ module ActiveAdminBootstrap
           end
 
           def sidebar_sections_for_action
-            if filter_layouts.eql?("sidebar")
+            if filter_position.eql?("sidebar")
               available_sidebar_sections
             else
               available_sidebar_sections.reject { |x| x.name.to_sym == :filters }
             end
+          end
+
+          def filter_position
+            filter_components[:position]
           end
         end
       end
@@ -128,5 +132,5 @@ end
 ActiveAdmin::Views::Pages::Index.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Index
   has_css_classes_for :table_tools
-  has_layouts_for :filter
+  has_components_for :filter
 end

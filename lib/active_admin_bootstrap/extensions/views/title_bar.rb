@@ -13,7 +13,7 @@ module ActiveAdminBootstrap
         end
 
         def build_header_toggler
-          button class: "navbar-toggler header-toggler" do
+          button class: "navbar-toggler", "data-aa-header-toggler": {}.to_json do
             span class: "navbar-toggler-icon"
           end
         end

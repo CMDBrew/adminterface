@@ -31,7 +31,7 @@ module MenuTest
         <<~HTML
           <ul>
             <li class="nav-item has_nested dropdown" id="reports">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/admin/reports">Reports</a>
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/admin/reports">Reports</a>
               <ul class="dropdown-menu">
                 <li class="dropdown-item" id="a_sub_reports">
                   <a href="/admin/a-sub-reports">A Sub Reports</a>
@@ -60,7 +60,7 @@ module MenuTest
         <<~HTML
           <ul>
             <li class="nav-item has_nested dropdown" id="reports">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/admin/reports">Reports</a>
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/admin/reports">Reports</a>
               <ul class="dropdown-menu">
                 <li class="dropdown-item" id="b_sub_reports">
                   <a href="/admin/b-sub-reports">B Sub Reports</a>
@@ -92,7 +92,7 @@ module MenuTest
         <<~ERB
           <ul>
             <li class="nav-item has_nested dropdown" id="reports">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="/admin/reports">
+              <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/admin/reports">
                 <i class="aa-icon #{icons_css_classes} icon-main"></i>
                 Reports
               </a>

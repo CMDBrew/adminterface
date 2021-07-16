@@ -60,7 +60,7 @@ class TitleBarTest < ActiveAdmin::BaseTestCase
     html =
       <<~ERB
         <div class="#{default_css_classes[:container]}">
-          <button class="navbar-toggler header-toggler">
+          <button class="navbar-toggler" data-aa-header-toggler="{}">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="site_title navbar-brand">

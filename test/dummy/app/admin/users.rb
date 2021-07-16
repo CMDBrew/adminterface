@@ -1,6 +1,12 @@
 ActiveAdmin.register User do
-  menu priority: 4
+  menu priority: 4, parent: "test"
   config.per_page = [10, 30]
+  # config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
+  config.components = {
+    header: {position: "top"},
+    filter: {position: "sidebar"},
+    action_items: {new: {icon_class: "bi-plus"}}
+  }
 
   permit_params :name, :email, :password,
     user_addresses_attributes: %i[

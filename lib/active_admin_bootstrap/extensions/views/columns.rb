@@ -45,7 +45,7 @@ end
 
 ActiveAdmin::Views::Column.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Column
-  has_breakpoints_for :columns
+  has_components_for :columns
 
   attr_reader :size, :span_size, :css_class
 
@@ -53,7 +53,7 @@ ActiveAdmin::Views::Column.class_eval do
     options = options.dup
     @css_class = options.delete(:class)
     @span_size = options.delete(:span)
-    @size = options.delete(:size) { columns_breakpoints }
+    @size = options.delete(:size) { columns_components[:breakpoint] }
     super(options)
   end
 end

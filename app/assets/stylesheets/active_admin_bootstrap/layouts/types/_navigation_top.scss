@@ -28,7 +28,7 @@ $_title-bar-zindex: map-get($_title-bar, "z-index");
   #wrapper { grid-area: content; }
 
   @include media-breakpoint-up($aside-breakpoint) {
-    #aside-filters { top: calc(#{$_header-height} + #{$_title-bar-height}); }
+    #filters.aside { top: calc(#{$_header-height} + #{$_title-bar-height}); }
   }
 }
 

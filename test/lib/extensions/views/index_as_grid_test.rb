@@ -32,7 +32,7 @@ class IndexAsGridTest < ActiveAdmin::BaseTestCase
   end
 
   def default_breakpoints
-    @default_breakpoints ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:breakpoints, :index_as_grid)
+    @default_breakpoints ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :index_as_grid, :breakpoint)
   end
 
   def default_css_classes

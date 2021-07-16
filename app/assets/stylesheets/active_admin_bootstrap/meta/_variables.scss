@@ -24,7 +24,7 @@ $layout-navigation-top: map-merge(
 
 $layout-navigation-drawer:  map-merge(
   (
-    "header": 300px,
+    "header": 280px,
     "title_bar": 64px,
     "breakpoint": lg
   ),
@@ -33,7 +33,7 @@ $layout-navigation-drawer:  map-merge(
 
 $layout-navigation-drawer-dismissible:  map-merge(
   (
-    "header": 300px,
+    "header": 280px,
     "title_bar": 64px,
     "breakpoint": lg
   ),
@@ -56,7 +56,7 @@ $sidebar-right-bg: $body-bg !default;
 // Aside
 $aside-breakpoint: lg !default;
 $aside-width: 320px !default;
-$aside-bg: $body-bg !default;
+$aside-box-shadow: 0 1px 1px $card-border-color, $box-shadow-sm !default;
 
 // Attributes Table
 $attribute-table-key-width: 30% !default;
