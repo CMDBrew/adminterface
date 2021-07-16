@@ -1,8 +1,10 @@
 import BooleanInput from './inputs/boolean_input'
 import CheckBoxesInput from './inputs/check_boxes_input'
+import ColorInput from './inputs/color_input'
 import DatalistInput from './inputs/datalist_input'
 import DatePickerInput from './inputs/date_picker_input'
 import DateTimePickerInput from './inputs/datetime_picker_input'
+import HiddenInput from './inputs/hidden_input'
 import RadioInput from './inputs/radio_input'
 import SelectInput from './inputs/select_input'
 import StringInput from './inputs/string_input'
@@ -23,6 +25,10 @@ class Input {
 
     if (/^(string|number|password|url|phone)$/.test(as)) {
       InputClass = StringInput
+    } else if (as === 'color') {
+      InputClass = ColorInput
+    } else if (as === 'hidden') {
+      InputClass = HiddenInput
     } else if (as === 'text') {
       InputClass = TextInput
     } else if (as === 'datalist') {

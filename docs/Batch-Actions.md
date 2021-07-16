@@ -14,11 +14,17 @@ We've kept the existing functionalities with some minor adjustments (marked with
 
 ### Form
 You will now need to specify the input options as a `hash` like how you specify the inputs in a regular form inside [ActiveAdmin]. See [Customizing-the-Form].
+Please note the following input types are currently not supported:
+- `:country`
+- `:file`
+- `:rich_text`
+- `:time_zone`
 
 ```ruby
 ActiveAdmin.register User do
   batch_action :flag, form: {
     name: {as: :string},
+    secret: {as: :hidden, input_html: {value: "secret"}},
     updated_at: {as: :date_picker}
   } do |ids, inputs|
     # inputs is a hash of all the form fields you requested
