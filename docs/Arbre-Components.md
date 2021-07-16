@@ -3,12 +3,16 @@
 [ActiveAdmin/arbre-components/panels]: https://activeadmin.info/12-arbre-components.html#panels
 [ActiveAdmin/arbre-components/table_for]: https://activeadmin.info/12-arbre-components.html#table_for
 [ActiveAdmin/arbre-components/tabs]: https://activeadmin.info/12-arbre-components.html#tabs
+[Bootstrap Icons]: https://icons.getbootstrap.com/
 [Bootstrap]: https://getbootstrap.com/docs/5.0/
 [Bootstrap/layout/grid]: https://getbootstrap.com/docs/5.0/layout/grid/
+[css_classes.yml]: ../lib/active_admin_bootstrap/fixtures/css_classes.yml
+[General-Configurations]: ./General-Configurations.md
 
 # ArbreComponents <!-- omit in toc -->
 We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements. Please see [ActiveAdmin] for basic configurations.
 
+- [Icons](#icons)
 - [Panels](#panels)
   - [Title is not required](#title-is-not-required)
   - [Header and Body HTML options](#header-and-body-html-options)
@@ -20,6 +24,10 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
 - [Tabs](#tabs)
   - [Nav and Content HTML Options](#nav-and-content-html-options)
   - [HTTP Tabs](#http-tabs)
+
+## Icons
+We've add a component that helper rendering icons inside [ActiveAdmin]. The default icons we're using are [Bootstrap Icons].
+If you wish, you can change them to your own icons by changing the value for `icon:` inside [css_classes.yml]. You can find more informations in [General-Configurations].
 
 ## Panels
 - **Configuration**: [ActiveAdmin/arbre-components/panels]

@@ -3,6 +3,9 @@
 [Bootstrap Icons]: https://icons.getbootstrap.com/
 [css_classes.yml]: ../lib/active_admin_bootstrap/fixtures/css_classes.yml
 [components.yml]: ../lib/active_admin_bootstrap/fixtures/components.yml
+[_variables.scss]: ../app/assets/stylesheets/active_admin_bootstrap/meta/_variables.scss
+[_flatpickr.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_flatpickr.scss
+[_trix_editor.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_trix_editor.scss
 
 # General Configuration <!-- omit in toc -->
 We've kept the existing functionalities and add some enhancements to the configurations. Please see [ActiveAdmin] for basic configurations.
@@ -18,6 +21,7 @@ We've kept the existing functionalities and add some enhancements to the configu
   - [Header](#header)
   - [IndexAsGrid](#indexasgrid)
   - [Sidebar](#sidebar)
+- [Theme](#theme)
 - [Pro Tips](#pro-tips)
   - [Loading Configs From YAML files](#loading-configs-from-yaml-files)
   - [Global Settings](#global-settings)
@@ -104,6 +108,12 @@ Customize how components should behave.
 - `position:` — the default placement for the sidebar
   - Type: `String`
   - Available Options: `left`, or `right`
+
+## Theme
+You can update the theme of your application by updating the [Bootstrap] variables. See https://github.com/twbs/bootstrap/blob/v5.0.1/scss/_variables.scss.
+In additional to bootstrap, we also have our own variables in [_variables.scss] and vendor specific variables inside the vendor stylesheets:
+- [_flatpickr.scss]
+- [_trix_editor.scss]
 
 ## Pro Tips
 ### Loading Configs From YAML files
