@@ -16,6 +16,7 @@ module ActiveAdminBootstrap
           require_relative("../extensions/inputs/boolean_input")
           require_relative("../extensions/inputs/check_boxes_input")
           require_relative("../extensions/inputs/color_input")
+          require_relative("../extensions/inputs/country_input")
           require_relative("../extensions/inputs/datalist_input")
           require_relative("../extensions/inputs/date_picker_input")
           require_relative("../extensions/inputs/date_select_input")
@@ -36,6 +37,7 @@ module ActiveAdminBootstrap
           require_relative("../extensions/inputs/text_input")
           require_relative("../extensions/inputs/time_picker_input")
           require_relative("../extensions/inputs/time_select_input")
+          require_relative("../extensions/inputs/time_zone_input")
           require_relative("../extensions/inputs/tom_select_input")
           require_relative("../extensions/inputs/url_input")
         end

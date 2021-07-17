@@ -20,6 +20,9 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-oauth2"
 
+# Formtastic inputs addons
+gem "country_select"
+
 group :development do
   # Test application against different versions
   gem "appraisal"

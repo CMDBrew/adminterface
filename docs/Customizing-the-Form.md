@@ -137,10 +137,20 @@ f.input :favorite_color, as: :color
 - [Input Groups✨](#input-groups)
 
 ### CountryInput
-@TODO: to be implemented
+`:country` - a select menu of country names. Default for column types: :string with name "country".
+
+❗️Requires a `country_select` gem to be installed.
 
 - **Configuration**: [Formtastic/CountryInput]
 - **Styling**: [Bootstrap/select]
+
+#### Examples <!-- omit in toc -->
+```ruby
+f.input :country, as: :country
+```
+
+#### Addons <!-- omit in toc -->
+- [Input Groups✨](#input-groups)
 
 ### DatalistInput
 `:datalist` - a text field with a accompanying [datalist tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) which provides options for autocompletion.
@@ -423,10 +433,18 @@ f.input :published_at, as: :time_select
 ```
 
 ### TimeZoneInput
-@TODO: to be implemented
+`:time_zone` - a select input. Default for column types: :string with name matching "time_zone".
 
 - **Configuration**: [Formtastic/TimeZoneInput]
-- **Styling**: [Bootstrap/form-control]
+- **Styling**: [Bootstrap/select]
+
+#### Examples <!-- omit in toc -->
+```ruby
+f.input :timezone, as: :time_zone
+```
+
+#### Addons <!-- omit in toc -->
+- [Input Groups✨](#input-groups)
 
 ### TomSelectInput✨
 `:tom_select` - a select menu. Alternative to `:select`.

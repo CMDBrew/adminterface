@@ -11,6 +11,7 @@ gem "factory_bot_rails"
 gem "devise"
 gem "omniauth"
 gem "omniauth-oauth2"
+gem "country_select"
 gem "rails", "~> 6.1.0"
 
 group :development do
