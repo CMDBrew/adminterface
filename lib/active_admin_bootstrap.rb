@@ -4,6 +4,7 @@ require "activeadmin"
 module ActiveAdminBootstrap
   autoload :VERSION, "active_admin_bootstrap/version"
   autoload :Configs, "active_admin_bootstrap/configs"
+  autoload :Data, "active_admin_bootstrap/data"
 
   # Load Initializers
   module Initializers

@@ -15,10 +15,8 @@ We've kept the existing functionalities with some minor adjustments (marked with
 ### Form
 You will now need to specify the input options as a `hash` like how you specify the inputs in a regular form inside [ActiveAdmin]. See [Customizing-the-Form].
 Please note the following input types are currently not supported:
-- `:country`
 - `:file`
 - `:rich_text`
-- `:time_zone`
 
 ```ruby
 ActiveAdmin.register User do

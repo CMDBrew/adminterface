@@ -6,9 +6,17 @@ module ActiveAdminBootstrap
           def build(*args)
             super
             build_breakpoint_helpers
+            build_meta_tags_for_js
           end
 
           private
+
+          def build_meta_tags_for_js
+            div id: "meta-tags-for-js" do
+              meta name: "countries", content: ::ActiveAdminBootstrap::Data::Countries.call(I18n.locale).to_json
+              meta name: "time_zones", content: ::ActiveAdminBootstrap::Data::TimeZones.call(I18n.locale).to_json
+            end
+          end
 
           def build_breakpoint_helpers
             div id: "breakpoint-helpers" do

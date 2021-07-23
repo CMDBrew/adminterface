@@ -9,6 +9,7 @@
 [Bootstrap/input-group]: https://getbootstrap.com/docs/5.0/forms/input-group
 [Bootstrap/range]: https://getbootstrap.com/docs/5.0/forms/range/
 [Bootstrap/select]: https://getbootstrap.com/docs/5.0/forms/select/
+[CountrySelect]: https://github.com/stefanpenner/country_select
 [Flatpickr]: https://flatpickr.js.org/
 [Formtastic]: https://github.com/formtastic/formtastic
 [Formtastic/BooleanInput]: https://rdoc.info/github/formtastic/formtastic/Formtastic/Inputs/BooleanInput
@@ -47,6 +48,7 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
   - [CheckBoxesInput](#checkboxesinput)
   - [ColorInput✨](#colorinput)
   - [CountryInput](#countryinput)
+    - [Compatibility](#compatibility)
   - [DatalistInput](#datalistinput)
   - [DatePickerInput](#datepickerinput)
   - [DateSelectInput](#dateselectinput)
@@ -69,6 +71,7 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
   - [TimePickerInput](#timepickerinput)
   - [TimeSelectInput](#timeselectinput)
   - [TimeZoneInput](#timezoneinput)
+    - [Compatibility](#compatibility-1)
   - [TomSelectInput✨](#tomselectinput)
   - [UrlInput](#urlinput)
 - [Addons](#addons)
@@ -141,13 +144,29 @@ f.input :favorite_color, as: :color
 
 ❗️Requires a `country_select` gem to be installed.
 
-- **Configuration**: [Formtastic/CountryInput]
+- **Configuration**: [Formtastic/CountryInput], [CountrySelect]
 - **Styling**: [Bootstrap/select]
 
 #### Examples <!-- omit in toc -->
 ```ruby
+# basic
 f.input :country, as: :country
+
+# prioritize countries
+f.input :country, as: :country, priority_countries: ["GB", "FR", "DE"]
+
+# exclude countries
+f.input :country, as: :country, except: ["GB", "FR", "DE"]
+
+# only countries
+f.input :country, as: :country, only: ["GB", "FR", "DE"]
 ```
+
+#### Compatibility
+❗️ BatchAction form only supports the following options:
+- `priority_countries:`
+- `except:`
+- `only:`
 
 #### Addons <!-- omit in toc -->
 - [Input Groups✨](#input-groups)
@@ -440,8 +459,16 @@ f.input :published_at, as: :time_select
 
 #### Examples <!-- omit in toc -->
 ```ruby
+# basic
 f.input :timezone, as: :time_zone
+
+# prioritize timezones
+f.input :timezone, as: :time_zone, priority_zones: ActiveSupport::TimeZone.us_zones
 ```
+
+#### Compatibility
+❗️ BatchAction form only supports the following options:
+- `priority_zones:`
 
 #### Addons <!-- omit in toc -->
 - [Input Groups✨](#input-groups)

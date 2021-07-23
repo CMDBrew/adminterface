@@ -1,6 +1,7 @@
 import BooleanInput from './inputs/boolean_input'
 import CheckBoxesInput from './inputs/check_boxes_input'
 import ColorInput from './inputs/color_input'
+import CountryInput from './inputs/country_input'
 import DatalistInput from './inputs/datalist_input'
 import DatePickerInput from './inputs/date_picker_input'
 import DateTimePickerInput from './inputs/datetime_picker_input'
@@ -11,6 +12,7 @@ import StringInput from './inputs/string_input'
 import SwitchInput from './inputs/switch_input'
 import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
+import TimeZoneInput from './inputs/time_zone_input'
 import TomSelectInput from './inputs/tom_select_input'
 
 class Input {
@@ -43,6 +45,10 @@ class Input {
       InputClass = RadioInput
     } else if (as === 'select') {
       InputClass = SelectInput
+    } else if (as === 'country') {
+      InputClass = CountryInput
+    } else if (as === 'time_zone') {
+      InputClass = TimeZoneInput
     } else if (as === 'tom_select') {
       InputClass = TomSelectInput
     } else if (/^(date_picker|datepicker)$/.test(as)) {
