@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  menu priority: 4, parent: "test"
+  menu priority: 4
   config.per_page = [10, 30]
   # config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
   config.components = {
@@ -17,7 +17,7 @@ ActiveAdmin.register User do
   filter :email
   filter :created_at
 
-  batch_action :flag, form: {
+  batch_action :update, form: {
     name: {as: :string},
     updated_at: {as: :date_picker}
   }, confirm_dialog: {
@@ -91,7 +91,7 @@ ActiveAdmin.register User do
             k.input :city
             k.input :state
             k.input :zip_code
-            k.input :country, as: :string
+            k.input :country
           end
         end
       end
