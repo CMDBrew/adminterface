@@ -72,7 +72,6 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
   - [TimeSelectInput](#timeselectinput)
   - [TimeZoneInput](#timezoneinput)
     - [Compatibility](#compatibility-1)
-  - [TomSelectInput✨](#tomselectinput)
   - [UrlInput](#urlinput)
 - [Addons](#addons)
   - [Input Groups✨](#input-groups)
@@ -374,17 +373,27 @@ f.input :keyword, as: :search
 ### SelectInput
 `:select` - a select menu. Default for ActiveRecord associations: `belongs_to`, `has_many`, and `has_and_belongs_to_many`.
 
-- **Configuration**: [Formtastic/SelectInput]
+- **Configuration**: [Formtastic/SelectInput], [TomSelect]
 - **Styling**: [Bootstrap/select]
 
 #### Examples <!-- omit in toc -->
 ```ruby
+# basic
 f.input :interests, as: :select, collection: %w[movies sports]
 ```
 
 You can pass in the `multiple: true` option if you want to allow multiple selections.
 ```ruby
 f.input :interests, as: :select, collection: %w[movies sports], multiple: true
+```
+
+You can enable [TomSelect] by passing the `tom_select:` option
+```ruby
+# basic
+f.input :interests, as: :select, collection: %w[movies sports], tom_select: true
+
+# change tom_select options
+f.input :interests, as: :select, collection: %w[movies sports], tom_select: {create: true}
 ```
 
 #### Addons <!-- omit in toc -->
@@ -472,22 +481,6 @@ f.input :timezone, as: :time_zone, priority_zones: ActiveSupport::TimeZone.us_zo
 
 #### Addons <!-- omit in toc -->
 - [Input Groups✨](#input-groups)
-
-### TomSelectInput✨
-`:tom_select` - a select menu. Alternative to `:select`.
-
-- **Configuration**: [Formtastic/SelectInput]
-- **Styling**: [Bootstrap/select], [TomSelect]
-
-#### Examples <!-- omit in toc -->
-```ruby
-f.input :interests, as: :tom_select, collection: %w[movies sports]
-```
-
-You can pass in the `multiple: true` option if you want to allow multiple selections.
-```ruby
-f.input :interests, as: :tom_select, collection: %w[movies sports], multiple: true
-```
 
 ### UrlInput
 `:url` - a text field (just like string). Default for columns with name matching "url". New in HTML5. Works on some mobile browsers already.

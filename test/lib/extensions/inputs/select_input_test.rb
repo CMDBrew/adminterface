@@ -39,6 +39,28 @@ class SelectInputTest < ActiveAdmin::InputTestCase
   end
 end
 
+class SelectInputTomSelectTest < ActiveAdmin::InputTestCase
+  test "enables tom_select" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :interests, as: :select, collection: %w[movies], tom_select: true
+      end
+    end
+
+    assert form.find("select")["data-aa-tom-select"].present?
+  end
+
+  test "passes tom_select options" do
+    form = build_form do |f|
+      f.inputs do
+        f.input :interests, as: :select, collection: %w[movies], tom_select: {a: 1}
+      end
+    end
+
+    assert_equal({a: 1}.to_json, form.find("select")["data-aa-tom-select"])
+  end
+end
+
 class SelectInputGroupingTest < ActiveAdmin::InputTestCase
   test "renders prepend" do
     form = build_form do |f|

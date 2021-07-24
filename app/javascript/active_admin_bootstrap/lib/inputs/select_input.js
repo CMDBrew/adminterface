@@ -5,6 +5,7 @@ class SelectInput extends BaseInput {
   constructor (name, options) {
     super(name, options)
     this.multiple = this.options.multiple || false
+    this.tom_select = this.options.tom_select || false
     this.include_blank = this.options.include_blank || false
   }
 
@@ -18,6 +19,7 @@ class SelectInput extends BaseInput {
     }
 
     if (this.multiple) { options.multiple = true }
+    if (this.tom_select) { options['data-aa-tom-select'] = this.tom_select }
 
     return { ...super._defaultInputHTMLOptions(), ...options }
   }

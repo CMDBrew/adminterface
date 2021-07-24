@@ -13,7 +13,6 @@ import SwitchInput from './inputs/switch_input'
 import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
-import TomSelectInput from './inputs/tom_select_input'
 
 class Input {
   constructor (name, options) {
@@ -49,8 +48,6 @@ class Input {
       InputClass = CountryInput
     } else if (as === 'time_zone') {
       InputClass = TimeZoneInput
-    } else if (as === 'tom_select') {
-      InputClass = TomSelectInput
     } else if (/^(date_picker|datepicker)$/.test(as)) {
       InputClass = DatePickerInput
     } else if (as === 'time_picker') {

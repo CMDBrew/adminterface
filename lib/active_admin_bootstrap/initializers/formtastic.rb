@@ -38,7 +38,6 @@ module ActiveAdminBootstrap
           require_relative("../extensions/inputs/time_picker_input")
           require_relative("../extensions/inputs/time_select_input")
           require_relative("../extensions/inputs/time_zone_input")
-          require_relative("../extensions/inputs/tom_select_input")
           require_relative("../extensions/inputs/url_input")
         end
 
