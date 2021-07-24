@@ -39,20 +39,20 @@
 [Trix]: https://trix-editor.org/
 
 # Customizing the Form <!-- omit in toc -->
-We've kept the existing functionalities and applied [Bootstrap] styles with some additional inputs types and enhancements (marked with ✨). Please see [Formtastic] and [ActiveAdmin] for basic configurations.
+We've kept the existing functionalities and applied [Bootstrap] styles with some additional inputs types and enhancements. Please see [Formtastic] and [ActiveAdmin] for basic configurations.
 
 - [Form](#form)
   - [Multiple Forms](#multiple-forms)
 - [Inputs](#inputs)
   - [BooleanInput](#booleaninput)
   - [CheckBoxesInput](#checkboxesinput)
-  - [ColorInput✨](#colorinput)
+  - [ColorInput](#colorinput)
   - [CountryInput](#countryinput)
     - [Compatibility](#compatibility)
   - [DatalistInput](#datalistinput)
   - [DatePickerInput](#datepickerinput)
   - [DateSelectInput](#dateselectinput)
-  - [DateTimePickerInput✨](#datetimepickerinput)
+  - [DateTimePickerInput](#datetimepickerinput)
   - [DateTimeSelectInput](#datetimeselectinput)
   - [EmailInput](#emailinput)
   - [FileInput](#fileinput)
@@ -62,11 +62,11 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
   - [PhoneInput](#phoneinput)
   - [RadioInput](#radioinput)
   - [RangeInput](#rangeinput)
-  - [RichTextInput✨](#richtextinput)
+  - [RichTextInput](#richtextinput)
   - [SearchInput](#searchinput)
   - [SelectInput](#selectinput)
   - [StringInput](#stringinput)
-  - [SwitchInput✨](#switchinput)
+  - [SwitchInput](#switchinput)
   - [TextInput](#textinput)
   - [TimePickerInput](#timepickerinput)
   - [TimeSelectInput](#timeselectinput)
@@ -74,9 +74,9 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
     - [Compatibility](#compatibility-1)
   - [UrlInput](#urlinput)
 - [Addons](#addons)
-  - [Input Groups✨](#input-groups)
-  - [Inline Radio & Check Options✨](#inline-radio--check-options)
-- [Nested Resources✨](#nested-resources)
+  - [Input Groups](#input-groups)
+  - [Inline Radio & Check Options](#inline-radio--check-options)
+- [Nested Resources](#nested-resources)
 
 ## Form
 ### Multiple Forms
@@ -124,7 +124,7 @@ f.input :interests, as: :check_boxes, collection: %w[movies sports]
 #### Addons <!-- omit in toc -->
 - [Inline Options](#inline-radio--check-options)
 
-### ColorInput✨
+### ColorInput
 `:color` - a color select using the [Bootstrap] color component. New in HTML5.
 
 - **Configuration**: [Formtastic/StringInput]
@@ -136,7 +136,7 @@ f.input :favorite_color, as: :color
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### CountryInput
 `:country` - a select menu of country names. Default for column types: :string with name "country".
@@ -168,7 +168,7 @@ f.input :country, as: :country, only: ["GB", "FR", "DE"]
 - `only:`
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### DatalistInput
 `:datalist` - a text field with a accompanying [datalist tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) which provides options for autocompletion.
@@ -182,7 +182,7 @@ f.input :friend, as: :datalist, collection: %w[john mary]
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### DatePickerInput
 `:date_picker` - a date select. Alternative to `:date` using the [Flatpickr] js library replacing the jQuery datepicker in [ActiveAdmin]
@@ -201,7 +201,7 @@ f.input :published_at, as: :datepicker
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### DateSelectInput
 `:date_select` - a date select. Default for column types: `:date`.
@@ -214,7 +214,7 @@ f.input :published_at, as: :datepicker
 f.input :published_at, as: :date_select
 ```
 
-### DateTimePickerInput✨
+### DateTimePickerInput
 `:datetime_picker` - a date and time select. Alternative to `:datetime` using the [Flatpickr] js library.
 
 - **Configuration**: [Formtastic/StringInput]
@@ -226,7 +226,7 @@ f.input :published_at, as: :datetime_picker
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### DateTimeSelectInput
 `:datetime_select` - a date and time select. Default for column types: `:datetime`.
@@ -251,7 +251,7 @@ f.input :email, as: :email
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### FileInput
 `:file` - a file field.
@@ -265,7 +265,7 @@ f.input :attachment, as: :file
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### HiddenInput
 `:hidden` - a hidden field. Creates a hidden field (added for compatibility).
@@ -290,7 +290,7 @@ f.input :price, as: :number
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### Password
 `:password` - a password input. Default for column types: `:string` with name matching "password".
@@ -304,7 +304,7 @@ f.input :secret, as: :password
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### PhoneInput
 `:phone` - a text field (just like string). Default for columns with name matching "phone" or "fax". New in HTML5.
@@ -318,7 +318,7 @@ f.input :telephone, as: :phone
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### RadioInput
 `:radio` - a set of radio inputs. Alternative to `:select` for ActiveRecord-associations: `belongs_to`.
@@ -345,7 +345,7 @@ f.input :interests, as: :radio, collection: %w[movies sports]
 f.input :quantity, as: :range
 ```
 
-### RichTextInput✨
+### RichTextInput
 `:rich_text` - a WYSIWYG editor input using [Trix] for [Rails/ActionText] attributes.
 
 - **Configuration**: [Formtastic/TextInput]
@@ -368,7 +368,7 @@ f.input :keyword, as: :search
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### SelectInput
 `:select` - a select menu. Default for ActiveRecord associations: `belongs_to`, `has_many`, and `has_and_belongs_to_many`.
@@ -397,7 +397,7 @@ f.input :interests, as: :select, collection: %w[movies sports], tom_select: {cre
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### StringInput
 `:string` - a text field. Default for column types: `:string`
@@ -411,9 +411,9 @@ f.input :name, as: :string
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
-### SwitchInput✨
+### SwitchInput
 `:boolean` - a toggle. Alternative to `:boolean` using the [Bootstrap] switch component.
 
 - **Configuration**: [Formtastic/BooleanInput]
@@ -447,7 +447,7 @@ f.input :published_at, as: :time_picker
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### TimeSelectInput
 `:time_select` - a time select. Default for column types: `:time`.
@@ -480,7 +480,7 @@ f.input :timezone, as: :time_zone, priority_zones: ActiveSupport::TimeZone.us_zo
 - `priority_zones:`
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ### UrlInput
 `:url` - a text field (just like string). Default for columns with name matching "url". New in HTML5. Works on some mobile browsers already.
@@ -494,10 +494,10 @@ f.input :website, as: :url
 ```
 
 #### Addons <!-- omit in toc -->
-- [Input Groups✨](#input-groups)
+- [Input Groups](#input-groups)
 
 ## Addons
-### Input Groups✨
+### Input Groups
 > 👉️ Check the [Inputs](#inputs) section for inputs work with this addon.
 
 We've added support for [Bootstrap/input-group]. Use the `:append` and `:prepend` options to add html before and after the input. When you pass in either of the options it will wrap the input inside the `.input-group` element.
@@ -507,7 +507,7 @@ f.input :name, as: :string,
   prepend: content_tag(:span, "prepend text", class: "input-group-text")
 ```
 
-### Inline Radio & Check Options✨
+### Inline Radio & Check Options
 > 👉️ Check the [Inputs](#inputs) section for inputs work with this addon.
 
 You can pass in the `inline: true` option if you want to render the options inline.
@@ -516,7 +516,7 @@ f.input :interests, as: :check_boxes, collection: %w[movies sports], inline: tru
 f.input :interests, as: :radio, collection: %w[movies sports], inline: true
 ```
 
-## Nested Resources✨
+## Nested Resources
 We've replaced jQuery sortable with [SortableJS], but nested forms work exactly the same as [ActiveAdmin]. You can find the docs [here](https://activeadmin.info/5-forms.html#nested-resources).
 
 ### Example <!-- omit in toc -->
