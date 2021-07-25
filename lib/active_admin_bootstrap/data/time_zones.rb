@@ -21,7 +21,6 @@ module ActiveAdminBootstrap
         zones.map do |zone|
           {
             identifier: zone.tzinfo.identifier,
-            abbreviation: zone.tzinfo.abbreviation,
             name: zone.name,
             translated_name: I18n.t(zone.name, scope: :timezones, default: zone.to_s)
           }
