@@ -24,26 +24,16 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixtures :all
 end
 
-# Base class for testing ActiveAdmin
-require "support/active_admin/integration_test_helper"
-require "support/active_admin/namespace_test_helper"
-
 class ActiveSupport::TestCase < Minitest::Test
   def assert_html(expected, actual)
     assert_equal unify_html(expected), unify_html(actual)
   end
 
   def unify_html(html)
-    html.split("\n").map(&:strip).join.gsub(/>\s+</, "><")
+    html.split("\n").map(&:strip).join.gsub(/\s+/, " ").gsub(/>\s+</, "><")
   end
-end
 
-class ActiveAdminTest < ActiveSupport::TestCase
-  include ActiveAdmin::IntegrationTestHelper
-  include ActiveAdmin::NamespaceTestHelper
-
-  teardown do
-    ActiveAdmin.unload!
-    Rails.cache.clear
+  def escape_hash(hash)
+    CGI.escapeHTML(hash.to_json)
   end
 end

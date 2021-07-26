@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class HeaderTest < ActiveAdminTest
+class HeaderTest < ActiveAdmin::BaseTestCase
   def application
     @application ||= ActiveAdmin::Application.new
   end
@@ -30,25 +30,28 @@ class HeaderTest < ActiveAdminTest
     assert @component.class_list.include?("header")
     assert @component.class_list.include?("navbar")
 
-    default_css_classes.split.each do |klass|
+    class_list = default_css_classes[:wrapper] || ""
+    class_list.split.each do |klass|
       assert @component.class_list.include?(klass)
     end
   end
 
   test "#content" do
     html =
-      <<~HTML
-        <div class="navbar-brand site_title">
-          <div class="title">Awesome Admin</div>
+      <<~ERB
+        <div class="header-container #{default_css_classes[:container]}">
+          <div class="site_title navbar-brand">
+            <div class="title">Awesome Admin</div>
+          </div>
+          <button class="navbar-toggler" data-bs-target="#header-nav" data-bs-toggle="collapse">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div id="header-nav" class="collapse navbar-collapse">
+            <ul class="navbar-nav" id="main-nav"></ul>
+            <ul class="navbar-nav" id="utility-nav"></ul>
+          </div>
         </div>
-        <button class="navbar-toggler" data-target="#header-nav" data-toggle="collapse">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="header-nav" class="collapse navbar-collapse">
-          <ul class="navbar-nav" id="main-nav"></ul>
-          <ul class="navbar-nav" id="utility-nav"></ul>
-        </div>
-      HTML
+      ERB
     assert_html html, @component.content
   end
 end

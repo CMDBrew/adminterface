@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module ColumnsTest
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     setup do
       @component = render_arbre_component do
         columns do
@@ -23,7 +23,7 @@ module ColumnsTest
     test "#component" do
       html =
         <<~HTML
-          <div class="row">
+          <div class="g-3 row">
             <div class="col-md">
               <span>Column #1</span>
             </div>
@@ -36,7 +36,7 @@ module ColumnsTest
     end
   end
 
-  class WithColumnOptionsTest < ActiveAdminTest
+  class WithColumnOptionsTest < ActiveAdmin::BaseTestCase
     setup do
       @component = render_arbre_component do
         columns do
@@ -50,8 +50,32 @@ module ColumnsTest
     test "#component" do
       html =
         <<~HTML
-          <div class="row">
+          <div class="g-3 row">
             <div class="col-md-8 custom-column">
+              <span>Column #1</span>
+            </div>
+          </div>
+        HTML
+      assert_html html, @component
+    end
+  end
+
+  class WithColumnsOptionsTest < ActiveAdmin::BaseTestCase
+    setup do
+      @component = render_arbre_component do
+        columns(class: "g-5") do
+          column do
+            span "Column #1"
+          end
+        end
+      end
+    end
+
+    test "#component" do
+      html =
+        <<~HTML
+          <div class="g-5 row">
+            <div class="col-md">
               <span>Column #1</span>
             </div>
           </div>

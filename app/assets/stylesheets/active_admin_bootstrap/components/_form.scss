@@ -1,0 +1,233 @@
+%fields-with-errors {
+  $_color: $form-feedback-invalid-color;
+  $_icon: $form-feedback-icon-invalid;
+  $_focus-box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($_color, $input-btn-focus-color-opacity);
+
+  .invalid-feedback,
+  .invalid-tooltip {
+    display: block;
+  }
+
+  .form-control {
+    border-color: $_color;
+
+    @if $enable-validation-icons {
+      padding-right: $input-height-inner;
+      background-image: escape-svg($_icon);
+      background-repeat: no-repeat;
+      background-position: right $input-height-inner-quarter center;
+      background-size: $input-height-inner-half $input-height-inner-half;
+    }
+
+    &:focus {
+      border-color: $_color;
+      box-shadow: $_focus-box-shadow;
+    }
+  }
+
+  .form-control-color { max-width: 4.5rem; }
+
+  trix-editor.form-control,
+  textarea.form-control {
+    @if $enable-validation-icons {
+      padding-right: $input-height-inner;
+      background-position: top $input-height-inner-quarter right $input-height-inner-quarter;
+    }
+  }
+
+  .form-select:not(.ts-dropdown) {
+    border-color: $_color;
+
+    @if $enable-validation-icons {
+      &:not([multiple]):not([size]),
+      &:not([multiple])[size="1"] {
+        padding-right: $form-select-feedback-icon-padding-end;
+        background-image: escape-svg($form-select-indicator), escape-svg($_icon);
+        background-position: $form-select-bg-position, $form-select-feedback-icon-position;
+        background-size: $form-select-bg-size, $form-select-feedback-icon-size;
+      }
+    }
+
+    &:focus {
+      border-color: $_color;
+      box-shadow: $_focus-box-shadow;
+    }
+  }
+
+  .form-check {
+    .form-check-input {
+      border-color: $_color;
+
+      &:checked { background-color: $_color; }
+      &:focus { box-shadow: $_focus-box-shadow; }
+    }
+
+    .form-check-label { color: $_color; }
+  }
+}
+
+%feedback-hint {
+  width: 100%;
+  margin-top: $form-feedback-margin-top;
+  font-style: $form-feedback-font-style;
+  color: $secondary;
+
+  @include font-size($form-feedback-font-size);
+}
+
+%fragements {
+  legend { margin-bottom: 0; }
+  legend.label { font-size: $font-size-base; }
+
+  .input-fragment {
+    .field_with_error {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  .fragments-group {
+    display: flex;
+    flex-direction: row;
+    padding: 0;
+    margin: 0 calc(-#{$spacer} / 4) !important;
+    list-style: none;
+
+    .fragment {
+      flex: 1;
+      padding: 0 $spacer / 4;
+      margin-bottom: $spacer;
+    }
+  }
+}
+
+.formtastic {
+  .errors { margin-bottom: 0; }
+  .hidden { display: none; }
+  .input.error { @extend %fields-with-errors; }
+  .fragments { @extend %fragements; }
+  .inline-hints { @extend %feedback-hint; }
+
+  li.has-many-inputs,
+  fieldset.inputs,
+  fieldset.actions {
+    & > ol {
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+  }
+
+  fieldset.actions {
+    ol {
+      display: flex;
+      align-items: flex-end;
+      -webkit-box-orient: horizontal;
+      -webkit-box-align: end;
+      -webkit-box-direction: reverse;
+      flex-direction: row-reverse;
+    }
+
+    li {
+      display: inline-block;
+      margin-right: map-get($spacers, 2);
+      &:first-child { margin: 0; }
+    }
+  }
+
+  fieldset.columns > ol {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 0;
+  }
+
+  fieldset.has_many_fields {
+    &.sortable-placeholder {
+      z-index: 11;
+      background: $form-sortable-placeholder-bg;
+      visibility: visible;
+      box-sizing: border-box;
+
+      &[draggable="true"] {
+        max-height: $form-sortable-placeholder-max-height;
+        overflow: hidden;
+      }
+    }
+
+    &.sortable-drag {
+      background: $form-sortable-drag-bg;
+      box-sizing: border-box;
+
+      &[draggable="true"] {
+        max-height: $form-sortable-drag-max-height;
+        overflow: hidden;
+      }
+    }
+
+    & > ol {
+      display: flex;
+      flex-direction: row;
+
+      li {
+        &.handle {
+          display: flex;
+          color: $text-muted;
+          cursor: move;
+          align-items: flex-start;
+          padding: 0;
+          padding-right: $spacer;
+
+          &::before {
+            @extend %aa-icon;
+
+            content: map-get($aa-icons, 'form-has-many-sortable-handle');
+          }
+        }
+
+        &.has-many-inputs {
+          display: flex;
+          flex: 1;
+          flex-direction: row;
+          padding: 0;
+          > ol:first-child { flex: 1; }
+        }
+      }
+
+      .has_many_delete {
+        input[type='checkbox']:checked + label { color: $danger; }
+
+        label.form-check-label {
+          padding-left: $spacer;
+
+          span,
+          i {
+            display: none;
+          }
+
+          &::before {
+            @extend %aa-icon;
+
+            content: map-get($aa-icons, 'form-has-many-destroy');
+          }
+        }
+      }
+
+      .has_many_remove {
+        padding-left: $spacer;
+        font-size: 0;
+
+        &::before {
+          @extend %aa-icon;
+
+          content: map-get($aa-icons, 'form-has-many-destroy');
+        }
+      }
+    }
+
+    .columns { margin: 0 calc(-#{$grid-gutter-width} / 2); }
+    .has_many_delete { margin-bottom: 0; }
+  }
+
+  .choices-group { @extend %list-unstyled; }
+}

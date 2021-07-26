@@ -1,0 +1,118 @@
+$trix-toolbar-btn-group-bg: $gray-200 !default;
+$trix-toolbar-btn-active-bg: $component-active-bg !default;
+
+$trix-content-pre-bg: $gray-200 !default;
+$trix-content-pre-color: inherit !default;
+$trix-content-blockquote-bg: $gray-200 !default;
+$trix-content-attachment-caption-color: $secondary !default;
+$trix-content-attachment-border-color: $border-color !default;
+
+$trix-input-dialog-bg: $modal-content-bg !default;
+$trix-input-dialog-border: $modal-content-border-width solid $modal-content-border-color !default;
+$trix-input-dialog-border-radius: $modal-content-border-radius !default;
+$trix-input-dialog-invalid-color: $danger !default;
+
+$trix-icon-size: 20px !default;
+$trix-icons: (
+  'attach': '\f4b3',
+  'bold': '\f5f0',
+  'bullet-list': '\f478',
+  'code': '\f2c8',
+  'decrease-nesting-level': '\f5c6',
+  'heading-1': '\f3da',
+  'increase-nesting-level': '\f5c5',
+  'italic': '\f5f4',
+  'link': '\f470',
+  'number-list': '\f475',
+  'quote': '\f190',
+  'redo': '\f116',
+  'strike': '\f5f5',
+  'undo': '\f117',
+) !default;
+
+trix-editor {
+  background: $input-bg;
+  border: $input-border-width solid $input-border-color;
+  border-width: 0 0 $input-border-width;
+  &:empty:not(:focus)::before { color: $input-placeholder-color; }
+}
+
+trix-toolbar {
+  .trix-button-row {
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+  }
+
+  .trix-button-group {
+    margin-left: 0 !important;
+    background: $trix-toolbar-btn-group-bg;
+    border: 0;
+
+    &:not(:last-child) { margin-right: 1.5vw; }
+
+    .trix-button {
+      height: auto;
+      padding: $input-btn-padding-y-sm $input-btn-padding-x-sm;
+      color: color-contrast($trix-toolbar-btn-group-bg);
+      border-bottom: 0;
+      border: 0;
+
+      &:first-child { border-radius: $btn-border-radius  0 0 $btn-border-radius; }
+      &:last-child { border-radius: 0 $btn-border-radius $btn-border-radius 0; }
+
+      &.trix-active {
+        color: color-contrast($trix-toolbar-btn-active-bg);
+        background: $trix-toolbar-btn-active-bg;
+      }
+    }
+  }
+
+  .trix-button-group-spacer { display: none; }
+
+  .trix-input--dialog {
+    background-color: $trix-input-dialog-bg;
+    border: $trix-input-dialog-border;
+    border-radius: $trix-input-dialog-border-radius;
+
+    &.validate:invalid {
+      border-color: $trix-input-dialog-invalid-color;
+      box-shadow: none;
+    }
+  }
+
+  .trix-button--icon::before {
+    @extend %aa-icon;
+
+    top: 50%;
+    right: auto;
+    bottom: auto;
+    left: 50%;
+    font-size: $trix-icon-size;
+    text-indent: 0;
+    background-image: none;
+
+    @include transform(translate(-50%, -50%));
+  }
+
+  @each $_key, $_value in $trix-icons {
+    .trix-button--icon-#{$_key}::before { content: $_value; }
+  }
+}
+
+.trix-content {
+  img {
+    height: auto !important;
+    max-width: 100% !important;
+  }
+
+  blockquote { border-left-color: $trix-content-blockquote-bg; }
+
+  pre {
+    color: $trix-content-pre-color;
+    white-space: pre !important;
+    background: $trix-content-pre-bg;
+  }
+
+  .attachment__caption { color: $trix-content-attachment-caption-color; }
+  .attachment--file { border-color: $trix-content-attachment-border-color; }
+}

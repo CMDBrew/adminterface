@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class IndexListTest < ActiveAdminTest
+class IndexListTest < ActiveAdmin::BaseTestCase
   class IndexListResource < ActiveAdmin::Resource; end
 
   class IndexListView < ::ActiveAdmin::IntegrationTestHelper::MockActionView

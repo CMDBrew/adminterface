@@ -1,0 +1,23 @@
+#header {
+  #main-nav { margin-right: auto; }
+  .dropdown-item a { color: inherit; }
+
+  .navbar-nav {
+    @include media-breakpoint-up($sidebar-breakpoint) {
+      align-items: center;
+    }
+  }
+
+  .nav-item {
+    .nav-link {
+      @extend %text-truncate;
+
+      width: 100%;
+
+      & > * {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+}

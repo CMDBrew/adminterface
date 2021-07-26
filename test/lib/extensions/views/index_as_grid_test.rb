@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class IndexAsGridTest < ActiveAdminTest
+class IndexAsGridTest < ActiveAdmin::BaseTestCase
   class IndexAsGridResource < ActiveAdmin::Resource
     def batch_actions
       []
@@ -32,7 +32,7 @@ class IndexAsGridTest < ActiveAdminTest
   end
 
   def default_breakpoints
-    @default_breakpoints ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:breakpoints, :index_as_grid)
+    @default_breakpoints ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :index_as_grid, :breakpoint)
   end
 
   def default_css_classes

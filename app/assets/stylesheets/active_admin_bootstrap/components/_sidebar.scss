@@ -1,0 +1,13 @@
+#sidebar-right {
+  width: 100%;
+  background: $sidebar-right-bg;
+
+  @include media-breakpoint-up($sidebar-breakpoint) { width: $sidebar-right-width; }
+}
+
+#sidebar-left {
+  width: 100%;
+  background: $sidebar-left-bg;
+
+  @include media-breakpoint-up($sidebar-breakpoint) { width: $sidebar-left-width; }
+}

@@ -1,29 +1,23 @@
-module ActiveAdmin
-  module Views
-    # Overwrite activeadmin/lib/active_admin/views/components/table_for.rb
-    class TableFor < Arbre::HTML::Table
-      include ::ActiveAdminBootstrap::Configs::Finders
-
-      has_css_classes_for :table_for
-
-      def build(obj, *attrs)
-        options = attrs.extract_options!
-        options[:class] = ["table_for", options[:class], default_css_classes].join(" ").strip
-        @sortable = options.delete(:sortable)
-        @collection = obj.respond_to?(:each) && !obj.is_a?(Hash) ? obj : [obj]
-        @resource_class = options.delete(:i18n)
-        @resource_class ||= @collection.klass if @collection.respond_to? :klass
-        @columns = []
-        @row_class = options.delete(:row_class)
-
-        build_table
-        super(options)
-        columns(*attrs)
-      end
-
-      def default_css_classes
-        table_for_css_classes
+module ActiveAdminBootstrap
+  module Extensions
+    module Views
+      module Components
+        module TableFor
+          def build(obj, *attrs)
+            options = attrs.extract_options!
+            options[:class] = "table_for #{options[:class]} #{table_for_css_classes}".squish
+            attrs = attrs.push options
+            super(obj, *attrs)
+          end
+        end
       end
     end
   end
+end
+
+# Overwrite activeadmin/lib/active_admin/views/components/table_for.rb
+ActiveAdmin::Views::TableFor.class_eval do
+  include ActiveAdminBootstrap::Configs::Finders
+  prepend ActiveAdminBootstrap::Extensions::Views::Components::TableFor
+  has_css_classes_for :table_for
 end

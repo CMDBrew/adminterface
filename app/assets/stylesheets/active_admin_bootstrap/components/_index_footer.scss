@@ -1,0 +1,19 @@
+#index_footer {
+  margin-top: $spacer;
+  text-align: center;
+
+  .pagination_per_page {
+    display: inline-block;
+    & + .paginator { margin-top: $spacer; }
+  }
+
+  .paginator {
+    & + .pagination_information { margin-top: $spacer; }
+
+    ul {
+      display: flex;
+      justify-content: center;
+      margin: 0 auto;
+    }
+  }
+}

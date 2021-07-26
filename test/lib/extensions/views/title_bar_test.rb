@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class TitleBarTest < ActiveAdminTest
+class TitleBarTest < ActiveAdmin::BaseTestCase
   class TitleBarView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def active_admin_config
       @active_admin_config ||= active_admin_namespace.register(User)
@@ -31,8 +31,14 @@ class TitleBarTest < ActiveAdminTest
     @component =
       render_arbre_component({namespace: namespace}, mock_action_view(TitleBarView)) do
         title_bar namespace, "Awesome Title", [
-          ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class", group: "status") do
             link_to "publish", "#"
+          end,
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class", group: "status") do
+            link_to "unpublish", "#"
+          end,
+          ActiveAdmin::ActionItem.new(:publish, class: "custom_class") do
+            link_to "visit", "#"
           end
         ]
       end
@@ -45,7 +51,7 @@ class TitleBarTest < ActiveAdminTest
   test "#class_list" do
     assert @component.class_list.include?("navbar")
 
-    default_css_classes.split.each do |klass|
+    default_css_classes[:wrapper].split.each do |klass|
       assert @component.class_list.include?(klass)
     end
   end
@@ -53,20 +59,26 @@ class TitleBarTest < ActiveAdminTest
   test "#content" do
     html =
       <<~ERB
-        <button class="navbar-toggler header-toggler">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="navbar-brand site_title">
-          <div class="title"></div>
-        </div>
-        <div id="titlebar_left">
-          <ol id="breadcrumb" class="breadcrumb">
-            <li class="breadcrumb-item active">Awesome Title</li>
-          </ol>
-        </div>
-        <div id="titlebar_right">
-          <div class="action_items #{action_items_css_classes[:group]}">
-            <a class="#{action_items_css_classes[:item]}" href="#">publish</a>
+        <div class="#{default_css_classes[:container]}">
+          <button class="navbar-toggler" data-aa-header-toggler="{}">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="site_title navbar-brand">
+            <div class="title"></div>
+          </div>
+          <div id="titlebar_left">
+            <ol id="breadcrumb" class="breadcrumb">
+              <li class="breadcrumb-item active">Awesome Title</li>
+            </ol>
+          </div>
+          <div id="titlebar_right">
+            <div class="action_items #{action_items_css_classes[:group]}">
+              <a class="#{action_items_css_classes[:item]}" href="#">publish</a>
+              <a class="#{action_items_css_classes[:item]}" href="#">unpublish</a>
+            </div>
+            <div class="action_items #{action_items_css_classes[:group]}">
+              <a class="#{action_items_css_classes[:item]}" href="#">visit</a>
+            </div>
           </div>
         </div>
       ERB

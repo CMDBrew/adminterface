@@ -1,4 +1,4 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module BasePageTest
   class PageResource < ActiveAdmin::Page
@@ -31,7 +31,7 @@ module BasePageTest
     end
   end
 
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     setup do
       @page = render_arbre_component({}, mock_action_view(PageView)) do
         insert_tag ActiveAdmin::Views::Pages::Base
@@ -59,14 +59,34 @@ module BasePageTest
     end
   end
 
-  class SidebarOptionsTest < ActiveAdminTest
-    test "invalid sidebar options" do
-      assert_raises StandardError do
-        @page = render_arbre_component({}, mock_action_view(PageView)) do
-          active_admin_config.layouts = {sidebar: "bottom"}
-          insert_tag ActiveAdmin::Views::Pages::Base
-        end
+  class FlashMessagesTest < ActiveAdmin::BaseTestCase
+    class PageWithFlashMessages < ActiveAdmin::Views::Pages::Base
+      def flash_messages
+        {alert: "Alert message", notice: ["First notice message", "Second notice message"]}
       end
+    end
+
+    def default_css_classes
+      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :flash)
+    end
+
+    test "shows all flash messages" do
+      div = PageWithFlashMessages.new.send :build_flash_messages
+      html =
+        <<~ERB
+          <div class="flashes">
+            <div class="flash flash_alert alert #{default_css_classes[:alert]} alert-dismissible">
+              Alert message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="flash flash_notice alert #{default_css_classes[:notice]} alert-dismissible">
+              First notice message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            <div class="flash flash_notice alert #{default_css_classes[:notice]} alert-dismissible">
+              Second notice message <button class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+          </div>
+        ERB
+      assert_html html, div
     end
   end
 end

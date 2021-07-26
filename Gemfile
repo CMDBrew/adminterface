@@ -8,6 +8,20 @@ gemspec
 gem "pg"
 gem "mysql2"
 gem "sqlite3"
+gem "webpacker", "~> 5.0"
+
+# Use Factory to create fake data
+gem "faker"
+gem "factory_bot_rails"
+
+# Use Devise for authentication
+gem "devise"
+# Use OmniAuth for OAuth
+gem "omniauth"
+gem "omniauth-oauth2"
+
+# Formtastic inputs addons
+gem "country_select"
 
 group :development do
   # Test application against different versions
@@ -15,9 +29,12 @@ group :development do
 end
 
 group :development, :test do
+  gem "sassc-rails"
   gem "standardrb"
   gem "byebug"
   gem "puma"
+  # Use Letter Opener to debug email on development
+  gem "letter_opener"
 end
 
 group :test do

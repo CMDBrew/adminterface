@@ -1,0 +1,13 @@
+$_header-width: map-get($layout-navigation-drawer, 'header');
+$_titlebar-height: map-get($layout-navigation-drawer, 'title_bar');
+$_breakpoint: map-get($layout-navigation-drawer, 'breakpoint');
+
+body.layout-navigation-drawer {
+  #header .site_title { height: $_titlebar-height; }
+
+  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint);
+
+  @include media-breakpoint-up($_breakpoint) {
+    #title_bar .navbar-toggler { display: none; }
+  }
+}

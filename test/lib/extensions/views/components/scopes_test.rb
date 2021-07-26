@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module ScopesTest
-  class Base < ActiveAdminTest
+  class Base < ActiveAdmin::BaseTestCase
     class ScopesView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
       def active_admin_config
         @active_admin_config ||= active_admin_application.namespace(:admin).register(User)
@@ -56,19 +56,19 @@ module ScopesTest
       html =
         <<~ERB
           <ul class="table_tools_segmented_control scope-default-group nav #{default_css_classes[:tabs]}">
-            <li class="scope nav-item all">
+            <li class="scope all nav-item">
               <a href="https://example.com?scope=all" class="nav-link">
                 <span>All</span>
               </a>
             </li>
           </ul>
           <ul class="table_tools_segmented_control scope-group-status nav #{default_css_classes[:tabs]}">
-            <li class="scope nav-item published">
+            <li class="scope published nav-item">
               <a href="https://example.com?scope=published" class="nav-link">
                 <span>Published</span>
               </a>
             </li>
-            <li class="scope nav-item unpublished">
+            <li class="scope unpublished nav-item">
               <a href="https://example.com?scope=unpublished" class="nav-link">
                 <span>Unpublished</span>
               </a>
@@ -109,13 +109,13 @@ module ScopesTest
       html =
         <<~ERB
           <ul class="table_tools_segmented_control scope-default-group nav #{default_css_classes[:tabs]}">
-            <li class="scope nav-item active">
+            <li class="scope active nav-item">
               <a href="https://example.com?scope=active" class="nav-link">
                 <span>Active</span>
                 <span class="count #{default_css_classes.dig(:counts, :zero)}">0</span>
               </a>
             </li>
-            <li class="scope nav-item archived">
+            <li class="scope archived nav-item">
               <a href="https://example.com?scope=archived" class="nav-link">
                 <span>Archived</span>
                 <span class="count #{default_css_classes.dig(:counts, :positive)}">10</span>

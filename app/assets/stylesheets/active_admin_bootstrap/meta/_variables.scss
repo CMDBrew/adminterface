@@ -1,0 +1,92 @@
+//***** Logged Out
+$logged-out-bg: $light !default;
+$logged-out-logo-height: 64px !default;
+
+//***** Logged In
+// Layout
+$layout-navigation-top: () !default;
+$layout-navigation-drawer: () !default;
+$layout-navigation-drawer-dismissible: () !default;
+
+$layout-navigation-top: map-merge(
+  (
+    header: (
+      height: 64px,
+      z-index: $zindex-fixed
+    ),
+    title_bar: (
+      height: 54px,
+      z-index: $zindex-fixed - 1
+    )
+  ),
+  $layout-navigation-top
+);
+
+$layout-navigation-drawer:  map-merge(
+  (
+    "header": 280px,
+    "title_bar": 64px,
+    "breakpoint": lg
+  ),
+  $layout-navigation-drawer
+);
+
+$layout-navigation-drawer-dismissible:  map-merge(
+  (
+    "header": 280px,
+    "title_bar": 64px,
+    "breakpoint": lg
+  ),
+  $layout-navigation-drawer-dismissible
+);
+
+// Site Title
+$site-title-logo-height: 32px !default;
+
+// Breadcrumb
+$breadcrumb-item-max-width: 200px !default;
+
+// Sidebar
+$sidebar-breakpoint: lg !default;
+$sidebar-left-width: 320px !default;
+$sidebar-left-bg: $body-bg !default;
+$sidebar-right-width: 320px !default;
+$sidebar-right-bg: $body-bg !default;
+
+// Aside
+$aside-breakpoint: lg !default;
+$aside-width: 320px !default;
+$aside-box-shadow: 0 1px 1px $card-border-color, $box-shadow-sm !default;
+
+// Attributes Table
+$attribute-table-key-width: 30% !default;
+
+// Form
+$form-sortable-placeholder-bg: rgba($info, 0.12) !default;
+$form-sortable-drag-bg: $white !default;
+$form-sortable-placeholder-max-height: none !default;
+$form-sortable-drag-max-height: 140px !default;
+
+// Icon
+$aa-icon-font-family: "bootstrap-icons" !default;
+$aa-icon-size: 24px !default;
+$aa-icons: (
+  "table-sorted-asc": "\f145",
+  "table-sorted-desc": "\f124",
+  "form-has-many-sortable-handle": "\f3fe",
+  "form-has-many-destroy": "\f62a",
+) !default;
+$custom-icons: () !default;
+$aa-icons: map-merge($aa-icons, $custom-icons);
+
+// Thumbnails
+$thumbnail-default-size: sm !default;
+$thumbnail-sizes: (
+  "xs": 24px,
+  "sm": 32px,
+  "md": 64px,
+  "lg": 128px,
+) !default;
+
+// Datepicker
+$datepicker-option-today-bg: transparent !default;

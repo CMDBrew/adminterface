@@ -1,0 +1,36 @@
+#title_bar {
+  flex-wrap: nowrap;
+
+  .site_title,
+  .navbar-toggler {
+    display: none;
+  }
+
+  .navbar-head {
+    display: flex;
+    flex-direction: row;
+  }
+
+  #titlebar_left {
+    @extend %text-truncate;
+
+    flex: 1;
+
+    & + #titlebar_right { margin-left: $spacer; }
+  }
+
+  #breadcrumb {
+    @extend %text-truncate;
+
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-x: scroll;
+
+    .breadcrumb-item {
+      @extend %text-truncate;
+
+      flex-shrink: 0;
+      max-width: $breadcrumb-item-max-width;
+    }
+  }
+}

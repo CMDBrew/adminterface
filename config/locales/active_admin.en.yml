@@ -1,4 +1,14 @@
 ---
 en:
   active_admin:
-    delete_confirmation_message: Deleting records cannot be recovered. Do you still want to continue?
+    batch_actions:
+      confirm_dialog:
+        cancel: Cancel
+        ok: Confirm
+    confirm_dialog:
+      cancel: Cancel
+      ok: Confirm
+    devise:
+      omniauth:
+        divider: Or
+    filter_model: Find %{model}

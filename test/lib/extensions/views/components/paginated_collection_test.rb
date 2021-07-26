@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class PaginatedCollectionTest < ActiveAdminTest
+class PaginatedCollectionTest < ActiveAdmin::BaseTestCase
   class PaginatedCollectionResource < ActiveAdmin::Resource; end
 
   class PaginatedCollectionView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
@@ -42,18 +42,12 @@ class PaginatedCollectionTest < ActiveAdminTest
     end
   end
 
-  test "has pagination for table grid blog block" do
+  test "has pagination" do
     %i[table grid block block].each do |as|
-      component = paginated_collection collection, {config: {as: as}}
+      component = paginated_collection collection
       html = Capybara.string(component.to_s)
       assert html.has_selector?("#index_footer .pagination")
     end
-  end
-
-  test "does not have pagination for other" do
-    component = paginated_collection collection, {config: {as: :custom}}
-    html = Capybara.string(component.to_s)
-    refute html.has_selector?("#index_footer .pagination")
   end
 
   test "has download_links" do
@@ -63,33 +57,35 @@ class PaginatedCollectionTest < ActiveAdminTest
   end
 
   test "#html for config with paginations" do
-    component = paginated_collection collection, {config: {as: :table}, per_page: [1, 5]}
+    component = paginated_collection collection, {per_page: [1, 5]}
     html =
       <<~HTML
         <div class="paginated_collection_contents"></div>
         <div id="index_footer">
           <div class="pagination_per_page">
             <div class="input-group input-group-sm">
-              <div class="input-group-prepend">
-                <label class="input-group-text">Per page: </label>
-              </div>
-              <select class="custom-select">
+              <span class="input-group-text">Per page: </span>
+              <select class="form-select">
                 <option value="1">1</option>
                 <option value="5" selected="selected">5</option>
               </select>
             </div>
           </div>
-          <nav class="pagination">
-            <span class="page current">1</span>
-            <span class="page">
-              <a rel="next" href="fake/path">2</a>
-            </span>
-            <span class="next">
-              <a rel="next" href="fake/path">Next &rsaquo;</a>
-            </span>
-            <span class="last">
-              <a href="fake/path">Last &raquo;</a>
-            </span>
+          <nav class='paginator'>
+            <ul class="pagination">
+              <li class="page current active page-item">
+                <a class="page-link" href="fake/path">1</a>
+              </li>
+              <li class="page page-item">
+                <a rel="next" class="page-link" href="fake/path">2</a>
+              </li>
+              <li class="next page-item">
+                <a rel="next" class="page-link" href="fake/path">Next &rsaquo;</a>
+              </li>
+              <li class="last page-item">
+                <a class="page-link" href="fake/path">Last &raquo;</a>
+              </li>
+            </ul>
           </nav>
           <div class="pagination_information">Displaying users <b>1&nbsp;-&nbsp;5</b> of <b>10</b> in total</div>
           <div class="download_links">

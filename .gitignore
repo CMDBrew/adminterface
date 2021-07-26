@@ -1,3 +1,4 @@
+.DS_Store
 .bundle/
 /doc/
 /log/*.log
@@ -8,5 +9,10 @@
 /test/dummy/log/*.log
 /test/dummy/storage/
 /test/dummy/tmp/
+/test/dummy/public/packs-test
+/test/dummy/public/packs
 .byebug_history
 /coverage
+node_modules/
+src/
+yarn-error.log

@@ -1,6 +1,6 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
-class DropDownMenuTest < ActiveAdminTest
+class DropDownMenuTest < ActiveAdmin::BaseTestCase
   setup do
     @component = render_arbre_component do
       dropdown_menu("test") do
@@ -25,21 +25,19 @@ class DropDownMenuTest < ActiveAdminTest
   test "#content" do
     html =
       <<~ERB
-        <a class=" dropdown-toggle dropdown_menu_button" data-toggle="dropdown" href="#">test</a>
-        <div class="dropdown_menu_list_wrapper">
-          <ul class=" dropdown-menu dropdown_menu_list">
-            <li>
-              <a class="dropdown-item" href="#">link 1</a>
-            </li>
-            <li class="dropdown-divider"></li>
-            <li>
-              <a class="dropdown-item text-danger" href="https://www.example.com">link 2</a>
-            </li>
-            <li>
-              <h1>hello</h1>
-            </li>
-          </ul>
-        </div>
+        <a class="dropdown-toggle dropdown_menu_button" data-bs-toggle="dropdown" href="#">test</a>
+        <ul class="dropdown_menu_list dropdown-menu">
+          <li>
+            <a class="dropdown-item" href="#">link 1</a>
+          </li>
+          <li class="dropdown-divider"></li>
+          <li>
+            <a class="dropdown-item text-danger" href="https://www.example.com">link 2</a>
+          </li>
+          <li>
+            <h1>hello</h1>
+          </li>
+        </ul>
       ERB
     assert_html html, @component.content
   end

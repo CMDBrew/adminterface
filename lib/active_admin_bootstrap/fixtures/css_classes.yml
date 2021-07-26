@@ -1,7 +1,7 @@
 ---
 action_items:
   group: btn-group
-  item: btn btn-secondary
+  item: btn btn-light
 active_admin_comments:
   body: card-body
   header: card-header
@@ -12,59 +12,81 @@ attributes_table:
   table: table text-break
   wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
-body: null
-content:
-  form: container
-  index: container
-  show: container
-filter:
+columns: g-3
+confirm_dialog:
+  cancel: btn btn-link
+  ok: btn btn-primary
+filters:
   actions:
     cancel: btn btn-link
     submit: btn btn-primary
 flash:
-  alert: alert alert-warning
-  notice: alert alert-info
+  alert: alert-warning
+  error: alert-danger
+  notice: alert-info
+footer:
+  body: bg-light rounded p-2 small text-muted
+  wrapper: mt-3 text-center
 form:
   actions:
     cancel: btn btn-link
     submit: btn btn-primary
   error: alert alert-danger
   has_many:
-    destroy: text-danger
-    item: border mb-3
-    new: btn btn-sm btn-light
-header: navbar-dark bg-dark navbar-expand-lg
-icon: mdi
+    destroy: text-secondary
+    heading: h5
+    item: border rounded mb-3 p-3
+    new: null
+header:
+  container: container-fluid
+  wrapper: null
+html:
+  body: null
+  container:
+    form: container
+    index: container
+    page: container
+    show: container
+icon: bi
+index_as_grid:
+  group: row g-3
+  item: d-flex flex-column
 index_as_table:
   actions:
     group: btn-group
     item: btn btn-sm btn-light
   table: table
   wrapper: table-responsive
-index_as_grid:
-  group: row
-  item: d-flex flex-column
 panel:
   body: card-body
-  header: card-header
+  header:
+    title: h5 mb-0
+    wrapper: card-header
   wrapper: card
 sidebar_section:
   body: card-body
-  header: card-header
+  header:
+    title: h5 mb-0
+    wrapper: card-header
   wrapper: card
 status_tag:
   'no': badge bg-danger
-  unset: badge bg-light
+  unset: badge bg-danger
   'yes': badge bg-success
 table_for: table
 table_tools:
   btn: btn btn-sm btn-light
+  confirm_dialog:
+    cancel: btn btn-link
+    ok: btn btn-primary
   indexes:
     tabs: nav-pills nav-sm
   scopes:
     counts:
-      zero: d-none
       positive: badge bg-primary
-    tabs: nav-pills nav-sm
+      zero: d-none
+    tabs: nav-tabs
 tabs: nav-tabs
-title_bar: navbar-light bg-light
+title_bar:
+  container: container-fluid
+  wrapper: navbar-light bg-white border shadow-sm

@@ -1,0 +1,38 @@
+%layout-scrollable {
+  width: 100%;
+  height: 100%;
+
+  #wrapper { overflow: hidden; }
+
+  #active_admin_content,
+  #main,
+  #sidebar-left,
+  #sidebar-right {
+    height: 100%;
+  }
+
+  #main,
+  #header,
+  #sidebar-left,
+  #sidebar-right {
+    overflow-y: auto;
+  }
+
+  @include media-breakpoint-down($sidebar-breakpoint) {
+    #active_admin_content,
+    #main,
+    #sidebar-left,
+    #sidebar-right {
+      height: auto;
+    }
+
+    #main,
+    #header,
+    #sidebar-left,
+    #sidebar-right {
+      overflow: visible;
+    }
+
+    #wrapper { overflow-y: scroll; }
+  }
+}

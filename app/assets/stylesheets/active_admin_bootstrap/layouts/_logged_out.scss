@@ -1,0 +1,14 @@
+body.logged_out {
+  background-color: $logged-out-bg;
+
+  .site-title-wrap,
+  .card-title,
+  .card-header {
+    text-align: center;
+  }
+
+  .site_title {
+    display: inline-block;
+    .image { height: $logged-out-logo-height; }
+  }
+}

@@ -20,5 +20,4 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "activeadmin", ">= 2.9.0"
   spec.add_dependency "rails", ">= 6.0"
-  spec.add_dependency "sass-rails"
 end

@@ -1,7 +1,7 @@
-require "test_helper"
+require "test_case/active_admin/base_test_case"
 
 module PanelTest
-  class DefaultTest < ActiveAdminTest
+  class DefaultTest < ActiveAdmin::BaseTestCase
     def default_css_classes
       @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :panel)
     end
@@ -39,18 +39,16 @@ module PanelTest
     test "#html" do
       html =
         <<~ERB
-          <div class="panel-header #{default_css_classes[:header]}">
-            <div class="title">
-              <h5>panel title</h5>
-            </div>
-            <div class="actions">
+          <div class="panel-header #{default_css_classes.dig(:header, :wrapper)}">
+            <div class="title #{default_css_classes.dig(:header, :title)}">panel title</div>
+            <div class="header_action">
               <div class="btn-group">
                 <a href="/fake/path">Link A</a>
                 <a href="/fake/path">Link B</a>
               </div>
             </div>
           </div>
-          <div class="panel-body #{default_css_classes[:body]}">
+          <div class="panel_contents panel-body #{default_css_classes[:body]}">
             <h1>test</h1>
             <p>this is a panel</p>
           </div>
@@ -59,14 +57,14 @@ module PanelTest
     end
   end
 
-  class WithOptionsTest < ActiveAdminTest
+  class WithOptionsTest < ActiveAdmin::BaseTestCase
     def default_css_classes
       @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :panel)
     end
 
     setup do
       @component = render_arbre_component do
-        panel "", {header_class: "header", body_class: "body"} do
+        panel "", header_html: {class: "header"}, body_html: {class: "body"} do
           h1 "test"
           para "this is a panel"
         end
@@ -76,8 +74,8 @@ module PanelTest
     test "#content" do
       html =
         <<~ERB
-          <div class="panel-header #{default_css_classes[:header]} header"></div>
-          <div class="panel-body #{default_css_classes[:body]} body">
+          <div class="panel-header #{default_css_classes.dig(:header, :wrapper)} header"></div>
+          <div class="panel_contents panel-body #{default_css_classes[:body]} body">
             <h1>test</h1>
             <p>this is a panel</p>
           </div>

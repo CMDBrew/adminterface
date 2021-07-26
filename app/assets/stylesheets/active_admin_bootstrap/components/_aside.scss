@@ -1,0 +1,28 @@
+.aside {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: $zindex-fixed + 1;
+  display: block !important;
+  width: 100%;
+  height: auto !important;
+  padding: 0;
+
+  @include shadow($aside-box-shadow);
+  @include transition(transform 0.2s linear);
+
+  &:not(.show) {
+    @include transform(translateX(100%));
+  }
+
+  @include media-breakpoint-up($aside-breakpoint) {
+    position: absolute;
+    z-index: 11;
+    width: $aside-width;
+  }
+}
+
+body.aside-active {
+  overflow: hidden !important;
+}

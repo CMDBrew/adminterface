@@ -1,0 +1,27 @@
+#filters {
+  &.aside {
+    .sidebar_section {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .panel {
+      border-radius: 0;
+      border: 0;
+    }
+
+    .panel-body {
+      flex: 1;
+      overflow-y: auto;
+    }
+
+    .btn-close {
+      position: absolute;
+      top: 0.5rem;
+      right: $card-spacer-x;
+      z-index: 11;
+      color: $text-muted;
+    }
+  }
+}

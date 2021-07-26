@@ -1,0 +1,19 @@
+.active_admin_comment {
+  &.formtastic { margin-bottom: map-get($spacers, 4); }
+
+  &:not(.formtastic) {
+    fieldset.actions ol { flex-direction: row; }
+  }
+}
+
+.comments {
+  .paginating-footer {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .pagination_information { margin-bottom: $spacer; }
+  }
+
+  .empty { display: none; }
+}

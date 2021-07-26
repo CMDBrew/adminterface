@@ -1,0 +1,29 @@
+.thumbnail {
+  @extend %background-cover;
+
+  position: relative;
+  flex-shrink: 0;
+  width: map-get($thumbnail-sizes, $thumbnail-default-size);
+  height: map-get($thumbnail-sizes, $thumbnail-default-size);
+  overflow: hidden;
+  font-size: $small-font-size;
+  line-height: map-get($thumbnail-sizes, $thumbnail-default-size);
+  text-align: center;
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    height: 100%;
+
+    @include transform(translateX(-50%));
+  }
+}
+
+@each $_key, $_value in $thumbnail-sizes {
+  .thumbnail.#{$_key} {
+    width: $_value;
+    height: $_value;
+    line-height: $_value;
+  }
+}

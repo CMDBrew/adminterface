@@ -1,21 +1,25 @@
-module ActiveAdmin
-  # Overwrite NamespaceSettings - lib/active_admin/namespace_settings.rb
-  class NamespaceSettings < DynamicSettingsNode
-    CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
+module ActiveAdminBootstrap
+  module Extensions
+    module NamespaceSettings
+      extend ActiveSupport::Concern
 
-    # The default layouts
-    register :layouts, CONFIGS[:layouts]
+      CONFIGS = ActiveAdminBootstrap::Configs::DEFAULTS
 
-    # The default icons
-    register :icons, CONFIGS[:icons]
+      included do
+        # The default component configs
+        register :components, CONFIGS[:components]
 
-    # The default component configs
-    register :components, CONFIGS[:components]
+        # The default css_classes
+        register :css_classes, CONFIGS[:css_classes]
 
-    # The default css_classes
-    register :css_classes, CONFIGS[:css_classes]
-
-    # The default breakpoints
-    register :breakpoints, CONFIGS[:breakpoints]
+        # Set the site title image displayed in the logged_out layout (has precendence over :site_title)
+        register :site_title_image_logged_out, "", :string_symbol_or_proc
+      end
+    end
   end
+end
+
+# Overwrite activeadmin/lib/active_admin/namespace_settings.rb
+ActiveAdmin::NamespaceSettings.class_eval do
+  include ActiveAdminBootstrap::Extensions::NamespaceSettings
 end

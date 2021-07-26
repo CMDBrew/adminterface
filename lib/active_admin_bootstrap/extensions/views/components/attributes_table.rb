@@ -1,18 +1,28 @@
-module ActiveAdmin
-  module Views
-    # Overwirte activeadmin/lib/active_admin/views/components/attributes_table.rb
-    class AttributesTable < ActiveAdmin::Component
-      include ::ActiveAdminBootstrap::Configs::Finders
+module ActiveAdminBootstrap
+  module Extensions
+    module Views
+      module Components
+        module AttributesTable
+          def table
+            super(class: attributes_table_css_classes[:table])
+          end
 
-      has_css_classes_for :attributes_table
+          def default_class_name
+            "#{super} #{attributes_table_css_classes[:wrapper]}".squish
+          end
 
-      def table
-        super(class: attributes_table_css_classes[:table])
-      end
-
-      def default_class_name
-        "attributes_table #{attributes_table_css_classes[:wrapper]}".strip
+          def tr(options = {})
+            options[:class] = options[:class].split.reject { |x| x.eql?("row") }.join(" ")
+            super(options)
+          end
+        end
       end
     end
   end
+end
+
+# Overwirte lib/active_admin/views/components/attributes_table.rb
+ActiveAdmin::Views::AttributesTable.class_eval do
+  prepend ActiveAdminBootstrap::Extensions::Views::Components::AttributesTable
+  has_css_classes_for :attributes_table
 end

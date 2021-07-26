@@ -1,0 +1,37 @@
+.table_for {
+  white-space: nowrap;
+  vertical-align: middle;
+
+  .col { width: auto; }
+
+  th,
+  td {
+    vertical-align: inherit !important;
+  }
+
+  &:not(.attributes_table) {
+    .col-actions { text-align: right; }
+    tr.selected td { background: $table-active-bg; }
+
+    th.sortable {
+      &.sorted-asc a::before { content: map-get($aa-icons, 'table-sorted-asc'); }
+      &.sorted-desc a::before { content: map-get($aa-icons, 'table-sorted-desc'); }
+
+      a {
+        position: relative;
+        display: flex;
+        align-items: center;
+        text-decoration: none;
+        * { vertical-align: middle; }
+
+        &::before {
+          @extend %aa-icon;
+
+          margin-right: map-get($spacers, 1);
+          text-decoration: none;
+          content: '';
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,30 @@
+body.logged_in {
+  @extend %layout-scrollable;
+
+  overflow-x: hidden;
+
+  #wrapper { position: relative; }
+
+  #main,
+  #sidebar-left,
+  #sidebar-right {
+    padding: $spacer 0;
+  }
+
+  #active_admin_content {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+
+    #main {
+      width: 100%;
+
+      @include media-breakpoint-up($sidebar-breakpoint) {
+        &.without-sidebar { flex: 1; }
+        &.with-right-sidebar:not(.with-left-sidebar) { max-width: calc(100% - #{$sidebar-right-width}); }
+        &.with-left-sidebar:not(.with-right-sidebar) { max-width: calc(100% - #{$sidebar-left-width}); }
+        &.with-left-sidebar.with-right-sidebar { max-width: calc(100% - #{$sidebar-left-width} - #{$sidebar-right-width}); }
+      }
+    }
+  }
+}
