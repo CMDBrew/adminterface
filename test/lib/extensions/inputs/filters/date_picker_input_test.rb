@@ -6,6 +6,10 @@ module Filters
       @wrapper ||= form.find(".input.date_picker")
     end
 
+    def date_picker_config
+      @date_picker_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :date_picker)
+    end
+
     setup do
       scope = User.ransack
       @form = render_filter(scope, {updated_at: {as: :date_picker}})
@@ -30,7 +34,7 @@ module Filters
 
     test "js data options" do
       assert_equal(
-        {enableTime: false, altFormat: "Y-m-d"}.to_json,
+        date_picker_config.to_json,
         @form.find('input.form-control[type="date"]')["data-aa-datepicker"]
       )
     end

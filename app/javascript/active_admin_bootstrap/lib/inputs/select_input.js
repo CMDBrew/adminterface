@@ -14,12 +14,20 @@ class SelectInput extends BaseInput {
   }
 
   _defaultInputHTMLOptions () {
+    const meta = (document.querySelector('#meta-tags-for-js meta[name="inputs"]') || {})
+    const content = JSON.parse(meta.content)
     const options = {
       class: `form-select ${this.options.as}`
     }
 
     if (this.multiple) { options.multiple = true }
-    if (this.tom_select) { options['data-aa-tom-select'] = this.tom_select }
+    if (this.tom_select) {
+      if (typeof (this.tom_select) === 'object') {
+        options['data-aa-tom-select'] = this.tom_select
+      } else {
+        options['data-aa-tom-select'] = content.tom_select
+      }
+    }
 
     return { ...super._defaultInputHTMLOptions(), ...options }
   }

@@ -6,12 +6,20 @@ module ActiveAdminBootstrap
         include Base::Stringish
         prepend Base::Groupish
 
-        # @TODO: allow modifying js configs
         def input_html_options
           opts = super
           opts[:class] = "#{opts[:class]} form-control".squish
-          opts[:data] = {"aa-datepicker": {enableTime: false, altFormat: "Y-m-d"}}
-          opts
+          opts.merge(flatpickr_options)
+        end
+
+        def flatpickr_options
+          {data: {"aa-datepicker": flatpickr}}
+        end
+
+        private
+
+        def flatpickr
+          options[:flatpickr] || inputs_config.dig(:date_picker)
         end
       end
     end

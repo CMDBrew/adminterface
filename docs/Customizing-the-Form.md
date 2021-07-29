@@ -33,6 +33,7 @@
 [Formtastic/TimeSelectInput]: https://rdoc.info/github/formtastic/formtastic/Formtastic/Inputs/TimeSelectInput
 [Formtastic/TimeZoneInput]: https://rdoc.info/github/formtastic/formtastic/Formtastic/Inputs/TimeZoneInput
 [Formtastic/UrlInput]: https://rdoc.info/github/formtastic/formtastic/Formtastic/Inputs/UrlInput
+[General-Configurations]: ./General-Configurations.md
 [Rails/ActionText]: https://edgeguides.rubyonrails.org/action_text_overview.html
 [SortableJS]: https://sortablejs.github.io/Sortable/
 [TomSelect]: https://tom-select.js.org/
@@ -187,12 +188,16 @@ f.input :friend, as: :datalist, collection: %w[john mary]
 ### DatePickerInput
 `:date_picker` - a date select. Alternative to `:date` using the [Flatpickr] js library replacing the jQuery datepicker in [ActiveAdmin]
 
-- **Configuration**: [Formtastic/StringInput]
+- **Configuration**: [Formtastic/StringInput], [General-Configurations]
 - **Styling**: [Bootstrap/form-control], [Flatpickr]
 
 #### Examples <!-- omit in toc -->
 ```ruby
+# basic
 f.input :published_at, as: :date_picker
+
+# change flatpickr config
+f.input :published_at, as: :datetime_picker, flatpickr: {altFormat: "Y-m-d"}
 ```
 
 `:datepicker` also works for ActiveAdmin datepicker compatibility
@@ -217,12 +222,16 @@ f.input :published_at, as: :date_select
 ### DateTimePickerInput
 `:datetime_picker` - a date and time select. Alternative to `:datetime` using the [Flatpickr] js library.
 
-- **Configuration**: [Formtastic/StringInput]
+- **Configuration**: [Formtastic/StringInput], [General-Configurations]
 - **Styling**: [Bootstrap/form-control], [Flatpickr]
 
 #### Examples <!-- omit in toc -->
 ```ruby
+# basic
 f.input :published_at, as: :datetime_picker
+
+# change flatpickr config
+f.input :published_at, as: :datetime_picker, flatpickr: {altFormat: "Y-m-d, h:i K"}
 ```
 
 #### Addons <!-- omit in toc -->
@@ -373,12 +382,11 @@ f.input :keyword, as: :search
 ### SelectInput
 `:select` - a select menu. Default for ActiveRecord associations: `belongs_to`, `has_many`, and `has_and_belongs_to_many`.
 
-- **Configuration**: [Formtastic/SelectInput], [TomSelect]
+- **Configuration**: [Formtastic/SelectInput], [TomSelect], [General-Configurations]
 - **Styling**: [Bootstrap/select]
 
 #### Examples <!-- omit in toc -->
 ```ruby
-# basic
 f.input :interests, as: :select, collection: %w[movies sports]
 ```
 

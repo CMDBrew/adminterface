@@ -15,6 +15,7 @@ module ActiveAdminBootstrap
             div id: "meta-tags-for-js" do
               meta name: "countries", content: ::ActiveAdminBootstrap::Data::Countries.call(I18n.locale).to_json
               meta name: "time_zones", content: ::ActiveAdminBootstrap::Data::TimeZones.call(I18n.locale).to_json
+              meta name: "inputs", content: inputs_components.to_json
             end
           end
 
@@ -157,5 +158,5 @@ ActiveAdmin::Views::Pages::Base.class_eval do
   include ActiveAdminBootstrap::Configs::Finders
   prepend ActiveAdminBootstrap::Extensions::Views::Pages::Base
   has_css_classes_for :html, :flash
-  has_components_for :flash, :sidebar, :header
+  has_components_for :flash, :sidebar, :header, :inputs
 end
