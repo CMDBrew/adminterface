@@ -25,11 +25,19 @@ flash:
   dismissible: true
 header:
   css_class:
-    top: navbar-dark bg-primary navbar-expand-lg
     drawer: navbar-dark bg-primary
     drawer_dismissible: navbar-light bg-light
+    top: navbar-dark bg-primary navbar-expand-lg
   position: top
 index_as_grid:
   breakpoint: lg
+inputs:
+  date_picker:
+    altFormat: Y-m-d
+    enableTime: false
+  datetime_picker:
+    altFormat: Y-m-d, h:i K
+    enableTime: true
+  tom_select: null
 sidebar:
   position: right

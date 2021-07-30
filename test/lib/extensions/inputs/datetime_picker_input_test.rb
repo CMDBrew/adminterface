@@ -7,6 +7,10 @@ module DatetimePickerInputScenarios
     @wrapper ||= form.find(".input.datetime_picker")
   end
 
+  def datetime_picker_config
+    @datetime_picker_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :datetime_picker)
+  end
+
   included do
     test "wrapper" do
       assert find_wrapper(@form).present?
@@ -27,7 +31,7 @@ module DatetimePickerInputScenarios
 
     test "js data options" do
       assert_equal(
-        {enableTime: true, altFormat: "Y-m-d, h:i K"}.to_json,
+        datetime_picker_config.to_json,
         @form.find('input.form-control[type="datetime-local"]')["data-aa-datepicker"]
       )
     end

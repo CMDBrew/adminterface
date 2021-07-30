@@ -7,6 +7,10 @@ module DatePickerInputScenarios
     @wrapper ||= form.find(".input.date_picker")
   end
 
+  def date_picker_config
+    @date_picker_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :date_picker)
+  end
+
   included do
     test "wrapper" do
       assert find_wrapper(@form).present?
@@ -27,7 +31,7 @@ module DatePickerInputScenarios
 
     test "js data options" do
       assert_equal(
-        {enableTime: false, altFormat: "Y-m-d"}.to_json,
+        date_picker_config.to_json,
         @form.find('input.form-control[type="date"]')["data-aa-datepicker"]
       )
     end

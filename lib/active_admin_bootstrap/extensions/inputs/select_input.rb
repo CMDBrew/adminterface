@@ -29,7 +29,7 @@ module ActiveAdminBootstrap
         private
 
         def tom_select
-          options[:tom_select] || {}
+          options[:tom_select] || inputs_config.dig(:tom_select)
         end
       end
     end
