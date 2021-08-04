@@ -1,0 +1,30 @@
+.text.input {
+  .input-counter-container {
+    position: relative;
+
+    .input-counter-stats {
+      list-style: none;
+      padding: 0 map-get($spacers, 2);
+      margin: 0;
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      font-size: $small-font-size;
+      background: $input-border-color;
+      color: color-contrast($input-border-color);
+      border-radius: $input-border-radius 0 0 0;
+
+      .input-counter-char-left { display: none; }
+
+      & > * {
+        display: inline-block;
+        position: relative;
+
+        &:not(:last-child)::after {
+          content: "/";
+          padding: 0 map-get($spacers, 1);
+        }
+      }
+    }
+  }
+}

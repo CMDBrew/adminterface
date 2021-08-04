@@ -435,12 +435,22 @@ f.input :accept, as: :switch
 ### TextInput
 `:text` - a textarea. Default for column types: `:text`
 
-- **Configuration**: [Formtastic/TextInput]
+- **Configuration**: [Formtastic/TextInput], [General-Configurations]
 - **Styling**: [Bootstrap/form-control]
 
 #### Examples <!-- omit in toc -->
 ```ruby
 f.input :biography, as: :text
+```
+
+You can enable counter by passing the `counter:` option.
+❗️To ensure data integrity, you should also implement server-side validations.
+```ruby
+# basic
+f.input :biography, as: :text, counter: true
+
+# change counter options
+f.input :biography, as: :text, counter: {type: "word", limit: 10}
 ```
 
 ### TimePickerInput
