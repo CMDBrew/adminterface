@@ -1,11 +1,13 @@
-[ActiveAdmin]: https://activeadmin.info/1-general-configuration.html
-[Bootstrap]: https://getbootstrap.com/docs/5.0/getting-started/introduction/
-[Bootstrap Icons]: https://icons.getbootstrap.com/
-[css_classes.yml]: ../lib/active_admin_bootstrap/fixtures/css_classes.yml
-[components.yml]: ../lib/active_admin_bootstrap/fixtures/components.yml
-[_variables.scss]: ../app/assets/stylesheets/active_admin_bootstrap/meta/_variables.scss
 [_flatpickr.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_flatpickr.scss
 [_trix_editor.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_trix_editor.scss
+[_variables.scss]: ../app/assets/stylesheets/active_admin_bootstrap/meta/_variables.scss
+[ActiveAdmin]: https://activeadmin.info/1-general-configuration.html
+[Bootstrap Icons]: https://icons.getbootstrap.com/
+[Bootstrap]: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+[components.yml]: ../lib/active_admin_bootstrap/fixtures/components.yml
+[css_classes.yml]: ../lib/active_admin_bootstrap/fixtures/css_classes.yml
+[Flatpickr]: https://flatpickr.js.org/
+[TomSelect]: https://tom-select.js.org/
 
 # General Configuration <!-- omit in toc -->
 We've kept the existing functionalities and add some enhancements to the configurations. Please see [ActiveAdmin] for basic configurations.
@@ -20,6 +22,11 @@ We've kept the existing functionalities and add some enhancements to the configu
   - [Flash](#flash)
   - [Header](#header)
   - [IndexAsGrid](#indexasgrid)
+  - [Inputs](#inputs)
+    - [DatePicker](#datepicker)
+    - [DateTimePicker](#datetimepicker)
+    - [TomSelect](#tomselect)
+    - [Text](#text)
   - [Sidebar](#sidebar)
 - [Theme](#theme)
 - [Pro Tips](#pro-tips)
@@ -101,6 +108,26 @@ Customize how components should behave.
 - `breakpoint:` — use [Bootstrap]'s breakpoints
   - Type: `String`
   - Available Options: `sm`, `md`, `lg`, `xl`, `xxl` or `null`
+
+### Inputs
+`inputs:` — formtastic input components
+
+#### DatePicker
+See [Flatpickr] for config options.
+
+#### DateTimePicker
+See [Flatpickr] for config options.
+
+#### TomSelect
+See [TomSelect] for config options.
+
+#### Text
+- `counter:` — letter/word count limit config
+  - `type:` — the mode for counting
+    - Type: `String`
+    - Available Options: `letter`, `word`
+  - `limit:` — the maximum count
+    - Type: `Integer`
 
 ### Sidebar
 `sidebar:` — filters on the index page.

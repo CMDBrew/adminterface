@@ -39,5 +39,9 @@ inputs:
     altFormat: Y-m-d, h:i K
     enableTime: true
   tom_select: null
+  text:
+    counter:
+      type: letter
+      limit: 300
 sidebar:
   position: right

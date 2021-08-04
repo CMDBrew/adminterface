@@ -8,7 +8,7 @@ ActiveAdmin.register User do
     action_items: {new: {icon_class: "bi-plus"}}
   }
 
-  permit_params :name, :email, :password,
+  permit_params :name, :email, :password, :biography,
     user_addresses_attributes: %i[
       id fullname address_line1 address_line2 city state zip_code country
     ]
@@ -83,6 +83,7 @@ ActiveAdmin.register User do
         f.input :name
         f.input :password, input_html: {autocomplete: "new-password"}
         f.input :email
+        f.input :biography, counter: true
         f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
           k.inputs do
             k.input :fullname
