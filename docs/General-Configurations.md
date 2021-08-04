@@ -93,13 +93,13 @@ Customize how components should behave.
 
 - `position:` — the placement for the header navbar
   - Type: `String`
-  - Available Options: `top`, `drawer`, or `drawer-dismissible`
+  - Available Options: `top`, `sidebar`, or `aside`
 - `css_class:` — `position:` specific css classes
   - `top:` — add additional class when the header position is `top`
     - Type: `String`
-  - `drawer:` — add additional class when the header position is `drawer`
+  - `sidebar:` — add additional class when the header position is `sidebar`
     - Type: `String`
-  - `drawer_dismissible:` — add additional class when the header position is `drawer_dismissible`
+  - `aside:` — add additional class when the header position is `aside`
     - Type: `String`
 
 ### IndexAsGrid

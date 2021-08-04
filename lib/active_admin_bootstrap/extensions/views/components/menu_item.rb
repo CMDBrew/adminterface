@@ -9,7 +9,7 @@ module ActiveAdminBootstrap
             if icon.present?
               Arbre::Context.new({}, self) do
                 aa_icon(icon)
-              end + label
+              end + helpers.content_tag(:span, label)
             else
               label
             end

@@ -18,6 +18,13 @@
         display: inline-block;
         vertical-align: middle;
       }
+
+      i.aa-icon {
+        margin-right: map-get($spacers, 1);
+        font-size: $header-icon-size;
+        width: $header-icon-size;
+        height: $header-icon-size;
+      }
     }
   }
 }
