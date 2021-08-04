@@ -5,8 +5,8 @@ $logged-out-logo-height: 64px !default;
 //***** Logged In
 // Layout
 $layout-navigation-top: () !default;
-$layout-navigation-drawer: () !default;
-$layout-navigation-drawer-dismissible: () !default;
+$layout-navigation-sidebar: () !default;
+$layout-navigation-aside: () !default;
 
 $layout-navigation-top: map-merge(
   (
@@ -22,23 +22,28 @@ $layout-navigation-top: map-merge(
   $layout-navigation-top
 );
 
-$layout-navigation-drawer:  map-merge(
+$layout-navigation-sidebar:  map-merge(
   (
     "header": 280px,
     "title_bar": 64px,
-    "breakpoint": lg
+    "breakpoint": lg,
+    "menu-item-active-bg": shade-color($primary, 20%)
   ),
-  $layout-navigation-drawer
+  $layout-navigation-sidebar
 );
 
-$layout-navigation-drawer-dismissible:  map-merge(
+$layout-navigation-aside:  map-merge(
   (
     "header": 280px,
     "title_bar": 64px,
-    "breakpoint": lg
+    "breakpoint": lg,
+    "menu-item-active-bg": shade-color($primary, 20%)
   ),
-  $layout-navigation-drawer-dismissible
+  $layout-navigation-aside
 );
+
+// Header
+$header-icon-size: 18px !default;
 
 // Site Title
 $site-title-logo-height: 32px !default;
@@ -69,7 +74,7 @@ $form-sortable-drag-max-height: 140px !default;
 
 // Icon
 $aa-icon-font-family: "bootstrap-icons" !default;
-$aa-icon-size: 24px !default;
+$aa-icon-size: 22px !default;
 $aa-icons: (
   "table-sorted-asc": "\f145",
   "table-sorted-desc": "\f124",

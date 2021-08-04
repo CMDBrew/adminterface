@@ -1,12 +1,14 @@
-$_header-width: map-get($layout-navigation-drawer-dismissible, 'header');
-$_titlebar-height: map-get($layout-navigation-drawer-dismissible, 'title_bar');
-$_breakpoint: map-get($layout-navigation-drawer-dismissible, 'breakpoint');
+$_header-width: map-get($layout-navigation-aside, 'header');
+$_titlebar-height: map-get($layout-navigation-aside, 'title_bar');
+$_breakpoint: map-get($layout-navigation-aside, 'breakpoint');
+$_menu-item-active-bg: map-get($layout-navigation-aside, 'menu-item-active-bg');
 $_media-breakpoint-up-drawer-active-grid-template: $_header-width minmax(0, 1fr);
 
-body.layout-navigation-drawer_dismissible {
+body.layout-navigation-aside {
   #title_bar .site_title { display: block; }
+  #header .site_title { height: $_titlebar-height; }
 
-  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint);
+  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint, $_menu-item-active-bg);
 
   @include media-breakpoint-down($_breakpoint) {
     #title_bar .site_title { display: none; }
@@ -25,6 +27,7 @@ body.layout-navigation-drawer_dismissible {
     #header {
       padding: $spacer 0;
       .site_title { display: none; }
+      #main-nav { padding-top: 0; }
     }
   }
 }

@@ -94,13 +94,13 @@ module MenuTest
             <li class="nav-item has_nested dropdown" id="reports">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="/admin/reports">
                 <i class="aa-icon #{icons_css_classes} icon-main"></i>
-                Reports
+                <span>Reports</span>
               </a>
               <ul class="dropdown-menu">
                 <li class="dropdown-item" id="a_sub_reports">
                   <a href="/admin/a-sub-reports">
                     <i class="aa-icon #{icons_css_classes} icon-sub"></i>
-                    A Sub Reports
+                    <span>A Sub Reports</span>
                   </a>
                 </li>
               </ul>

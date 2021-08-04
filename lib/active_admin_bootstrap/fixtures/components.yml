@@ -25,8 +25,8 @@ flash:
   dismissible: true
 header:
   css_class:
-    drawer: navbar-dark bg-primary
-    drawer_dismissible: navbar-light bg-light
+    aside: navbar-light bg-light
+    sidebar: navbar-dark bg-primary
     top: navbar-dark bg-primary navbar-expand-lg
   position: top
 index_as_grid:
@@ -38,10 +38,10 @@ inputs:
   datetime_picker:
     altFormat: Y-m-d, h:i K
     enableTime: true
-  tom_select: null
   text:
     counter:
-      type: letter
       limit: 300
+      type: letter
+  tom_select: null
 sidebar:
   position: right

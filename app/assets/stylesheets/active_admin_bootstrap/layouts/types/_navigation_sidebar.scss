@@ -1,0 +1,15 @@
+$_header-width: map-get($layout-navigation-sidebar, 'header');
+$_titlebar-height: map-get($layout-navigation-sidebar, 'title_bar');
+$_breakpoint: map-get($layout-navigation-sidebar, 'breakpoint');
+$_menu-item-active-bg: map-get($layout-navigation-sidebar, 'menu-item-active-bg');
+
+body.layout-navigation-sidebar {
+  #header .site_title { height: $_titlebar-height; }
+
+  &.header-active {
+    grid-template-columns: 0 minmax(0, 1fr);
+    #header { display: none; }
+  }
+
+  @include navigation-drawer($_header-width, $_titlebar-height, $_breakpoint, $_menu-item-active-bg);
+}
