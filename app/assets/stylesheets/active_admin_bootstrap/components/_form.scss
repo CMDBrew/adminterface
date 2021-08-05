@@ -216,6 +216,7 @@
       .has_many_remove {
         padding-left: $spacer;
         font-size: 0;
+        text-decoration: none;
 
         &::before {
           @extend %aa-icon;
