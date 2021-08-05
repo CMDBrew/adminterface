@@ -80,20 +80,25 @@ ActiveAdmin.register User do
   form do |f|
     panel do
       f.inputs do
-        f.input :name
+        columns do
+          column(span: 6) { f.input :name }
+          column(span: 6) { f.input :email }
+        end
+
         f.input :password, input_html: {autocomplete: "new-password"}
-        f.input :email
         f.input :biography, counter: true
         f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
-          k.inputs do
-            k.input :fullname
-            k.input :address_line1
-            k.input :address_line2
-            k.input :city
-            k.input :state
-            k.input :zip_code
-            k.input :country
-          end
+          k.inputs(class: "row") do
+            k.input :fullname, wrapper_html: {class: "col-lg-6"}
+          end +
+            k.inputs(class: "row") do
+              k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+              k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+              k.input :city
+              k.input :state
+              k.input :zip_code
+              k.input :country
+            end
         end
       end
       f.actions

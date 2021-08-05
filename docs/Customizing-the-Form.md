@@ -78,6 +78,7 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
   - [Input Groups](#input-groups)
   - [Inline Radio & Check Options](#inline-radio--check-options)
 - [Nested Resources](#nested-resources)
+  - [HasMany & Arbre](#hasmany--arbre)
 
 ## Form
 ### Multiple Forms
@@ -555,5 +556,36 @@ ActiveAdmin.register Post do
 
     f.actions
   end
+end
+```
+
+### HasMany & Arbre
+The has_many fields do not work support Arbre elements since it doesn't have access to them. See https://github.com/activeadmin/activeadmin/issues/4043.
+To add columns to your nested form:
+```ruby
+f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+  k.inputs(class: "row") do
+    k.input :fullname, wrapper_html: {class: "col-lg-6"}
+  end +
+    k.inputs(class: "row") do
+      k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+      k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+    end
+end
+```
+
+To add Arbre elements to your nested form:
+```ruby
+f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+  k.inputs(class: "row") do
+    k.input :fullname, wrapper_html: {class: "col-lg-6"}
+  end +
+    Arbre::Context.new do
+      para "some hint texts"
+    end.to_s +
+    k.inputs(class: "row") do
+      k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+      k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+    end
 end
 ```
