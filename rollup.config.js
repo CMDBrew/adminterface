@@ -15,8 +15,12 @@ const uglifyOptions = {
       /**
        * Warning: This file is auto-generated, do not modify. Instead, make your changes in 'app/javascript/active_admin_bootstrap/' and run \`yarn build\`
        */
+      //= require @rails/ujs
       //= require bootstrap
       //= require bootstrap-icons
+      //= require flatpickr
+      //= require sortablejs
+      //= require tom-select
     ` + '\n'
   }
 }
@@ -36,7 +40,11 @@ export default {
   ],
   // Use client's yarn dependencies instead of bundling everything
   external: [
+    '@rails/ujs',
+    'bootstrap-icons',
     'bootstrap',
-    'bootstrap-icons'
+    'flatpickr',
+    'sortablejs',
+    'tom-select'
   ]
 }

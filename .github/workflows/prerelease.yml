@@ -1,0 +1,36 @@
+---
+name: Pre-Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  release:
+    name: Pre-Release
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: marvinpinto/action-automatic-releases@latest
+        with:
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
+          automatic_release_tag: latest
+          prerelease: true
+          title: Development Build
+          files: |
+            LICENSE.txt
+            *.jar
+  npm:
+    name: "Publish to GitHub NPM Packages"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com/
+      - run: npm version prerelease --preid=ci-$GITHUB_RUN_ID --no-git-tag-version
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}

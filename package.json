@@ -1,16 +1,19 @@
 {
-  "name": "active_admin_bootstrap",
-  "version": "1.0.0",
+  "name": "@cmdbrew/active_admin_bootstrap",
+  "version": "0.1.1-ci-.0",
   "description": "Add Bootstrap themes and common UI components for ActiveAdmin",
   "main": "src/all.js",
   "files": [
     "src/*"
   ],
-  "repository": "#",
-  "author": "I-Lung Lee <ilung@hey.com>",
-  "license": "MIT",
+  "repository": "git://github.com/cmdbrew/active_admin_bootstrap.git",
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "author": "I-Lung Lee <nelson@cmdbrew.com>",
+  "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
+  "build": "rollup --config rollup.config.js",
     "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/active_admin_bootstrap src/stylesheets && cp -R app/javascript/active_admin_bootstrap/* src",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
     "fix": "standard --fix"
