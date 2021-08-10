@@ -25,4 +25,4 @@ $ gem install active_admin_bootstrap
 Contribution directions go here.
 
 ## License
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+Find our license [here](https://github.com/CMDBrew/active_admin_bootstrap/blob/master/LICENSE.md).
