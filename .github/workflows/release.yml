@@ -21,8 +21,9 @@ jobs:
             *.jar
 
   npm_package:
-    name: Publish to GitHub NPM Packages
+    name: Publish NPM package on Github
     runs-on: ubuntu-latest
+    needs: release
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v1
@@ -34,9 +35,13 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   ruby_gem:
-    - uses: actions/checkout@v2
-    - name: Publish to GitHub Ruby Gem
-      uses: jstastny/publish-gem-to-github@master
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        owner: cmdbrew
+    name: Publish Ruby gem on Github
+    runs-on: ubuntu-latest
+    needs: release
+    steps:
+      - uses: actions/checkout@v2
+      - name: Publish to GitHub Ruby Gem
+        uses: jstastny/publish-gem-to-github@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: cmdbrew

@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.email = ["nelson@cmdbrew.com"]
   spec.homepage = "https://github.com/cmdbrew/active_admin_bootstrap"
   spec.summary = "Addon for ActiveAdmin"
-  spec.description = "Add Bootstrap themes and common UI components for ActiveAdmin"
+  spec.description = "See README.md"
   spec.license = "See LICENSE"
 
   # Prevent pushing this gem to RubyGems.org. To allow pushes either set the 'allowed_push_host'

@@ -1,7 +1,7 @@
 {
   "name": "@cmdbrew/active_admin_bootstrap",
   "version": "0.1.0",
-  "description": "Add Bootstrap themes and common UI components for ActiveAdmin",
+  "description": "JavaScript dependencies for gem `active_admin_bootstrap`",
   "main": "src/base.js",
   "files": [
     "src/*"
