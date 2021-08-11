@@ -16,6 +16,7 @@ gem "rails", "~> 6.1.0"
 
 group :development do
   gem "appraisal"
+  gem "gem-release"
 end
 
 group :development, :test do
