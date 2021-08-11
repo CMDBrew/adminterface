@@ -16,7 +16,7 @@
 ## Setting up the development environment
 1. Install dependencies
 ```bash
-$ bundle install
+$ bundle exec appraisal install
 $ yarn install
 $ cd test/dummy && yarn install
 ```
