@@ -4,6 +4,7 @@ PATH
     active_admin_bootstrap (0.1.0)
       activeadmin (~> 2.9)
       rails (>= 6.0)
+      rainbow (~> 3.0)
 
 GEM
   remote: https://rubygems.org/

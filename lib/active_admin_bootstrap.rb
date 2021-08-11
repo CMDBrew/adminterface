@@ -1,4 +1,5 @@
 require "activeadmin"
+require "rainbow"
 
 # ActiveAdminBootstrap main file
 module ActiveAdminBootstrap

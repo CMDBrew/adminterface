@@ -1,0 +1,13 @@
+===============================================================================
+Depending on your application's configuration, you might need to perform some manual steps:
+
+  1. Migrate your custom javascript and stylesheets to webpacker
+     - app/assets/javascripts/active_admin.js -> app/javascript/packs/active_admin.js
+     - app/assets/stylesheets/active_admin.scss -> app/javascript/stylesheets/active_admin.scss
+
+  2. Remove unnecessary sprocket files
+     - app/assets/javascripts/active_admin.js
+     - app/assets/stylesheets/active_admin.scss
+
+  3. For guides, please visit https://github.com/CMDBrew/active_admin_bootstrap/blob/master/README.md
+===============================================================================

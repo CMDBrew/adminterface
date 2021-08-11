@@ -1,8 +1,8 @@
 {
   "name": "@cmdbrew/active_admin_bootstrap",
-  "version": "0.1.1-ci-.0",
+  "version": "0.1.0",
   "description": "Add Bootstrap themes and common UI components for ActiveAdmin",
-  "main": "src/all.js",
+  "main": "src/base.js",
   "files": [
     "src/*"
   ],
@@ -13,8 +13,8 @@
   "author": "I-Lung Lee <nelson@cmdbrew.com>",
   "license": "SEE LICENSE IN LICENSE.md",
   "scripts": {
-  "build": "rollup --config rollup.config.js",
-    "prepublishOnly": "rm -rf src && mkdir src && cp -R app/assets/stylesheets/active_admin_bootstrap src/stylesheets && cp -R app/javascript/active_admin_bootstrap/* src",
+    "build": "rollup --config rollup.config.js",
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/active_admin_bootstrap src && cp -R app/assets/stylesheets/active_admin_bootstrap src/scss",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
     "fix": "standard --fix"
   },
@@ -22,7 +22,6 @@
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "common-tags": "^1.8.0",
-    "resolve-url-loader": "^4.0.0",
     "rollup": "^2.26.4",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-commonjs": "^10.1.0",
@@ -39,6 +38,7 @@
     "bootstrap": "^5.0.1",
     "bootstrap-icons": "^1.5.0",
     "flatpickr": "^4.6.9",
+    "resolve-url-loader": "^4.0.0",
     "sortablejs": "^1.14.0",
     "tom-select": "^1.7.5"
   }
