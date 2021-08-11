@@ -11,9 +11,8 @@
     "registry": "https://npm.pkg.github.com"
   },
   "author": "I-Lung Lee <nelson@cmdbrew.com>",
-  "license": "SEE LICENSE IN LICENSE.md",
+  "license": "See LICENSE.md",
   "scripts": {
-    "build": "rollup --config rollup.config.js",
     "prepublishOnly": "rm -rf src && cp -R app/javascript/active_admin_bootstrap src && cp -R app/assets/stylesheets/active_admin_bootstrap src/scss",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
     "fix": "standard --fix"
@@ -21,12 +20,6 @@
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
-    "common-tags": "^1.8.0",
-    "rollup": "^2.26.4",
-    "rollup-plugin-babel": "^4.4.0",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-uglify": "^6.0.4",
     "standard": "^16.0.3",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",

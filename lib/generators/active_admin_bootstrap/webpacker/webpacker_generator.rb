@@ -35,6 +35,10 @@ module ActiveAdminBootstrap
         template "active_admin.scss", "app/javascript/stylesheets/active_admin.scss"
       end
 
+      def update_active_admin_configs
+        gsub_file "config/initializers/active_admin.rb", "# config.use_webpacker = true", "config.use_webpacker = true"
+      end
+
       def remove_activeadmin_dependencies
         run "yarn remove @activeadmin/activeadmin"
 
