@@ -17,8 +17,7 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           prerelease: false
           files: |
-            LICENSE.txt
-            *.jar
+            LICENSE.md
 
   npm_package:
     name: Publish NPM package on Github
