@@ -1,6 +1,3 @@
-[_flatpickr.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_flatpickr.scss
-[_trix_editor.scss]: ../app/assets/stylesheets/active_admin_bootstrap/vendors/_trix_editor.scss
-[_variables.scss]: ../app/assets/stylesheets/active_admin_bootstrap/meta/_variables.scss
 [ActiveAdmin]: https://activeadmin.info/1-general-configuration.html
 [Bootstrap Icons]: https://icons.getbootstrap.com/
 [Bootstrap]: https://getbootstrap.com/docs/5.0/getting-started/introduction/
@@ -137,10 +134,9 @@ See [TomSelect] for config options.
   - Available Options: `left`, or `right`
 
 ## Theme
-You can update the theme of your application by updating the [Bootstrap] variables. See https://github.com/twbs/bootstrap/blob/v5.0.1/scss/_variables.scss.
-In additional to bootstrap, we also have our own variables in [_variables.scss] and vendor specific variables inside the vendor stylesheets:
-- [_flatpickr.scss]
-- [_trix_editor.scss]
+You can update the theme of your application by overwriting the [Bootstrap] variables. See https://github.com/twbs/bootstrap/blob/v5.0.1/scss/_variables.scss.
+In additional to bootstrap, we also have our own variables in [_variables.scss](../app/assets/stylesheets/active_admin_bootstrap/meta/_variables.scss)
+and vendor specific variables inside the [`app/assets/stylesheets/active_admin_bootstrap/vendors`](../app/assets/stylesheets/active_admin_bootstrap/vendors) folder:
 
 ## Pro Tips
 ### Loading Configs From YAML files

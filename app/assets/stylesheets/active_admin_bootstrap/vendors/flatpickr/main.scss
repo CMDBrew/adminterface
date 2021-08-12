@@ -1,11 +1,3 @@
-$flatpickr-day-border-radius: $border-radius !default;
-$flatpickr-day-bg: $gray-200 !default;
-$flatpickr-day-hover-bg: $gray-200 !default;
-$flatpickr-day-selected-bg: $component-active-bg !default;
-$flatpickr-ctrl-bg: $gray-200 !default;
-$flatpickr-ctrl-padding: 0.25rem !default;
-$flatpickr-ctrl-hover-bg: $component-active-bg !default;
-
 .flatpickr-calendar {
   .flatpickr-day { border-radius: $flatpickr-day-border-radius; }
 

@@ -10,6 +10,10 @@ Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.
 
 ## Getting started <!-- omit in toc -->
 - [Installation](#installation)
+- [Generators](#generators)
+  - [WebpackerGenerator](#webpackergenerator)
+  - [ConfigsGenerator](#configsgenerator)
+  - [ViewsGenerator](#viewsgenerator)
 - [Usages](#usages)
 - [Contributing](#contributing)
 - [License](#license)
@@ -52,6 +56,29 @@ This will:
 5. Overwrite [`active_admin.scss`](./lib/generators/active_admin_bootstrap/webpacker/templates/active_admin.scss) with `app/javascript/stylesheets/active_admin.scss`.
 6. Set `config.use_webpacker = true` in `config/initializers/active_admin.rb`.
 7. Remove unnecessary dependencies from ActiveAdmin such as jQuery.
+
+## Generators
+Other than the install generator listed in [Installation](#installation) section, there are other generators available:
+
+### WebpackerGenerator
+When you run `rails active_admin_bootstrap:install`, it triggers this generator by default.
+```bash
+$ rails g active_admin_bootstrap:webpacker
+```
+
+### ConfigsGenerator
+Generate configs for a resource
+```bash
+$ rails g active_admin_bootstrap:configs [NAMESPACE]
+# e.g.
+$ rails g active_admin_bootstrap:configs admin/user
+```
+
+### ViewsGenerator
+Copy views to the main app
+```bash
+$ rails g active_admin_bootstrap:views
+```
 
 ## Usages
 See the docs in the [docs](./docs) folder.
