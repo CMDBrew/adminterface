@@ -1,38 +1,18 @@
-[ActiveAdmin]: https://activeadmin.info/12-arbre-components.html
-[ActiveAdmin/arbre-components/columns]: https://activeadmin.info/12-arbre-components.html#columns
-[ActiveAdmin/arbre-components/panels]: https://activeadmin.info/12-arbre-components.html#panels
-[ActiveAdmin/arbre-components/table_for]: https://activeadmin.info/12-arbre-components.html#table_for
-[ActiveAdmin/arbre-components/tabs]: https://activeadmin.info/12-arbre-components.html#tabs
-[Bootstrap Icons]: https://icons.getbootstrap.com/
-[Bootstrap]: https://getbootstrap.com/docs/5.0/
-[Bootstrap/layout/grid]: https://getbootstrap.com/docs/5.0/layout/grid/
-[css_classes.yml]: ../lib/active_admin_bootstrap/fixtures/css_classes.yml
-[General-Configurations]: ./General-Configurations.md
+---
+sidebar_position: 1
+---
 
-# ArbreComponents <!-- omit in toc -->
+# Arbre Components
 We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements. Please see [ActiveAdmin] for basic configurations.
-
-- [Icons](#icons)
-- [Panels](#panels)
-  - [Title is not required](#title-is-not-required)
-  - [Header and Body HTML options](#header-and-body-html-options)
-- [Columns](#columns)
-  - [Gutter](#gutter)
-  - [Sizing](#sizing)
-- [Table For](#table-for)
-  - [Overflow & Scrolling](#overflow--scrolling)
-- [Tabs](#tabs)
-  - [Nav and Content HTML Options](#nav-and-content-html-options)
-  - [HTTP Tabs](#http-tabs)
 
 ## Icons
 We've added a component that helper rendering icons inside [ActiveAdmin]. The default icons we're using are [Bootstrap Icons].
-If you wish, you can change them to your custom icons by changing the value for `icon:` inside [css_classes.yml]. You can find more information in [General-Configurations].
+If you wish, you can change them to your custom icons by changing the value for `icon:` inside `/lib/active_admin_bootstrap/fixtures/css_classes.yml`. You can find more information in [Configuration](../start/configuration.md).
 
 ## Panels
 - **Configuration**: [ActiveAdmin/arbre-components/panels]
 
-### Title is not required
+### Title not required
 We've removed the requirements for the `title` param. If you don't pass in the title param or passed in an empty value, the panel header will not be visible.
 
 ```ruby
@@ -89,7 +69,11 @@ Will output
 ```
 
 ### Sizing
-❗️ `:max_width` and `:min_width` options no longer works.
+:::danger
+
+`:max_width` and `:min_width` options no longer works.
+
+:::
 
 ```ruby
 columns do
@@ -184,3 +168,12 @@ ActiveAdmin.register User do
   end
 end
 ```
+
+[ActiveAdmin]: https://activeadmin.info/12-arbre-components.html
+[ActiveAdmin/arbre-components/columns]: https://activeadmin.info/12-arbre-components.html#columns
+[ActiveAdmin/arbre-components/panels]: https://activeadmin.info/12-arbre-components.html#panels
+[ActiveAdmin/arbre-components/table_for]: https://activeadmin.info/12-arbre-components.html#table_for
+[ActiveAdmin/arbre-components/tabs]: https://activeadmin.info/12-arbre-components.html#tabs
+[Bootstrap Icons]: https://icons.getbootstrap.com/
+[Bootstrap]: https://getbootstrap.com/docs/5.0/
+[Bootstrap/layout/grid]: https://getbootstrap.com/docs/5.0/layout/grid/
