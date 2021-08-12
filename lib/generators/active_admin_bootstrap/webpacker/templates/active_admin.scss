@@ -1,0 +1,8 @@
+// Sass variable overrides must be declared before loading up ActiveAdminBootstrap styles.
+//
+// To view the variables that ActiveAdminBootstrap provides, take a look at
+// `app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss` in the
+// ActiveAdminBootstrap source.
+
+// ActiveAdminBootstrap got SASS!
+@import "~@cmdbrew/active_admin_bootstrap/src/scss/base";

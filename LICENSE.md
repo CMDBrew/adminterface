@@ -31,7 +31,7 @@ One single project license grants the right to use the Software on one domain an
 
 Provided that you remain at all times in compliance with the terms and conditions of this Agreement, we hereby grant to you a limited, non-exclusive, non-sub-licensable, non-transferable license to use the Software within the Territory for any purpose not prohibited by this Agreement or applicable Law (the "License"). All rights not expressly granted herein are reserved. You acknowledge that the License is adequate consideration for all your responsibilities, representations, and warranties hereunder.
 
-**If you're developing a product for a client, you should purchase a license on behalf of the customer and transfer ownership of the license to them.** 
+**If you're developing a product for a client, you should purchase a license on behalf of the customer and transfer ownership of the license to them.**
 
 ## Restrictions
 Unless you have been granted prior, written consent from CMDBrew Studio Inc., you may not:

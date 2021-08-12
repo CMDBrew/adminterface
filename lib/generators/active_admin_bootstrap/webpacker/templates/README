@@ -1,0 +1,26 @@
+===============================================================================
+Depending on your application's configuration, you might need to perform some manual steps:
+
+  1. Change your ActiveAdmin config to use webpacker
+    ```
+    # config/initializers/active_admin.rb
+    # ...
+    #
+    # == Webpacker
+    #
+    # By default, Active Admin uses Sprocket's asset pipeline.
+    # You can switch to using Webpacker here.
+    #
+    config.use_webpacker = true
+    ```
+
+  2. Migrate your custom javascripts and stylesheets to webpacker
+    - app/assets/javascripts/active_admin.js -> app/javascript/packs/active_admin.js
+    - app/assets/stylesheets/active_admin.scss -> app/javascript/stylesheets/active_admin.scss
+
+  3. Remove unnecessary sprockets files
+    - app/assets/javascripts/active_admin.js
+    - app/assets/stylesheets/active_admin.scss
+
+  4. For guides, please visit https://github.com/CMDBrew/active_admin_bootstrap
+===============================================================================

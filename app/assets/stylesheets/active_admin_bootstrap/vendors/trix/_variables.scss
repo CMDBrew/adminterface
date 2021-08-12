@@ -1,0 +1,31 @@
+$trix-toolbar-btn-group-bg: $gray-200 !default;
+$trix-toolbar-btn-active-bg: $component-active-bg !default;
+
+$trix-content-pre-bg: $gray-200 !default;
+$trix-content-pre-color: inherit !default;
+$trix-content-blockquote-bg: $gray-200 !default;
+$trix-content-attachment-caption-color: $secondary !default;
+$trix-content-attachment-border-color: $border-color !default;
+
+$trix-input-dialog-bg: $modal-content-bg !default;
+$trix-input-dialog-border: $modal-content-border-width solid $modal-content-border-color !default;
+$trix-input-dialog-border-radius: $modal-content-border-radius !default;
+$trix-input-dialog-invalid-color: $danger !default;
+
+$trix-icon-size: 20px !default;
+$trix-icons: (
+  'attach': '\f4b3',
+  'bold': '\f5f0',
+  'bullet-list': '\f478',
+  'code': '\f2c8',
+  'decrease-nesting-level': '\f5c6',
+  'heading-1': '\f3da',
+  'increase-nesting-level': '\f5c5',
+  'italic': '\f5f4',
+  'link': '\f470',
+  'number-list': '\f475',
+  'quote': '\f190',
+  'redo': '\f116',
+  'strike': '\f5f5',
+  'undo': '\f117',
+) !default;

@@ -1,0 +1,4 @@
+quiet: false
+
+release:
+  host: https://rubygems.pkg.github.com

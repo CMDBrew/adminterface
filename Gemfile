@@ -26,6 +26,8 @@ gem "country_select"
 group :development do
   # Test application against different versions
   gem "appraisal"
+  # Streamline gem release
+  gem "gem-release"
 end
 
 group :development, :test do
