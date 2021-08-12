@@ -6,7 +6,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["I-Lung Lee"]
   spec.email = ["nelson@cmdbrew.com"]
   spec.homepage = "https://github.com/cmdbrew/active_admin_bootstrap"
-  spec.summary = "Addon for ActiveAdmin"
+  spec.summary = "Enhance ActiveAdmin with Bootstrap 5 and extended functionalities."
   spec.description = "See README.md"
   spec.license = "See LICENSE"
 
