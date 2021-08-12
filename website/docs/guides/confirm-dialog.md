@@ -1,7 +1,8 @@
+---
+sidebar_position: 4
+---
+
 # Confirm Dialog
-- [Confirm Dialog](#confirm-dialog)
-  - [Override the Defaults](#override-the-defaults)
-  - [Translatiojns](#translatiojns)
 
 ## Override the Defaults
 Default values are listed below:
@@ -34,8 +35,8 @@ link_to(
 )
 ```
 
-## Translatiojns
-To change the default I18n translations you can create an `active_admin.en.yml` file and update the `active_admin.batch_actions.confirm_dialog` key like below:
+## Translations
+To change the default I18n translations, you can create an `active_admin.en.yml` file and update the `active_admin.batch_actions.confirm_dialog` key like below:
 
 ```yaml
 ---

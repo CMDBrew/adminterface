@@ -1,19 +1,19 @@
-[ActiveAdmin]: https://activeadmin.info/9-batch-actions.html
-[Customizing-the-Form]: ./Customizing-the-Form.md
-[Confirm-Dialog]: ./Confirm-Dialog.md
+---
+sidebar_position: 3
+---
 
-# Batch Actions <!-- omit in toc -->
+# Batch Actions
 We've kept the existing functionalities with some minor adjustments (marked with ✨). Please see [ActiveAdmin] for basic configurations.
 
-- [Batch Action Forms✨](#batch-action-forms)
-  - [Form](#form)
-  - [Confirm Dialog](#confirm-dialog)
+## Batch Action Forms
+:::danger
 
-## Batch Action Forms✨
-❗️ We've changed how you specify the input types for the "Batch Action forms" to make them consistent with regular forms. See more information about form configurations in [Customizing-the-Form].
+We've changed how you specify the input types for the "Batch Action forms" to be consistent with Formtastic forms. See more information about form configurations in [Customizing the Form].
+
+:::
 
 ### Form
-You will now need to specify the input options as a `hash` like how you specify the inputs in a regular form inside [ActiveAdmin]. See [Customizing-the-Form].
+You will now need to specify the input options as a `hash`. See [Customizing the Form].
 Please note the following input types are currently not supported:
 - `:file`
 - `:rich_text`
@@ -32,7 +32,7 @@ end
 ```
 
 ### Confirm Dialog
-You can change the styles of the confirm dialog by passing in `confirm_dialog:` option. See [Confirm-Dialog] for more details.
+You can change the styles of the confirm dialog by passing in `confirm_dialog:` option. See [Confirm Dialog] for more details.
 
 ```ruby
 ActiveAdmin.register User do
@@ -57,3 +57,7 @@ en:
         cancel: Cancel
         ok: Okay!
 ```
+
+[ActiveAdmin]: https://activeadmin.info/9-batch-actions.html
+[Customizing the Form]: ./customizing-the-form.md
+[Confirm Dialog]: ./confirm-dialog.md
