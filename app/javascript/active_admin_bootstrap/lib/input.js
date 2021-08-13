@@ -26,7 +26,7 @@ class Input {
         as: this.options.as,
         options: this.options
       }
-    } else if(Array.isArray(this.options)) {
+    } else if (Array.isArray(this.options)) {
       return {
         as: 'select',
         options: { collection: this.options }
@@ -39,8 +39,8 @@ class Input {
     }
   }
 
-  _isExplicity() {
-    return typeof(this.options) === 'object' && this.options.as
+  _isExplicity () {
+    return (typeof (this.options) === 'object') && this.options.as
   }
 
   render () {
