@@ -18,8 +18,8 @@ ActiveAdmin.register User do
   filter :created_at
 
   batch_action :update, form: {
-    name: {as: :string},
-    updated_at: {as: :date_picker}
+    name: :string,
+    updated_at: :date_picker
   }, confirm_dialog: {
     buttons: {
       ok: {class: "btn btn-danger", text: "Confirm!!!"}

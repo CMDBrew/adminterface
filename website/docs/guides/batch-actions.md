@@ -3,22 +3,52 @@ sidebar_position: 3
 ---
 
 # Batch Actions
-We've kept the existing functionalities with some minor adjustments (marked with ✨). Please see [ActiveAdmin] for basic configurations.
+We've kept the existing functionalities with some minor adjustments. Please see [ActiveAdmin] for basic configurations.
 
 ## Batch Action Forms
+### Inputs
+
 :::danger
 
-We've changed how you specify the input types for the "Batch Action forms" to be consistent with Formtastic forms. See more information about form configurations in [Customizing the Form].
-
-:::
-
-### Form
-You will now need to specify the input options as a `hash`. See [Customizing the Form].
-Please note the following input types are currently not supported:
+We've updated the naming for input types to be consistent with Formtastic forms. Also, please note the following input types are currently not supported:
 - `:file`
 - `:rich_text`
 
+:::
+
+| ActiveAdmin | Formtastic (ActiveAdminBootstrap) |
+| ----------- | --------------------------------- |
+| `:text`     | `:string`                         |
+| `:textarea` | `:text`                           |
+| `:checkbox` | `:boolean`                        |
+
+Here is an actual example
 ```ruby
+# app/admin/users.rb
+
+# ActiveAdmin
+batch_action :flag, form: {
+  reason: :text,
+  notes:  :textarea,
+  hide:   :checkbox,
+} do |ids, inputs|
+  # ...
+end
+
+# ActiveAdminBootstrap
+batch_action :flag, form: {
+  reason: :string,
+  notes:  :text,
+  hide:   :boolean,
+} do |ids, inputs|
+  # ...
+end
+```
+
+The form now accepts options as a Hash. See [Customizing the Form]. See more information about form configurations in [Customizing the Form].
+
+```ruby
+# app/admin/users.rb
 ActiveAdmin.register User do
   batch_action :flag, form: {
     name: {as: :string},
@@ -35,6 +65,7 @@ end
 You can change the styles of the confirm dialog by passing in `confirm_dialog:` option. See [Confirm Dialog] for more details.
 
 ```ruby
+# app/admin/users.rb
 ActiveAdmin.register User do
   batch_action :flag, confirm_dialog: {
     buttons: {
@@ -49,6 +80,7 @@ end
 
 To change the default I18n translations you can create an `active_admin.en.yml` file and update the `active_admin.batch_actions.confirm_dialog` key like below:
 ```yaml
+# config/locales/active_admin.en.yml
 ---
 en:
   active_admin:

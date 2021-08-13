@@ -8,6 +8,7 @@ We've kept the existing functionalities and applied [Bootstrap] styles with some
 ## Form
 ### Multiple Forms
 ```ruby
+# app/admin/users.rb
 ActiveAdmin.register User do
   form multiple: true do
     form_section [:admin, resource] do |f|
