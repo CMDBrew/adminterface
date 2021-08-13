@@ -20,9 +20,34 @@ class Input {
     this.options = options
   }
 
+  _configs () {
+    if (this._isExplicity()) {
+      return {
+        as: this.options.as,
+        options: this.options
+      }
+    } else if(Array.isArray(this.options)) {
+      return {
+        as: 'select',
+        options: { collection: this.options }
+      }
+    } else {
+      return {
+        as: this.options,
+        options: {}
+      }
+    }
+  }
+
+  _isExplicity() {
+    return typeof(this.options) === 'object' && this.options.as
+  }
+
   render () {
     let InputClass
-    const as = this.options.as
+    const configs = this._configs()
+    const as = configs.as
+    const options = configs.options
 
     if (/^(string|number|password|url|phone)$/.test(as)) {
       InputClass = StringInput
@@ -58,7 +83,7 @@ class Input {
       throw new Error(`Unsupported input type: {${this.name}: ${as}}`)
     }
 
-    return (new InputClass(this.name, this.options)).render()
+    return (new InputClass(this.name, options)).render()
   }
 }
 
