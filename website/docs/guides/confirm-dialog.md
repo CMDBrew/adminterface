@@ -39,6 +39,7 @@ link_to(
 To change the default I18n translations, you can create an `active_admin.en.yml` file and update the `active_admin.batch_actions.confirm_dialog` key like below:
 
 ```yaml
+# config/locales/active_admin.en.yml
 ---
 en:
   active_admin:
