@@ -13,7 +13,9 @@ module.exports = {
   organizationName: 'cmdbrew',
   projectName: 'active_admin_bootstrap',
   themeConfig: {
+    hideableSidebar: true,
     navbar: {
+      hideOnScroll: true,
       title: 'ActiveAdminBootstrap',
       logo: {
         alt: 'ActiveAdminBootstrap',
@@ -36,7 +38,6 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
       copyright: `Copyright © ${new Date().getFullYear()} CMDBrew Studio, Inc. Built with Docusaurus.`,
     },
     prism: {

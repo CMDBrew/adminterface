@@ -1,0 +1,100 @@
+---
+sidebar_position: 2
+---
+
+# Command Line Reference
+
+## Install
+```bash
+$ rails g active_admin_boostrap:install
+```
+
+This will:
+- Triggers `rails g active_admin_bootstrap:webpacker`
+
+## Webpacker
+```bash
+$ rails g active_admin_bootstrap:webpacker
+```
+
+This will:
+- Add `resolve-url-loader` to `environment.js`
+   ```javascript title="config/webpack/environment.js" {3-5}
+   const { environment } = require('@rails/webpacker')
+
+   environment.loaders.get('sass').use.splice(-1, 0, {
+      loader: 'resolve-url-loader'
+   })
+
+   module.exports = environment
+   ```
+- Create a `.npmrc` file.
+   ```bash
+   @cmdbrew:registry=https://npm.pkg.github.com
+   ```
+- Install our package via yarn
+   ```bash
+   $ yarn add `@cmdbrew/active_admin_bootstrap`
+   ```
+- Replace the assets
+   ```javascript title="app/javascript/packs/active_admin.js"
+   import '../stylesheets/active_admin'
+
+   import Rails from '@rails/ujs'
+   import '@cmdbrew/active_admin_bootstrap'
+
+   Rails.start()
+   ```
+
+   ```scss title="app/javascript/stylesheets/active_admin.scss"
+   @import "~@cmdbrew/active_admin_bootstrap/src/scss/base";
+   ```
+- Set `use_webpacker = true` in `active_admin.rb`.
+   ```ruby title="config/initializers/active_admin.rb" {3}
+   ActiveAdmin.setup do |config|
+     ...
+     config.use_webpacker = true
+     ...
+   end
+   ```
+- Remove unnecessary dependencies from ActiveAdmin such as jQuery.
+
+## Configs
+Generate configs for a resource
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="syntax"
+  values={[
+    {label: 'Syntax', value: 'syntax'},
+    {label: 'Example', value: 'example'},
+  ]}>
+
+  <TabItem value="syntax">
+
+  ```bash
+  $ rails g active_admin_bootstrap:configs [NAMESPACE]
+  ```
+
+  </TabItem>
+  <TabItem value="example">
+
+  ```bash
+  $ rails g active_admin_bootstrap:configs admin/users
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+This will create the followings inside `config/config/active_admin_bootstrap/NAMESPACE`
+  - `components.yml`
+  - `css_classes.yml`
+
+## Views
+Copy views to the main app
+```bash
+$ rails g active_admin_bootstrap:views
+```

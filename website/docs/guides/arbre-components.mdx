@@ -3,130 +3,172 @@ sidebar_position: 1
 ---
 
 # Arbre Components
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+:::caution
+
+These components works inside `rb` or `arb` file within the ActiveAdmin scope.
+
+:::
+
 We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements. Please see [ActiveAdmin] for basic configurations.
 
 ## Icons
-We've added a component that helper rendering icons inside [ActiveAdmin]. The default icons we're using are [Bootstrap Icons].
-If you wish, you can change them to your custom icons by changing the value for `icon:` inside `/lib/active_admin_bootstrap/fixtures/css_classes.yml`. You can find more information in [Configuration](../start/configuration.md).
+We've added a helper for rendering icons inside [ActiveAdmin]. The default icons we're using are [Bootstrap Icons].
+If you wish, you can change the default icon class like below:
+```yml title="config/active_admin_bootstrap/.../css_classes.yml" {2}
+---
+icon: your-custom-class
+```
+
+To render the icon inside Arbre, call:
+```ruby
+aa_icon("bi-alarm")
+```
 
 ## Panels
-- **Configuration**: [ActiveAdmin/arbre-components/panels]
+See basic configuration options in [ActiveAdmin/arbre-components/panels].
 
 ### Title not required
 We've removed the requirements for the `title` param. If you don't pass in the title param or passed in an empty value, the panel header will not be visible.
 
-```ruby
-show do
-  panel do
-    h1 "Hello world"
-  end
+```ruby {1,5}
+panel do
+  h1 "Hello world"
+end
 
-  panel "" do
-    h1 "Hello world"
-  end
+panel "" do
+  h1 "Hello world"
 end
 ```
 
-### Header and Body HTML options
+### HTML Options
 You can pass in `:header_html` and `:body_html` to add additional attributes to the panel's header and body, respectively.
 
-```ruby
-show do
-  panel header_html: {class: "my-header-class"}, body_html: {class: "my-body-class"} do
-    h1 "Hello world"
-  end
+```ruby {1}
+panel header_html: {class: "my-header-class"}, body_html: {class: "my-body-class"} do
+  h1 "Hello world"
 end
 ```
 
 ## Columns
-We've replaced columns from using inline css to using [Bootstrap/layout/grid].
-
-- **Configuration**: [ActiveAdmin/arbre-components/columns]
+We've replaced columns from using inline css to using [Bootstrap/layout/grid]. See basic configuration options in [ActiveAdmin/arbre-components/columns].
 
 ### Gutter
 You can change the gutter between columns by passing in your own gutter class.
-```ruby
-columns(class: "g-5") do
-  column do
-    h1 "Column #1"
-  end
-  column do
-    h1 "Column #2"
-  end
-end
-```
 
-Will output
-```html
-<div class="g-5 row">
-  <div class="col-md">
-    <h1>Column #1</h1>
+````mdx-code-block
+<Tabs
+  defaultValue="input"
+  values={[
+    {label: 'Ruby', value: 'input'},
+    {label: 'HTML', value: 'output'},
+  ]}>
+
+  <TabItem value="input">
+
+  ```ruby {1}
+  columns(class: "g-5") do
+    ...
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="output">
+
+  ```html {1}
+  <div class="g-5 row">
+    ...
   </div>
-  <div class="col-md">
-    <h1>Column #2</h1>
-  </div>
-</div>
-```
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ### Sizing
-:::danger
+:::caution
 
 `:max_width` and `:min_width` options no longer works.
 
 :::
 
-```ruby
-columns do
-  column(class: "custom-column", size: "md", span: 8) do
-    h1 "Column #1"
-  end
-  column(class: "custom-column", size: "md", span: 4) do
-    h1 "Column #2"
-  end
-end
-```
+````mdx-code-block
+<Tabs
+  defaultValue="input"
+  values={[
+    {label: 'Ruby', value: 'input'},
+    {label: 'HTML', value: 'output'},
+  ]}>
 
-Will output
-```html
-<div class="g-3 row">
-  <div class="col-md-8 custom-column">
-    <h1>Column #1</h1>
+  <TabItem value="input">
+
+  ```ruby {2,6}
+  columns do
+    column(class: "custom-column", size: "md", span: 8) do
+      ...
+    end
+
+    column(class: "custom-column", size: "md", span: 4) do
+      ...
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="output">
+
+  ```html {2,6}
+  <div class="g-3 row">
+    <div class="col-md-8 custom-column">
+      ...
+    </div>
+
+    <div class="col-md-4 custom-column">
+      ...
+    </div>
   </div>
-  <div class="col-md-4 custom-column">
-    <h1>Column #2</h1>
-  </div>
-</div>
-```
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ## Table For
-- **Configuration**: [ActiveAdmin/arbre-components/table_for]
+See basic configuration options in [ActiveAdmin/arbre-components/table_for].
 
 ### Overflow & Scrolling
-By usings [Bootstrap]'s `.table-responsive`, you can add scrolling to your table.
+You can add scrolling to your table by usings [Bootstrap]'s `.table-responsive` class.
 
-```ruby
+```ruby {1}
 div class: "table-responsive" do
   table_for order.payments do
-    column(:payment_type) { |payment| payment.payment_type.titleize }
-    column "Received On", :created_at
-    column "Details & Notes", :payment_details
-    column "Amount", :amount_in_dollars
+    ...
   end
 end
 ```
 
 ## Tabs
+:::tip
+
 We've replaced jQuery tabs with [Bootstrap].
 
-- **Configuration**: [ActiveAdmin/arbre-components/tabs]
+:::
 
-### Nav and Content HTML Options
+See basic configuration options in [ActiveAdmin/arbre-components/tabs].
+
+### HTML Options
 You can pass in `:nav_html` and `:content_html` to add additional attributes to the tab's nav and content, respectively.
 
-```ruby
+```ruby {1}
 tabs nav_html: {class: "my-tabs-nav"}, content_html: {class: "my-tabs-content"} do
-  tab "tab-1"
-  tab "tab-2"
+  tab "tab-1" { ... }
+  tab "tab-2" { ... }
 end
 ```
 
@@ -134,19 +176,15 @@ end
 Sometimes, you would want the page to refresh when viewing another tab. To achieve that, you can pass in `http: true` to the tabs.
 If you add an `:id` to the tab, it will automatically set as the anchor for the nav links.
 
-```ruby
+```ruby {1}
 tabs(http: true, id: "test") do
-  tab "tab-1" do
-    h1 "tab1"
-  end
-  tab "tab-2" do
-    h1 "tab2"
-  end
+  tab "tab-1" { ... }
+  tab "tab-2" { ... }
 end
 ```
 
 The tab parameter is memorized in the session, so it works with form submission as well! ✌️
-```ruby
+```ruby title="e.g., app/admin/users.rb" {4}
 ActiveAdmin.register User do
   form do |f|
     panel do

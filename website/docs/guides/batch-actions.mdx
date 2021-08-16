@@ -1,0 +1,141 @@
+---
+sidebar_position: 3
+---
+
+# Batch Actions
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+We've kept the existing functionalities with some minor adjustments. Please see [ActiveAdmin] for basic configurations.
+
+## Batch Action Forms
+### Inputs
+
+:::caution
+
+The following input types are currently not supported:
+- `:file`
+- `:rich_text`
+
+:::
+
+:::info
+
+We've updated the naming for input types to be consistent with Formtastic forms.
+- `:text` -> `:string`
+- `:textarea` -> `:text`
+- `:checkbox` -> `:boolean`
+
+:::
+
+
+Here is an actual example:
+````mdx-code-block
+<Tabs
+  defaultValue="active_admin"
+  values={[
+    {label: 'ActiveAdmin', value: 'active_admin'},
+    {label: 'ActiveAdminBootstrap / Formtastic', value: 'formtastic'},
+  ]}>
+
+  <TabItem value="active_admin">
+
+  ```ruby title="e.g., app/admin/users.rb" {2-8}
+  ActiveAdmin.register User do
+    batch_action :flag, form: {
+      reason: :text,
+      notes:  :textarea,
+      hide:   :checkbox,
+    } do |ids, inputs|
+      # ...
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="formtastic">
+
+  ```ruby title="e.g., app/admin/users.rb" {2-8}
+  ActiveAdmin.register User do
+    batch_action :flag, form: {
+      reason: :string,
+      notes:  :text,
+      hide:   :boolean,
+    } do |ids, inputs|
+      # ...
+    end
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+The form now accepts options as a Hash. See [Customizing the Form] for more information.
+
+```ruby title="e.g., app/admin/users.rb" {3-6}
+ActiveAdmin.register User do
+  batch_action :flag, form: {
+    name: {as: :string},
+    secret: {as: :hidden, input_html: {value: "secret"}},
+    updated_at: {as: :date_picker}
+  } do |ids, inputs|
+    ...
+  end
+end
+```
+
+### Confirm Dialog
+You can change the styles of the confirm dialog by passing in `confirm_dialog` option. See [Confirm Dialog] for more information.
+
+```ruby title="e.g., app/admin/users.rb" {2-5}
+ActiveAdmin.register User do
+  batch_action :flag, confirm_dialog: {
+    buttons: {
+      ok: {class: "btn btn-danger", text: "Confirm!!!"}
+    }
+  } do |ids, inputs|
+    ...
+  end
+end
+```
+
+To change the default I18n translations you can create an `active_admin.en.yml` file and update the keys below:
+````mdx-code-block
+import ConfirmI18n from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Default', value: 'default'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```yaml title="config/locales/active_admin.en.yml" {4-7}
+  ---
+  en:
+    active_admin:
+      batch_actions:
+        confirm_dialog:
+          cancel: Cancel
+          ok: Okay!
+  ```
+
+  </TabItem>
+  <TabItem value="default">
+    <CodeBlock className="language-yaml" title="config/locales/active_admin.en.yml">
+      {ConfirmI18n}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+[ActiveAdmin]: https://activeadmin.info/9-batch-actions.html
+[Customizing the Form]: ./customizing-the-form.md
+[Confirm Dialog]: ./confirm-dialog.md
