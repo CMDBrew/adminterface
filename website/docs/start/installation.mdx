@@ -5,14 +5,13 @@ sidebar_position: 1
 # Installation
 
 ## Requirements
-| Name                                                      | Version
-| :-------------------------------------------------------- | :-----------------------
-| [Ruby](https://www.ruby-lang.org/en/)                     | `>= 2.7`
-| [ActiveAdmin](https://github.com/activeadmin/activeadmin) | `~> 2.9`
-| [Webpacker](https://github.com/rails/webpacker)           | `>= 5.0`
+- [Rails](http://rubyonrails.org/) >= 6.0
+- [Ruby](https://www.ruby-lang.org/en/) >= 2.7
+- [ActiveAdmin](https://github.com/activeadmin/activeadmin) ~> 2.9
+- [Webpacker](https://github.com/rails/webpacker) >= 5.0
 
 ## Quick Start
-1. Add the following to your application's Gemfile:
+1. Add the following to your application's `Gemfile`:
 ```ruby title=Gemfile
 source "https://rubygems.pkg.github.com/cmdbrew" do
   gem "active_admin_bootstrap"
@@ -24,12 +23,14 @@ end
 $ bundle install
 ```
 
-3. Install ActiveAdmin (If you haven't)
+3. Install [ActiveAdmin] (If you haven't installed it yet)
 ```bash
 $ rails g active_admin:install --use_webpacker
 ```
 
-4. Install ActiveAdminBootstrap
+4. Run the [Install Generator](/docs/start/cli#install)
 ```bash
 $ rails g active_admin_boostrap:install
 ```
+
+[ActiveAdmin]: https://activeadmin.info

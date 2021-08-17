@@ -10,15 +10,16 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 ````
 
-We've kept the existing functionalities and add some enhancements to the configurations. Please see [ActiveAdmin] for basic configurations.
+We've kept existing functionalities and extended them to make it easier for you to customize your application. Please see [ActiveAdmin] for basic configurations and usage guides.
 
 ## Scoping
 :::tip
 You can load your configs from YAML files to keep things tidy ✌️.
 
-```ruby title="e.g., app/admin/users.rb" {2}
+```ruby title="e.g., app/admin/users.rb" {2-3}
 ActiveAdmin.register User do
-  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
+  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
+  config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
 end
 ```
 :::
@@ -33,7 +34,7 @@ end
   ]}>
 
   <TabItem value="global">
-  This will change the defaults globally for the entire app.
+  This will change the default configurations globally for the entire app.
   <br/>
   <br/>
 
@@ -46,7 +47,7 @@ end
 
   </TabItem>
   <TabItem value="namespace">
-  This will change the defaults for the specified namespace.
+  This will change the default configurations for the specified namespace.
   <br/>
   <br/>
 
@@ -61,7 +62,7 @@ end
 
   </TabItem>
   <TabItem value="resource">
-  This will change the configs for only this resource.
+  This will only change the configurations for this resource.
   <br/>
   <br/>
 
@@ -77,13 +78,13 @@ end
 ````
 
 ## CSS Classes
+Customize the default CSS classes for [ActiveAdmin]'s components.
+
 :::tip
 
 Specify the changes you want to make, and we will merge your configs with the defaults.
 
 :::
-
-We've updated ActiveAdmin's components with [Bootstrap] classes.
 
 ````mdx-code-block
 import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/css_classes.yml';
@@ -120,13 +121,13 @@ import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures
 ````
 
 ## Components
+Customize the configurations for [ActiveAdmin]'s components.
+
 :::tip
 
 Specify the changes you want to make, and we will merge your configs with the defaults.
 
 :::
-
-Customize how components should behave.
 
 ````mdx-code-block
 import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/components.yml';
@@ -234,7 +235,7 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 | `position`    | `String`                 | The default placement for the sidebar. Available options are `left`, or `right`
 
 ## Theme
-You can update the theme of your application by overwriting the Sass variables.
+You can customize the theme of your application by overwriting the Sass variables.
 
 ````mdx-code-block
 import ActiveAdminBootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss';

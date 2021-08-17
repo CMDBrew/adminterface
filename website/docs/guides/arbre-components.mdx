@@ -12,15 +12,14 @@ import CodeBlock from '@theme/CodeBlock';
 
 :::caution
 
-These components works inside `rb` or `arb` file within the ActiveAdmin scope.
+These components works inside `rb` or `arb` file within the ActiveAdmin context.
 
 :::
 
-We've kept the existing functionalities and applied [Bootstrap] styles with some enhancements. Please see [ActiveAdmin] for basic configurations.
+We've extended ActiveAdmin's components and applied [Bootstrap] styles. Here we will only list the additions and changes we've made. Please see [ActiveAdmin] for other supported Arbre components and usage guides.
 
 ## Icons
-We've added a helper for rendering icons inside [ActiveAdmin]. The default icons we're using are [Bootstrap Icons].
-If you wish, you can change the default icon class like below:
+We've added a helper to render icons inside [ActiveAdmin]. The default icons are [Bootstrap Icons] using the `bi` class. If you wish, you can change the default icon class like below:
 ```yml title="config/active_admin_bootstrap/.../css_classes.yml" {2}
 ---
 icon: your-custom-class
@@ -32,9 +31,9 @@ aa_icon("bi-alarm")
 ```
 
 ## Panels
-See basic configuration options in [ActiveAdmin/arbre-components/panels].
+See [ActiveAdmin/arbre-components/panels] for basic configurations and usage guides.
 
-### Title not required
+### Optional Title
 We've removed the requirements for the `title` param. If you don't pass in the title param or passed in an empty value, the panel header will not be visible.
 
 ```ruby {1,5}
@@ -48,16 +47,45 @@ end
 ```
 
 ### HTML Options
-You can pass in `:header_html` and `:body_html` to add additional attributes to the panel's header and body, respectively.
+You can add additional attributes to the panel's header and body using `header_html` and `body_html`.
 
-```ruby {1}
-panel header_html: {class: "my-header-class"}, body_html: {class: "my-body-class"} do
-  h1 "Hello world"
-end
-```
+````mdx-code-block
+<Tabs
+  defaultValue="header"
+  values={[
+    {label: 'Header', value: 'header'},
+    {label: 'Body', value: 'body'},
+  ]}>
+
+  <TabItem value="header">
+
+  ```ruby {1}
+  panel header_html: {class: "my-header-class"} do
+    h1 "Hello world"
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="body">
+
+  ```ruby {1}
+  panel body_html: {class: "my-body-class"} do
+    h1 "Hello world"
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ## Columns
-We've replaced columns from using inline css to using [Bootstrap/layout/grid]. See basic configuration options in [ActiveAdmin/arbre-components/columns].
+We've replaced the inline css in ActiveAdmin's columns with [Bootstrap/layout/grid]. See [ActiveAdmin/arbre-components/columns] for basic configurations and usage guides.
+
+:::caution
+
+`:max_width` and `:min_width` options no longer works.
+
+:::
 
 ### Gutter
 You can change the gutter between columns by passing in your own gutter class.
@@ -92,11 +120,7 @@ You can change the gutter between columns by passing in your own gutter class.
 ````
 
 ### Sizing
-:::caution
-
-`:max_width` and `:min_width` options no longer works.
-
-:::
+You can change the breakpoint of the columns by passing in `size`.
 
 ````mdx-code-block
 <Tabs
@@ -140,10 +164,10 @@ You can change the gutter between columns by passing in your own gutter class.
 ````
 
 ## Table For
-See basic configuration options in [ActiveAdmin/arbre-components/table_for].
+See [ActiveAdmin/arbre-components/table_for] for basic configurations and usage guides.
 
-### Overflow & Scrolling
-You can add scrolling to your table by usings [Bootstrap]'s `.table-responsive` class.
+### Scrolling
+You can add scrolling to tables by usings [Bootstrap]'s `.table-responsive` class.
 
 ```ruby {1}
 div class: "table-responsive" do
@@ -154,36 +178,64 @@ end
 ```
 
 ## Tabs
+We've replaced jQuery with [Bootstrap]. See [ActiveAdmin/arbre-components/tabs] for basic configurations and usage guides.
+
+### HTML Options
+You can add additional attributes to the tab's nav and content using `:nav_html` and `:content_html`.
+
+````mdx-code-block
+<Tabs
+  defaultValue="nav"
+  values={[
+    {label: 'Nav', value: 'nav'},
+    {label: 'Content', value: 'content'},
+  ]}>
+
+  <TabItem value="nav">
+
+  ```ruby {1}
+  tabs nav_html: {class: "my-tabs-nav"} do
+    tab "tab-1" { ... }
+    tab "tab-2" { ... }
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="content">
+
+  ```ruby {1}
+  tabs content_html: {class: "my-tabs-content"} do
+    tab "tab-1" { ... }
+    tab "tab-2" { ... }
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+### HTTP Tabs
+For load-intensive tabs, you might want the page to refresh when the user visits another tab. To achieve this, you can passing `http: true` to it.
+
 :::tip
 
-We've replaced jQuery tabs with [Bootstrap].
+If you add an `:id` to the tab, it will automatically set as the anchor for the nav links.
 
 :::
 
-See basic configuration options in [ActiveAdmin/arbre-components/tabs].
-
-### HTML Options
-You can pass in `:nav_html` and `:content_html` to add additional attributes to the tab's nav and content, respectively.
-
 ```ruby {1}
-tabs nav_html: {class: "my-tabs-nav"}, content_html: {class: "my-tabs-content"} do
+tabs http: true, id: "test" do
   tab "tab-1" { ... }
   tab "tab-2" { ... }
 end
 ```
 
-### HTTP Tabs
-Sometimes, you would want the page to refresh when viewing another tab. To achieve that, you can pass in `http: true` to the tabs.
-If you add an `:id` to the tab, it will automatically set as the anchor for the nav links.
+:::tip
 
-```ruby {1}
-tabs(http: true, id: "test") do
-  tab "tab-1" { ... }
-  tab "tab-2" { ... }
-end
-```
+The browser memorizes the `tab` parameter in the session and redirects users to the correct tab for form submissions!.
 
-The tab parameter is memorized in the session, so it works with form submission as well! ✌️
+:::
+
 ```ruby title="e.g., app/admin/users.rb" {4}
 ActiveAdmin.register User do
   form do |f|
