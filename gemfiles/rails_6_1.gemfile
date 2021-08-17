@@ -2,24 +2,25 @@
 
 source "https://rubygems.org"
 
-gem "pg"
-gem "mysql2"
-gem "sqlite3"
-gem "webpacker", "~> 5.0"
-gem "faker"
-gem "factory_bot_rails"
-gem "devise"
-gem "omniauth"
-gem "omniauth-oauth2"
-gem "country_select"
 gem "rails", "~> 6.1.0"
 
 group :development do
   gem "appraisal"
   gem "gem-release"
+  gem "license_finder"
 end
 
 group :development, :test do
+  gem "pg"
+  gem "mysql2"
+  gem "sqlite3"
+  gem "webpacker", "~> 5.0"
+  gem "faker"
+  gem "factory_bot_rails"
+  gem "devise"
+  gem "omniauth"
+  gem "omniauth-oauth2"
+  gem "country_select"
   gem "sassc-rails"
   gem "standardrb"
   gem "byebug"
