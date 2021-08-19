@@ -84,7 +84,7 @@ class ConfirmDialog {
     const afterOpenEvent = this.events.afterOpen
     const serializeForm = serializeObject
     const dialogConfirm = new Modal(dialogEl, {
-      keyboard: false,
+      keyboard: true,
       backdrop: 'static'
     })
 

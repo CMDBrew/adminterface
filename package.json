@@ -4,7 +4,7 @@
   "description": "JavaScript dependencies for gem `active_admin_bootstrap`",
   "main": "src/base.js",
   "files": [
-    "src/*"
+    "./src/**/*"
   ],
   "repository": "git://github.com/cmdbrew/active_admin_bootstrap.git",
   "publishConfig": {
