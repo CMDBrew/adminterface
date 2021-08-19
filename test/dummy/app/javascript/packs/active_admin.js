@@ -4,6 +4,10 @@ import '../stylesheets/active_admin'
 import '../../../../../app/javascript/active_admin_bootstrap/base'
 // import '@activeadmin/activeadmin'
 
+import Rails from '@rails/ujs'
+
 require('@rails/activestorage').start()
 require('trix')
 require('@rails/actiontext')
+
+Rails.start()
