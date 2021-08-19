@@ -1,0 +1,62 @@
+---
+sidebar_position: 99
+---
+
+# Dependencies
+````mdx-code-block
+import Licenses from 'licenses.json.raw!=!!raw-loader!@site/../reports/licenses.json';
+const dependencies = JSON.parse(Licenses).dependencies.sort();
+const notables = ["@rails/ujs", "@rails/actiontext", "@rails/activestorage", "activeadmin", "trix", "bootstrap", "bootstrap-icons", "flatpickr", "tom-select", "@popperjs/core", "sortablejs"]
+const groupedNotables = dependencies.filter(dep => notables.includes(dep.name)).reduce((r, a) => {
+  r[a.licenses[0]] = [...r[a.licenses] || [], a];
+  return r;
+}, {});
+const groupedDependencies = dependencies.filter(dep => !notables.includes(dep.name)).reduce((r, a) => {
+  r[a.licenses[0]] = [...r[a.licenses] || [], a];
+  return r;
+}, {});
+````
+
+## Notable
+````mdx-code-block
+export const NotableDependencies = () => (
+  <div>
+    {
+      Object.entries(groupedNotables).map((group, i) => {
+        return (
+          <div key={i}>
+            <h3>{group[0]}</h3>
+            {group[1].sort().map((dep, i) => dep.name).join(", ")}
+            <br/>
+            <br/>
+          </div>
+        )
+      })
+    }
+  </div>
+);
+
+<NotableDependencies />
+````
+
+## Others
+````mdx-code-block
+export const Dependencies = () => (
+  <div>
+    {
+      Object.entries(groupedDependencies).map((group, i) => {
+        return (
+          <div key={i}>
+            <h3>{group[0]}</h3>
+            {group[1].sort().map((dep, i) => dep.name).join(", ")}
+            <br/>
+            <br/>
+          </div>
+        )
+      })
+    }
+  </div>
+);
+
+<Dependencies />
+````

@@ -1,0 +1,125 @@
+---
+sidebar_position: 3
+---
+
+# Batch Actions
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+We've enhanced the `batch_action` feature to make it more customizable and extendable. Here we only list the adjustments we've made. Please visit [ActiveAdmin] for basic configurations and usage guides.
+
+## Inputs
+:::caution
+
+The following input types are currently not supported:
+- `:file`
+- `:rich_text`
+
+:::
+
+:::info
+
+We've updated input type namings to match with Formtastic inputs for consistency.
+- `:text` -> `:string`
+- `:textarea` -> `:text`
+- `:checkbox` -> `:boolean`
+
+:::
+
+
+````mdx-code-block
+<Tabs
+  defaultValue="basic"
+  values={[
+    {label: 'Basic', value: 'basic'},
+    {label: 'Explicit', value: 'explicit'},
+  ]}>
+
+  <TabItem value="basic">
+
+  ```ruby title="e.g., app/admin/users.rb" {3-5}
+  ActiveAdmin.register User do
+    batch_action :flag, form: {
+      reason: :string,
+      notes:  :text,
+      hide:   :boolean,
+    } do |ids, inputs|
+      # ...
+    end
+  end
+  ```
+
+  </TabItem>
+
+  <TabItem value="explicit">
+
+  ```ruby title="e.g., app/admin/users.rb" {3-5}
+  ActiveAdmin.register User do
+    batch_action :flag, form: {
+      reason: {as: :string},
+      notes: {as: :text, input_html: {value: "custom-class"}},
+      hide: {as: :switch}
+    } do |ids, inputs|
+      ...
+    end
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## Confirm Dialog
+You can override configurations for the confirm dialogue by passing in the `confirm_dialog` option. See the [Confirm Dialog] guide for more information.
+
+```ruby title="e.g., app/admin/users.rb" {2-5}
+ActiveAdmin.register User do
+  batch_action :flag, confirm_dialog: {
+    buttons: {
+      ok: {class: "btn btn-danger", text: "Confirm!!!"}
+    }
+  } do |ids, inputs|
+    ...
+  end
+end
+```
+
+To update the translations, you can create an `active_admin.en.yml file` and specify the keys you want to update.
+````mdx-code-block
+import ConfirmI18n from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Default', value: 'default'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```yaml title="config/locales/active_admin.en.yml" {4-7}
+  ---
+  en:
+    active_admin:
+      batch_actions:
+        confirm_dialog:
+          cancel: Cancel
+          ok: Okay!
+  ```
+
+  </TabItem>
+  <TabItem value="default">
+    <CodeBlock className="language-yaml" title="config/locales/active_admin.en.yml">
+      {ConfirmI18n}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+[ActiveAdmin]: https://activeadmin.info/9-batch-actions.html
+[Customizing the Form]: /docs/guides/customizing-the-form
+[Confirm Dialog]: /docs/guides/confirm-dialog

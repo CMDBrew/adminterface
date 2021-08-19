@@ -1,0 +1,286 @@
+---
+sidebar_position: 3
+---
+
+# Configuration
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+We've kept existing functionalities and extended them to make it easier for you to customize your application. Please see [ActiveAdmin] for basic configurations and usage guides.
+
+## Scoping
+:::tip
+You can load your configs from YAML files to keep things tidy ✌️.
+
+```ruby title="e.g., app/admin/users.rb" {2-3}
+ActiveAdmin.register User do
+  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
+  config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
+end
+```
+:::
+
+````mdx-code-block
+<Tabs
+  defaultValue="global"
+  values={[
+    {label: 'Global', value: 'global'},
+    {label: 'Namespace', value: 'namespace'},
+    {label: 'Resource', value: 'resource'},
+  ]}>
+
+  <TabItem value="global">
+  This will change the default configurations globally for the entire app.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-3}
+  ActiveAdmin.setup do
+    config.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
+    config.components = {action_items: {new: {icon_class: "bi-plus"}}}
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="namespace">
+  This will change the default configurations for the specified namespace.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-5}
+  ActiveAdmin.setup do
+    config.namespace :site_1 do |site|
+      site.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
+      site.components = {action_items: {new: {icon_class: "bi-plus"}}}
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="resource">
+  This will only change the configurations for this resource.
+  <br/>
+  <br/>
+
+  ```ruby title="e.g., app/admin/users.rb" {2-3}
+  ActiveAdmin.register User do
+    config.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
+    config.components = {action_items: {new: {icon_class: "bi-plus"}}}
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## CSS Classes
+Customize the default CSS classes for [ActiveAdmin]'s components.
+
+:::tip
+
+Specify the changes you want to make, and we will merge your configs with the defaults.
+
+:::
+
+````mdx-code-block
+import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/css_classes.yml';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Defaults', value: 'defaults'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```yml title="config/active_admin_bootstrap/admin/css_classes.yml"
+  ---
+  action_items:
+    item: btn btn-secondary
+  header:
+    container: container
+  ```
+
+  </TabItem>
+
+  <TabItem value="defaults">
+    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/css_classes.yml">
+      {CssConfig.split('\n')
+        // remove comments
+        .map((line) => !line.startsWith('#') && line)
+        .filter(Boolean)
+        .join('\n')}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+## Components
+Customize the configurations for [ActiveAdmin]'s components.
+
+:::tip
+
+Specify the changes you want to make, and we will merge your configs with the defaults.
+
+:::
+
+````mdx-code-block
+import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/components.yml';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Defaults', value: 'defaults'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```yml title="config/active_admin_bootstrap/admin/components.yml"
+  ---
+  flash:
+    dismissible: false
+  header:
+    position: sidebar
+  ```
+
+  </TabItem>
+
+  <TabItem value="defaults">
+    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/components.yml">
+      {ComponentsConfig.split('\n')
+        // remove comments
+        .map((line) => !line.startsWith('#') && line)
+        .filter(Boolean)
+        .join('\n')}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+### ActionItems
+`action_items` — the actions items for the resource. Available actions items are `:new`, `:edit`, and `:destroy`.
+
+| Option       | Type                     | Description
+| :----------- | :----------------------- | :------------------
+| `css_class`  | `String`                 | Change the CSS class for this button. If not set, it will default to the `action_items.item` setting in `css_classes.yml`
+| `icon_class` | `String`                 | Add the classes for the icon. The based class is set globally using `icon` setting in `css_classes.yml`, which defaults to [Bootstrap Icons]
+| `only`       | `Array`                  | The controller actions you want this action_item to display
+
+### ActiveAdminComments
+`active_admin_comments` — the ActiveAdminComment component.
+
+| Option       | Type                     | Description
+| :----------- | :----------------------- | :------------------
+| `input`      | `String`                 | Available Options: `rich_text` or `text`
+
+### Columns
+`columns` — the Columns component.
+
+| Option       | Type                     | Description
+| :----------- | :----------------------- | :------------------
+| `breakpoint` | `String`                 | Use [Bootstrap]'s breakpoints. Available options are `sm`, `md`, `lg`, `xl`, `xxl` or `null`
+
+### Filter
+`filter` — filters on the index page.
+
+| Option       | Type                     | Description
+| :----------- | :----------------------- | :------------------
+| `position`   | `String`                 | Available options are `sidebar`, `table_tools`, or `aside`
+
+### Flash
+`flash` — the flash messages for the app.
+
+| Option        | Type                     | Description
+| :------------ | :----------------------- | :------------------
+| `dismissible` | `Boolean`                | Set to `true` if you want to display the dismiss button
+
+### Header
+`header` — the Header component.
+
+| Option                                     | Type                     | Description
+| :---------------------------------------   | :----------------------- | :------------------
+| `position`                                 | `String`                 | Availble options are `top`, `sidebar`, or `aside`
+| `css_class.top`, `css_class.sidebar`, `css_class.aside` | `String`                 | `position` specific css classes
+
+
+### IndexAsGrid
+`index_as_grid:` - the IndexAsGrid component.
+
+| Option        | Type                     | Description
+| :------------ | :----------------------- | :------------------
+| `breakpoint`  | `String`                 | Use [Bootstrap]'s breakpoints. Available options are `sm`, `md`, `lg`, `xl`, `xxl` or `null`
+
+### Inputs
+`inputs:` — formtastic input components
+
+| Option               | Type                       | Description
+| :------------------- | :------------------------- | :------------------
+| `date_picker`        | Nested `key, value` pairs  | See [Flatpickr] for config options.
+| `datetime_picker`    | Nested `key, value` pairs  | See [Flatpickr] for config options.
+| `tom_select`         | Nested `key, value` pairs  | See [TomSelect] for config options.
+| `text.counter.type`  | `String`                   | The mode for counting. Available options are `letter`, `word`
+| `text.counter.limit` | `Integer`                  | Maximum count
+
+### Sidebar
+`sidebar:` — filters on the index page.
+
+| Option        | Type                     | Description
+| :------------ | :----------------------- | :------------------
+| `position`    | `String`                 | The default placement for the sidebar. Available options are `left`, or `right`
+
+## Theme
+You can customize the theme of your application by overwriting the Sass variables.
+
+````mdx-code-block
+import ActiveAdminBootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss';
+import BootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/bootstrap/_variables.scss';
+import FlatpickrVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/flatpickr/_variables.scss';
+import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/trix/_variables.scss';
+
+<Tabs
+  defaultValue="active_admin_bootstrap"
+  values={[
+    {label: 'ActiveAdminBootstrap', value: 'active_admin_bootstrap'},
+    {label: 'Bootstrap', value: 'bootstrap'},
+    {label: 'Flatpickr', value: 'flatpickr'},
+    {label: 'Trix', value: 'trix'},
+  ]}>
+
+  <TabItem value="active_admin_bootstrap">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss">
+      {ActiveAdminBootstrapVars}
+    </CodeBlock>
+  </TabItem>
+
+  <TabItem value="bootstrap">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/bootstrap/_variables.scss">
+      {BootstrapVars}
+    </CodeBlock>
+  </TabItem>
+
+  <TabItem value="flatpickr">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/flatpickr/_variables.scss">
+      {FlatpickrVars}
+    </CodeBlock>
+  </TabItem>
+
+  <TabItem value="trix">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/trix/_variables.scss">
+      {FlatpickrVars}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+
+[ActiveAdmin]: https://activeadmin.info/1-general-configuration.html
+[Bootstrap Icons]: https://icons.getbootstrap.com/
+[Bootstrap]: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+[Flatpickr]: https://flatpickr.js.org/
+[TomSelect]: https://tom-select.js.org/

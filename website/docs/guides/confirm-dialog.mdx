@@ -1,0 +1,81 @@
+---
+sidebar_position: 4
+---
+
+# Confirm Dialog
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+## Configs
+You can override the defaults by passing in the data option inside your HTML.
+
+````mdx-code-block
+import ConfirmConfig from '!!raw-loader!@site/../app/javascript/active_admin_bootstrap/lib/modal_dialog.js';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Default', value: 'default'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```javascript {3-10}
+  link_to(
+    "Confirm", "fake/path",
+    data: {
+      confirm: "My confirm message",
+      "aa-confirm-dialog": {
+        buttons: {
+          ok: {text: "Okay!"}
+        }
+      }
+    }
+  )
+  ```
+
+  </TabItem>
+  <TabItem value="default">
+    <CodeBlock className="language-yaml" title="app/javascript/active_admin_bootstrap/lib/modal_dialog.js" lines={11-22}>
+      {ConfirmConfig}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
+
+## Translations
+To update the translations, you can create an `active_admin.en.yml` file and specify the keys you want to update.
+````mdx-code-block
+import ConfirmI18n from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
+
+<Tabs
+  defaultValue="example"
+  values={[
+    {label: 'Example', value: 'example'},
+    {label: 'Default', value: 'default'},
+  ]}>
+
+  <TabItem value="example">
+
+  ```yaml title="config/locales/active_admin.en.yml" {4-7}
+  ---
+  en:
+    active_admin:
+      confirm_dialog:
+        cancel: Cancel
+        ok: Okay!
+  ```
+
+  </TabItem>
+  <TabItem value="default">
+    <CodeBlock className="language-yaml" title="config/locales/active_admin.en.yml">
+      {ConfirmI18n}
+    </CodeBlock>
+  </TabItem>
+</Tabs>
+````
