@@ -12,6 +12,7 @@ module ActiveAdminBootstrap
 
         def build_drop_down
           return if batch_actions_to_display.empty?
+
           dropdown_menu I18n.t("active_admin.batch_actions.button_label"),
             class: "batch_actions_selector dropdown_menu",
             button: {class: "disabled"} do
@@ -19,6 +20,7 @@ module ActiveAdminBootstrap
               confirmation_text = render_or_call_method_or_proc_on(self, batch_action.confirm)
 
               options = {
+                id: "batch-action-#{batch_action.sym}",
                 class: "batch_action",
                 "data-action": batch_action.sym,
                 "data-confirm": confirmation_text,
