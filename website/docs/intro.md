@@ -3,11 +3,9 @@ sidebar_position: 1
 ---
 
 # Introduction
-ActiveAdminBootstrap brings the best part of [ActiveAdmin] and [Bootstrap] into your project, along with some of the most commonly used features to help you build more efficiently.
+ActiveAdmin Bootstrap brings the best part of [ActiveAdmin] and [Bootstrap] into your project, along with some of the most commonly used features to help you build more efficiently.
 
 With this gem, you can use [ActiveAdmin] for admin panels and other types of projects, whether internal or customer-facing.
-
-![Preview](/img/demo/preview.jpg)
 
 ## Inspiration
 For years we've used [ActiveAdmin] to build both internal and external products for our customers. This approach helps us establish a standard for building products— at least for a considerable portion of the project.
@@ -27,7 +25,7 @@ After years of experiment and revision, we've decided to release some of the mos
 We hope you will enjoy using this gem and look forward to hearing your feedback!
 
 ## Disclaimer
-Even though we have been widely using it internally, ActiveAdminBootstrap is still in **beta and undergoes active development**.
+Even though we have been widely using it internally, ActiveAdmin Bootstrap is still in **beta and undergoes active development**.
 
 We are aiming to release the first stable version this year after gathering the initial batch of feedback.
 
@@ -40,7 +38,7 @@ We are aiming to release the first stable version this year after gathering the 
 
 ## Design Principles
 - **Keep it the same** - This gem extends the functionalities of ActiveAdmin, so all features within ActiveAdmin should work as expected.
-- **Intuitive** - Developers should not feel overwhelmed when looking at the project directory of an ActiveAdminBootstrap project. It should look intuitive and easy to build on top of, using familiar approaches.
+- **Intuitive** - Developers should not feel overwhelmed when looking at the project directory of an ActiveAdmin Bootstrap project. It should look intuitive and easy to build on top of, using familiar approaches.
 - **Customizable** - Common components defaults will be provided, but developers should have the option to override them.
 
 [ActiveAdmin]: https://activeadmin.info/

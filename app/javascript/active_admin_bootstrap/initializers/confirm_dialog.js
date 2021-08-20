@@ -1,5 +1,5 @@
 import Rails from '@rails/ujs'
-import ModalDialog from '../lib/modal_dialog'
+import ConfirmDialog from '../lib/confirm_dialog'
 
 let __SkipConfirmation = false
 
@@ -15,7 +15,7 @@ Rails.confirm = function (message, element) {
     __SkipConfirmation = false
   }
 
-  window.confirmDialog = new ModalDialog(message, inputs, options, onConfirm)
+  window.confirmDialog = new ConfirmDialog(message, inputs, options, onConfirm)
 
   return false
 }

@@ -74,7 +74,7 @@ We've updated input type namings to match with Formtastic inputs for consistency
 ````
 
 ## Confirm Dialog
-You can override configurations for the confirm dialogue by passing in the `confirm_dialog` option. See the [Confirm Dialog] guide for more information.
+You can specify the configurations for the confirm dialogue by passing in the `confirm_dialog` option. See the [Confirm Dialog] guide for more information.
 
 ```ruby title="e.g., app/admin/users.rb" {2-5}
 ActiveAdmin.register User do
@@ -88,18 +88,35 @@ ActiveAdmin.register User do
 end
 ```
 
-To update the translations, you can create an `active_admin.en.yml file` and specify the keys you want to update.
+### Override the Defaults
 ````mdx-code-block
-import ConfirmI18n from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
+import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
 
 <Tabs
-  defaultValue="example"
+  defaultValue="css_class"
   values={[
-    {label: 'Example', value: 'example'},
-    {label: 'Default', value: 'default'},
+    {label: 'CSS Class', value: 'css_class'},
+    {label: 'Translation', value: 'translation'},
   ]}>
 
-  <TabItem value="example">
+  <TabItem value="css_class">
+  To update the default CSS classes, you can create a <code>css_claases.yml</code> and specify the changes. See <a href="/docs/start/configuration#css-classes">Configuration</a> for more information.
+  <br/>
+  <br/>
+
+  ```yaml title="e.g., config/active_admin_bootstrap/admin/css_classes.yml" {2-6}
+  ---
+  table_tools:
+    confirm_dialog:
+      cancel: btn btn-link
+      ok: btn btn-primary
+  ```
+
+  </TabItem>
+  <TabItem value="translation">
+  To update the translations, you can create an <code>active_admin.en.yml</code> file and specify the keys you want to update.
+  <br/>
+  <br/>
 
   ```yaml title="config/locales/active_admin.en.yml" {4-7}
   ---
@@ -110,12 +127,6 @@ import ConfirmI18n from '!!raw-loader!@site/../config/locales/active_admin.en.ym
           cancel: Cancel
           ok: Okay!
   ```
-
-  </TabItem>
-  <TabItem value="default">
-    <CodeBlock className="language-yaml" title="config/locales/active_admin.en.yml">
-      {ConfirmI18n}
-    </CodeBlock>
   </TabItem>
 </Tabs>
 ````

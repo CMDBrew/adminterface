@@ -36,9 +36,9 @@ class BatchActionSelectorTest < ActiveAdmin::BaseTestCase
         <div class="batch_actions_selector dropdown_menu dropdown">
           <a class="disabled #{default_css_classes[:btn]} dropdown-toggle dropdown_menu_button" data-bs-toggle="dropdown" href="#">Batch Actions</a>
           <ul class="dropdown_menu_list dropdown-menu">
-            <li><a class="dropdown-item batch_action" data-action="action_1" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 1 Selected</a></li>
-            <li><a class="dropdown-item batch_action" data-action="action_2" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 2 Selected</a></li>
-            <li><a class="dropdown-item batch_action" data-action="action_3" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 3 Selected</a></li>
+            <li><a id="batch-action-action_1" class="dropdown-item batch_action" data-action="action_1" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 1 Selected</a></li>
+            <li><a id="batch-action-action_2" class="dropdown-item batch_action" data-action="action_2" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 2 Selected</a></li>
+            <li><a id="batch-action-action_3" class="dropdown-item batch_action" data-action="action_3" data-inputs="null" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" href="#">Action 3 Selected</a></li>
           </ul>
         </div>
       ERB

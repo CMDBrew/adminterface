@@ -6,7 +6,7 @@ import FlatpickerInit from '../initializers/flatpickr'
 import TomSelect from '../initializers/tom_select'
 import Input from './input'
 
-class ModalDialog {
+class ConfirmDialog {
   constructor (message, inputs, options, callback) {
     const defaults = {
       buttons: {
@@ -25,8 +25,8 @@ class ModalDialog {
     this.inputs = inputs
     this.callback = callback
     this.events = {
-      beforeOpen: new Event('modal_dialog:before_open'),
-      afterOpen: new Event('modal_dialog:after_open')
+      beforeOpen: new Event('confirm_dialog:before_open'),
+      afterOpen: new Event('confirm_dialog:after_open')
     }
 
     this.options = { ...defaults, ...options }
@@ -84,7 +84,7 @@ class ModalDialog {
     const afterOpenEvent = this.events.afterOpen
     const serializeForm = serializeObject
     const dialogConfirm = new Modal(dialogEl, {
-      keyboard: false,
+      keyboard: true,
       backdrop: 'static'
     })
 
@@ -109,4 +109,4 @@ class ModalDialog {
   }
 }
 
-export default ModalDialog
+export default ConfirmDialog

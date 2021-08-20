@@ -1,6 +1,6 @@
 /* global Event */
 
-import ModalDialog from './modal_dialog'
+import ConfirmDialog from './confirm_dialog'
 import CheckboxToggler from './checkbox_toggler'
 import TableCheckboxToggler from './table_checkbox_toggler'
 
@@ -27,14 +27,14 @@ class BatchActions {
     $elements.forEach((el) => {
       el.addEventListener('click', (e) => {
         const el = e.target
-        const modalDialogOptions = JSON.parse(el.dataset.aaConfirmDialog || '{}')
+        const dialogOptions = JSON.parse(el.dataset.aaConfirmDialog || '{}')
         let message
 
         e.stopPropagation()
         e.preventDefault()
 
         if ((message = el.dataset.confirm)) {
-          this.modal = new ModalDialog(message, JSON.parse(el.dataset.inputs), modalDialogOptions, function (inputs) {
+          this.modal = new ConfirmDialog(message, JSON.parse(el.dataset.inputs), dialogOptions, function (inputs) {
             const event = _self.events.confirm
             event.detail = { inputs }
             el.dispatchEvent(event)
