@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'ActiveAdminBootstrap',
+  title: 'ActiveAdmin Bootstrap',
   tagline: 'Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.',
   url: 'https://cmdbrew.github.io',
   baseUrl: '/active_admin_bootstrap/',
@@ -16,11 +16,11 @@ module.exports = {
     hideableSidebar: true,
     navbar: {
       hideOnScroll: true,
-      title: 'ActiveAdminBootstrap',
+      title: 'ActiveAdmin Bootstrap',
       logo: {
-        alt: 'ActiveAdminBootstrap',
+        alt: 'ActiveAdmin Bootstrap',
         src: 'img/logo.png',
-        href: 'docs/intro'
+        href: '/'
       },
       items: [
         {
@@ -28,6 +28,12 @@ module.exports = {
           docId: 'intro',
           position: 'left',
           label: 'Docs',
+        },
+        {
+          to: '/community/support',
+          label: 'Community',
+          position: 'left',
+          activeBaseRegex: `/community/`,
         },
         {
           href: 'https://github.com/CMDBrew/active_admin_bootstrap',
@@ -38,12 +44,23 @@ module.exports = {
       ],
     },
     footer: {
+      style: 'dark',
+      logo: {
+        alt: 'CMDBrew Studio Inc',
+        src: 'img/cmdbrew-logo.svg',
+        href: 'https://www.cmdbrew.com',
+      },
       copyright: `Copyright © ${new Date().getFullYear()} CMDBrew Studio, Inc. Built with Docusaurus.`,
     },
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
       additionalLanguages: ['ruby'],
+    },
+    algolia: {
+      apiKey: '76d7b16633a028132c432599610e1b0a',
+      indexName: 'active_admin_bootstrap',
+      contextualSearch: false,
     },
   },
   presets: [
@@ -65,6 +82,17 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+      },
+    ],
+  ],
+  plugins: [
+    [
+      '@docusaurus/plugin-content-docs',
+      {
+        id: 'community',
+        path: 'community',
+        routeBasePath: 'community',
+        sidebarPath: require.resolve('./sidebarsCommunity.js'),
       },
     ],
   ],
