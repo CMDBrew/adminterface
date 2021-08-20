@@ -20,20 +20,26 @@ const groupedDependencies = dependencies.filter(dep => !notables.includes(dep.na
 ## Notable
 ````mdx-code-block
 export const NotableDependencies = () => (
-  <div>
-    {
-      Object.entries(groupedNotables).map((group, i) => {
-        return (
-          <div key={i}>
-            <h3>{group[0]}</h3>
-            {group[1].sort().map((dep, i) => dep.name).join(", ")}
-            <br/>
-            <br/>
-          </div>
-        )
-      })
-    }
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th align="left">License</th>
+        <th align="left">Dependencies</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        Object.entries(groupedNotables).sort().map((group, i) => {
+          return (
+            <tr key={i}>
+              <td className="text-nowrap"><code>{group[0]}</code></td>
+              <td>{group[1].sort().map((dep, i) => dep.name).join(", ")}</td>
+            </tr>
+          )
+        })
+      }
+    </tbody>
+  </table>
 );
 
 <NotableDependencies />
@@ -42,20 +48,26 @@ export const NotableDependencies = () => (
 ## Others
 ````mdx-code-block
 export const Dependencies = () => (
-  <div>
-    {
-      Object.entries(groupedDependencies).map((group, i) => {
-        return (
-          <div key={i}>
-            <h3>{group[0]}</h3>
-            {group[1].sort().map((dep, i) => dep.name).join(", ")}
-            <br/>
-            <br/>
-          </div>
-        )
-      })
-    }
-  </div>
+  <table>
+    <thead>
+      <tr>
+        <th align="left">License</th>
+        <th align="left">Dependencies</th>
+      </tr>
+    </thead>
+    <tbody>
+      {
+        Object.entries(groupedDependencies).sort().map((group, i) => {
+          return (
+            <tr key={i}>
+              <td className="text-nowrap"><code>{group[0]}</code></td>
+              <td>{group[1].sort().map((dep, i) => dep.name).join(", ")}</td>
+            </tr>
+          )
+        })
+      }
+    </tbody>
+  </table>
 );
 
 <Dependencies />
