@@ -10,7 +10,7 @@ group :development do
   # Streamline gem release
   gem "gem-release"
   # List out all dependencies licenses
-  gem 'license_finder'
+  gem "license_finder"
 end
 
 group :development, :test do
