@@ -5,10 +5,18 @@ sidebar_position: 1
 # Installation
 
 ## Requirements
-- [Rails](http://rubyonrails.org/) >= 6.0
+:::tip
+Make sure you are using the recommended versions before building your project.
+:::
+
 - [Ruby](https://www.ruby-lang.org/en/) >= 2.7
+  - Follow the [Ruby Installation Guide](https://www.ruby-lang.org/en/documentation/installation/)
+- [Rails](http://rubyonrails.org/) >= 6.0
+  - Follow the [Getting Started with Rails Guide](https://guides.rubyonrails.org/getting_started.html)
 - [ActiveAdmin](https://github.com/activeadmin/activeadmin) ~> 2.9
+  - Follow the [Setup Active Admin Guide](https://activeadmin.info/0-installation.html)
 - [Webpacker](https://github.com/rails/webpacker) >= 5.0
+  - Follow the [Webpacker Installation Guide](https://github.com/rails/webpacker#installation)
 
 ## Quick Start
 1. Add the following to your application's `Gemfile`:
@@ -30,7 +38,18 @@ $ rails g active_admin:install --use_webpacker
 
 4. Run the [Install Generator](/docs/start/cli#install)
 ```bash
-$ rails g active_admin_boostrap:install
+$ rails g active_admin_bootstrap:install
 ```
+
+5. Create your development database, migrate it, and start the server.
+```bash
+$ rails db:create
+$ rails db:migrate
+$ rails sever
+```
+
+:::tip
+Checkout our [Support Page](/community/support) if you are having installation issues
+:::
 
 [ActiveAdmin]: https://activeadmin.info
