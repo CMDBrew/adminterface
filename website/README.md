@@ -10,6 +10,7 @@ are documented here, most of the Docusaurus user docs lives on their site.
 - [Editing existing docs](#editing-existing-docs)
 - [Adding a new doc](#adding-a-new-doc)
 - [Docusaurus blog](#docusaurus-blog)
+- [Algolia](#algolia)
 - [Converting logos](#converting-logos)
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -73,6 +74,15 @@ release dates and which shows up in a separate section. For more information
 about blog posts, click
 [here](https://docusaurus.io/docs/en/adding-blog).
 
+## Algolia
+To create indexes on Algolia
+1. Create an `.env` under the `website` directory
+   ```bash
+   # .env
+   APPLICATION_ID=YOUR_APP_ID
+   API_KEY=YOUR_API_KEY
+   ```
+2. run `yarn crawl`. You will need Docker and jq installed. See https://docsearch.algolia.com/docs/run-your-own for more info.
 
 ## Converting logos
 The logos are located in the `static/img/` folder (i.e., at the

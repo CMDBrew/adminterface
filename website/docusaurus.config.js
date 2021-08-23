@@ -13,6 +13,11 @@ module.exports = {
   organizationName: 'cmdbrew',
   projectName: 'active_admin_bootstrap',
   themeConfig: {
+    announcementBar: {
+      id: 'support_us', // Any value that will identify this message.
+      content: '⭐️ ActiveAdmin Bootstrap is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
+      isCloseable: false, // Defaults to `true`.
+    },
     hideableSidebar: true,
     navbar: {
       hideOnScroll: true,
@@ -59,7 +64,8 @@ module.exports = {
     },
     algolia: {
       apiKey: '76d7b16633a028132c432599610e1b0a',
-      indexName: 'active_admin_bootstrap',
+      appId: 'HNNK67NE1P',
+      indexName: 'cmdbrew_active_admin_bootstrap',
       contextualSearch: false,
     },
   },
