@@ -26,8 +26,8 @@ flash:
 header:
   css_class:
     aside: navbar-light bg-light
-    sidebar: navbar-dark bg-primary
-    top: navbar-dark bg-primary navbar-expand-lg
+    sidebar: navbar-dark bg-dark
+    top: navbar-dark bg-dark navbar-expand-lg
   position: top
 index_as_grid:
   breakpoint: lg
