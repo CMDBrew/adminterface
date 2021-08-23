@@ -1,5 +1,5 @@
 # ActiveAdminBootstrap <!-- omit in toc -->
-[![CI](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml)
+[![CI](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml)
 
 Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.
 

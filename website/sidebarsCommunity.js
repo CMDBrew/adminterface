@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       type: 'link',
-      href: 'https://github.com/CMDBrew/active_admin_bootstrap/blob/master/CHANGELOG.md',
+      href: 'https://github.com/CMDBrew/active_admin_bootstrap/blob/main/CHANGELOG.md',
       label: 'Changelog',
     },
     {
