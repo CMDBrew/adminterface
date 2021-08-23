@@ -15,7 +15,7 @@ action_items:
     icon_class: null
     only:
       - index
-active_admin_comments:
+comments:
   input: text
 columns:
   breakpoint: md

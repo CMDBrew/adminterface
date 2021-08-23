@@ -21,14 +21,14 @@ module ConfigurationsTest
   class GlobalTest < Base
     setup do
       @application.components = {
-        active_admin_comments: {input: "string"},
+        comments: {input: "string"},
         action_items: {new: {icon_class: "fake_icon"}, destroy: {only: %w[show edit]}}
       }
       @application.css_classes = {header: "navbar-light bg-light"}
     end
 
     test "updates components" do
-      assert_equal({input: "string"}, @application.components[:active_admin_comments].deep_symbolize_keys)
+      assert_equal({input: "string"}, @application.components[:comments].deep_symbolize_keys)
       assert_equal(
         {
           new: {only: %w[index], icon_class: "fake_icon", css_class: "btn btn-primary"},
@@ -48,7 +48,7 @@ module ConfigurationsTest
     setup do
       @namespace = ActiveAdmin::Namespace.new(@application, :super_admin)
       @namespace.components = {
-        active_admin_comments: {input: "string"},
+        comments: {input: "string"},
         action_items: {new: {icon_class: "fake_icon"}, destroy: {only: %w[show edit]}}
       }
       @namespace.css_classes = {header: "navbar-light bg-light"}
@@ -60,7 +60,7 @@ module ConfigurationsTest
     end
 
     test "updates components" do
-      assert_equal({input: "string"}, @namespace.components[:active_admin_comments].deep_symbolize_keys)
+      assert_equal({input: "string"}, @namespace.components[:comments].deep_symbolize_keys)
       assert_equal(
         {
           new: {only: %w[index], icon_class: "fake_icon", css_class: "btn btn-primary"},
@@ -82,7 +82,7 @@ module ConfigurationsTest
       @resource =
         @namespace.register(User) do
           config.components = {
-            active_admin_comments: {input: "string"},
+            comments: {input: "string"},
             action_items: {new: {icon_class: "fake_icon"}, destroy: {only: %w[show edit]}}
           }
           config.css_classes = {header: "navbar-light bg-light"}
@@ -100,7 +100,7 @@ module ConfigurationsTest
     end
 
     test "updates components" do
-      assert_equal({input: "string"}, @resource.components[:active_admin_comments].deep_symbolize_keys)
+      assert_equal({input: "string"}, @resource.components[:comments].deep_symbolize_keys)
       assert_equal(
         {
           new: {only: %w[index], icon_class: "fake_icon", css_class: "btn btn-primary"},

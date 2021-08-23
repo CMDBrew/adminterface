@@ -2,17 +2,17 @@
 action_items:
   group: btn-group
   item: btn btn-light
-active_admin_comments:
-  body: card-body
-  header: card-header
-  item: null
-  submit: btn btn-primary
-  wrapper: card
 attributes_table:
   table: table text-break
   wrapper: table-responsive
 blank_slate: alert alert-secondary text-center
 columns: g-3
+comments:
+  body: card-body
+  header: card-header
+  item: null
+  submit: btn btn-primary
+  wrapper: card
 confirm_dialog:
   cancel: btn btn-link
   ok: btn btn-primary
