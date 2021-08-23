@@ -3,28 +3,25 @@ sidebar_position: 1
 ---
 
 # Introduction
-ActiveAdmin Bootstrap brings the best parts of [ActiveAdmin] and [Bootstrap] into your project. It is equipped with some of the most commonly used features to help you build more efficiently. You can use [ActiveAdmin] for admin panels and other types of projects, whether internal or customer-facing with this gem.
+ActiveAdmin Bootstrap brings the best parts of [ActiveAdmin] and [Bootstrap] into your project.
+
+In addition, it is equipped with some of the most commonly used features to help you build any project more efficiently, whether it's internal or customer-facing.
 
 :::info Beta Version
-
-ActiveAdmin Bootstrap is currently under **Closed Beta Development**. [Contact us] if you wish to gain access to the repository and provide us with [feedbacks](https://github.com/CMDBrew/active_admin_bootstrap/discussions). 
+ActiveAdmin Bootstrap is currently under **Closed Beta Development**. [Contact us] if you wish to be an **Early Adopter** and provide us with [feedbacks](https://github.com/CMDBrew/active_admin_bootstrap/discussions). 
 
 ✌️&nbsp;[Stay tuned](/community/support) for our upcoming releases.
-
 :::
 
 ## Inspiration
 We have been using [ActiveAdmin] for years to build both internal and external products for our customers. This approach helps us establish a standard for building products— at least for a considerable portion of the project.
 
-However, we need something that is easily customizable and extendable based on our customers' needs. Therefore, we've made a gem to achieve this. 
+However, we need something that is easily customizable and extendable based on our customers' needs. Therefore, we've made a gem to:
 
-💡&nbsp; This gem helped us to:
-- Establish a standard within the team to provide consistent code quality
-- Reduce the need to re-create commonly used features from scratch
+- Establish a consistent coding style
+- Reduce the need to recreate common features from scratch
 - Reduce the time and effort to onboard and train new team members
-- Reduce the work to transfer knowledge
-- Ensure our deliverables are providing the same quality
-- Ensure our codes are sharable between different projects
+- Ensure consistent quality between projects
 
 As a result, we were able to **reduce our codebase significantly for each project by at least 40%**, deliver projects much faster, and onboard new members easier, and, at the same time, keep our quality consistent.
 
@@ -38,7 +35,6 @@ Even though we have been widely using it internally and for our clients, ActiveA
 Checkout our [Community] for the latest information.
 
 ## Features
-- Built with 💜 and Ruby on Rails 💎
 - ✅&nbsp; All [ActiveAdmin]'s features
 - ✅&nbsp; [Bootstrap]'s styles
 - ✅&nbsp; Mobile responsive
@@ -48,14 +44,15 @@ Checkout our [Community] for the latest information.
 ## Pros & Cons
 
 #### 👍&nbsp; Perfect for you if
-- You want to quickly generate a fully functional admin panel with features
-- You want to style your admin panel with Bootstrap
+- You want to quickly generate a fully functional portal type app
+- You want to style your ActiveAdmin with Bootstrap
 - You want to reduce development cost
-- You want a stable and up-to-date gem that is compatible with your project
+- You want to establish a standard between projects
+- You want an actively maintained gem that is up-to-date with ActiveAdmin
 #### 👎&nbsp; Not ideal for you if
-- You want to fully customize everything
-- You are only creating a static website
-- You are looking for codeless editor
+- You don't need most of the features ActiveAdmin provides
+- You are looking to build a custom frontend with frameworks like React, Angular, etc.
+- You are looking for an out-of-the-box solution
 
 ## Design Principles
 - **Keep it the same** - This gem extends the functionalities of ActiveAdmin, so all the features within ActiveAdmin should work as expected.
@@ -66,12 +63,12 @@ Checkout our [Community] for the latest information.
 
 ## Software License & Fee
 - ✅&nbsp; Open-source License
-- ✅&nbsp; Open-source Components
+- ✅&nbsp; Open-source Dependencies
 - ✅&nbsp; Commercial Friendly
   
 ActiveAdmin Bootstrap is an open-source software which requires an yearly subscription license fee for all commercialized or production projects. It is free to use for personal purposes. You may cancel your yearly subscription at anytime. See [Terms of Service] for more information.
 
-- Personal Purpose: Free
+- Personal Use: Free
 - Commercial Projects & Production Instances: [Contact us] to become an **Early Adopter**.
 
 ## Have a suggestion?
@@ -80,5 +77,5 @@ ActiveAdmin Bootstrap is an open-source software which requires an yearly subscr
 [ActiveAdmin]: https://activeadmin.info/
 [Bootstrap]: https://getbootstrap.com/docs/5.0/
 [Community]: /community/support
-[Contact us]: mailto:contact@cmdbrew.com
+[Contact us]: /community/support
 [Terms of Service]: https://github.com/CMDBrew/active_admin_bootstrap/blob/master/LICENSE.md
