@@ -59,7 +59,8 @@ module.exports = {
     },
     algolia: {
       apiKey: '76d7b16633a028132c432599610e1b0a',
-      indexName: 'active_admin_bootstrap',
+      appId: 'HNNK67NE1P',
+      indexName: 'cmdbrew_active_admin_bootstrap',
       contextualSearch: false,
     },
   },

@@ -18,3 +18,4 @@ node_modules/
 !/website/src/
 yarn-error.log
 *.gem
+/website/.env
