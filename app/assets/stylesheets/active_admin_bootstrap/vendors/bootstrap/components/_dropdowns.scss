@@ -1,6 +1,13 @@
 .dropdown-toggle {
   &::after { vertical-align: middle; }
   &.no-caret::after { content: none; }
+
+  &.caret-dots::after {
+    @extend %aa-icon;
+
+    content: map-get($aa-icons, 'caret-dots');
+    border: 0;
+  }
 }
 
 .dropdown-item {

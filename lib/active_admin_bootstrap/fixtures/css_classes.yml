@@ -9,8 +9,20 @@ blank_slate: alert alert-secondary text-center
 columns: g-3
 comments:
   body: card-body
-  header: card-header
-  item: null
+  header:
+    title: h5 mb-0
+    wrapper: card-header
+  item:
+    actions: text-secondary caret-dots
+    body: null
+    group: null
+    header:
+      author: h6 mb-0
+      meta: small text-secondary
+      wrapper: null
+    wrapper: null
+  pagination:
+    meta: mb-3 border-bottom
   submit: btn btn-primary
   wrapper: card
 confirm_dialog:
