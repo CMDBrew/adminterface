@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkwebsite=self.webpackChunkwebsite||[]).push([[159],{1986:function(a){a.exports=JSON.parse('{"allTagsPath":"/active_admin_bootstrap/blog/tags","slug":"facebook","name":"facebook","count":1,"permalink":"/active_admin_bootstrap/blog/tags/facebook"}')}}]);
