@@ -1,0 +1,43 @@
+name: Bug Report
+description: File a bug report
+title: "[Doc]: "
+labels: [documentation]
+assignees:
+  - octocat
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this documentation issue report!
+  - type: input
+    id: contact
+    attributes:
+      label: Contact Details
+      description: How can we get in touch with you if we need more info?
+      placeholder: ex. email@example.com
+    validations:
+      required: false
+  - type: textarea
+    id: what-is-the-issue
+    attributes:
+      label: What's the issue?
+      description: Also tell us, what did you expect to happen?
+      placeholder: Tell us what you see!
+      value: "Mistake in the docs!"
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: URL
+      description: What is the URL for the doc that has the issue?
+    validations:
+      required: true
+  - type: checkboxes
+    id: terms
+    attributes:
+      label: Code of Conduct
+      description: By submitting this issue, you agree to follow our [Code of Conduct](https://github.com/CMDBrew/active_admin_bootstrap/blob/main/CODE_OF_CONDUCT.md)
+      options:
+        - label: I agree to follow this project's Code of Conduct
+          required: true
