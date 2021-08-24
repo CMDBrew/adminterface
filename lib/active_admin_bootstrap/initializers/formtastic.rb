@@ -29,7 +29,7 @@ module ActiveAdminBootstrap
           require_relative("../extensions/inputs/phone_input")
           require_relative("../extensions/inputs/radio_input")
           require_relative("../extensions/inputs/range_input")
-          require_relative("../extensions/inputs/rich_text_input")
+          require_relative("../extensions/inputs/rich_text_area_input")
           require_relative("../extensions/inputs/search_input")
           require_relative("../extensions/inputs/select_input")
           require_relative("../extensions/inputs/string_input")

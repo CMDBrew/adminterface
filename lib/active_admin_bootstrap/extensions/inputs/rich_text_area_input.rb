@@ -2,7 +2,7 @@ require_relative("./text_input")
 
 module ActiveAdmin
   module Inputs
-    class RichTextInput < TextInput
+    class RichTextAreaInput < TextInput
       include ::ActiveAdminBootstrap::Extensions::Inputs::Base
 
       def input_html_options

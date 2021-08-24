@@ -1,14 +1,14 @@
 require "test_case/active_admin/input_test_case"
 
-class RichTextInputTest < ActiveAdmin::InputTestCase
+class RichTextAreaInputTest < ActiveAdmin::InputTestCase
   setup do
     @form = build_form do |f|
       f.inputs do
-        f.input :biography, as: :rich_text
+        f.input :biography, as: :rich_text_area
       end
     end
 
-    @wrapper = @form.find(".input.rich_text")
+    @wrapper = @form.find(".input.rich_text_area")
   end
 
   test "wrapper" do
