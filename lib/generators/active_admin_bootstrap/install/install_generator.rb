@@ -1,7 +1,7 @@
 module ActiveAdminBootstrap
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      desc "Installs ActiveAdminBoostrap and generates necessary migrations"
+      desc "Installs ActiveAdmin Boostrap and generates necessary files and migrations"
 
       def install_rails_addons
         invoke "action_text:install"
@@ -22,7 +22,7 @@ module ActiveAdminBootstrap
       def install_webpacker?
         return yield if defined?(Webpacker)
 
-        puts Rainbow("ActiveAdminBootstrap requires webpacker:").yellow
+        puts Rainbow("ActiveAdmin Bootstrap requires webpacker:").yellow
         if yes?("Install webpacker and continue?")
           gem "webpacker"
           rails_command "webpacker:install"

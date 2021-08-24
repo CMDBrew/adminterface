@@ -1,0 +1,13 @@
+===============================================================================
+Command: `rails generate active_admin_bootstrap:comments`
+This command does the following:
+
+  1. Create a migration `drop_body_for_active_admin_comments.rb`
+     - Your existing data is saved inside the `body_backup` column by default
+     - Un-comment the lines inside this file to migrate existing data from the `ActiveAdmin::Comment` table to `ActionText::RichText`
+
+  2. Create an initializer `initializers/active_admin_comment_action_text.rb`
+     - This tells the `ActiveAdmin::Comment` model to use ActionText instead of the `body` database column
+
+  3. For guides, please visit https://github.com/CMDBrew/active_admin_bootstrap
+===============================================================================

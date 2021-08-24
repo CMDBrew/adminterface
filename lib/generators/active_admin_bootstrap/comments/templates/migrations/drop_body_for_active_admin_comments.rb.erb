@@ -2,7 +2,7 @@ class DropBodyForActiveAdminComments < ActiveRecord::Migration[<%= ActiveRecord:
   def up
     rename_column :active_admin_comments, :body, :body_backup
 
-    # Add migration to migrate existing data if necessary
+    ## Add migration to migrate existing data if necessary
     # ActiveAdmin::Comment.reset_column_information
     # ActiveAdmin::Comment.find_each do |comment|
     #   comment.body = comment.body_backup
@@ -15,7 +15,7 @@ class DropBodyForActiveAdminComments < ActiveRecord::Migration[<%= ActiveRecord:
   def down
     # add_column :active_admin_comments, :body_backup, :text
 
-    # Add migration to migrate existing data if necessary
+    ## Add migration to migrate existing data if necessary
     # ActiveAdmin::Comment.reset_column_information
     # ActiveAdmin::Comment.find_each do |comment|
     #   comment.body_backup = comment.body.to_plain_text

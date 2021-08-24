@@ -1,7 +1,7 @@
 module ActiveAdminBootstrap
   module Generators
     class ConfigsGenerator < Rails::Generators::Base
-      desc "Generate a configs file for resource"
+      desc "Copies config files into a directory for customization"
       argument :namespace, type: :string, default: "Admin"
 
       source_root File.expand_path("templates", __dir__)

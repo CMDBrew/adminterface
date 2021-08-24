@@ -20,6 +20,10 @@ module ActiveAdminBootstrap
         migration_template "migrations/drop_body_for_active_admin_comments.rb.erb",
           "db/migrate/drop_body_for_active_admin_comments.rb"
       end
+
+      def show_readme
+        readme "README" if behavior == :invoke
+      end
     end
   end
 end

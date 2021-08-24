@@ -1,7 +1,7 @@
 module ActiveAdminBootstrap
   module Generators
     class ViewsGenerator < Rails::Generators::Base
-      desc "Copies views to the client app"
+      desc "Copies view templates for customization"
 
       source_root ActiveAdminBootstrap::Engine.root.join("app/views")
 
