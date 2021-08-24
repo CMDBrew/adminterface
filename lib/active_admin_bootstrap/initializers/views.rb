@@ -10,7 +10,6 @@ module ActiveAdminBootstrap
           require_relative("../extensions/views/components/active_admin_form")
           require_relative("../extensions/views/components/attributes_table")
           require_relative("../extensions/views/components/blank_slate")
-          require_relative("../extensions/views/components/comments")
           require_relative("../extensions/views/components/dropdown_menu")
           require_relative("../extensions/views/components/icon")
           require_relative("../extensions/views/components/index_list")

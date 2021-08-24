@@ -36,4 +36,8 @@ class ActiveSupport::TestCase < Minitest::Test
   def escape_hash(hash)
     CGI.escapeHTML(hash.to_json)
   end
+
+  def assert_array_includes(expected, actual)
+    (expected - actual).empty?
+  end
 end

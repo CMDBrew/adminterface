@@ -15,12 +15,12 @@ comments:
   item:
     actions: text-secondary caret-dots
     body: null
-    group: null
+    group: list-group list-group-flush
     header:
       author: h6 mb-0
       meta: small text-secondary
       wrapper: null
-    wrapper: null
+    wrapper: mb-3
   pagination:
     meta: mb-3 border-bottom
   submit: btn btn-primary
