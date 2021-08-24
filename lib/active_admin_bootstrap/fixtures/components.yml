@@ -16,7 +16,7 @@ action_items:
     only:
       - index
 comments:
-  input: text
+  input: rich_text_area
 columns:
   breakpoint: md
 filter:

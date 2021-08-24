@@ -14,7 +14,7 @@ comments:
     wrapper: card-header
   item:
     actions: text-secondary caret-dots
-    body: null
+    body: py-2
     group: list-group list-group-flush
     header:
       author: h6 mb-0

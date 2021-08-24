@@ -1,12 +1,20 @@
 module ActiveAdminBootstrap
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      desc "Installs ActiveAdminBoostrap and generates the necessary migrations"
+      desc "Installs ActiveAdminBoostrap and generates necessary migrations"
+
+      def install_rails_addons
+        invoke "action_text:install"
+      end
 
       def install_assets
         install_webpacker? do
           generate "active_admin_bootstrap:webpacker"
         end
+      end
+
+      def install_action_text_for_comments
+        generate "active_admin_bootstrap:comments"
       end
 
       private

@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_dependency "activeadmin", "~> 2.9"
   spec.add_dependency "rails", ">= 6.0"
   spec.add_dependency "rainbow", "~> 3.0"
+  spec.add_dependency "image_processing", "~> 1.0"
 end

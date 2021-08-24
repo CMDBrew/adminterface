@@ -59,7 +59,7 @@ module ActiveAdminBootstrap
             end
 
             div class: "active_admin_comment_body #{item_class[:body]}".squish do
-              if comments_components[:input].eql?("rich_text_area")
+              if comment.body.is_a?(ActionText::RichText)
                 text_node comment.body
               else
                 simple_format comment.body
