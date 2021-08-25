@@ -1,5 +1,5 @@
 <!-- Please provide a general summary of your changes in the title above -->
-Please ensure your commits follows the [Semantic Commit Messages](https://github.com/CMDBrew/active_admin_bootstrap/blob/main/CODE_OF_CONDUCT.md#semantic-commit-messages) format.
+<!-- Please ensure your commits follows the [Semantic Commit Messages](https://github.com/CMDBrew/active_admin_bootstrap/blob/main/CODE_OF_CONDUCT.md#semantic-commit-messages) format. -->
 
 ## Pull request type
 
