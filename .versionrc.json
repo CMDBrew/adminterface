@@ -1,0 +1,19 @@
+{
+  "skip": {
+    "bump": true,
+    "commit": true,
+    "tag": true
+  },
+  "types": [
+    {"type": "feat", "section": "Features"},
+    {"type": "fix", "section": "Bug Fixes"},
+    {"type": "chore", "hidden": true},
+    {"type": "docs", "hidden": true},
+    {"type": "style", "hidden": true},
+    {"type": "refactor", "hidden": true},
+    {"type": "perf", "hidden": true},
+    {"type": "test", "hidden": true}
+  ],
+  "commitUrlFormat": "https://github.com/CMDBrew/active_admin_bootstrap/commits/{{hash}}",
+  "compareUrlFormat": "https://github.com/CMDBrew/active_admin_bootstrap/compare/{{previousTag}}...{{currentTag}}"
+}
