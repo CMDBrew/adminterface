@@ -15,12 +15,17 @@
   "scripts": {
     "prepublishOnly": "rm -rf src && cp -R app/javascript/active_admin_bootstrap src && cp -R app/assets/stylesheets/active_admin_bootstrap src/scss",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
-    "fix": "standard --fix"
+    "fix": "standard --fix",
+    "release": "standard-version",
+    "release:minor": "standard-version --release-as minor",
+    "release:patch": "standard-version --release-as patch",
+    "release:major": "standard-version --release-as major"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
     "standard": "^16.0.3",
+    "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
     "stylelint-scss": "^3.19.0"
