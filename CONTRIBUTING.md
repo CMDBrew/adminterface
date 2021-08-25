@@ -5,7 +5,10 @@
   - [Setting up the development environment](#setting-up-the-development-environment)
   - [Running test](#running-test)
   - [Linters](#linters)
-  - [Semantic Commit Messages](#semantic-commit-messages)
+  - [Conventional Commit Messages](#conventional-commit-messages)
+    - [Header](#header)
+    - [Body](#body)
+    - [Footer](#footer)
 - [License](#license)
 
 ## Code of Conduct
@@ -19,7 +22,7 @@ We've adopted a Code of Conduct that we expect project participants to adhere to
 4. Commit your changes `git commit -am "Boom"`.
 5. Push to your branch `git push origin my_branch`.
 6. Ensure tests pass and linter issues are resolved.
-7. Ensure relevant commits are grouped and follow the [Semantic Commit Messages](#semantic-commit-messages) format.
+7. Ensure relevant commits are grouped and follow the [Conventional Commit Messages](#conventional-commit-messages) format.
 8. Send a [pull request](https://github.com/CMDBrew/active_admin_bootstrap/pulls).
 
 ### Setting up the development environment
@@ -51,36 +54,49 @@ We have Linters setup for:
 - Sass: https://stylelint.io/
 
 
-### Semantic Commit Messages
+### Conventional Commit Messages
 - Format: `<type>(<scope>): <subject>`
 - First character should be capitalized
 - `<scope>` is optional
 
 ```
-Feat: add hat wobble
-^--^  ^------------^
-|     |
-|     +-> Summary in present tense.
-|
-+-------> Type: Chore, Docs, Feat, Fix, Refactor, Style, or Test.
+<type>(<scope>): <short summary>
+  │       │             │
+  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
+  │       │
+  │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
+  │                          elements|forms|http|language-service|localize|platform-browser|
+  │                          platform-browser-dynamic|platform-server|router|service-worker|
+  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve
+  │
+  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
+
+<body>
+
+<footer>
 ```
 
-More Examples:
+#### Header
+- The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
+- `<type>` must be one of the following:
+  * **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
+  * **ci**: Changes to our CI configuration files and scripts (example scopes: Circle, BrowserStack, SauceLabs)
+  * **docs**: Documentation only changes
+  * **feat**: A new feature
+  * **fix**: A bug fix
+  * **perf**: A code change that improves performance
+  * **refactor**: A code change that neither fixes a bug nor adds a feature
+  * **test**: Adding missing tests or correcting existing tests
 
-- `Feat`: (new feature for the user, not a new feature for build script)
-- `Fix`: (bug fix for the user, not a fix to a build script)
-- `Docs`: (changes to the documentation)
-- `Style`: (formatting, missing semi colons, etc; no production code change)
-- `Refactor`: (refactoring production code, eg. renaming a variable)
-- `Test`: (adding missing tests, refactoring tests; no production code change)
-- `Chore`: (updating grunt tasks etc; no production code change)
+#### Body
+`<body>` is optional. See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-body for more info
 
-References:
+#### Footer
+`<body>` is optional. See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-footer for more info
 
-- https://gist.github.com/joshbuchea/6f47e86d2510bce28f8e7f42ae84c716
+See more info at:
 - https://www.conventionalcommits.org/
-- https://seesparkbox.com/foundry/semantic_commit_messages
-- http://karma-runner.github.io/1.0/dev/git-commit-msg.html
+- https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
 
 ## License
 By contributing to ActiveAdmin Bootstrap, you agree that your contributions will be licensed under its [License](LICENSE.md).

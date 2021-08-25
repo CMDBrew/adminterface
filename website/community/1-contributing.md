@@ -13,7 +13,7 @@ title: Contributing
 
 ## working on the code
 ### Installation
-### Semantic commit messages
+### Conventional Commit Messages
 ### Code conventions
 #### Style guide
 #### General
