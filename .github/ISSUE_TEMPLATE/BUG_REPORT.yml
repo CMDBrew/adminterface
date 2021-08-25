@@ -21,9 +21,17 @@ body:
     id: what-happened
     attributes:
       label: What happened?
-      description: Also tell us, what did you expect to happen?
+      description: Describe the steps to reproduce this bug!
       placeholder: Tell us what you see!
       value: "A bug happened!"
+    validations:
+      required: true
+  - type: textarea
+    id: expectation
+    attributes:
+      label: What's the expected result?
+      description: What do you think should happen?
+      placeholder: Tell us what should happen!
     validations:
       required: true
   - type: input
@@ -31,6 +39,18 @@ body:
     attributes:
       label: Version
       description: What version of our software are you running?
+    validations:
+      required: true
+  - type: textarea
+    id: dependencies
+    attributes:
+      label: Dependencies
+      description: What are the dependencies' versions?
+      value: |
+        1. Rails: [VERSION]
+        2. Ruby: [VERSION]
+        3. ActiveAdmin: [VERSION]
+      render: markdown
     validations:
       required: true
   - type: dropdown
@@ -43,6 +63,7 @@ body:
         - Chrome
         - Safari
         - Microsoft Edge
+        - Other
   - type: textarea
     id: logs
     attributes:

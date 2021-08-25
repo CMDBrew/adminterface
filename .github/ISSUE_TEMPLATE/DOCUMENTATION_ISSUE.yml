@@ -21,7 +21,7 @@ body:
     id: what-is-the-issue
     attributes:
       label: What's the issue?
-      description: Also tell us, what did you expect to happen?
+      description: How can we improve the documentation or what mistake did you find?
       placeholder: Tell us what you see!
       value: "Mistake in the docs!"
     validations:

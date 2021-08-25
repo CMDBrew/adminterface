@@ -1,11 +1,18 @@
 # Contributing <!-- omit in toc -->
-- [Getting Started](#getting-started)
-- [Setting up the development environment](#setting-up-the-development-environment)
-- [Running test](#running-test)
-- [Linters](#linters)
-- [Semantic Commit Messages](#semantic-commit-messages)
+- [Code of Conduct](#code-of-conduct)
+- [Our Development Process](#our-development-process)
+  - [Getting Started](#getting-started)
+  - [Setting up the development environment](#setting-up-the-development-environment)
+  - [Running test](#running-test)
+  - [Linters](#linters)
+  - [Semantic Commit Messages](#semantic-commit-messages)
+- [License](#license)
 
-## Getting Started
+## Code of Conduct
+We've adopted a Code of Conduct that we expect project participants to adhere to. Please read the [full text](CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+
+## Our Development Process
+### Getting Started
 1. Fork it.
 2. Create a topic branch `git checkout -b my_branch`.
 3. Make your changes and add an entry to [CHANGELOG.md](CHANGELOG.md).
@@ -15,7 +22,7 @@
 7. Ensure relevant commits are grouped and follow the [Semantic Commit Messages](#semantic-commit-messages) format.
 8. Send a [pull request](https://github.com/CMDBrew/active_admin_bootstrap/pulls).
 
-## Setting up the development environment
+### Setting up the development environment
 1. Install dependencies
    ```bash
    $ bundle exec appraisal install
@@ -32,19 +39,19 @@
    $ cd test/dummy && ./bin/webpack-dev-server
    ```
 
-## Running test
+### Running test
 ```bash
 $ rails test
 ```
 
-## Linters
+### Linters
 We have Linters setup for:
 - Javascript: https://standardjs.com
 - Ruby: https://github.com/testdouble/standard
 - Sass: https://stylelint.io/
 
 
-## Semantic Commit Messages
+### Semantic Commit Messages
 - Format: `<type>(<scope>): <subject>`
 - First character should be capitalized
 - `<scope>` is optional
@@ -74,3 +81,6 @@ References:
 - https://www.conventionalcommits.org/
 - https://seesparkbox.com/foundry/semantic_commit_messages
 - http://karma-runner.github.io/1.0/dev/git-commit-msg.html
+
+## License
+By contributing to ActiveAdmin Bootstrap, you agree that your contributions will be licensed under its [License](LICENSE.md).
