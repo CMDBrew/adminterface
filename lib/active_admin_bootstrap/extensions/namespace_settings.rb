@@ -13,9 +13,9 @@ module ActiveAdminBootstrap
         register :css_classes, CONFIGS[:css_classes]
 
         # Kaminari Paginations
-        register :comments_pager, {inner_window: 2, outer_window: 0}
+        register :comments_pager, {window: 2}
         register :comments_per_page, 30
-        register :pager, {inner_window: 2, outer_window: 0}
+        register :pager, {window: 2}
 
         # Set the site title image displayed in the logged_out layout (has precendence over :site_title)
         register :site_title_image_logged_out, "", :string_symbol_or_proc
