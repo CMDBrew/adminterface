@@ -1,6 +1,7 @@
 module ActiveAdminBootstrap
   module Generators
     class WebpackerGenerator < Rails::Generators::Base
+      desc "Install Stylesheets and JavaScripts using Webpacker"
       source_root File.expand_path("templates", __dir__)
 
       def install_packages

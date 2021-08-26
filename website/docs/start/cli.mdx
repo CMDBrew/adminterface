@@ -12,14 +12,43 @@ import CodeBlock from '@theme/CodeBlock';
 ````
 
 ## Install
+Installs ActiveAdmin Boostrap and generates necessary files and migrations
+
 ```bash
 $ rails g active_admin_boostrap:install
 ```
 
 This will:
+- Install Rails `action_text` and `active_storage`
+- Run `rails g active_admin_bootstrap:comments`
 - Run `rails g active_admin_bootstrap:webpacker`
 
+## Comments
+Add `ActionText` to `ActiveAdmin::Comment`
+```bash
+$ rails g active_admin_bootstrap:comments
+```
+
+This will:
+- Create a migration: `drop_body_for_active_admin_comments.rb`
+- Create an initializer `initializers/active_admin_comment_action_text.rb`
+
+:::tip
+
+- Your existing data is saved inside the `body_backup` column by default
+- Un-comment the lines inside the `drop_body_for_active_admin_comments.rb` migration file to migrate existing data from the `ActiveAdmin::Comment` table to `ActionText::RichText`
+
+:::
+
 ## Webpacker
+
+:::caution
+
+We don't currently support using Sprockets
+
+:::
+
+Install Stylesheets and JavaScripts using Webpacker
 ```bash
 $ rails g active_admin_bootstrap:webpacker
 ```
@@ -67,6 +96,8 @@ This will:
 - Remove unnecessary dependencies from ActiveAdmin such as jQuery.
 
 ## Configs
+Copies config files into a directory for customization
+
 ````mdx-code-block
 <Tabs
   defaultValue="syntax"
@@ -103,6 +134,8 @@ This command helps you separate configurations for components and CSS classes fo
 :::
 
 ## Views
+Copies view templates for customization
+
 ```bash
 $ rails g active_admin_bootstrap:views
 ```

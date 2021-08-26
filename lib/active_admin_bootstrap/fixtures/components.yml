@@ -15,8 +15,6 @@ action_items:
     icon_class: null
     only:
       - index
-comments:
-  input: text
 columns:
   breakpoint: md
 filter:

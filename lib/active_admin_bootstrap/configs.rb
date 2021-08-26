@@ -10,7 +10,7 @@ module ActiveAdminBootstrap
     }.call.freeze
 
     module Configurable
-      attr_writer :components, :css_classes
+      attr_writer :components, :css_classes, :comments_pager, :comments_per_page, :pager, :comments_input
 
       def components
         namespace.components.deep_merge(@components || {})
@@ -18,6 +18,22 @@ module ActiveAdminBootstrap
 
       def css_classes
         namespace.css_classes.deep_merge(@css_classes || {})
+      end
+
+      def pager
+        @pager || namespace.pager
+      end
+
+      def comments_pager
+        @comments_pager || namespace.comments_pager
+      end
+
+      def comments_per_page
+        @comments_per_page || namespace.comments_per_page
+      end
+
+      def comments_input
+        @comments_input || namespace.comments_input
       end
     end
 

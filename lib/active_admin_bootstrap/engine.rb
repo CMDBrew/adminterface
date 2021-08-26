@@ -3,13 +3,14 @@ module ActiveAdminBootstrap
   class Engine < ::Rails::Engine
     isolate_namespace ActiveAdminBootstrap
 
-    # Initializers
+    # Initializers: The load order matters
     include ::ActiveAdminBootstrap::Initializers::BatchActions
     include ::ActiveAdminBootstrap::Initializers::Configurations
     include ::ActiveAdminBootstrap::Initializers::Formtastic
     include ::ActiveAdminBootstrap::Initializers::Resource
     include ::ActiveAdminBootstrap::Initializers::ViewHelpers
     include ::ActiveAdminBootstrap::Initializers::Views
+    include ::ActiveAdminBootstrap::Initializers::Comments
 
     # Override ActiveAdmin defaults
     config.before_initialize do

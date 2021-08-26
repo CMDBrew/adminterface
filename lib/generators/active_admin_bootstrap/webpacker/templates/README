@@ -1,4 +1,5 @@
 ===============================================================================
+Command: `rails generate active_admin_bootstrap:webpacker`
 Depending on your application's configuration, you might need to perform some manual steps:
 
   1. Change your ActiveAdmin config to use webpacker

@@ -1,6 +1,7 @@
 ActiveAdmin.register User do
   menu priority: 4
   config.per_page = [10, 30]
+  config.comments_per_page = 5
   # config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
   config.components = {
     header: {position: "top"},
@@ -86,7 +87,7 @@ ActiveAdmin.register User do
         end
 
         f.input :password, input_html: {autocomplete: "new-password"}
-        f.input :biography, as: :rich_text
+        f.input :biography, as: :rich_text_area
         f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
           k.inputs(class: "row") do
             k.input :fullname, wrapper_html: {class: "col-lg-6"}

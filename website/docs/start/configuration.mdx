@@ -13,17 +13,30 @@ import CodeBlock from '@theme/CodeBlock';
 
 We've kept existing functionalities and extended them to make it easier for you to customize your application. Please see [ActiveAdmin] for basic configurations and usage guides.
 
-## Scoping
-:::tip
-You can load your configs from YAML files to keep things tidy.
+## CSS Classes
+Customize the default CSS classes for [ActiveAdmin]'s components. You can view [Bootstrap CSS classes here](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for more references.
 
-```ruby title="e.g., app/admin/users.rb" {2-3}
-ActiveAdmin.register User do
-  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
-  config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
-end
-```
+:::tip
+- Specify the changes you want to make, and we will merge your configs with the defaults.
+- Make sure you add the proper indentations while customizing the CSS classes.
 :::
+
+````mdx-code-block
+import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/css_classes.yml';
+
+<details>
+  <summary>Show defaults</summary>
+  <div>
+    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/css_classes.yml">
+      {CssConfig.split('\n')
+        // remove comments
+        .map((line) => !line.startsWith('#') && line)
+        .filter(Boolean)
+        .join('\n')}
+    </CodeBlock>
+  </div>
+</details>
+````
 
 ````mdx-code-block
 <Tabs
@@ -31,7 +44,7 @@ end
   values={[
     {label: 'Global', value: 'global'},
     {label: 'Namespace', value: 'namespace'},
-    {label: 'Resource', value: 'resource'},
+    {label: 'Resource', value: 'resource'}
   ]}>
 
   <TabItem value="global">
@@ -39,10 +52,13 @@ end
   <br/>
   <br/>
 
-  ```ruby title="config/initializers/active_admin.rb" {2-3}
+  ```ruby title="config/initializers/active_admin.rb" {2-6}
   ActiveAdmin.setup do
-    config.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
-    config.components = {action_items: {new: {icon_class: "bi-plus"}}}
+    config.css_classes = {
+      header: {
+        wrapper: "navbar-dark bg-dark navbar-expand-lg"
+      }
+    }
   end
   ```
 
@@ -52,11 +68,14 @@ end
   <br/>
   <br/>
 
-  ```ruby title="config/initializers/active_admin.rb" {2-5}
+  ```ruby title="config/initializers/active_admin.rb" {2-7}
   ActiveAdmin.setup do
     config.namespace :site_1 do |site|
-      site.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
-      site.components = {action_items: {new: {icon_class: "bi-plus"}}}
+      site.css_classes = {
+        header: {
+          wrapper: "navbar-dark bg-dark navbar-expand-lg"
+        }
+      }
     end
   end
   ```
@@ -67,10 +86,13 @@ end
   <br/>
   <br/>
 
-  ```ruby title="e.g., app/admin/users.rb" {2-3}
+  ```ruby title="app/admin/users.rb" {2-6}
   ActiveAdmin.register User do
-    config.css_classes = {header: {wrapper: "navbar-dark bg-dark navbar-expand-lg"}}
-    config.components = {action_items: {new: {icon_class: "bi-plus"}}}
+    config.css_classes = {
+      header: {
+        wrapper: "navbar-dark bg-dark navbar-expand-lg"
+      }
+    }
   end
   ```
 
@@ -78,83 +100,36 @@ end
 </Tabs>
 ````
 
-## CSS Classes
-Customize the default CSS classes for [ActiveAdmin]'s components. You can view [Bootstrap CSS classes here](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for more references.
+You can also load the configs from YAML files to keep things tidy. For example, you can create a file
+```yml title="config/active_admin_bootstrap/admin/users/css_classes.yml"
+---
+action_items:
+  item: btn btn-secondary
+header:
+  container: container
+```
 
-:::tip
-
-- Specify the changes you want to make, and we will merge your configs with the defaults.
-- Make sure you add the proper indentations while customizing the CSS classes. Click on the **Defaults** tab below as a reference.
-
-:::
-
-````mdx-code-block
-import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/css_classes.yml';
-
-<Tabs
-  defaultValue="example"
-  values={[
-    {label: 'Example', value: 'example'},
-    {label: 'Defaults', value: 'defaults'},
-  ]}>
-
-  <TabItem value="example">
-
-  ```yml title="config/active_admin_bootstrap/admin/css_classes.yml"
-  ---
-  action_items:
-    item: btn btn-secondary
-  header:
-    container: container
-  ```
-
-  </TabItem>
-
-  <TabItem value="defaults">
-    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/css_classes.yml">
-      {CssConfig.split('\n')
-        // remove comments
-        .map((line) => !line.startsWith('#') && line)
-        .filter(Boolean)
-        .join('\n')}
-    </CodeBlock>
-  </TabItem>
-</Tabs>
-````
+And, load it inside your admin resource
+```ruby title="app/admin/users.rb" {2-3}
+ActiveAdmin.register User do
+  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
+end
+```
 
 ## Components
 Customize the configurations for [ActiveAdmin]'s components.
 
 :::tip
-
 - Specify the changes you want to make, and we will merge your configs with the defaults.
-- Make sure you add the proper indentations while customizing the components. Click on the **Defaults** tab below as a reference on customizing individual component.
-
+- Make sure you add the proper indentations while customizing the components.
 :::
 
 ````mdx-code-block
 import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/components.yml';
 
-<Tabs
-  defaultValue="example"
-  values={[
-    {label: 'Example', value: 'example'},
-    {label: 'Defaults', value: 'defaults'},
-  ]}>
-
-  <TabItem value="example">
-
-  ```yml title="config/active_admin_bootstrap/admin/components.yml"
-  ---
-  flash:
-    dismissible: false
-  header:
-    position: sidebar
-  ```
-
-  </TabItem>
-
-  <TabItem value="defaults">
+<details>
+  <summary>Show defaults</summary>
+  <div>
     <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/components.yml">
       {ComponentsConfig.split('\n')
         // remove comments
@@ -162,9 +137,87 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
         .filter(Boolean)
         .join('\n')}
     </CodeBlock>
+  </div>
+</details>
+````
+
+````mdx-code-block
+<Tabs
+  defaultValue="global"
+  values={[
+    {label: 'Global', value: 'global'},
+    {label: 'Namespace', value: 'namespace'},
+    {label: 'Resource', value: 'resource'}
+  ]}>
+
+  <TabItem value="global">
+  This will change the default configurations globally for the entire app.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-6}
+  ActiveAdmin.setup do
+    config.components = {
+      action_items: {
+        new: {icon_class: "bi-plus"}
+      }
+    }
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="namespace">
+  This will change the default configurations for the specified namespace.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-7}
+  ActiveAdmin.setup do
+    config.namespace :site_1 do |site|
+      site.components = {
+        action_items: {
+          new: {icon_class: "bi-plus"}
+        }
+      }
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="resource">
+  This will only change the configurations for this resource.
+  <br/>
+  <br/>
+
+  ```ruby title="app/admin/users.rb" {2-6}
+  ActiveAdmin.register User do
+    config.components = {
+      action_items: {
+        new: {icon_class: "bi-plus"}
+      }
+    }
+  end
+  ```
+
   </TabItem>
 </Tabs>
 ````
+
+You can also load the configs from YAML files to keep things tidy. For example, you can create a file
+```yml title="config/active_admin_bootstrap/admin/users/components.yml"
+---
+flash:
+  dismissible: false
+header:
+  position: sidebar
+```
+
+And, load it inside your admin resource
+```ruby title="app/admin/users.rb" {2-3}
+ActiveAdmin.register User do
+  config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
+end
+```
 
 ### ActionItems
 `action_items` — the actions items for the resource. Available actions items are `:new`, `:edit`, and `:destroy`.
@@ -174,13 +227,6 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 | `css_class`  | `String`                 | Change the CSS class for this button. If not set, it will default to the `action_items.item` setting in `css_classes.yml`
 | `icon_class` | `String`                 | Add the classes for the icon. The based class is set globally using `icon` setting in `css_classes.yml`, which defaults to [Bootstrap Icons]
 | `only`       | `Array`                  | The controller actions you want this action_item to display
-
-### Comments
-`comments` — the ActiveAdminComment component.
-
-| Option       | Type                     | Description
-| :----------- | :----------------------- | :------------------
-| `input`      | `String`                 | Available Options: `rich_text` or `text`
 
 ### Columns
 `columns` — the Columns component.
@@ -206,9 +252,9 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 ### Header
 `header` — the Header component.
 
-| Option                                     | Type                     | Description
-| :---------------------------------------   | :----------------------- | :------------------
-| `position`                                 | `String`                 | Availble options are `top`, `sidebar`, or `aside`
+| Option                                                  | Type                     | Description
+| :-----------------------------------------------------  | :----------------------- | :------------------
+| `position`                                              | `String`                 | Availble options are `top`, `sidebar`, or `aside`
 | `css_class.top`, `css_class.sidebar`, `css_class.aside` | `String`                 | `position` specific css classes
 
 
@@ -224,9 +270,9 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 
 | Option               | Type                       | Description
 | :------------------- | :------------------------- | :------------------
-| `date_picker`        | Nested `key, value` pairs  | See [Flatpickr] for config options.
-| `datetime_picker`    | Nested `key, value` pairs  | See [Flatpickr] for config options.
-| `tom_select`         | Nested `key, value` pairs  | See [TomSelect] for config options.
+| `date_picker`        | Nested `key: value` pairs  | See [Flatpickr] for config options.
+| `datetime_picker`    | Nested `key: value` pairs  | See [Flatpickr] for config options.
+| `tom_select`         | Nested `key: value` pairs  | See [TomSelect] for config options.
 | `text.counter.type`  | `String`                   | The mode for counting. Available options are `letter`, `word`
 | `text.counter.limit` | `Integer`                  | Maximum count
 
@@ -236,6 +282,132 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 | Option        | Type                     | Description
 | :------------ | :----------------------- | :------------------
 | `position`    | `String`                 | The default placement for the sidebar. Available options are `left`, or `right`
+
+## Comments
+Configure the behavior of `ActiveAdmin::Comment`. You can find the basic usage and configurations in the ActiveAdmin [official doc](https://activeadmin.info/1-general-configuration.html#comments).
+
+Aside from the basic options, we also added the following:
+
+| Option              | Type       | Default          | Description
+| :------------------ | :--------- | :--------------- | :------------------
+| `comments_pager`    | `Hash`     | `{window: 2}`    | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
+| `comments_per_page` | `Integer`  | `30`             | Change how many comments to show per page.
+| `comments_input`    | `Symbol`   | `:text`          | Available Options: `:rich_text_area` or `:text`
+
+````mdx-code-block
+<Tabs
+  defaultValue="global"
+  values={[
+    {label: 'Global', value: 'global'},
+    {label: 'Namespace', value: 'namespace'},
+    {label: 'Resource', value: 'resource'}
+  ]}>
+
+  <TabItem value="global">
+  This will change the default configurations globally for the entire app.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-4}
+  ActiveAdmin.setup do
+    config.comments_pager = {window: 1}
+    config.comments_per_page = 10
+    config.comments_input = :rich_text_area
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="namespace">
+  This will change the default configurations for the specified namespace.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-6}
+  ActiveAdmin.setup do
+    config.namespace :site_1 do |site|
+      site.comments_pager = {window: 1}
+      site.comments_per_page = 10
+      site.comments_input = :rich_text_area
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="resource">
+  This will only change the configurations for this resource.
+  <br/>
+  <br/>
+
+  ```ruby title="app/admin/users.rb" {2-4}
+  ActiveAdmin.register User do
+    config.comments_pager = {window: 1}
+    config.comments_per_page = 10
+    config.comments_input = :rich_text_area
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## Resource
+Configure the behavior of an ActiveAdmin Resource. You can find the basic usage and configurations in the ActiveAdmin [official doc](https://activeadmin.info/2-resource-customization.html).
+
+Aside from the basic options, we also added the following:
+
+| Option     | Type    | Default       | Description
+| :--------- | :------ | :------------ | :------------------
+| `pager`    | `Hash`  | `{window: 2}` | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
+
+````mdx-code-block
+<Tabs
+  defaultValue="global"
+  values={[
+    {label: 'Global', value: 'global'},
+    {label: 'Namespace', value: 'namespace'},
+    {label: 'Resource', value: 'resource'}
+  ]}>
+
+  <TabItem value="global">
+  This will change the default configurations globally for the entire app.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2}
+  ActiveAdmin.setup do
+    config.pager = {window: 2}
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="namespace">
+  This will change the default configurations for the specified namespace.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-4}
+  ActiveAdmin.setup do
+    config.namespace :site_1 do |site|
+      site.pager = {window: 2}
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="resource">
+  This will only change the configurations for this resource.
+  <br/>
+  <br/>
+
+  ```ruby title="app/admin/users.rb" {2}
+  ActiveAdmin.register User do
+    config.pager = {window: 2}
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ## Theme
 You can customize the theme of your application by overwriting the Sass variables.
@@ -249,7 +421,7 @@ import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_
 <Tabs
   defaultValue="active_admin_bootstrap"
   values={[
-    {label: 'ActiveAdminBootstrap', value: 'active_admin_bootstrap'},
+    {label: 'Basic', value: 'active_admin_bootstrap'},
     {label: 'Bootstrap', value: 'bootstrap'},
     {label: 'Flatpickr', value: 'flatpickr'},
     {label: 'Trix', value: 'trix'},
@@ -280,7 +452,6 @@ import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_
   </TabItem>
 </Tabs>
 ````
-
 
 [ActiveAdmin]: https://activeadmin.info/1-general-configuration.html
 [Bootstrap Icons]: https://icons.getbootstrap.com/

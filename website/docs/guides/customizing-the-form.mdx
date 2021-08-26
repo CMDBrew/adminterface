@@ -422,8 +422,8 @@ f.input :interests, as: :radio, collection: %w[movies sports]
 f.input :quantity, as: :range
 ```
 
-### RichText
-`:rich_text` - a WYSIWYG editor input using [Trix] for [Rails/ActionText] attributes.
+### RichTextArea
+`:rich_text_area` - a WYSIWYG editor input using [Trix] for [Rails/ActionText] attributes.
 - **Configuration**: [Formtastic/TextInput]
 - **Styling**: custom
 
@@ -434,7 +434,7 @@ You need to install ActionText to use this. See the [official doc](https://edgeg
 :::
 
 ```ruby
-f.input :biography, as: :rich_text
+f.input :biography, as: :rich_text_area
 ```
 
 ### Search

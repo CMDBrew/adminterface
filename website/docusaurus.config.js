@@ -60,7 +60,7 @@ module.exports = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme,
-      additionalLanguages: ['ruby'],
+      additionalLanguages: ['ruby', 'erb'],
     },
     algolia: {
       apiKey: '76d7b16633a028132c432599610e1b0a',
