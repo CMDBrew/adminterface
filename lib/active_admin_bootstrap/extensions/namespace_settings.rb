@@ -12,9 +12,12 @@ module ActiveAdminBootstrap
         # The default css_classes
         register :css_classes, CONFIGS[:css_classes]
 
-        # Kaminari Paginations
+        # Comments
         register :comments_pager, {window: 2}
         register :comments_per_page, 30
+        register :comments_input, :text
+
+        # Resource
         register :pager, {window: 2}
 
         # Set the site title image displayed in the logged_out layout (has precendence over :site_title)

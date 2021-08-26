@@ -228,13 +228,6 @@ end
 | `icon_class` | `String`                 | Add the classes for the icon. The based class is set globally using `icon` setting in `css_classes.yml`, which defaults to [Bootstrap Icons]
 | `only`       | `Array`                  | The controller actions you want this action_item to display
 
-### Comments
-`comments` — the ActiveAdminComment component.
-
-| Option       | Type                     | Description
-| :----------- | :----------------------- | :------------------
-| `input`      | `String`                 | Available Options: `rich_text_area` or `text`
-
 ### Columns
 `columns` — the Columns component.
 
@@ -259,9 +252,9 @@ end
 ### Header
 `header` — the Header component.
 
-| Option                                     | Type                     | Description
-| :---------------------------------------   | :----------------------- | :------------------
-| `position`                                 | `String`                 | Availble options are `top`, `sidebar`, or `aside`
+| Option                                                  | Type                     | Description
+| :-----------------------------------------------------  | :----------------------- | :------------------
+| `position`                                              | `String`                 | Availble options are `top`, `sidebar`, or `aside`
 | `css_class.top`, `css_class.sidebar`, `css_class.aside` | `String`                 | `position` specific css classes
 
 
@@ -277,9 +270,9 @@ end
 
 | Option               | Type                       | Description
 | :------------------- | :------------------------- | :------------------
-| `date_picker`        | Nested `key, value` pairs  | See [Flatpickr] for config options.
-| `datetime_picker`    | Nested `key, value` pairs  | See [Flatpickr] for config options.
-| `tom_select`         | Nested `key, value` pairs  | See [TomSelect] for config options.
+| `date_picker`        | Nested `key: value` pairs  | See [Flatpickr] for config options.
+| `datetime_picker`    | Nested `key: value` pairs  | See [Flatpickr] for config options.
+| `tom_select`         | Nested `key: value` pairs  | See [TomSelect] for config options.
 | `text.counter.type`  | `String`                   | The mode for counting. Available options are `letter`, `word`
 | `text.counter.limit` | `Integer`                  | Maximum count
 
@@ -295,10 +288,11 @@ Configure the behavior of `ActiveAdmin::Comment`. You can find the basic usage a
 
 Aside from the basic options, we also added the following:
 
-| Option              | Type                           | Description
-| :------------------ | :----------------------------- | :------------------
-| `comments_pager`    | `Hash`(Default: `{window: 2}`) | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
-| `comments_per_page` | `Integer` (Default: `30`)      | Change how many comments to show per page.
+| Option              | Type       | Default          | Description
+| :------------------ | :--------- | :--------------- | :------------------
+| `comments_pager`    | `Hash`     | `{window: 2}`    | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
+| `comments_per_page` | `Integer`  | `30`             | Change how many comments to show per page.
+| `comments_input`    | `Symbol`   | `:text`          | Available Options: `:rich_text_area` or `:text`
 
 ````mdx-code-block
 <Tabs
@@ -314,10 +308,11 @@ Aside from the basic options, we also added the following:
   <br/>
   <br/>
 
-  ```ruby title="config/initializers/active_admin.rb" {2-3}
+  ```ruby title="config/initializers/active_admin.rb" {2-4}
   ActiveAdmin.setup do
-    config.comments_pager = {window: 2}
+    config.comments_pager = {window: 1}
     config.comments_per_page = 10
+    config.comments_input = :rich_text_area
   end
   ```
 
@@ -327,11 +322,12 @@ Aside from the basic options, we also added the following:
   <br/>
   <br/>
 
-  ```ruby title="config/initializers/active_admin.rb" {2-5}
+  ```ruby title="config/initializers/active_admin.rb" {2-6}
   ActiveAdmin.setup do
     config.namespace :site_1 do |site|
-      site.comments_pager = {window: 2}
+      site.comments_pager = {window: 1}
       site.comments_per_page = 10
+      site.comments_input = :rich_text_area
     end
   end
   ```
@@ -342,10 +338,11 @@ Aside from the basic options, we also added the following:
   <br/>
   <br/>
 
-  ```ruby title="app/admin/users.rb" {2-3}
+  ```ruby title="app/admin/users.rb" {2-4}
   ActiveAdmin.register User do
-    config.comments_pager = {window: 2}
+    config.comments_pager = {window: 1}
     config.comments_per_page = 10
+    config.comments_input = :rich_text_area
   end
   ```
 
@@ -358,9 +355,9 @@ Configure the behavior of an ActiveAdmin Resource. You can find the basic usage 
 
 Aside from the basic options, we also added the following:
 
-| Option     | Type                           | Description
-| :--------- | :----------------------------- | :------------------
-| `pager`    | `Hash`(Default: `{window: 2}`) | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
+| Option     | Type    | Default       | Description
+| :--------- | :------ | :------------ | :------------------
+| `pager`    | `Hash`  | `{window: 2}` | Change the Kaminari pagination configurations. See the [official doc](https://github.com/kaminari/kaminari#configuring-kaminari) for more information.
 
 ````mdx-code-block
 <Tabs

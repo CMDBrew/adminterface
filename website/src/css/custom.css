@@ -65,3 +65,5 @@ div[class^='announcementBar_'] {
     );
   font-weight: bold;
 }
+
+table code { white-space: nowrap; }

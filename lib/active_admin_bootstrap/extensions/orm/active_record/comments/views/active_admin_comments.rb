@@ -84,14 +84,14 @@ module ActiveAdminBootstrap
         def build_comment_form
           return unless authorized?(ActiveAdmin::Auth::CREATE, ActiveAdmin::Comment)
 
-          input_type = comments_components[:input]
+          input_type = configs.comments_input
           css_classes = comments_css_classes
 
           active_admin_form_for(ActiveAdmin::Comment.new, url: comment_form_url) do |f|
             f.inputs do
               f.input :resource_type, as: :hidden, input_html: {value: ActiveAdmin::Comment.resource_type(parent.resource)}
               f.input :resource_id, as: :hidden, input_html: {value: parent.resource.id}
-              f.input :body, as: input_type || "text", label: false, input_html: {rows: "3"}
+              f.input :body, as: input_type, label: false, input_html: {rows: "3"}
             end
             f.actions do
               f.action :submit, label: I18n.t("active_admin.comments.add"), button_html: {class: css_classes["submit"]}
@@ -107,7 +107,6 @@ end
 ActiveAdmin::Comments::Views::Comments.class_eval do
   prepend ActiveAdminBootstrap::Extensions::Views::Comments
   has_css_classes_for :comments
-  has_components_for :comments
 
   def build(resource)
     if authorized?(ActiveAdmin::Auth::READ, ActiveAdmin::Comment)
