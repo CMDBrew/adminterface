@@ -98,6 +98,16 @@ function cookieGet (name) {
   return null
 }
 
+function getObjectValue (data, path) {
+  const arr = path.split('.')
+
+  for (let i = 0; typeof data === 'object' && i < arr.length; i++) {
+    data = data[arr[i]]
+  }
+
+  return data
+}
+
 export {
   cookieGet,
   cookieSet,
@@ -108,5 +118,6 @@ export {
   serializeObject,
   toHTMLAttrString,
   toQueryString,
-  turbolinksVisit
+  turbolinksVisit,
+  getObjectValue
 }

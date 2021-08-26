@@ -13,6 +13,7 @@ import SwitchInput from './inputs/switch_input'
 import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
+import { PasswordInput } from './inputs/password_input'
 
 class Input {
   constructor (name, options) {
@@ -49,8 +50,10 @@ class Input {
     const as = configs.as
     const options = configs.options
 
-    if (/^(string|number|password|url|phone)$/.test(as)) {
+    if (/^(string|number|url|phone)$/.test(as)) {
       InputClass = StringInput
+    } else if (as === 'password') {
+      InputClass = PasswordInput
     } else if (as === 'color') {
       InputClass = ColorInput
     } else if (as === 'hidden') {

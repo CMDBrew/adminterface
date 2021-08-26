@@ -12,7 +12,7 @@ class BaseInput {
 
   _defaultWrapperHTMLOptions () {
     return {
-      class: 'mb-3'
+      class: `mb-3 input ${this.constructor.name.replace(/(Input$)/, '').toLowerCase()}`
     }
   }
 
