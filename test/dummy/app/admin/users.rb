@@ -86,7 +86,7 @@ ActiveAdmin.register User do
           column(span: 6) { f.input :email }
         end
 
-        f.input :password, input_html: {autocomplete: "new-password"}
+        f.input :password, visibility: true, input_html: {autocomplete: "new-password"}
         f.input :biography, as: :rich_text_area
         f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
           k.inputs(class: "row") do

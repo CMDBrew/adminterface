@@ -5,6 +5,7 @@ import { serializeObject } from './utils'
 import FlatpickerInit from '../initializers/flatpickr'
 import TomSelect from '../initializers/tom_select'
 import Input from './input'
+import PasswordVisibilityTogglerInit from '../initializers/inputs/password_input'
 
 class ConfirmDialog {
   constructor (message, inputs, options, callback) {
@@ -68,6 +69,7 @@ class ConfirmDialog {
   _initPlugins (el) {
     FlatpickerInit(el)
     TomSelect(el)
+    PasswordVisibilityTogglerInit(el)
   }
 
   _create () {

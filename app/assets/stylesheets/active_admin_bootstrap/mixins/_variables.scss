@@ -80,7 +80,9 @@ $aa-icons: (
   "table-sorted-desc": "\f124",
   "form-has-many-sortable-handle": "\f3fe",
   "form-has-many-destroy": "\f62a",
-  "caret-dots": "\f5d4"
+  "caret-dots": "\f5d4",
+  "visible": "\f33e",
+  "hidden": "\f33f",
 ) !default;
 $custom-icons: () !default;
 $aa-icons: map-merge($aa-icons, $custom-icons);

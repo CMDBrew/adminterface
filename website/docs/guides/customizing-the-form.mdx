@@ -374,14 +374,35 @@ f.input :price, as: :number
 - **Styling**: [Bootstrap/form-control]
 
 :::info Works with
-
 - [Input Group](#input-group)
-
 :::
 
-```ruby
-f.input :secret, as: :password
-```
+````mdx-code-block
+<Tabs
+  defaultValue="basic"
+  values={[
+    {label: 'Basic', value: 'basic'},
+    {label: 'Visibility', value: 'visibility'},
+  ]}>
+
+  <TabItem value="basic">
+
+  ```ruby
+  f.input :secret, as: :password
+  ```
+
+  </TabItem>
+  <TabItem value="visibility">
+
+  Add a button to allow users to reveal password.
+
+  ```ruby
+  f.input :secret, as: :password, visibility: true
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ### Phone
 `:phone` - a text field (just like string). Default for columns with name matching `"phone"` or `"fax"`. New in HTML5.

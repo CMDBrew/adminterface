@@ -5,8 +5,8 @@
 <%= devise_error_messages! %>
 <%= active_admin_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
   f.inputs do
-    f.input :password
-    f.input :password_confirmation
+    f.input :password, visibility: true
+    f.input :password_confirmation, visibility: true
     f.input :reset_password_token, as: :hidden, input_html: { value: resource.reset_password_token }
   end
   f.actions do

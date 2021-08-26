@@ -12,3 +12,8 @@ en:
       omniauth:
         divider: Or
     filter_model: Find %{model}
+    inputs:
+      password:
+        visibility:
+          show: Show
+          hide: Hide
