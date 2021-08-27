@@ -4,32 +4,56 @@ import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
+    title: 'Mobile Responsive',
     Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Navigate and manage your application on the go with your mobile and tablet devices. Saves you the trouble of constant zooming in and out or scrolling around while viewing your app.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
+    title: 'ActiveAdmin + Bootstrap',
     Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Combining popular Ruby on Rails plugin and CSS framework together to build apps with styles and extendable features seamlessly.  Allows you to customize your apps to match the branding, styling, and theming with ease so you can focus on building a great app.
       </>
     ),
   },
   {
-    title: 'Powered by React',
+    title: 'Granular Customization',
     Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Customize the application for the namespace, the resource, or the whole app to any way you want for any type of project.
+      </>
+    ),
+  },
+  {
+    title: 'Compatible With Popular Plugins and Add-ons',
+    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        All the dependencies within ActiveAdmin Bootstrap are open-source and commercial-friendly. You can view a list of our dependencies and their licenses <a href="/active_admin_bootstrap/docs/start/dependencies">here</a>.
+      </>
+    ),
+  },
+  {
+    title: 'Build Intuitively',
+    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        The gem is designed to allow developers to easily adopt it without being overwhelmed by features and configurations. You can easily access and customize existing ActiveAdmin features and Bootstrap classes. 
+      </>
+    ),
+  },
+  {
+    title: 'Actively Maintained',
+    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    description: (
+      <>
+        The gem will be actively maintained by our team to ensure it is up-to-date. We also welcome feedbacks from the <a href="/active_admin_bootstrap/community/support">community</a> to keep improving the gem for everyone.
       </>
     ),
   },

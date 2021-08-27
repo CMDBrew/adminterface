@@ -11,18 +11,20 @@ function HomepageHeader() {
   return (
     <header className={clsx('hero hero--primary', styles.heroBanner)}>
       <div className="container">
-        <h1 className="hero__title">{siteConfig.title}</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        {/* <h1 className="hero__title">{siteConfig.title}</h1>
+        <p className="hero__subtitle">{siteConfig.tagline}</p> */}
+        <h1 className="hero__title">Build mobile responsive, extendable, and customizable apps</h1>
+        <p className="hero__subtitle">ActiveAdmin Bootstrap at your service</p>
         <div className={styles.buttons}>
           <Link
             className={`button button--secondary button--lg ${styles.buttonsButton}`}
             to="/docs/intro">
-            Get Started
+            Learn More
           </Link>
           <Link
             className={`button button--secondary button--lg ${styles.buttonsButton}`}
-            to="/docs/intro">
-            Try it online
+            to="/community/support">
+            Contact Us
           </Link>
         </div>
       </div>
@@ -34,8 +36,10 @@ export default function Home() {
   const {siteConfig} = useDocusaurusContext();
   return (
     <Layout
-      title={`Hello from ${siteConfig.title}`}
-      description="Description will go into a meta tag in <head />">
+      // title={`Hello from ${siteConfig.title}`}
+      // description="Description will go into a meta tag in <head />">
+      title={`Welcome to ${siteConfig.title}`}
+      description="Welcome to ActiveAdmin Bootstrap. Build mobile responsive, extendable, and customizable app.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
