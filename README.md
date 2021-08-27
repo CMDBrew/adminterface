@@ -41,7 +41,7 @@ $ rails g active_admin_boostrap:install
 ```
 
 ## Usages
-- Check out the [docs](https://cmdbrew.github.io/active_admin_bootstrap)
+Check out the [docs](https://cmdbrew.github.io/active_admin_bootstrap)
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).

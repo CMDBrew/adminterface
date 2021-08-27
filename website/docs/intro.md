@@ -3,15 +3,14 @@ sidebar_position: 1
 ---
 
 # Introduction
-ActiveAdminBootstrap brings the best parts of [ActiveAdmin] and [Bootstrap] into your project.
-
-In addition, it is equipped with some of the most commonly used features to help you build any project more efficiently, whether it's internal or customer-facing.
 
 :::info Beta Version
-ActiveAdminBootstrap is currently under **Closed Beta Development**. [Contact us] if you wish to be an **Early Adopter** and provide us with [feedbacks](https://github.com/CMDBrew/active_admin_bootstrap/discussions).
-
-✌️&nbsp;[Stay tuned](/community/support) for our upcoming releases.
+ActiveAdminBootstrap is currently under **Closed Beta Development**, and the source and communities are only accessible by early adopters. Contact us at contact@cmdbrew.com if you wish to become one.
 :::
+
+ActiveAdminBootstrap is an add-on for [ActiveAdmin], and it brings the best parts of [ActiveAdmin] and [Bootstrap] into your project.
+
+In addition, it is equipped with some of the most commonly used features to help you build any project more efficiently, whether it's internal or customer-facing.
 
 ## Inspiration
 We have been using [ActiveAdmin] for years to build both internal and external products for our customers. This approach helps us establish a standard for building products— at least for a considerable portion of the project.
@@ -32,7 +31,7 @@ We hope you will enjoy using this gem and look forward to hearing your feedbacks
 ## Disclaimer
 Even though we have been widely using it internally and for our clients, ActiveAdminBootstrap is still in **beta and undergoes active development**.
 
-Checkout our [Community] for the latest information.
+Visit [our community page][Community] for the latest information.
 
 ## Features
 - ✅&nbsp; All [ActiveAdmin]'s features
@@ -61,15 +60,11 @@ Checkout our [Community] for the latest information.
 - **Not from scratch** - It is not efficient for Developers to be building the same components from scratch for every project.
 - **DRY and clean** - Don't repeat yourself and keep codes clean
 
-## Software License & Fee
-- ✅&nbsp; Open-source License
-- ✅&nbsp; Open-source Dependencies
-- ✅&nbsp; Commercial Friendly
-
-ActiveAdminBootstrap is an open-source software which requires an yearly subscription license fee for all commercialized or production projects. It is free to use for personal purposes. You may cancel your yearly subscription at anytime. See [Terms of Service] for more information.
+## License
+ActiveAdminBootstrap is an open-source software which requires an yearly subscription license fee for all commercialized projects. It is free to use for personal purposes. You may cancel your yearly subscription at anytime. See [our license in full text][License] for more information.
 
 - Personal Use: Free
-- Commercial Projects & Production Instances: [Contact us] to become an **Early Adopter**.
+- Commercial Use: Annual subscription per project
 
 ## Have a suggestion?
 [Contact us] if there's something missing from the documentation or improvements you would like to see in the future from us. We'll be glad to take any suggestions to make this documentation and ActiveAdminBootstrap better.
@@ -78,4 +73,4 @@ ActiveAdminBootstrap is an open-source software which requires an yearly subscri
 [Bootstrap]: https://getbootstrap.com/docs/5.0/
 [Community]: /community/support
 [Contact us]: /community/support
-[Terms of Service]: https://github.com/CMDBrew/active_admin_bootstrap/blob/master/LICENSE.md
+[License]: https://github.com/CMDBrew/active_admin_bootstrap/blob/master/LICENSE.md
