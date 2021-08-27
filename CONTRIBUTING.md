@@ -99,4 +99,4 @@ See more info at:
 - https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
 
 ## License
-By contributing to ActiveAdmin Bootstrap, you agree that your contributions will be licensed under its [License](LICENSE.md).
+By contributing to ActiveAdminBootstrap, you agree that your contributions will be licensed under its [License](LICENSE.md).

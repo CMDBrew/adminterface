@@ -2,7 +2,7 @@ blank_issues_enabled: false
 contact_links:
   - name: Feature Request
     url: https://github.com/CMDBrew/active_admin_bootstrap/discussions
-    about: Suggest an idea to improve ActiveAdmin Bootstrap in our GitHub Discussions
+    about: Suggest an idea to improve ActiveAdminBootstrap in our GitHub Discussions
   - name: Need Help?
     url: https://github.com/CMDBrew/active_admin_bootstrap/discussions
-    about: Please ask ActiveAdmin Bootstrap related questions in our GitHub Discussions
+    about: Please ask ActiveAdminBootstrap related questions in our GitHub Discussions

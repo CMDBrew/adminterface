@@ -22,7 +22,7 @@ module ActiveAdminBootstrap
       def install_webpacker?
         return yield if defined?(Webpacker)
 
-        puts Rainbow("ActiveAdmin Bootstrap requires webpacker:").yellow
+        puts Rainbow("ActiveAdminBootstrap requires webpacker:").yellow
         if yes?("Install webpacker and continue?")
           gem "webpacker"
           rails_command "webpacker:install"

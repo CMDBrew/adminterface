@@ -3,7 +3,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'ActiveAdmin Bootstrap',
+  title: 'ActiveAdminBootstrap',
   tagline: 'Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.',
   url: 'https://cmdbrew.github.io',
   baseUrl: '/active_admin_bootstrap/',
@@ -15,15 +15,15 @@ module.exports = {
   themeConfig: {
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
-      content: '⭐️ ActiveAdmin Bootstrap is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
+      content: '⭐️ ActiveAdminBootstrap is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
       isCloseable: false, // Defaults to `true`.
     },
     hideableSidebar: true,
     navbar: {
       hideOnScroll: true,
-      title: 'ActiveAdmin Bootstrap',
+      title: 'ActiveAdminBootstrap',
       logo: {
-        alt: 'ActiveAdmin Bootstrap',
+        alt: 'ActiveAdminBootstrap',
         src: 'img/logo.png',
         href: '/'
       },

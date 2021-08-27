@@ -3,12 +3,12 @@ sidebar_position: 1
 ---
 
 # Introduction
-ActiveAdmin Bootstrap brings the best parts of [ActiveAdmin] and [Bootstrap] into your project.
+ActiveAdminBootstrap brings the best parts of [ActiveAdmin] and [Bootstrap] into your project.
 
 In addition, it is equipped with some of the most commonly used features to help you build any project more efficiently, whether it's internal or customer-facing.
 
 :::info Beta Version
-ActiveAdmin Bootstrap is currently under **Closed Beta Development**. [Contact us] if you wish to be an **Early Adopter** and provide us with [feedbacks](https://github.com/CMDBrew/active_admin_bootstrap/discussions). 
+ActiveAdminBootstrap is currently under **Closed Beta Development**. [Contact us] if you wish to be an **Early Adopter** and provide us with [feedbacks](https://github.com/CMDBrew/active_admin_bootstrap/discussions).
 
 ✌️&nbsp;[Stay tuned](/community/support) for our upcoming releases.
 :::
@@ -30,7 +30,7 @@ After years of experiment and revision, we've decided to release some of the mos
 We hope you will enjoy using this gem and look forward to hearing your feedbacks! 🙌
 
 ## Disclaimer
-Even though we have been widely using it internally and for our clients, ActiveAdmin Bootstrap is still in **beta and undergoes active development**.  
+Even though we have been widely using it internally and for our clients, ActiveAdminBootstrap is still in **beta and undergoes active development**.
 
 Checkout our [Community] for the latest information.
 
@@ -56,7 +56,7 @@ Checkout our [Community] for the latest information.
 
 ## Design Principles
 - **Keep it the same** - This gem extends the functionalities of ActiveAdmin, so all the features within ActiveAdmin should work as expected.
-- **Intuitive** - Developers should not feel overwhelmed when looking at the project directory of an ActiveAdmin Bootstrap project. It should look intuitive and easy to build on top of while using familiar approaches.
+- **Intuitive** - Developers should not feel overwhelmed when looking at the project directory of an ActiveAdminBootstrap project. It should look intuitive and easy to build on top of while using familiar approaches.
 - **Customizable** - Common components defaults will be provided, but developers should have the options to override them.
 - **Not from scratch** - It is not efficient for Developers to be building the same components from scratch for every project.
 - **DRY and clean** - Don't repeat yourself and keep codes clean
@@ -65,14 +65,14 @@ Checkout our [Community] for the latest information.
 - ✅&nbsp; Open-source License
 - ✅&nbsp; Open-source Dependencies
 - ✅&nbsp; Commercial Friendly
-  
-ActiveAdmin Bootstrap is an open-source software which requires an yearly subscription license fee for all commercialized or production projects. It is free to use for personal purposes. You may cancel your yearly subscription at anytime. See [Terms of Service] for more information.
+
+ActiveAdminBootstrap is an open-source software which requires an yearly subscription license fee for all commercialized or production projects. It is free to use for personal purposes. You may cancel your yearly subscription at anytime. See [Terms of Service] for more information.
 
 - Personal Use: Free
 - Commercial Projects & Production Instances: [Contact us] to become an **Early Adopter**.
 
 ## Have a suggestion?
-[Contact us] if there's something missing from the documentation or improvements you would like to see in the future from us. We'll be glad to take any suggestions to make this documentation and ActiveAdmin Bootstrap better.
+[Contact us] if there's something missing from the documentation or improvements you would like to see in the future from us. We'll be glad to take any suggestions to make this documentation and ActiveAdminBootstrap better.
 
 [ActiveAdmin]: https://activeadmin.info/
 [Bootstrap]: https://getbootstrap.com/docs/5.0/
