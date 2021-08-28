@@ -1,102 +1,77 @@
-# Contributing <!-- omit in toc -->
-- [Code of Conduct](#code-of-conduct)
-- [Our Development Process](#our-development-process)
-  - [Getting Started](#getting-started)
-  - [Setting up the development environment](#setting-up-the-development-environment)
-  - [Running test](#running-test)
-  - [Linters](#linters)
-  - [Conventional Commit Messages](#conventional-commit-messages)
-    - [Header](#header)
-    - [Body](#body)
-    - [Footer](#footer)
-- [License](#license)
+# Contributing
+ActiveAdminBootstrap is currently under development. We have early adopters who already started using it. We welcome contributors to collaborate to shape the future of ActiveAdminBootstrap.
+
+The Open Source Guides website has a collection of resources for individuals, communities, and companies who want to learn how to run and contribute to an open source project. Contributors and people new to open source alike will find the following guides especially useful:
+- [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
+- [Building Welcoming Communities](https://opensource.guide/building-community/)
 
 ## Code of Conduct
-We've adopted a Code of Conduct that we expect project participants to adhere to. Please read the [full text](CODE_OF_CONDUCT.md) so that you can understand what actions will and will not be tolerated.
+We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://cmdbrew.github.io/active_admin_bootstrap/code-of-conduct) so that you can understand what actions will and will not be tolerated.
 
-## Our Development Process
-### Getting Started
-1. Fork it.
-2. Create a topic branch `git checkout -b my_branch`.
-3. Make your changes and add an entry to [CHANGELOG.md](CHANGELOG.md).
-4. Commit your changes `git commit -am "Boom"`.
-5. Push to your branch `git push origin my_branch`.
-6. Ensure tests pass and linter issues are resolved.
-7. Ensure relevant commits are grouped and follow the [Conventional Commit Messages](#conventional-commit-messages) format.
-8. Send a [pull request](https://github.com/CMDBrew/active_admin_bootstrap/pulls).
-
-### Setting up the development environment
-1. Install dependencies
-   ```bash
-   $ bundle exec appraisal install
-   $ yarn install
-   $ cd test/dummy && yarn install
-   ```
-2. Setup the database
-   ```bash
-   $ rails db:setup
-   ```
-3. Start up Rails and Webpacker server
-   ```bash
-   $ rails s
-   $ cd test/dummy && ./bin/webpack-dev-server
-   ```
-
-### Running test
-```bash
-$ rails test
-```
-
-### Linters
-We have Linters setup for:
-- Javascript: https://standardjs.com
-- Ruby: https://github.com/testdouble/standard
-- Sass: https://stylelint.io/
-
+## Contributing to the code
+### Installation
+1. Clone the repo
+2. Install dependencies
+  ```bash
+  $ bundle exec appraisal install
+  $ yarn install
+  $ cd test/dummy && yarn install
+  ```
+3. Setup the database
+  ```bash
+  $ rails db:setup
+  ```
+4. Start up Rails and Webpacker server
+  ```bash
+  $ rails s
+  $ cd test/dummy && ./bin/webpack-dev-server
+  ```
 
 ### Conventional Commit Messages
 - Format: `<type>(<scope>): <subject>`
-- First character should be capitalized
 - `<scope>` is optional
 
 ```
-<type>(<scope>): <short summary>
-  │       │             │
-  │       │             └─⫸ Summary in present tense. Not capitalized. No period at the end.
-  │       │
-  │       └─⫸ Commit Scope: animations|bazel|benchpress|common|compiler|compiler-cli|core|
-  │                          elements|forms|http|language-service|localize|platform-browser|
-  │                          platform-browser-dynamic|platform-server|router|service-worker|
-  │                          upgrade|zone.js|packaging|changelog|docs-infra|migrations|ngcc|ve
-  │
-  └─⫸ Commit Type: build|ci|docs|feat|fix|perf|refactor|test
-
-<body>
-
-<footer>
+<type>: <subject>
+^----^  ^------------^
+|       |
+|       +-> Summary in present tense. Not capitalized. No period at the end.
+|
++-------> Type: See types below.
 ```
 
-#### Header
-- The `<type>` and `<summary>` fields are mandatory, the `(<scope>)` field is optional.
-- `<type>` must be one of the following:
-  * **build**: Changes that affect the build system or external dependencies (example scopes: gulp, broccoli, npm)
-  * **ci**: Changes to our CI configuration files and scripts (example scopes: Circle, BrowserStack, SauceLabs)
-  * **docs**: Documentation only changes
-  * **feat**: A new feature
-  * **fix**: A bug fix
-  * **perf**: A code change that improves performance
-  * **refactor**: A code change that neither fixes a bug nor adds a feature
-  * **test**: Adding missing tests or correcting existing tests
+The various types of commits:
 
-#### Body
-`<body>` is optional. See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-body for more info
-
-#### Footer
-`<body>` is optional. See https://github.com/angular/angular/blob/master/CONTRIBUTING.md#commit-footer for more info
+| Type       | Description
+| :--------- | :------------------
+| `build`    | Changes that affect the build system or external dependencies
+| `ci`       | Changes to our CI configuration files and scripts
+| `docs`     | Documentation only changes
+| `feat`     | A new feature
+| `fix`      | A bug fix
+| `perf`     | A code change that improves performance
+| `refactor` | A code change that neither fixes a bug nor adds a feature
+| `test`     | Adding missing tests or correcting existing tests
+| `chore`    | Anything else without production code change
 
 See more info at:
 - https://www.conventionalcommits.org/
 - https://github.com/angular/angular/blob/master/CONTRIBUTING.md#-commit-message-format
 
+### Pull request
+:::tip
+Your first Pull Request? First, take a look at the [How to Contribute to an Open Source Project on GitHub](https://egghead.io/courses/how-to-contribute-to-an-open-source-project-on-github) guide.
+:::
+
+If you decided to contribute to our source, we appreciate your time and will do our best to work with you and get your PR reviewed.
+
+1. Fork it.
+2. Create a topic branch `git checkout -b my_branch`.
+3. Commit your changes `git commit -am "Boom"`.
+4. Push to your branch `git push origin my_branch`.
+5. Ensure tests pass (`rails test`) and linter issues (`standard` and `yarn lint`) are resolved.
+6. Ensure relevant commits are grouped and follow the [Conventional Commit Messages](#conventional-commit-messages) format.
+7. Send a [pull request](https://github.com/CMDBrew/active_admin_bootstrap/pulls).
+
 ## License
-By contributing to ActiveAdminBootstrap, you agree that your contributions will be licensed under its [License](LICENSE.md).
+By contributing to ActiveAdminBootstrap, you agree that your contributions will be licensed under its [License](https://cmdbrew.github.io/active_admin_bootstrap/license).
