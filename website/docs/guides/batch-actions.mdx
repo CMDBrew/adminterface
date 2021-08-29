@@ -61,7 +61,7 @@ We've updated input type namings to match with Formtastic inputs for consistency
   ```ruby title="e.g., app/admin/users.rb" {3-5}
   ActiveAdmin.register User do
     batch_action :flag, form: {
-      reason: {as: :string},
+      reason: {as: :string, label: "What's the reason?"},
       notes: {as: :text, input_html: {value: "custom-class"}},
       hide: {as: :switch}
     } do |ids, inputs|
