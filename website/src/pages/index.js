@@ -13,8 +13,7 @@ function HomepageHeader() {
       <div className="container">
         {/* <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p> */}
-        <h1 className="hero__title">Build mobile responsive, extendable, and customizable apps</h1>
-        <p className="hero__subtitle">ActiveAdmin Bootstrap at your service</p>
+        <h1 className="hero__title">Build functional web apps quickly, focus on your core needs.</h1>
         <div className={styles.buttons}>
           <Link
             className={`button button--secondary button--lg ${styles.buttonsButton}`}
@@ -39,7 +38,7 @@ export default function Home() {
       // title={`Hello from ${siteConfig.title}`}
       // description="Description will go into a meta tag in <head />">
       title={`Welcome to ${siteConfig.title}`}
-      description="Welcome to ActiveAdmin Bootstrap. Build mobile responsive, extendable, and customizable app.">
+      description="Welcome to ActiveAdmin Bootstrap. Build functional web apps quickly, focus on your core needs.">
       <HomepageHeader />
       <main>
         <HomepageFeatures />
