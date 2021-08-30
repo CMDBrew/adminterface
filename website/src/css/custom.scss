@@ -67,3 +67,46 @@ div[class^='announcementBar_'] {
 }
 
 table code { white-space: nowrap; }
+
+details {
+  &.plain {
+    --docusaurus-details-decoration-color: var(--ifm-color-primary);
+
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+
+    summary + div > div {
+      padding-top: 0;
+      border-top: 0;
+    }
+  }
+
+  &.btn {
+    --docusaurus-details-decoration-color: var(--ifm-color-primary);
+
+    padding: 0;
+    background-color: transparent;
+    box-shadow: none;
+    border: 0;
+
+    summary {
+      display: inline-block;
+      background-color: transparent;
+      padding:
+        calc(var(--ifm-button-padding-vertical) * var(--ifm-button-size-multiplier))
+        calc(var(--ifm-button-padding-horizontal) * var(--ifm-button-size-multiplier));
+      border-radius: var(--ifm-alert-border-radius);
+      color: var(--ifm-color-primary);
+      border: 1px solid var(--ifm-color-primary);
+
+      &::before { content: none; }
+
+      & + div > div {
+        padding-top: 0;
+        border-top: 0;
+      }
+    }
+  }
+}
