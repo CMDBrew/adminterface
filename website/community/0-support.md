@@ -1,8 +1,9 @@
 ---
 id: support
 hide_title: true
+title: Support
 sidebar_label: Support
-description: ActiveAdminBootstrap Community & Support
+description: Ways to get involved with ActiveAdminBootstrap's community.
 ---
 
 ````mdx-code-block
