@@ -40,6 +40,7 @@ module.exports = {
           position: 'left',
           activeBaseRegex: `/community/`,
         },
+        {to: 'pricing', label: 'Pricing', position: 'left'},
         {
           href: 'https://github.com/CMDBrew/active_admin_bootstrap',
           position: 'right',

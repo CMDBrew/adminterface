@@ -15,8 +15,24 @@
   --ifm-color-primary-light: #9e82c8;
   --ifm-color-primary-lighter: #a68ccd;
   --ifm-color-primary-lightest: #beacda;
+  --ifm-color-success: #238c5b;
+  --ifm-color-success-dark: #207e52;
+  --ifm-color-success-darker: #1e774d;
+  --ifm-color-success-darkest: #071c12;
+  --ifm-color-success-light: #269a64;
+  --ifm-color-success-lighter: #28a169;
+  --ifm-color-success-lightest: #2db676;
+  --ifm-color-danger: #dd3d4d;
+  --ifm-color-danger-dark: #d82638;
+  --ifm-color-danger-darker: #cc2435;
+  --ifm-color-danger-darkest: #30080c;
+  --ifm-color-danger-light: #e15563;
+  --ifm-color-danger-lighter: #e3616e;
+  --ifm-color-danger-lightest: #ea858f;
   --ifm-code-font-size: 95%;
 }
+
+.hero__title { font-size: 4rem; }
 
 .docusaurus-highlight-code-line {
   background-color: rgba(0, 0, 0, 0.1);
@@ -46,10 +62,9 @@ html[data-theme='dark'] .header-github-link::before {
 }
 
 .text-nowrap { white-space: nowrap; }
-
-.footer--dark {
-  --ifm-footer-background-color: #242526;
-}
+.footer--dark { --ifm-footer-background-color: #242526; }
+.button--primary { color: white; }
+.card { box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 0 0 1px; }
 
 div[class^='announcementBar_'] {
   --site-announcement-bar-stripe-color1: hsl(var(--site-primary-hue-saturation), 85%);
@@ -68,28 +83,34 @@ div[class^='announcementBar_'] {
 
 table code { white-space: nowrap; }
 
+%details-reset {
+  --docusaurus-details-decoration-color: var(--ifm-color-primary);
+
+  padding: 0;
+  background-color: transparent;
+  box-shadow: none;
+  border: 0;
+
+  summary + div > div {
+    padding-top: 0;
+    border-top: 0;
+
+    a {
+      color: var(--ifm-color-primary);
+      text-decoration-color: var(--ifm-color-primary);
+    }
+  }
+}
+
 details {
   &.plain {
-    --docusaurus-details-decoration-color: var(--ifm-color-primary);
+    @extend %details-reset;
 
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-    border: 0;
-
-    summary + div > div {
-      padding-top: 0;
-      border-top: 0;
-    }
+    summary + div { padding-left: 16px; }
   }
 
   &.btn {
-    --docusaurus-details-decoration-color: var(--ifm-color-primary);
-
-    padding: 0;
-    background-color: transparent;
-    box-shadow: none;
-    border: 0;
+    @extend %details-reset;
 
     summary {
       display: inline-block;
@@ -102,11 +123,6 @@ details {
       border: 1px solid var(--ifm-color-primary);
 
       &::before { content: none; }
-
-      & + div > div {
-        padding-top: 0;
-        border-top: 0;
-      }
     }
   }
 }
