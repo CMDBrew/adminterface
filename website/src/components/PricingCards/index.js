@@ -53,26 +53,27 @@ function PricingCardCol(props) {
 
 export function PricingRow() {
   return (
+    /* @TODO: add purchase urls */
     <div className="row">
       <PricingCardCol
         name="Personal"
         price="0">
-        Free to use for non-commercial projects
+        For personal or non-commercial projects. Free forever.
       </PricingCardCol>
       <PricingCardCol
-        name="Commerical Signle"
+        name="Commerical Single"
         price="149"
         discountFrom={["$", <s>249</s>, ", 40% off for early adopters"]}
-        purchaseUrl="https://github.com/richchw">
-        License for one commercial project
+        purchaseUrl="#">
+        License for one commercial project.
       </PricingCardCol>
       <PricingCardCol
         name="Commerical Unlimited"
         discountFrom={["$", <s>749</s>, ", 40% off for early adopters"]}
         highlight="Best Value"
         price="449"
-        purchaseUrl="https://github.com/richchw">
-        License for unlimited commercial projects
+        purchaseUrl="#">
+        License for unlimited commercial projects.
       </PricingCardCol>
     </div>
   );

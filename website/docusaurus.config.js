@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'ActiveAdminBootstrap',
-  tagline: 'Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.',
+  tagline: 'Add add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
   url: 'https://cmdbrew.github.io',
   baseUrl: '/active_admin_bootstrap/',
   onBrokenLinks: 'throw',
@@ -76,13 +76,11 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
             'https://github.com/CMDBrew/active_admin_bootstrap/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
             'https://github.com/CMDBrew/active_admin_bootstrap/edit/main/website/blog/',
         },

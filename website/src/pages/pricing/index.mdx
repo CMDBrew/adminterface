@@ -13,7 +13,7 @@ import {
 
 <header className={clsx('hero', styles.heroBanner)}>
   <div className="container">
-    <h1 className="hero__title">Pricing that fits your needs</h1>
+    <h1 className="hero__title hero__title--lg">Pricing that fits your needs</h1>
     <p className="hero__subtitle">Simple, straightforward pricing to get your project up and running</p>
     <br/>
     <PricingRow />
@@ -89,6 +89,17 @@ import {
     </details>
     <details className="plain">
       <summary>
+        <h2 className={styles.question}>Who is eligible for the Personal License?</h2>
+      </summary>
+      <div>
+        Personal use for research, experiment, and testing for the benefit of public knowledge, personal study,
+        private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application,
+        doesn't count as use for a commercial purpose and is eligible for the Personal License.
+        If you're not sure, <Link to="/community/support">get in touch with us!</Link>
+      </div>
+    </details>
+    <details className="plain">
+      <summary>
         <h2 className={styles.question}>What kind of support do you offer?</h2>
       </summary>
       <div>
@@ -122,11 +133,18 @@ import {
     </details>
     <details className="plain">
       <summary>
-        <h2 className={styles.question}>Can I upgrade/drowngrade my licenses later?</h2>
+        <h2 className={styles.question}>Can I build a site for a client and transfer the commercial license to them later?</h2>
       </summary>
       <div>
-        {/* @TODO: replace the links */}
-        Absolutely! You can choose a license that works for you now and upgrades it anytime as needed. You can select a new plan from your <Link to="#">account page</Link>, and the new license plan will start from the next billing cycle.
+        Absolutely! <Link to="/community/support">Reach out to us</Link>, and we will take care of it.
+      </div>
+    </details>
+    <details className="plain">
+      <summary>
+        <h2 className={styles.question}>Can I upgrade to the unlimited license later?</h2>
+      </summary>
+      <div>
+        Of course! You can purchase a single-use license now and upgrade it anytime later on. <Link to="/community/support">Reach out to us</Link>, and we will take care of it.
       </div>
     </details>
     <details className="plain">
