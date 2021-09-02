@@ -15,12 +15,4 @@ The ActiveAdminBootstrap team works on the core functionality, as well as the do
 <ActiveTeamRow />
 
 ## Acknowledgements
-It wouldn't be possible to create ActiveAdminBootstrap without all the contributors worldwide for the other open-source software that it depends on, including
-[Ruby](https://github.com/ruby/ruby),
-[Ruby on Rails](https://github.com/rails/rails),
-[ActiveAdmin](https://github.com/activeadmin/activeadmin),
-[Bootstrap](https://github.com/twbs/bootstrap),
-[Flatpickr](https://github.com/flatpickr/flatpickr),
-[Tom Select](https://github.com/orchidjs/tom-select),
-[SortableJS](https://github.com/SortableJS/Sortable),
-and more. See the full list here in the [dependencies](/docs/start/dependencies).
+It wouldn't be possible to create ActiveAdminBootstrap without the [open-source software it depends on](/docs/start/dependencies), and we sincerely appreciate the contributors worldwide who helped us make this happen.

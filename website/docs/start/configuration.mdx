@@ -257,6 +257,65 @@ end
 | `position`                                              | `String`                 | Availble options are `top`, `sidebar`, or `aside`
 | `css_class.top`, `css_class.sidebar`, `css_class.aside` | `String`                 | `position` specific css classes
 
+We provide three default navigation layouts defined using the CSS grid, and the layout is specified using the `.layout-navigation-#{TYPE}` class.
+
+![](/img/docs/layouts.png)
+
+You can add your custom layout by adding custom CSS styles. Here is an example of creating a hamburger navigation layout.
+
+First, create a stylesheet and add styles to the custom navigation.
+
+```scss title="app/javascript/stylesheets/active_admin_bootstrap/layouts/_navigation_hamburger.scss"
+$_header-height: 64px;
+$_header-zindex: $zindex-fixed;
+$_title-bar: $zindex-fixed - 1;
+$_title-bar-height: 54px;
+$_title-bar-zindex: $zindex-fixed - 1;
+
+body.layout-navigation-hamburger {
+  grid-template-areas:
+    "title_bar"
+    "content"
+    "header";
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: $_title-bar-height minmax(0, 1fr) minmax($_header-height, auto);
+
+  #header {
+    grid-area: header;
+    overflow-y: visible;
+    z-index: $_header-zindex;
+  }
+
+  #title_bar {
+    grid-area: title_bar;
+    z-index: $_title-bar-zindex;
+  }
+
+  #wrapper { grid-area: content; }
+
+  @include media-breakpoint-up($aside-breakpoint) {
+    #filters.aside { top: calc(#{$_header-height} + #{$_title-bar-height}); }
+  }
+}
+```
+
+Import the custom stylesheet inside `active_admin.scss`.
+
+```scss title="app/javascript/stylesheets/active_admin.scss" {2}
+@import "~@cmdbrew/active_admin_bootstrap/src/scss/base";
+@import "active_admin_bootstrap/layouts/navigation_hamburger"
+```
+
+Finally, specify the configuration for this custom navigation layout [for the entire app, a namespace, or a specific resource](#components) the same way as before.
+
+```yml title="config/active_admin_bootstrap/admin/users/components.yml"
+---
+header:
+  position: hamburger
+  css_class:
+    hamburger: navbar-dark bg-dark navbar-expand-lg
+```
 
 ### IndexAsGrid
 `index_as_grid:` - the IndexAsGrid component.

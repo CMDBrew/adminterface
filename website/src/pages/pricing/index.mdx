@@ -23,13 +23,24 @@ import {
 <div className={styles.section}>
   <div className="container">
     <h1 className={styles.sectionTitle}>Everything's included, always</h1>
-    <p className="hero__subtitle">Even with the Free plan, there are absolutely no limits on the functionality that you get with ActiveAdminBootsrap. Everything is included for every plan.</p>
+    <p className="hero__subtitle">Every pricing plan will always include all features. There are absolutely no functionality differences with ActiveAdminBootstrap's pricing plan.</p>
   </div>
 </div>
 
 <div className={styles.section}>
   <div className="container">
     <h1 className={styles.sectionTitle}>Frequently asked questions</h1>
+    <details className="plain">
+      <summary>
+        <h2 className={styles.question}>Who is eligible for the Personal License?</h2>
+      </summary>
+      <div>
+        Personal use for research, experiment, and testing for the benefit of public knowledge, personal study,
+        private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application,
+        doesn't count as use for a commercial purpose and is eligible for the Personal License.
+        If you're not sure, <Link to="/community/support">get in touch with us!</Link>
+      </div>
+    </details>
     <details className="plain">
       <summary>
         <h2 className={styles.question}>What are the requirements to use ActiveAdminBootstrap?</h2>
@@ -60,7 +71,7 @@ import {
         <h2 className={styles.question}>Can I make changes to code as I see fit?</h2>
       </summary>
       <div>
-        Yes, you can. You see the source code and can change or extend it as you need. However, we encourage you to <Link to="/community/support">submit issues or feature requests</Link> if it is something you think others can benefit from as well.
+        Yes, the source code is downloadable. You can change it or extend it to your needs. However, we encourage you to <Link to="/community/support">submit issues or feature requests</Link> if it is something you think others can benefit from as well.
       </div>
     </details>
     <details className="plain">
@@ -68,7 +79,7 @@ import {
         <h2 className={styles.question}>Can ActiveAdminBootstrap be integrated into existing applications?</h2>
       </summary>
       <div>
-        Yes, as long as your app meets the <Link to="/docs/start/installation#requirements">requirements</Link>, you can add this gem to your existing application.
+        Yes, you can add this gem to your existing application as long as your app meets the <Link to="/docs/start/installation#requirements">requirements</Link>.
       </div>
     </details>
     <details className="plain">
@@ -76,7 +87,7 @@ import {
         <h2 className={styles.question}>Why is it a subscription?</h2>
       </summary>
       <div>
-        Subscriptions allow us to continue providing updates and maintenance for new versions of our dependencies (i.e., Rails, ActiveAdmin, Bootstrap), bug fixes, and new features and enhancements.
+        Subscriptions allow us to continue providing updates and maintenance for new versions of our dependencies (i.e., Rails, ActiveAdmin, Bootstrap), bug fixes, new features, and enhancements.
       </div>
     </details>
     <details className="plain">
@@ -85,17 +96,6 @@ import {
       </summary>
       <div>
         Please read our <Link to="/docs/terms">Terms of Service</Link>.
-      </div>
-    </details>
-    <details className="plain">
-      <summary>
-        <h2 className={styles.question}>Who is eligible for the Personal License?</h2>
-      </summary>
-      <div>
-        Personal use for research, experiment, and testing for the benefit of public knowledge, personal study,
-        private entertainment, hobby projects, amateur pursuits, or religious observance, without any anticipated commercial application,
-        doesn't count as use for a commercial purpose and is eligible for the Personal License.
-        If you're not sure, <Link to="/community/support">get in touch with us!</Link>
       </div>
     </details>
     <details className="plain">

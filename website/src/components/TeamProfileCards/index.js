@@ -67,14 +67,14 @@ export function ActiveTeamRow() {
         name="I-Lung Lee"
         githubUrl="https://github.com/ilunglee">
         <Translate id="team.profile.I-Lung Lee.body">
-          Creator of ActiveAdminBootstrap and its predecessors, passionate about anything software-related, loves Ruby and ROR.
+          Creator of ActiveAdminBootstrap and its predecessors, passionate about anything software-related, loves Ruby and RoR.
         </Translate>
       </TeamProfileCardCol>
       <TeamProfileCardCol
         name="Richard Wang"
         githubUrl="https://github.com/richchw">
         <Translate id="team.profile.Richard Wang.body">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+          Project Manager and Developer. Writes docs and experiment things here and there.
         </Translate>
       </TeamProfileCardCol>
     </div>

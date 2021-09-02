@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'ActiveAdminBootstrap',
-  tagline: 'Add add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
+  tagline: 'An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
   url: 'https://cmdbrew.github.io',
   baseUrl: '/active_admin_bootstrap/',
   onBrokenLinks: 'throw',
@@ -50,13 +50,7 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
-      logo: {
-        alt: 'CMDBrew Studio Inc',
-        src: 'img/cmdbrew-logo.svg',
-        href: 'https://www.cmdbrew.com',
-      },
-      copyright: `Copyright © ${new Date().getFullYear()} CMDBrew Studio, Inc. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} <a target="_blank" rel="noopener noreferrer" href="https://www.cmdbrew.com">CMDBrew Studio, Inc.</a>`,
     },
     prism: {
       theme: lightCodeTheme,

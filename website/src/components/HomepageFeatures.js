@@ -9,7 +9,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/bootstrap.svg').default,
     description: (
       <>
-        With Bootstrap integrated into ActiveAdmin, you can quickly apps— not just admin panels— that match your branding and spend more time on the core functionalities.
+        Quickly build apps, not just admin panels, that match your branding and spend more time on the core functionalities with Bootstrap integrated into ActiveAdmin.
       </>
     ),
   },
@@ -18,7 +18,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/mobile.svg').default,
     description: (
       <>
-        With mobile responsiveness, you can now build apps using ActiveAdmin for any purpose and not just internal apps for admin users.
+        Use your apps on mobile and tablet devices. You can now use ActiveAdmin to build mobile responsive apps for any project.
       </>
     ),
   },
@@ -27,8 +27,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/customization.svg').default,
     description: (
       <>
-        Customizing your app has never been easier with the flexibility to specify
-        how components behave and display for your app globally, in a namespace, or for a specific resource.
+        Customizing how components behave and display for the entire app, a namespace, or a specific resource has never been this easy and flexible with ActiveAdmin.
       </>
     ),
   },
@@ -37,8 +36,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/extended.svg').default,
     description: (
       <>
-        We've extended ActiveAdmin's functionalities and addresses some of its main limitations. <Link to="docs/intro">Check the docs</Link> to see what's new.
-        In addition, we've removed jQuery from the dependency.
+        ActiveAdmin is now even more powerful with extended functionalities and features from ActiveAdminBootstrap. <Link to="docs/intro">Check the docs</Link> to see what's new.
       </>
     ),
   },
@@ -47,7 +45,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/familiar.svg').default,
     description: (
       <>
-        We've inherited the DSL from ActiveAdmin, so you can easily add this gem to your existing project using familiar approaches.
+        Use the approaches you are already familiar with inside ActiveAdmin to extend your projects with all the features of ActiveAdminBootstrap.
       </>
     ),
   },
@@ -56,7 +54,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/maintain.svg').default,
     description: (
       <>
-        We keep this gem updated regularly to bring you all the goodies from Rails and ActiveAdmin.
+        ActiveAdminBootstrap is actively maintained and updated to bring you all the goodies from Rails and ActiveAdmin.
       </>
     ),
   },

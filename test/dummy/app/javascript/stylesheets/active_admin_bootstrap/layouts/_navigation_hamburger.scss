@@ -1,0 +1,32 @@
+$_header-height: 64px;
+$_header-zindex: $zindex-fixed;
+$_title-bar: $zindex-fixed - 1;
+$_title-bar-height: 54px;
+$_title-bar-zindex: $zindex-fixed - 1;
+
+body.layout-navigation-hamburger {
+  grid-template-areas:
+    "title_bar"
+    "content"
+    "header";
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  grid-template-rows: $_title-bar-height minmax(0, 1fr) minmax($_header-height, auto);
+
+  #header {
+    grid-area: header;
+    overflow-y: visible;
+    z-index: $_header-zindex;
+  }
+
+  #title_bar {
+    grid-area: title_bar;
+    z-index: $_title-bar-zindex;
+  }
+
+  #wrapper { grid-area: content; }
+
+  @include media-breakpoint-up($aside-breakpoint) {
+    #filters.aside { top: calc(#{$_header-height} + #{$_title-bar-height}); }
+  }
+}
