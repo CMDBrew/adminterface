@@ -3,8 +3,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
-  title: 'ActiveAdmin Bootstrap',
-  tagline: 'Enhance ActiveAdmin with Bootstrap 5 and extended functionalities.',
+  title: 'ActiveAdminBootstrap',
+  tagline: 'An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
   url: 'https://cmdbrew.github.io',
   baseUrl: '/active_admin_bootstrap/',
   onBrokenLinks: 'throw',
@@ -15,15 +15,15 @@ module.exports = {
   themeConfig: {
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
-      content: '⭐️ ActiveAdmin Bootstrap is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
+      content: '⭐️ ActiveAdminBootstrap is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
       isCloseable: false, // Defaults to `true`.
     },
     hideableSidebar: true,
     navbar: {
       hideOnScroll: true,
-      title: 'ActiveAdmin Bootstrap',
+      title: 'ActiveAdminBootstrap',
       logo: {
-        alt: 'ActiveAdmin Bootstrap',
+        alt: 'ActiveAdminBootstrap',
         src: 'img/logo.png',
         href: '/'
       },
@@ -40,6 +40,7 @@ module.exports = {
           position: 'left',
           activeBaseRegex: `/community/`,
         },
+        {to: 'pricing', label: 'Pricing', position: 'left'},
         {
           href: 'https://github.com/CMDBrew/active_admin_bootstrap',
           position: 'right',
@@ -49,13 +50,7 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
-      logo: {
-        alt: 'CMDBrew Studio Inc',
-        src: 'img/cmdbrew-logo.svg',
-        href: 'https://www.cmdbrew.com',
-      },
-      copyright: `Copyright © ${new Date().getFullYear()} CMDBrew Studio, Inc. Built with Docusaurus.`,
+      copyright: `© ${new Date().getFullYear()} <a target="_blank" rel="noopener noreferrer" href="https://www.cmdbrew.com">CMDBrew Studio, Inc.</a>`,
     },
     prism: {
       theme: lightCodeTheme,
@@ -75,23 +70,22 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          // Please change this to your repo.
           editUrl:
             'https://github.com/CMDBrew/active_admin_bootstrap/edit/main/website/',
         },
         blog: {
           showReadingTime: true,
-          // Please change this to your repo.
           editUrl:
             'https://github.com/CMDBrew/active_admin_bootstrap/edit/main/website/blog/',
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
+          customCss: require.resolve('./src/css/custom.scss'),
         },
       },
     ],
   ],
   plugins: [
+    'docusaurus-plugin-sass',
     [
       '@docusaurus/plugin-content-docs',
       {

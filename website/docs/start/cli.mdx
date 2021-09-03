@@ -1,17 +1,18 @@
 ---
 sidebar_position: 2
-description: ActiveAdmin Bootstrap Command Line Reference.
+description: ActiveAdminBootstrap Command Line Reference.
 ---
 
 # Command Line Reference
 
+## Generators
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 ````
 
-## Install
+### Install
 Installs ActiveAdmin Boostrap and generates necessary files and migrations
 
 ```bash
@@ -23,7 +24,7 @@ This will:
 - Run `rails g active_admin_bootstrap:comments`
 - Run `rails g active_admin_bootstrap:webpacker`
 
-## Comments
+### Comments
 Add `ActionText` to `ActiveAdmin::Comment`
 ```bash
 $ rails g active_admin_bootstrap:comments
@@ -40,7 +41,7 @@ This will:
 
 :::
 
-## Webpacker
+### Webpacker
 
 :::caution
 
@@ -95,7 +96,7 @@ This will:
    ```
 - Remove unnecessary dependencies from ActiveAdmin such as jQuery.
 
-## Configs
+### Configurations
 Copies config files into a directory for customization
 
 ````mdx-code-block
@@ -133,7 +134,7 @@ See [Configuration](/docs/start/configuration) for usage guides and options.
 This command helps you separate configurations for components and CSS classes for individual scopes to keep your code tidy.
 :::
 
-## Views
+### Views
 Copies view templates for customization
 
 ```bash

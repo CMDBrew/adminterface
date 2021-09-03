@@ -1,4 +1,4 @@
-# Terms Of Service
+# Terms of Service
 This license is a legal agreement between you and CMDBrew Studio Inc. for the use of Active Admin Bootstrap (the “Software”). By downloading any Active Admin Bootstrap files, add-ons, or resources, you agree to be bound by the terms and conditions of this license. CMDBrew Studio Inc. reserves the right to alter this agreement at any time, for any reason, without notice.
 
 ## Definitions
@@ -95,8 +95,8 @@ You agree to indemnify and hold harmless CMDBrew Studio Inc. for any third-party
 
   * Automatically, effective immediately and without notice, if you are a company, corporation, or other legal entity and you (A) are dissolved or liquidated or take any corporate action for such purpose; (B) become insolvent or are generally unable to pay your debts as they become due; (C) become the subject of any voluntary or involuntary bankruptcy proceeding under any domestic or foreign bankruptcy or insolvency Law; (D) make or seek to make a general assignment for the benefit of creditors; or (E) apply for, or consent to, the appointment of a trustee, receiver or custodian for a substantial part of your property.
 
-## Disclaimer Of Warranty
+## Disclaimer of Warranty
 THE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESSED OR IMPLIED, INCLUDING, BUT NOT LIMITED TO, WARRANTIES OF QUALITY, PERFORMANCE, NON-INFRINGEMENT, MERCHANTABILITY, OR FITNESS FOR A PARTICULAR PURPOSE. FURTHER, CMDBREW STUDIO INC. DOES NOT WARRANT THAT THE SOFTWARE OR ANY RELATED SERVICE WILL ALWAYS BE AVAILABLE.
 
-## Limitations Of Liability
+## Limitations of Liability
 YOU ASSUME ALL RISK ASSOCIATED WITH THE INSTALLATION AND USE OF THE SOFTWARE. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS OF THE SOFTWARE BE LIABLE FOR CLAIMS, DAMAGES OR OTHER LIABILITY ARISING FROM, OUT OF, OR IN CONNECTION WITH THE SOFTWARE. LICENSE HOLDERS ARE SOLELY RESPONSIBLE FOR DETERMINING THE APPROPRIATENESS OF USE AND ASSUME ALL RISKS ASSOCIATED WITH ITS USE, INCLUDING BUT NOT LIMITED TO THE RISKS OF PROGRAM ERRORS, DAMAGE TO EQUIPMENT, LOSS OF DATA OR SOFTWARE PROGRAMS, OR UNAVAILABILITY OR INTERRUPTION OF OPERATIONS.

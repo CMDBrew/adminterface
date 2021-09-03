@@ -1,56 +1,47 @@
 ---
 sidebar_position: 1
-description: ActiveAdmin Bootstrap Installation & Quick Start Guide.
+description: ActiveAdminBootstrap Installation & Quick Start Guide.
 ---
 
 # Installation
 
 ## Requirements
-:::tip
-Make sure you are using the recommended versions before building your project.
-:::
-
 - [Ruby](https://www.ruby-lang.org/en/) >= 2.7
-  - Follow the [Ruby Installation Guide](https://www.ruby-lang.org/en/documentation/installation/)
 - [Rails](http://rubyonrails.org/) >= 6.0
-  - Follow the [Getting Started with Rails Guide](https://guides.rubyonrails.org/getting_started.html)
 - [ActiveAdmin](https://github.com/activeadmin/activeadmin) ~> 2.9
-  - Follow the [Setup ActiveAdmin Guide](https://activeadmin.info/0-installation.html)
+- [Bootstrap](https://getbootstrap.com/) ~> 5
 - [Webpacker](https://github.com/rails/webpacker) >= 5.0
-  - Follow the [Webpacker Installation Guide](https://github.com/rails/webpacker#installation)
 
 ## Quick Start
 1. Add the following to your application's `Gemfile`:
-```ruby title=Gemfile
-source "https://rubygems.pkg.github.com/cmdbrew" do
-  gem "active_admin_bootstrap"
-end
-```
+  ```ruby title=Gemfile
+  source "https://rubygems.pkg.github.com/cmdbrew" do
+    gem "active_admin_bootstrap"
+  end
+  ```
 
 2. Then execute:
-```bash
-$ bundle install
-```
+  ```bash
+  $ bundle install
+  ```
 
 3. Install [ActiveAdmin] (If you haven't installed it yet)
-```bash
-$ rails g active_admin:install --use_webpacker
-```
+  ```bash
+  $ rails g active_admin:install --use_webpacker
+  ```
 
 4. Run the [Install Generator](/docs/start/cli#install)
-```bash
-$ rails g active_admin_bootstrap:install
-```
+  ```bash
+  $ rails g active_admin_bootstrap:install
+  ```
 
 5. Create your development database, migrate it, and start the server.
-```bash
-$ rails db:create
-$ rails db:migrate
-$ rails sever
-```
+  ```bash
+  $ rails db:create
+  $ rails db:migrate
+  $ rails sever
+  ```
 
-:::tip
-Checkout our [Support Page](/community/support) if you are having installation issues
-:::
+If you're having issues installing, please visit our [support page](/community/support) for ways to get help or submitting issues.
 
 [ActiveAdmin]: https://activeadmin.info

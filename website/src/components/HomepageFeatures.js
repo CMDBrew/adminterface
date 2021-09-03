@@ -1,35 +1,60 @@
 import React from 'react';
 import clsx from 'clsx';
+import Link from '@docusaurus/Link';
 import styles from './HomepageFeatures.module.css';
 
 const FeatureList = [
   {
-    title: 'Easy to Use',
-    Svg: require('../../static/img/undraw_docusaurus_mountain.svg').default,
+    title: 'ActiveAdmin with Bootstrap',
+    Svg: require('../../static/img/features/bootstrap.svg').default,
     description: (
       <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
+        Quickly build apps, not just admin panels, that match your branding and spend more time on the core functionalities with Bootstrap integrated into ActiveAdmin.
       </>
     ),
   },
   {
-    title: 'Focus on What Matters',
-    Svg: require('../../static/img/undraw_docusaurus_tree.svg').default,
+    title: 'Mobile Responsive',
+    Svg: require('../../static/img/features/mobile.svg').default,
     description: (
       <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
+        Use your apps on mobile and tablet devices. You can now use ActiveAdmin to build mobile responsive apps for any project.
       </>
     ),
   },
   {
-    title: 'Powered by React',
-    Svg: require('../../static/img/undraw_docusaurus_react.svg').default,
+    title: 'Granular Customization',
+    Svg: require('../../static/img/features/customization.svg').default,
     description: (
       <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
+        Customizing how components behave and display for the entire app, a namespace, or a specific resource has never been this easy and flexible with ActiveAdmin.
+      </>
+    ),
+  },
+  {
+    title: 'Extended Functionalities',
+    Svg: require('../../static/img/features/extended.svg').default,
+    description: (
+      <>
+        ActiveAdmin is now even more powerful with extended functionalities and features from ActiveAdminBootstrap. <Link to="docs/intro">Check the docs</Link> to see what's new.
+      </>
+    ),
+  },
+  {
+    title: 'Familiar DSL',
+    Svg: require('../../static/img/features/familiar.svg').default,
+    description: (
+      <>
+        Use the approaches you are already familiar with inside ActiveAdmin to extend your projects with all the features of ActiveAdminBootstrap.
+      </>
+    ),
+  },
+  {
+    title: 'Actively Maintained',
+    Svg: require('../../static/img/features/maintain.svg').default,
+    description: (
+      <>
+        ActiveAdminBootstrap is actively maintained and updated to bring you all the goodies from Rails and ActiveAdmin.
       </>
     ),
   },

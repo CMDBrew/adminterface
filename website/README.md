@@ -1,5 +1,5 @@
 # Writing docs <!-- omit in toc -->
-This is the source for ActiveAdmin Bootstrap documentation site. It was scaffolded with and
+This is the source for ActiveAdminBootstrap documentation site. It was scaffolded with and
 is currently built with [Docusaurus](https://docusaurus.io/). While some things
 are documented here, most of the Docusaurus user docs lives on their site.
 

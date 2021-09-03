@@ -1,0 +1,29 @@
+.priceSuffix {
+  font-size: 40%;
+  vertical-align: baseline;
+}
+
+.price {
+  font-size: 3rem;
+}
+
+.discountFrom {
+  margin-bottom: 10px !important;
+  padding: 5px 10px;
+  background: var(--ifm-color-success-darker);
+  color: white;
+  border-radius: 4px;
+  display: inline-block;
+}
+
+.cardHighlight {
+  border: 2px solid var(--ifm-color-success-darker);
+
+  .highlight {
+    background: var(--ifm-color-success-darker);
+    color: white;
+    text-align: center;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}

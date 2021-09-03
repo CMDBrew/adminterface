@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: ActiveAdmin Bootstrap Guide for Batch Actions.
+description: ActiveAdminBootstrap Guide for Batch Actions.
 ---
 
 # Batch Actions
@@ -11,7 +11,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 ````
 
-We've enhanced the `batch_action` feature to make it more customizable and extendable. We only list the adjustments we've made in the sections below. Please visit [ActiveAdmin] for basic configurations and usage guides.
+We've enhanced the `batch_action` feature to make it more customizable and extendable. We only list the adjustments we've made in the sections below. Please visit [ActiveAdmin] for basic usage guides.
 
 ## Inputs
 :::caution
@@ -34,13 +34,13 @@ We've updated input type namings to match with Formtastic inputs for consistency
 
 ````mdx-code-block
 <Tabs
-  defaultValue="basic"
+  defaultValue="implied"
   values={[
-    {label: 'Basic', value: 'basic'},
+    {label: 'Implied', value: 'implied'},
     {label: 'Explicit', value: 'explicit'},
   ]}>
 
-  <TabItem value="basic">
+  <TabItem value="implied">
 
   ```ruby title="e.g., app/admin/users.rb" {3-5}
   ActiveAdmin.register User do
@@ -61,7 +61,7 @@ We've updated input type namings to match with Formtastic inputs for consistency
   ```ruby title="e.g., app/admin/users.rb" {3-5}
   ActiveAdmin.register User do
     batch_action :flag, form: {
-      reason: {as: :string},
+      reason: {as: :string, label: "What's the reason?"},
       notes: {as: :text, input_html: {value: "custom-class"}},
       hide: {as: :switch}
     } do |ids, inputs|
@@ -75,7 +75,7 @@ We've updated input type namings to match with Formtastic inputs for consistency
 ````
 
 ## Confirm Dialog
-You can specify the configurations for the confirm dialogue by passing in the `confirm_dialog` option. See the [Confirm Dialog] guide for more information.
+You can specify the configurations for the confirm dialogue by passing in the `confirm_dialog` option. Visit the [confirm dialog guide][Confirm Dialog] for more information.
 
 ```ruby title="e.g., app/admin/users.rb" {2-5}
 ActiveAdmin.register User do
@@ -89,7 +89,7 @@ ActiveAdmin.register User do
 end
 ```
 
-### Override the Defaults
+You can override the default configurations by following the instructions below:
 ````mdx-code-block
 import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
 
@@ -101,7 +101,7 @@ import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.e
   ]}>
 
   <TabItem value="css_class">
-  To update the default CSS classes, you can create a <code>css_claases.yml</code> and specify the changes. See <a href="/docs/start/configuration#css-classes">Configuration</a> for more information.
+  Create a <code>css_claases.yml</code> and specify the changes. Visit the <a href="/docs/start/configuration#css-classes">configuration guide</a> for more information.
   <br/>
   <br/>
 
@@ -115,7 +115,7 @@ import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.e
 
   </TabItem>
   <TabItem value="translation">
-  To update the translations, you can create an <code>active_admin.en.yml</code> file and specify the keys you want to update.
+  Create an <code>active_admin.en.yml</code> file and specify the keys you want to update.
   <br/>
   <br/>
 
