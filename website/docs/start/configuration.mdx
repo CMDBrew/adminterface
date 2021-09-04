@@ -110,7 +110,7 @@ header:
 ```
 
 And, load it inside your admin resource
-```ruby title="app/admin/users.rb" {2-3}
+```ruby title="app/admin/users.rb" {2}
 ActiveAdmin.register User do
   config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
 end
@@ -213,7 +213,7 @@ header:
 ```
 
 And, load it inside your admin resource
-```ruby title="app/admin/users.rb" {2-3}
+```ruby title="app/admin/users.rb" {2}
 ActiveAdmin.register User do
   config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
 end
