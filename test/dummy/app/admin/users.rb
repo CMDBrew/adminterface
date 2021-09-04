@@ -4,7 +4,7 @@ ActiveAdmin.register User do
   config.comments_per_page = 5
   # config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
   config.components = {
-    header: {position: "top"},
+    header: {position: "bottom", css_class: {bottom: "navbar-dark bg-dark navbar-expand-lg"}},
     filter: {position: "sidebar"},
     action_items: {new: {icon_class: "bi-plus"}}
   }

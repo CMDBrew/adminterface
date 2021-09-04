@@ -261,18 +261,18 @@ We provide three default navigation layouts defined using the CSS grid, and the 
 
 ![](/img/docs/layouts.png)
 
-You can add your custom layout by adding custom CSS styles. Here is an example of creating a hamburger navigation layout.
+You can add your custom layout by adding custom CSS styles. Here is an example of creating a bottom navigation layout.
 
 First, create a stylesheet and add styles to the custom navigation.
 
-```scss title="app/javascript/stylesheets/active_admin_bootstrap/layouts/_navigation_hamburger.scss"
+```scss title="app/javascript/stylesheets/active_admin_bootstrap/layouts/_navigation_bottom.scss"
 $_header-height: 64px;
 $_header-zindex: $zindex-fixed;
 $_title-bar: $zindex-fixed - 1;
 $_title-bar-height: 54px;
 $_title-bar-zindex: $zindex-fixed - 1;
 
-body.layout-navigation-hamburger {
+body.layout-navigation-bottom {
   grid-template-areas:
     "title_bar"
     "content"
@@ -304,7 +304,7 @@ Import the custom stylesheet inside `active_admin.scss`.
 
 ```scss title="app/javascript/stylesheets/active_admin.scss" {2}
 @import "~@cmdbrew/active_admin_bootstrap/src/scss/base";
-@import "active_admin_bootstrap/layouts/navigation_hamburger"
+@import "active_admin_bootstrap/layouts/navigation_bottom"
 ```
 
 Finally, specify the configuration for this custom navigation layout [for the entire app, a namespace, or a specific resource](#components) the same way as before.
@@ -312,9 +312,9 @@ Finally, specify the configuration for this custom navigation layout [for the en
 ```yml title="config/active_admin_bootstrap/admin/users/components.yml"
 ---
 header:
-  position: hamburger
+  position: bottom
   css_class:
-    hamburger: navbar-dark bg-dark navbar-expand-lg
+    bottom: navbar-dark bg-dark navbar-expand-lg
 ```
 
 ### IndexAsGrid
