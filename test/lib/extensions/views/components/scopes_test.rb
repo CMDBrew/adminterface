@@ -28,7 +28,7 @@ module ScopesTest
     end
 
     def default_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :table_tools, :scopes)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :table_tools, :scopes)
     end
   end
 

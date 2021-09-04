@@ -78,7 +78,7 @@ module MenuTest
 
   class WithIconTest < Base
     def icons_css_classes
-      @icons_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :icon)
+      @icons_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :icon)
     end
 
     setup do

@@ -38,7 +38,7 @@ module IndexPageTest
     end
 
     def default_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :html)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :html)
     end
 
     def render(helpers = IndexPageView)

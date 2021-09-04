@@ -3,7 +3,7 @@ require "test_case/active_admin/base_test_case"
 module AlertHelperTest
   class FlashTest < ActiveAdmin::BaseTestCase
     def flash_css_classes
-      @flash_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :flash)
+      @flash_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :flash)
     end
 
     setup do
@@ -36,7 +36,7 @@ module AlertHelperTest
     end
 
     def flash_css_classes
-      @flash_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :flash)
+      @flash_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :flash)
     end
 
     setup do

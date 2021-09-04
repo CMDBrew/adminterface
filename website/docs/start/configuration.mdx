@@ -1,6 +1,6 @@
 ---
 sidebar_position: 3
-description: ActiveAdminBootstrap Configuration Guide for Scoping, CSS, Components, and Theme.
+description: Adminterface Configuration Guide for Scoping, CSS, Components, and Theme.
 ---
 
 # Configuration
@@ -22,12 +22,12 @@ Customize the default CSS classes for [ActiveAdmin]'s components. You can view [
 :::
 
 ````mdx-code-block
-import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/css_classes.yml';
+import CssConfig from '!!raw-loader!@site/../lib/adminterface/fixtures/css_classes.yml';
 
 <details className="btn">
   <summary>Show defaults</summary>
   <div>
-    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/css_classes.yml">
+    <CodeBlock className="language-yaml" title="lib/adminterface/fixtures/css_classes.yml">
       {CssConfig.split('\n')
         // remove comments
         .map((line) => !line.startsWith('#') && line)
@@ -101,7 +101,7 @@ import CssConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures
 ````
 
 You can also load the configs from YAML files to keep things tidy. For example, you can create a file
-```yml title="config/active_admin_bootstrap/admin/users/css_classes.yml"
+```yml title="config/adminterface/admin/users/css_classes.yml"
 ---
 action_items:
   item: btn btn-secondary
@@ -112,7 +112,7 @@ header:
 And, load it inside your admin resource
 ```ruby title="app/admin/users.rb" {2}
 ActiveAdmin.register User do
-  config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/css_classes.yml").to_s)
+  config.css_classes = YAML.load_file(Rails.root.join("config/adminterface/admin/users/css_classes.yml").to_s)
 end
 ```
 
@@ -125,12 +125,12 @@ Customize the configurations for [ActiveAdmin]'s components.
 :::
 
 ````mdx-code-block
-import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/fixtures/components.yml';
+import ComponentsConfig from '!!raw-loader!@site/../lib/adminterface/fixtures/components.yml';
 
 <details className="btn">
   <summary>Show defaults</summary>
   <div>
-    <CodeBlock className="language-yaml" title="lib/active_admin_bootstrap/fixtures/components.yml">
+    <CodeBlock className="language-yaml" title="lib/adminterface/fixtures/components.yml">
       {ComponentsConfig.split('\n')
         // remove comments
         .map((line) => !line.startsWith('#') && line)
@@ -204,7 +204,7 @@ import ComponentsConfig from '!!raw-loader!@site/../lib/active_admin_bootstrap/f
 ````
 
 You can also load the configs from YAML files to keep things tidy. For example, you can create a file
-```yml title="config/active_admin_bootstrap/admin/users/components.yml"
+```yml title="config/adminterface/admin/users/components.yml"
 ---
 flash:
   dismissible: false
@@ -215,7 +215,7 @@ header:
 And, load it inside your admin resource
 ```ruby title="app/admin/users.rb" {2}
 ActiveAdmin.register User do
-  config.components = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/admin/users/components.yml").to_s)
+  config.components = YAML.load_file(Rails.root.join("config/adminterface/admin/users/components.yml").to_s)
 end
 ```
 
@@ -265,7 +265,7 @@ You can add your custom layout by adding custom CSS styles. Here is an example o
 
 First, create a stylesheet and add styles to the custom navigation.
 
-```scss title="app/javascript/stylesheets/active_admin_bootstrap/layouts/_navigation_bottom.scss"
+```scss title="app/javascript/stylesheets/adminterface/layouts/_navigation_bottom.scss"
 $_header-height: 64px;
 $_header-zindex: $zindex-fixed;
 $_title-bar: $zindex-fixed - 1;
@@ -303,13 +303,13 @@ body.layout-navigation-bottom {
 Import the custom stylesheet inside `active_admin.scss`.
 
 ```scss title="app/javascript/stylesheets/active_admin.scss" {2}
-@import "~@cmdbrew/active_admin_bootstrap/src/scss/base";
-@import "active_admin_bootstrap/layouts/navigation_bottom"
+@import "~@cmdbrew/adminterface/src/scss/base";
+@import "adminterface/layouts/navigation_bottom"
 ```
 
 Finally, specify the configuration for this custom navigation layout [for the entire app, a namespace, or a specific resource](#components) the same way as before.
 
-```yml title="config/active_admin_bootstrap/admin/users/components.yml"
+```yml title="config/adminterface/admin/users/components.yml"
 ---
 header:
   position: bottom
@@ -472,40 +472,40 @@ Aside from the basic options, we also added the following:
 You can customize the theme of your application by overwriting the Sass variables.
 
 ````mdx-code-block
-import ActiveAdminBootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss';
-import BootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/bootstrap/_variables.scss';
-import FlatpickrVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/flatpickr/_variables.scss';
-import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/active_admin_bootstrap/vendors/trix/_variables.scss';
+import AdminterfaceVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/mixins/_variables.scss';
+import BootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/bootstrap/_variables.scss';
+import FlatpickrVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/flatpickr/_variables.scss';
+import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/trix/_variables.scss';
 
 <Tabs
-  defaultValue="active_admin_bootstrap"
+  defaultValue="adminterface"
   values={[
-    {label: 'Basic', value: 'active_admin_bootstrap'},
+    {label: 'Basic', value: 'adminterface'},
     {label: 'Bootstrap', value: 'bootstrap'},
     {label: 'Flatpickr', value: 'flatpickr'},
     {label: 'Trix', value: 'trix'},
   ]}>
 
-  <TabItem value="active_admin_bootstrap">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/mixins/_variables.scss">
-      {ActiveAdminBootstrapVars}
+  <TabItem value="adminterface">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/mixins/_variables.scss">
+      {AdminterfaceVars}
     </CodeBlock>
   </TabItem>
 
   <TabItem value="bootstrap">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/bootstrap/_variables.scss">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/bootstrap/_variables.scss">
       {BootstrapVars}
     </CodeBlock>
   </TabItem>
 
   <TabItem value="flatpickr">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/flatpickr/_variables.scss">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/flatpickr/_variables.scss">
       {FlatpickrVars}
     </CodeBlock>
   </TabItem>
 
   <TabItem value="trix">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/active_admin_bootstrap/vendors/trix/_variables.scss">
+    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/trix/_variables.scss">
       {FlatpickrVars}
     </CodeBlock>
   </TabItem>

@@ -1,6 +1,6 @@
 ---
 sidebar_position: 2
-description: ActiveAdminBootstrap Command Line Reference.
+description: Adminterface Command Line Reference.
 ---
 
 # Command Line Reference
@@ -13,21 +13,21 @@ import CodeBlock from '@theme/CodeBlock';
 ````
 
 ### Install
-Installs ActiveAdmin Boostrap and generates necessary files and migrations
+Installs Adminterface and generates necessary files and migrations
 
 ```bash
-$ rails g active_admin_boostrap:install
+$ rails g adminterface:install
 ```
 
 This will:
 - Install Rails `action_text` and `active_storage`
-- Run `rails g active_admin_bootstrap:comments`
-- Run `rails g active_admin_bootstrap:webpacker`
+- Run `rails g adminterface:comments`
+- Run `rails g adminterface:webpacker`
 
 ### Comments
 Add `ActionText` to `ActiveAdmin::Comment`
 ```bash
-$ rails g active_admin_bootstrap:comments
+$ rails g adminterface:comments
 ```
 
 This will:
@@ -51,7 +51,7 @@ We don't currently support using Sprockets
 
 Install Stylesheets and JavaScripts using Webpacker
 ```bash
-$ rails g active_admin_bootstrap:webpacker
+$ rails g adminterface:webpacker
 ```
 
 This will:
@@ -71,20 +71,20 @@ This will:
    ```
 - Install our package via Yarn
    ```bash
-   $ yarn add `@cmdbrew/active_admin_bootstrap`
+   $ yarn add `@cmdbrew/adminterface`
    ```
 - Replace the assets
    ```javascript title="app/javascript/packs/active_admin.js"
    import '../stylesheets/active_admin'
 
    import Rails from '@rails/ujs'
-   import '@cmdbrew/active_admin_bootstrap'
+   import '@cmdbrew/adminterface'
 
    Rails.start()
    ```
 
    ```scss title="app/javascript/stylesheets/active_admin.scss"
-   @import "~@cmdbrew/active_admin_bootstrap/src/scss/base";
+   @import "~@cmdbrew/adminterface/src/scss/base";
    ```
 - Set `use_webpacker = true` in `active_admin.rb`.
    ```ruby title="config/initializers/active_admin.rb" {3}
@@ -110,21 +110,21 @@ Copies config files into a directory for customization
   <TabItem value="syntax">
 
   ```bash
-  $ rails g active_admin_bootstrap:configs [NAMESPACE]
+  $ rails g adminterface:configs [NAMESPACE]
   ```
 
   </TabItem>
   <TabItem value="example">
 
   ```bash
-  $ rails g active_admin_bootstrap:configs admin/users
+  $ rails g adminterface:configs admin/users
   ```
 
   </TabItem>
 </Tabs>
 ````
 
-This will copy the following files to `/config/active_admin_bootstrap/NAMESPACE`:
+This will copy the following files to `/config/adminterface/NAMESPACE`:
 - `components.yml`
 - `css_classes.yml`
 
@@ -138,7 +138,7 @@ This command helps you separate configurations for components and CSS classes fo
 Copies view templates for customization
 
 ```bash
-$ rails g active_admin_bootstrap:views
+$ rails g adminterface:views
 ```
 This will copy the following view templates to your application:
 - `active_admin/devise/*` templates

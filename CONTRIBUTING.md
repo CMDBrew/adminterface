@@ -1,12 +1,12 @@
 # Contributing
-ActiveAdminBootstrap is currently under development. We have early adopters who already started using it. We welcome contributors to collaborate to shape the future of ActiveAdminBootstrap.
+Adminterface is currently under development. We have early adopters who already started using it. We welcome contributors to collaborate to shape the future of Adminterface.
 
 The Open Source Guides website has a collection of resources for individuals, communities, and companies who want to learn how to run and contribute to an open source project. Contributors and people new to open source alike will find the following guides especially useful:
 - [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 - [Building Welcoming Communities](https://opensource.guide/building-community/)
 
 ## Code of Conduct
-We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://cmdbrew.github.io/active_admin_bootstrap/code-of-conduct) so that you can understand what actions will and will not be tolerated.
+We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://cmdbrew.github.io/adminterface/code-of-conduct) so that you can understand what actions will and will not be tolerated.
 
 ## Contributing to the code
 ### Installation
@@ -71,7 +71,7 @@ If you decided to contribute to our source, we appreciate your time and will do 
 4. Push to your branch `git push origin my_branch`.
 5. Ensure tests pass (`rails test`) and linter issues (`standard` and `yarn lint`) are resolved.
 6. Ensure relevant commits are grouped and follow the [Conventional Commit Messages](#conventional-commit-messages) format.
-7. Send a [pull request](https://github.com/CMDBrew/active_admin_bootstrap/pulls).
+7. Send a [pull request](https://github.com/CMDBrew/adminterface/pulls).
 
 ## License
-By contributing to ActiveAdminBootstrap, you agree that your contributions will be licensed under its [License](https://cmdbrew.github.io/active_admin_bootstrap/license).
+By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://cmdbrew.github.io/adminterface/license).

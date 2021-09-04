@@ -67,7 +67,7 @@ export function ActiveTeamRow() {
         name="I-Lung Lee"
         githubUrl="https://github.com/ilunglee">
         <Translate id="team.profile.I-Lung Lee.body">
-          Creator of ActiveAdminBootstrap and its predecessors, passionate about anything software-related, loves Ruby and RoR.
+          Creator of Adminterface and its predecessors, passionate about anything software-related, loves Ruby and RoR.
         </Translate>
       </TeamProfileCardCol>
       <TeamProfileCardCol

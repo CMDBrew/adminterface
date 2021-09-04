@@ -33,7 +33,7 @@ end
 
 class TextInputCounterTest < ActiveAdmin::InputTestCase
   def counter_config
-    @counter_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :text, :counter)
+    @counter_config ||= Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :text, :counter)
   end
 
   test "defaults to disable counter" do

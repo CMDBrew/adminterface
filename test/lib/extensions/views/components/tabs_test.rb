@@ -3,7 +3,7 @@ require "test_case/active_admin/base_test_case"
 module TabsTest
   class DefaultTabsTest < ActiveAdmin::BaseTestCase
     def default_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :tabs)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :tabs)
     end
 
     setup do

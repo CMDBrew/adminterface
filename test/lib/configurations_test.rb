@@ -4,7 +4,7 @@ module ConfigurationsTest
   class Base < ActiveSupport::TestCase
     setup do
       @application = ActiveAdmin::Application.new
-      @configs = ActiveAdminBootstrap::Configs::DEFAULTS
+      @configs = Adminterface::Configs::DEFAULTS
     end
   end
 

@@ -58,11 +58,11 @@ class IndexAsTableTest < ActiveAdmin::BaseTestCase
   end
 
   def default_css_classes
-    @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :index_as_table)
+    @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :index_as_table)
   end
 
   def confirm_dialog_css_classes
-    @confirm_dialog_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :confirm_dialog)
+    @confirm_dialog_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :confirm_dialog)
   end
 
   def confirm_dialog_config

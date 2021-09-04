@@ -8,7 +8,7 @@ module DatetimePickerInputScenarios
   end
 
   def datetime_picker_config
-    @datetime_picker_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :datetime_picker)
+    @datetime_picker_config ||= Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :datetime_picker)
   end
 
   included do

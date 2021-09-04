@@ -20,11 +20,11 @@ class TitleBarTest < ActiveAdmin::BaseTestCase
   end
 
   def default_css_classes
-    @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :title_bar)
+    @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :title_bar)
   end
 
   def action_items_css_classes
-    @action_items_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :action_items)
+    @action_items_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :action_items)
   end
 
   setup do

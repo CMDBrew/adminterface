@@ -16,7 +16,7 @@ This license is a legal agreement between you and CMDBrew Studio Inc. for the us
 
 "Production Purpose" means a purpose other than a Personal Purpose (for example, operating your Organization or delivering products or services within or outside of your Organization).
 
-"Repository" means the GitHub repository located at https://github.com/CMDBrew/active_admin_bootstrap
+"Repository" means the GitHub repository located at https://github.com/CMDBrew/adminterface
 
 "Software" means source code, object code, API's, and all works incorporated into each of the foregoing.
 
@@ -71,7 +71,7 @@ You may alter, modify, or extend the Software for your own use, or commission a 
 CMDBrew Studio Inc. does not provide direct phone support at this time. No representations or guarantees are made regarding the response time in which e-mail support questions are answered, but we will do our best to respond quickly.
 
 ## Open-Source Components
-The Software makes use of certain [Open-Source Components or other licensing](https://cmdbrew.github.io/active_admin_bootstrap/docs/start/dependencies/) that does not restrict commercial use. Your use of Open-Source Components, including those on which the Software relies, is subject to the terms and conditions of the applicable open-source licenses. A copy of each license can be found at https://choosealicense.com/licenses/.
+The Software makes use of certain [Open-Source Components or other licensing](https://cmdbrew.github.io/adminterface/docs/start/dependencies/) that does not restrict commercial use. Your use of Open-Source Components, including those on which the Software relies, is subject to the terms and conditions of the applicable open-source licenses. A copy of each license can be found at https://choosealicense.com/licenses/.
 
 ## Ownership
 CMDBrew Studio Inc. is the sole and exclusive owner of all right, title, and interest in and to the Software, all Updates thereto, all Official Extensions based thereon, and all Intellectual Property Rights in each of the foregoing, subject only to the rights of third parties in Open-Source Components and the License granted hereunder. You acknowledge that you have no ownership interest in the Software and that, except for the License granted hereunder, nothing herein or elsewhere grants to you or any third party (by implication, waiver, estoppel or otherwise) any right, title, or interest (including any Intellectual Property Right) in or to the Software or any portion thereof.
