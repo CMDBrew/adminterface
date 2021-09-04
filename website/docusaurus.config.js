@@ -60,7 +60,7 @@ module.exports = {
     algolia: {
       apiKey: '76d7b16633a028132c432599610e1b0a',
       appId: 'HNNK67NE1P',
-      indexName: 'cmdbrew_adminterface',
+      indexName: 'adminterface',
       contextualSearch: false,
     },
   },

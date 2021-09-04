@@ -1,5 +1,5 @@
 {
-  "index_name": "cmdbrew_adminterface",
+  "index_name": "adminterface",
   "start_urls": [
     "https://cmdbrew.github.io/adminterface"
   ],
