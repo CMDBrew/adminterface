@@ -4,9 +4,9 @@ Gem::Specification.new do |spec|
   spec.name = "adminterface"
   spec.version = Adminterface::VERSION
   spec.authors = ["I-Lung Lee"]
-  spec.email = ["nelson@cmdbrew.com"]
+  spec.email = ["ilung@hey.com"]
   spec.homepage = "https://github.com/cmdbrew/adminterface"
-  spec.summary = "Enhance ActiveAdmin with Bootstrap 5 and extended functionalities."
+  spec.summary = "An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin."
   spec.description = "See README.md"
   spec.license = "See LICENSE"
 
