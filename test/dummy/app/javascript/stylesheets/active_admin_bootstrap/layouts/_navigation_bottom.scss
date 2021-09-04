@@ -4,7 +4,7 @@ $_title-bar: $zindex-fixed - 1;
 $_title-bar-height: 54px;
 $_title-bar-zindex: $zindex-fixed - 1;
 
-body.layout-navigation-hamburger {
+body.layout-navigation-bottom {
   grid-template-areas:
     "title_bar"
     "content"
