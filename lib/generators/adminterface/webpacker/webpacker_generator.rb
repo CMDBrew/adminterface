@@ -2,6 +2,10 @@ module Adminterface
   module Generators
     class WebpackerGenerator < Rails::Generators::Base
       desc "Install Stylesheets and JavaScripts using Webpacker"
+      class_option :version,
+        aliases: "-v", type: :string, default: Adminterface::VERSION,
+        desc: "Install with a specific npm package version"
+
       source_root File.expand_path("templates", __dir__)
 
       def install_packages
@@ -28,7 +32,7 @@ module Adminterface
           end
         end
 
-        run "yarn add @cmdbrew/adminterface@v#{Adminterface::VERSION}"
+        run "yarn add @cmdbrew/adminterface@v#{find_npm_version}"
       end
 
       def install_assets
@@ -52,6 +56,15 @@ module Adminterface
 
       def show_readme
         readme "README" if behavior == :invoke
+      end
+
+      private
+
+      def find_npm_version
+        version = options[:version]
+        return version unless version.include?(".rc")
+
+        version.gsub(".rc", "-rc")
       end
     end
   end
