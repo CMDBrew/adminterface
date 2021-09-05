@@ -7,7 +7,7 @@ module Filters
     end
 
     def date_picker_config
-      @date_picker_config ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:components, :inputs, :date_picker)
+      @date_picker_config ||= Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :date_picker)
     end
 
     setup do

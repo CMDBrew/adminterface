@@ -1,9 +1,9 @@
-# ActiveAdminBootstrap <!-- omit in toc -->
-[![CI](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/active_admin_bootstrap/actions/workflows/ci.yml)
+# Adminterface <!-- omit in toc -->
+[![CI](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml)
 
 An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
 
-[![](preview.jpg)](https://cmdbrew.github.io/active_admin_bootstrap)
+[![](preview.jpg)](https://cmdbrew.github.io/adminterface)
 
 ## Dependencies
 - Rails >= 6.0
@@ -16,7 +16,7 @@ An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
 1. Add the following to your application's Gemfile:
    ```ruby
    source "https://rubygems.pkg.github.com/cmdbrew" do
-     gem "active_admin_bootstrap"
+     gem "adminterface"
    end
    ```
 2. Then execute:
@@ -27,16 +27,16 @@ An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
    ```bash
    $ rails g active_admin:install --use_webpacker
    ```
-4. Install ActiveAdminBootstrap
+4. Install Adminterface
    ```bash
-   $ rails g active_admin_boostrap:install
+   $ rails g adminterface:install
    ```
 
 ## Documentation
-Check our [website](https://cmdbrew.github.io/active_admin_bootstrap) to find in-depth documentation for everything that ActiveAdminBootstrap offers.
+Check our [website](https://cmdbrew.github.io/adminterface) to find in-depth documentation for everything that Adminterface offers.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-ActiveAdminBootstrap is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See [our Terms of Service in full text](LICENSE.md) for more information.
+Adminterface is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See [our Terms of Service in full text](LICENSE.md) for more information.

@@ -1,10 +1,10 @@
 {
-  "index_name": "cmdbrew_active_admin_bootstrap",
+  "index_name": "adminterface",
   "start_urls": [
-    "https://cmdbrew.github.io/active_admin_bootstrap"
+    "https://cmdbrew.github.io/adminterface"
   ],
   "sitemap_urls": [
-    "https://cmdbrew.github.io/active_admin_bootstrap/sitemap.xml"
+    "https://cmdbrew.github.io/adminterface/sitemap.xml"
   ],
   "sitemap_alternate_links": true,
   "stop_urls": [

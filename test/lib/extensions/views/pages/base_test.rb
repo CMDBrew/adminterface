@@ -67,7 +67,7 @@ module BasePageTest
     end
 
     def default_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :flash)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :flash)
     end
 
     test "shows all flash messages" do

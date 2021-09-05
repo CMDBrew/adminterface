@@ -1,8 +1,8 @@
 require "test_helper"
 
-class ActiveAdminBootstrap::Data::CountriesTest < ActiveSupport::TestCase
+class Adminterface::Data::CountriesTest < ActiveSupport::TestCase
   def described_class
-    ActiveAdminBootstrap::Data::Countries
+    Adminterface::Data::Countries
   end
 
   test "returns correct keys" do

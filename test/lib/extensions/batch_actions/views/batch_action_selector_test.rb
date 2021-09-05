@@ -2,7 +2,7 @@ require "test_case/active_admin/base_test_case"
 
 class BatchActionSelectorTest < ActiveAdmin::BaseTestCase
   def default_css_classes
-    @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :table_tools)
+    @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :table_tools)
   end
 
   def confirm_dialog_config

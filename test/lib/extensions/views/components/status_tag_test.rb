@@ -2,7 +2,7 @@ require "test_case/active_admin/base_test_case"
 
 class StatusTagTest < ActiveAdmin::BaseTestCase
   def default_css_classes
-    @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :status_tag)
+    @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :status_tag)
   end
 
   setup do

@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    active_admin_bootstrap (0.1.0)
+    adminterface (0.1.0)
       activeadmin (~> 2.9)
       image_processing (~> 1.0)
       rails (>= 6.0)
@@ -360,7 +360,7 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
-  active_admin_bootstrap!
+  adminterface!
   appraisal
   byebug
   capybara

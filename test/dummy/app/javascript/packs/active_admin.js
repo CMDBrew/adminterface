@@ -1,7 +1,7 @@
 // Load Active Admin's styles into Webpacker,
 // see `active_admin.scss` for customization.
 import '../stylesheets/active_admin'
-import '../../../../../app/javascript/active_admin_bootstrap/base'
+import '../../../../../app/javascript/adminterface/base'
 
 import Rails from '@rails/ujs'
 

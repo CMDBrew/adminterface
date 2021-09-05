@@ -1,0 +1,8 @@
+// Sass variable overrides must be declared before loading up Adminterface styles.
+//
+// To view the variables that Adminterface provides, take a look at
+// `app/assets/stylesheets/adminterface/mixins/_variables.scss` in the
+// Adminterface source.
+
+// Adminterface got SASS!
+@import "~@cmdbrew/adminterface/src/scss/base";

@@ -51,7 +51,7 @@ jobs:
 
       - name: Run tests
         env:
-          DATABASE_URL: "sqlite3:active_admin_bootstrap_test"
+          DATABASE_URL: "sqlite3:adminterface_test"
           RAILS_ENV: test
           NODE_ENV: test
         run: |

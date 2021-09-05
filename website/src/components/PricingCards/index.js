@@ -65,7 +65,7 @@ export function PricingRow() {
         price="149"
         discountFrom={["$", <s>249</s>, ", 40% off for early adopters"]}
         purchaseUrl="#">
-        Build one project with ActiveAdminBootstrap.
+        Build one project with Adminterface.
       </PricingCardCol>
       <PricingCardCol
         name="Commerical Unlimited"
@@ -73,7 +73,7 @@ export function PricingRow() {
         highlight="Best Value"
         price="449"
         purchaseUrl="#">
-        Build unlimited projects with ActiveAdminBootstrap.
+        Build unlimited projects with Adminterface.
       </PricingCardCol>
     </div>
   );

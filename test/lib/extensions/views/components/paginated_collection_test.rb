@@ -26,7 +26,7 @@ class PaginatedCollectionTest < ActiveAdmin::BaseTestCase
   end
 
   def default_css_classes
-    @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :table_tools, :indexes)
+    @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :table_tools, :indexes)
   end
 
   def collection

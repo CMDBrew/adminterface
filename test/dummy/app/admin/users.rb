@@ -2,7 +2,7 @@ ActiveAdmin.register User do
   menu priority: 4
   config.per_page = [10, 30]
   config.comments_per_page = 5
-  # config.css_classes = YAML.load_file(Rails.root.join("config/active_admin_bootstrap/users/css_classes.yml").to_s)
+  # config.css_classes = YAML.load_file(Rails.root.join("config/adminterface/users/css_classes.yml").to_s)
   config.components = {
     header: {position: "top"},
     filter: {position: "sidebar"},

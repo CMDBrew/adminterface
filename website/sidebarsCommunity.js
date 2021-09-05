@@ -6,7 +6,7 @@ module.exports = {
     },
     {
       type: 'link',
-      href: 'https://github.com/CMDBrew/active_admin_bootstrap/discussions',
+      href: 'https://github.com/CMDBrew/adminterface/discussions',
       label: 'Feedback',
     }
   ],

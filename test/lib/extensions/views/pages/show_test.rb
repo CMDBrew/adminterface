@@ -44,7 +44,7 @@ module ShowPageTest
 
   class BaseTest < ActiveAdmin::BaseTestCase
     def default_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :html)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :html)
     end
 
     setup do
@@ -100,7 +100,7 @@ module ShowPageTest
     end
 
     def comments_css_classes
-      @default_css_classes ||= ActiveAdminBootstrap::Configs::DEFAULTS.dig(:css_classes, :comments)
+      @default_css_classes ||= Adminterface::Configs::DEFAULTS.dig(:css_classes, :comments)
     end
 
     setup do

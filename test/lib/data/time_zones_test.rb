@@ -1,8 +1,8 @@
 require "test_helper"
 
-class ActiveAdminBootstrap::Data::TimeZonesTest < ActiveSupport::TestCase
+class Adminterface::Data::TimeZonesTest < ActiveSupport::TestCase
   setup do
-    @time_zones = ActiveAdminBootstrap::Data::TimeZones.call(:en)
+    @time_zones = Adminterface::Data::TimeZones.call(:en)
   end
 
   test "returns correct keys" do

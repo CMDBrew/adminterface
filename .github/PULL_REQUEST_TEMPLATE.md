@@ -1,5 +1,5 @@
 <!-- Please provide a general summary of your changes in the title above -->
-<!-- Please ensure your commits follows the [Conventional Commit Messages](https://github.com/CMDBrew/active_admin_bootstrap/blob/main/CODE_OF_CONDUCT.md#conventional-commit-messages) format. -->
+<!-- Please ensure your commits follows the [Conventional Commit Messages](https://github.com/CMDBrew/adminterface/blob/main/CODE_OF_CONDUCT.md#conventional-commit-messages) format. -->
 
 ## Pull request type
 <!-- Please try to limit your pull request to one type, submit multiple pull requests if needed. -->

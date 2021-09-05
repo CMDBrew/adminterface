@@ -1,19 +1,19 @@
 {
-  "name": "@cmdbrew/active_admin_bootstrap",
+  "name": "@cmdbrew/adminterface",
   "version": "0.1.0",
-  "description": "JavaScript dependencies for gem `active_admin_bootstrap`",
+  "description": "JavaScript dependencies for gem `adminterface`",
   "main": "src/base.js",
   "files": [
     "./src/**/*"
   ],
-  "repository": "git://github.com/cmdbrew/active_admin_bootstrap.git",
+  "repository": "git://github.com/cmdbrew/adminterface.git",
   "publishConfig": {
     "registry": "https://npm.pkg.github.com"
   },
-  "author": "I-Lung Lee <nelson@cmdbrew.com>",
+  "author": "I-Lung Lee <ilung@hey.com>",
   "license": "See LICENSE.md",
   "scripts": {
-    "prepublishOnly": "rm -rf src && cp -R app/javascript/active_admin_bootstrap src && cp -R app/assets/stylesheets/active_admin_bootstrap src/scss",
+    "prepublishOnly": "rm -rf src && cp -R app/javascript/adminterface src && cp -R app/assets/stylesheets/adminterface src/scss",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
     "fix": "standard --fix",
     "release": "standard-version",

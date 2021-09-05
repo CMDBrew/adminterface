@@ -36,7 +36,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/extended.svg').default,
     description: (
       <>
-        ActiveAdmin is now even more powerful with extended functionalities and features from ActiveAdminBootstrap. <Link to="docs/intro">Check the docs</Link> to see what's new.
+        ActiveAdmin is now even more powerful with extended functionalities and features from Adminterface. <Link to="docs/intro">Check the docs</Link> to see what's new.
       </>
     ),
   },
@@ -45,7 +45,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/familiar.svg').default,
     description: (
       <>
-        Use the approaches you are already familiar with inside ActiveAdmin to extend your projects with all the features of ActiveAdminBootstrap.
+        Use the approaches you are already familiar with inside ActiveAdmin to extend your projects with all the features of Adminterface.
       </>
     ),
   },
@@ -54,7 +54,7 @@ const FeatureList = [
     Svg: require('../../static/img/features/maintain.svg').default,
     description: (
       <>
-        ActiveAdminBootstrap is actively maintained and updated to bring you all the goodies from Rails and ActiveAdmin.
+        Adminterface is actively maintained and updated to bring you all the goodies from Rails and ActiveAdmin.
       </>
     ),
   },
