@@ -1,0 +1,53 @@
+---
+name: Pre-Release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  npm:
+    name: Publish NPM Package on Github
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler: default
+          bundler-cache: true
+      - name: Set up NPM
+        uses: actions/setup-node@v1
+        with:
+          node-version: 14.x
+          registry-url: https://npm.pkg.github.com/
+      - run: |
+          gem install gem-release
+          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          npm version $GEM_VERSION-rc$GITHUB_RUN_ID --no-git-tag-version
+      - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+
+  ruby:
+    name: Publish Ruby gem on Github
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler: default
+          bundler-cache: true
+      - run: |
+          gem install gem-release
+          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          gem bump -v $GEM_VERSION.rc$GITHUB_RUN_ID --no-commit
+      - name: Publish to GitHub Ruby Gem
+        uses: jstastny/publish-gem-to-github@master
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          owner: cmdbrew
