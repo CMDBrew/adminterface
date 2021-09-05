@@ -31,6 +31,11 @@ An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
    ```bash
    $ rails g adminterface:install
    ```
+5. Migrate your database and start the server
+   ```bash
+   $ rails db:migrate
+   $ rails server
+   ```
 
 ## Documentation
 Check our [website](https://cmdbrew.github.io/adminterface) to find in-depth documentation for everything that Adminterface offers.
