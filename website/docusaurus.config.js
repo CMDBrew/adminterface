@@ -15,7 +15,7 @@ module.exports = {
   themeConfig: {
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
-      content: '⭐️ Adminterface is currently in beta. Reach out to us at contact@cmdbrew.com if you want to become an early adopter ⭐',
+      content: '⭐️ Adminterface is currently in beta. Reach out to us at contact@cmdbrew.com to become an early adopter ⭐',
       isCloseable: false, // Defaults to `true`.
     },
     hideableSidebar: true,
