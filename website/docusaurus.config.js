@@ -13,6 +13,11 @@ module.exports = {
   organizationName: 'cmdbrew',
   projectName: 'adminterface',
   themeConfig: {
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
       content: '⭐️ Adminterface is currently in beta. Reach out to us at contact@cmdbrew.com to become an early adopter ⭐',

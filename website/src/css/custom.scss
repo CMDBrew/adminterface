@@ -63,7 +63,7 @@ html[data-theme='dark'] .header-github-link::before {
 
 .text-nowrap { white-space: nowrap; }
 .footer--dark { --ifm-footer-background-color: #242526; }
-.button--primary { color: white; }
+.button--primary { color: white !important; }
 .card { box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 0 0 1px; }
 
 div[class^='announcementBar_'] {
