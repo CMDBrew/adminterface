@@ -27,13 +27,10 @@
 
 .hero__title {
   b { color: var(--ifm-color-primary); }
+  &.hero__title--lg { font-size: 60px; }
 
-  &.hero__title--lg {
-    font-size: 60px;
-
-    @media only screen and (max-width: 768px) {
-      font-size: 36px;
-    }
+  @media only screen and (max-width: 768px) {
+    font-size: 36px !important;
   }
 }
 

@@ -11,6 +11,10 @@
   position: relative;
   overflow: hidden;
   background: transparent;
+
+  @media screen and (max-width: 966px) {
+    padding: 0;
+  }
 }
 
 .question {
