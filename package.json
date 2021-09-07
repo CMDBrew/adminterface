@@ -4,7 +4,7 @@
   "description": "JavaScript dependencies for gem `adminterface`",
   "main": "src/base.js",
   "files": [
-    "./src/**/*"
+    "src/**/*"
   ],
   "repository": "git://github.com/cmdbrew/adminterface.git",
   "publishConfig": {
