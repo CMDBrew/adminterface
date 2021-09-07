@@ -58,7 +58,7 @@ export function PricingRow() {
       <PricingCardCol
         name="Personal"
         price="0">
-        <p>For personal or non-commercial projects. Free forever. <Link to="/docs/terms">Check eligibility</Link>.</p>
+        <p>For personal or non-commercial projects. Free forever. <Link to="/docs/terms#fees-and-license">Check eligibility</Link>.</p>
       </PricingCardCol>
       <PricingCardCol
         name="Commercial (Single)"
