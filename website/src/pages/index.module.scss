@@ -14,11 +14,9 @@
   @at-root {
     html[data-theme='light'] & { --ifm-hero-background-color: #f9f9f9; }
   }
-}
 
-@media screen and (max-width: 966px) {
-  .heroBanner {
-    padding: 2rem;
+  @media screen and (max-width: 966px) {
+    padding: 2rem 0;
   }
 }
 

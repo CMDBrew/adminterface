@@ -58,22 +58,22 @@ export function PricingRow() {
       <PricingCardCol
         name="Personal"
         price="0">
-        For personal or non-commercial projects. Free forever.
+        <p>For personal or non-commercial projects. Free forever. <Link to="/docs/terms">Check eligibility</Link>.</p>
       </PricingCardCol>
       <PricingCardCol
-        name="Commerical Single"
+        name="Commercial (Single)"
         price="149"
         discountFrom={["$", <s>249</s>, ", 40% off for early adopters"]}
         purchaseUrl="#">
-        Build one project with Adminterface.
+        <p>Build one project with Adminterface.</p>
       </PricingCardCol>
       <PricingCardCol
-        name="Commerical Unlimited"
+        name="Commercial (Unlimited)"
         discountFrom={["$", <s>749</s>, ", 40% off for early adopters"]}
         highlight="Best Value"
         price="449"
         purchaseUrl="#">
-        Build unlimited projects with Adminterface.
+        <p>Build unlimited projects with Adminterface.</p>
       </PricingCardCol>
     </div>
   );

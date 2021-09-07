@@ -6,11 +6,15 @@
  */
 
 .heroBanner {
-  padding: 2rem 0;
+  padding: 4rem 0;
   text-align: left;
   position: relative;
   overflow: hidden;
   background: transparent;
+
+  @media screen and (max-width: 966px) {
+    padding: 2rem 0;
+  }
 }
 
 .question {
@@ -18,5 +22,36 @@
 }
 
 .section {
-  padding: 1rem 0;
+  padding: 4rem 0;
+
+  @media screen and (max-width: 966px) {
+    padding: 2rem 0;
+  }
+}
+
+.sectionAlt {
+  background: rgba(#8e6dbf, 0.15);
+
+  .mb-0 { margin-bottom: 0; }
+}
+
+.faq {
+  position: relative;
+
+  ::marker {
+    position: absolute;
+    left: 0;
+  }
+
+  summary {
+    margin-bottom: 0.5rem;
+
+    & + div { margin-bottom: 1rem; }
+
+    & > * {
+      display: inline;
+      vertical-align: middle;
+      margin-bottom: 0;
+    }
+  }
 }
