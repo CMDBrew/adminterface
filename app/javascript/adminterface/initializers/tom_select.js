@@ -5,7 +5,7 @@ const TomSelectInit = function (element) {
     const options = JSON.parse(element.dataset.aaTomSelect || {})
 
     const defaults = {
-      plugins: ['remove_button', 'restore_on_backspace'],
+      plugins: ['remove_button'],
       persist: false,
       createOnBlur: false,
       create: false
