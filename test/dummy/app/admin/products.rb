@@ -29,6 +29,21 @@ ActiveAdmin.register Product do
     end
   end
 
+  preserve_default_filters!
+  remove_filter :image_attachment
+  remove_filter :image_blob
+  remove_filter :image_file_name
+
+  index do
+    selectable_column
+    column :title do |product|
+      text_node static_or_uploaded_image_tag(product, [32, 32], width: 32, height: 32)
+      a truncate(product.title), href: admin_product_path(product)
+    end
+    column :created_at
+    actions(dropdown: true)
+  end
+
   index as: :grid do |product|
     div do
       resource_selection_cell product
