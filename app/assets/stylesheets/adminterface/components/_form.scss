@@ -79,13 +79,6 @@
   legend { margin-bottom: 0; }
   legend.label { font-size: $font-size-base; }
 
-  .input-fragment {
-    .field_with_error {
-      display: flex;
-      width: 100%;
-    }
-  }
-
   .fragments-group {
     display: flex;
     flex-direction: row;

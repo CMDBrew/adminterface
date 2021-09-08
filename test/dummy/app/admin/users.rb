@@ -11,7 +11,8 @@ ActiveAdmin.register User do
 
   permit_params :name, :email, :password, :biography,
     user_addresses_attributes: %i[
-      id fullname address_line1 address_line2 city state zip_code country
+      position _destroy id fullname address_line1 address_line2
+      city state zip_code country
     ]
 
   filter :name
