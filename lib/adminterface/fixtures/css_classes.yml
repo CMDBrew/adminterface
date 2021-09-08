@@ -45,7 +45,7 @@ form:
     submit: btn btn-primary
   error: alert alert-danger
   has_many:
-    destroy: text-secondary
+    destroy: text-danger
     heading: h5
     item: border rounded mb-3 p-3
     new: null
