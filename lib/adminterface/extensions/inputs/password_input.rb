@@ -3,25 +3,23 @@ module Adminterface
     module Inputs
       module PasswordInput
         module Visibility
-          def label_html
-            return super unless visibility?
-
-            template.content_tag(:div, class: "label-group") do
-              [super, visibility_toggler].join.html_safe
-            end
-          end
-
           private
 
           def visibility_toggler
-            template.content_tag(:div, class: "password-visibility-toggler", data: {"aa-password-visibility-toggler": true}) do
-              template.content_tag(:span, visibility_toggler_text(:show), data: {mode: "show"}) +
-                template.content_tag(:span, visibility_toggler_text(:hide), data: {mode: "hide"})
+            template.content_tag(:span, class: "input-group-text password-visibility-toggler", data: {"aa-password-visibility-toggler": true}) do
+              template.content_tag(:i, "", title: visibility_toggler_text(:show), data: {mode: "show"}) +
+                template.content_tag(:i, "", title: visibility_toggler_text(:hide), data: {mode: "hide"})
             end
           end
 
           def visibility_toggler_text(status)
             I18n.t(status, scope: "active_admin.inputs.password.visibility")
+          end
+
+          def append_html
+            return options[:append] unless visibility?
+
+            [visibility_toggler, options[:append]].reject(&:blank?).join
           end
 
           def visibility?
