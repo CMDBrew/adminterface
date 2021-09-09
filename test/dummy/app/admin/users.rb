@@ -37,7 +37,7 @@ ActiveAdmin.register User do
     column :name
     column :email
     column :created_at
-    actions
+    actions(dropdown: true)
   end
 
   show do
