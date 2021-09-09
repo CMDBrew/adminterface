@@ -20,18 +20,18 @@ module Adminterface
 
         def dropdown_menu(*args, &block)
           options = args.extract_options!
-          super(*args, options.merge(button: {class: index_as_table_css_classes.dig(:actions, :item)}), &block)
+          super(*args, options.merge(button: {class: index_as_table_css_classes.dig(:actions, :dropdown, :toggle)}), &block)
         end
       end
 
       module TableActions
         def default_class_name
-          "#{super} #{index_as_table_css_classes.dig(:actions, :group)}".squish
+          "#{super} #{index_as_table_css_classes.dig(:actions, :buttons, :group)}".squish
         end
 
         def item(*args)
           options = args.extract_options!
-          options[:class] = "#{options[:class]} #{index_as_table_css_classes.dig(:actions, :item)}".squish
+          options[:class] = "#{options[:class]} #{index_as_table_css_classes.dig(:actions, :buttons, :item)}".squish
           options["data-aa-confirm-dialog"] = confirm_dialog_config.to_json if confirm?(options)
           text_node link_to(*args, options)
         end

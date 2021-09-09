@@ -65,8 +65,11 @@ index_as_grid:
   item: d-flex flex-column
 index_as_table:
   actions:
-    group: btn-group
-    item: btn btn-sm btn-light
+    dropdown:
+      toggle: btn btn-sm btn-light
+    buttons:
+      group: btn-group
+      item: btn btn-sm btn-light
   table: table
   wrapper: table-responsive
 panel:
