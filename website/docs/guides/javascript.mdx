@@ -1,0 +1,266 @@
+---
+sidebar_label: JavaScript
+sidebar_position: 5
+description: Working with Adminterface's JavaScript.
+---
+
+# JavaScript
+Bring Adminterface to life with JavaScript. Learn about plugins, our data and programmatic API options, and more.
+
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+````
+
+## Bootstrap
+We've installed the required plugins and enabled the following when the DOM loads by default, so you don't have to initialize them yourself.
+
+### Popover
+- **Selector:** `[data-bs-toggle="popover"]`
+- **Doc:** See [Bootstrap guide on popovers](https://getbootstrap.com/docs/5.1/components/popovers) for usages
+
+````mdx-code-block
+<Tabs
+  defaultValue="html"
+  values={[
+    {label: 'HTML', value: 'html'},
+    {label: 'Arbre', value: 'arbre'}
+  ]}>
+
+  <TabItem value="html">
+
+  ```html
+  <button
+    type="button"
+    class="btn btn-lg btn-danger"
+    title="Popover title"
+    data-bs-toggle="popover"
+    data-bs-content="And here's some amazing content. It's very engaging. Right?"
+  >
+    Click to toggle popover
+  </button>
+  ```
+
+  </TabItem>
+
+  <TabItem value="arbre">
+
+  ```ruby
+  button(
+    class: "btn btn-lg btn-danger",
+    title: "Popover title",
+    "data-bs-toggle": "popover",
+    "data-bs-content": "And here's some amazing content. It's very engaging. Right?"
+  ) do
+    text_node "Click to toggle popover"
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+### Tooltip
+- **Selector:** `[data-bs-toggle="tooltip"]`
+- **Doc:** See [Bootstrap guide on tooltips](https://getbootstrap.com/docs/5.1/components/tooltips) for usages
+
+````mdx-code-block
+<Tabs
+  defaultValue="html"
+  values={[
+    {label: 'HTML', value: 'html'},
+    {label: 'Arbre', value: 'arbre'}
+  ]}>
+
+  <TabItem value="html">
+
+  ```html
+  <button
+    type="button"
+    class="btn btn-secondary"
+    title="Tooltip on top"
+    data-bs-toggle="tooltip"
+    data-bs-placement="top"
+  >
+    Tooltip on top
+  </button>
+  ```
+
+  </TabItem>
+
+  <TabItem value="arbre">
+
+  ```ruby
+  button(
+    class: "btn btn-secondary",
+    title: "Tooltip on top",
+    "data-bs-toggle": "tooltip",
+    "data-bs-placement": "top"
+  ) do
+    text_node "Tooltip on top"
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## Adminterface
+When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
+
+```javascript title="Inside your browser JavaScript console"
+> window.adminterface
+{batchActions: BatchActions, confirmDialog: null, dropdown: Array(0), filters: {…}, flatpickr: Array(2), …}
+```
+
+You can export commonly used components so that you can attach them programmatically.
+
+```javascript
+import * as Adminterface from '@cmdbrew/adminterface'
+```
+
+### ConfirmDialog
+Adminterface uses ConfirmDialog for batch action and delete confirmations. See the guides on [BatchActions](/docs/guides/batch-actions) and [ConfirmDialog](/docs/guides/confirm-dialog) for more information.
+
+Here is an example of adding a custom confirm dialog:
+
+````mdx-code-block
+<Tabs
+  defaultValue="javascript"
+  values={[
+    {label: 'JavaScript', value: 'javascript'}
+  ]}>
+
+  <TabItem value="javascript">
+
+  ```javascript
+  import { ConfirmDialog } from '@cmdbrew/adminterface'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const message = 'Tell me about yourself!'
+    const inputs = {
+      name: 'string',
+      birth_date: 'date_picker'
+    }
+    const options = {
+      buttons: {
+        ok: {
+          text: 'Okay',
+          class: 'btn btn-success'
+        },
+        cancel: {
+          text: 'Cancel',
+          class: 'btn btn-link'
+        }
+      }
+    }
+    const onConfirm = () => alert('confirmed!')
+
+    new ConfirmDialog(message, inputs, options, onConfirm)
+  })
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+
+### InputCounter
+Adminterface uses InputCounter for text inputs. See the guides on [Customizing the Form](/docs/guides/customizing-the-form#text) for more information.
+
+Here is an example of adding a custom counter to an input:
+
+````mdx-code-block
+<Tabs
+  defaultValue="javascript"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'HTML', value: 'html'}
+  ]}>
+
+  <TabItem value="javascript">
+
+  ```javascript
+  import { InputCounter } from '@cmdbrew/adminterface'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const inputCounterTriggerList = [].slice.call(element.querySelectorAll('.my-input-counter'))
+    const options = {
+      type: 'letter',
+      containerClass: '.my-input-counter-container',
+      charCountClass: '.my-input-counter-char-count',
+      charLeftClass: '.my-input-counter-char-left',
+      charLimitClass: '.my-input-counter-char-limit',
+      limit: 150
+    }
+
+    inputCounterTriggerList.map((el) => new InputCounter(el, options))
+  })
+  ```
+
+  </TabItem>
+  <TabItem value="html">
+
+  ```html
+  <div class="my-input-counter-container">
+    <textarea class="my-input-counter"></textarea>
+    <ul>
+      <li class="my-input-counter-char-count"></li>
+      <li class="my-input-counter-char-left"></li>
+      <li class="my-input-counter-char-limit"></li>
+    </ul>
+  </div>
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+### Dropdown
+Adminterface uses Dropdown inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
+
+Here is an example of adding a detached dropdown to an element:
+
+````mdx-code-block
+<Tabs
+  defaultValue="javascript"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'HTML', value: 'html'}
+  ]}>
+
+  <TabItem value="javascript">
+
+  ```javascript
+  import { Dropdown } from '@cmdbrew/adminterface'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownTriggerList = [].slice.call(element.querySelectorAll('.my-dropdown'))
+    const options = {
+      meun: '.my-dropdown-menu'
+    }
+
+    dropdownTriggerList.map((el) => new Dropdown(el, options))
+  })
+  ```
+
+  </TabItem>
+  <TabItem value="html">
+
+  ```html
+  <div class="my-dropdown dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown link
+    </a>
+
+    <ul class="my-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  ```
+
+  </TabItem>
+</Tabs>
+````
