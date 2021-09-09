@@ -1,3 +1,5 @@
+/* global adminterface */
+
 import Rails from '@rails/ujs'
 import ConfirmDialog from '../lib/confirm_dialog'
 
@@ -15,7 +17,7 @@ Rails.confirm = function (message, element) {
     __SkipConfirmation = false
   }
 
-  window.confirmDialog = new ConfirmDialog(message, inputs, options, onConfirm)
+  adminterface.confirmDialog = new ConfirmDialog(message, inputs, options, onConfirm)
 
   return false
 }

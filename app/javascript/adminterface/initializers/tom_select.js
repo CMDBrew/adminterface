@@ -1,8 +1,11 @@
+/* global adminterface */
+
 import TomSelect from 'tom-select'
 
 const TomSelectInit = function (element) {
-  element.querySelectorAll('[data-aa-tom-select]').forEach((element) => {
-    const options = JSON.parse(element.dataset.aaTomSelect || {})
+  const tomSelectTriggerList = [].slice.call(element.querySelectorAll('[data-aa-tom-select]'))
+  const tomSelectInstances = tomSelectTriggerList.map((el) => {
+    const options = JSON.parse(el.dataset.aaTomSelect || {})
 
     const defaults = {
       plugins: ['remove_button'],
@@ -11,12 +14,15 @@ const TomSelectInit = function (element) {
       create: false
     }
 
-    /* eslint-disable no-new */
-    new TomSelect(element, { ...defaults, ...options })
-    /* eslint-enable no-new */
+    return new TomSelect(element, { ...defaults, ...options })
   })
+
+  adminterface.tomSelect = [...adminterface.tomSelect, ...tomSelectInstances]
 }
 
-document.addEventListener('DOMContentLoaded', () => TomSelectInit(document))
+document.addEventListener('DOMContentLoaded', () => {
+  adminterface.tomSelect = []
+  TomSelectInit(document)
+})
 
 export default TomSelectInit

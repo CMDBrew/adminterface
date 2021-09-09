@@ -1,4 +1,4 @@
-/* global Bootstrap */
+import * as Bootstrap from 'bootstrap'
 
 document.addEventListener('DOMContentLoaded', () => {
   const shouldToggle =
