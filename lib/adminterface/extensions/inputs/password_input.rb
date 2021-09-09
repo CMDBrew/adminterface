@@ -7,8 +7,8 @@ module Adminterface
 
           def visibility_toggler
             template.content_tag(:span, class: "input-group-text password-visibility-toggler", data: {"aa-password-visibility-toggler": true}) do
-              template.content_tag(:i, "", title: visibility_toggler_text(:show), data: {mode: "show"}) +
-                template.content_tag(:i, "", title: visibility_toggler_text(:hide), data: {mode: "hide"})
+              template.content_tag(:i, "", title: visibility_toggler_text(:show), data: {mode: "show", "bs-toggle": "tooltip"}) +
+                template.content_tag(:i, "", title: visibility_toggler_text(:hide), data: {mode: "hide", "bs-toggle": "tooltip"})
             end
           end
 
