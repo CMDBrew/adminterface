@@ -1,3 +1,5 @@
+/* global adminterface */
+
 class Dropdown {
   constructor (element, options) {
     const defaults = {
@@ -25,6 +27,8 @@ class Dropdown {
     this.element.addEventListener('hidden.bs.dropdown', function (_e) {
       _self._append(_self.element, $menu)
     })
+
+    adminterface.dropdown = [...adminterface.dropdown, this]
   }
 }
 

@@ -22,9 +22,6 @@ const FlatpickerInit = function (element) {
   adminterface.flatpickr = [...adminterface.flatpickr, ...flatpickrInstances]
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  adminterface.flatpickr = []
-  FlatpickerInit(document)
-})
+document.addEventListener('DOMContentLoaded', () => FlatpickerInit(document))
 
 export default FlatpickerInit

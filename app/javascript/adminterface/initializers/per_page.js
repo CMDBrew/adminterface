@@ -8,6 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   if (target) {
     target.addEventListener('change', PerPage._update)
 
-    adminterface.perPage = { target, events: { change: 'PerPage._update' } }
+    adminterface.perPage = { target, events: { change: PerPage._update } }
   }
 })

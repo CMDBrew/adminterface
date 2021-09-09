@@ -12,10 +12,6 @@ const BootstrapInit = function (element) {
   adminterface.tooltip = [...adminterface.tooltip, ...tooltipInstances]
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  adminterface.popover = []
-  adminterface.tooltip = []
-  BootstrapInit(document)
-})
+document.addEventListener('DOMContentLoaded', () => BootstrapInit(document))
 
 export default BootstrapInit

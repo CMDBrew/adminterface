@@ -1,5 +1,3 @@
-/* global adminterface */
-
 import Rails from '@rails/ujs'
 import ConfirmDialog from '../lib/confirm_dialog'
 
@@ -17,7 +15,9 @@ Rails.confirm = function (message, element) {
     __SkipConfirmation = false
   }
 
-  adminterface.confirmDialog = new ConfirmDialog(message, inputs, options, onConfirm)
+  /* eslint-disable no-new */
+  new ConfirmDialog(message, inputs, options, onConfirm)
+  /* eslint-enable no-new */
 
   return false
 }

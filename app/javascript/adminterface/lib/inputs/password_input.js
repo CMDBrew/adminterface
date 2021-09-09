@@ -1,3 +1,5 @@
+/* global adminterface */
+
 import BaseInput from './base_input'
 import { getObjectValue } from '../utils'
 
@@ -30,6 +32,8 @@ class PasswordVisibilityToggler {
         $input.type = 'text'
       }
     })
+
+    adminterface.inputs.password.visibility = [...adminterface.inputs.password.visibility, this]
   }
 }
 

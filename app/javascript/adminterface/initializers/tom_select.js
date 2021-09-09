@@ -21,7 +21,6 @@ const TomSelectInit = function (element) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  adminterface.tomSelect = []
   TomSelectInit(document)
 })
 
