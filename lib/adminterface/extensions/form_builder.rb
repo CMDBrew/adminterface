@@ -2,11 +2,10 @@ module Adminterface
   module Extensions
     module FormBuilder
       def semantic_errors(*args)
-        return if @object.errors.blank?
+        msgs = super(*args)
+        return if @object.errors.blank? || msgs.blank?
 
-        template.content_tag :div, class: form_css_classes[:error] do
-          super(*args)
-        end
+        template.content_tag :div, msgs, class: form_css_classes[:error]
       end
 
       def field_set_and_list_wrapping(*args, &block)
