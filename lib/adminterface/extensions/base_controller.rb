@@ -46,8 +46,10 @@ module Adminterface
 end
 
 # Overwrite activeadmin/lib/active_admin/base_controller.rb
-ActiveAdmin::BaseController.class_eval do
-  prepend Adminterface::Extensions::BaseController
-  before_action :reset_tab, if: :should_reset_tab?
-  after_action :set_resource_scope
+ActiveSupport.on_load(:active_admin) do
+  ActiveAdmin::BaseController.class_eval do
+    prepend Adminterface::Extensions::BaseController
+    before_action :reset_tab, if: :should_reset_tab?
+    after_action :set_resource_scope
+  end
 end

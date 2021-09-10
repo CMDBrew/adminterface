@@ -1,11 +1,12 @@
 import InputCounter from '../lib/input_counter'
 
 const InputCounterInit = function (element) {
-  window.inputCounters = []
+  const inputCounterTriggerList = [].slice.call(element.querySelectorAll('[data-aa-input-counter]'))
 
-  element.querySelectorAll('[data-aa-input-counter]').forEach((el) => {
+  inputCounterTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaInputCounter || {})
-    window.inputCounters.push(new InputCounter(el, options))
+
+    return new InputCounter(el, options)
   })
 }
 

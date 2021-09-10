@@ -1,3 +1,5 @@
+/* global adminterface */
+
 import { cookieSet, cookieGet } from './utils'
 
 class HeaderToggler {
@@ -45,6 +47,8 @@ class HeaderToggler {
         _self._add()
       }
     })
+
+    adminterface.headerToggler = [...adminterface.headerToggler, this]
   }
 }
 

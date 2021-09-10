@@ -1,55 +1,46 @@
 ---
-sidebar_position: 2
-description: Adminterface Guide for Form, Inputs, Add-ons, and Nested Resources.
+sidebar_position: 3
+description: Adminterface Guide for the Form(new, edit) Page.
 ---
 
-# Customizing the Form
-
+# Form Page
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 ````
 
-We've kept the existing form functionalities and apply [Bootstrap] styles. Also, we've extended the supported input types and make some enhancements.
+Adminterface inherits the functionalities from [ActiveAdmin] and applies [Bootstrap] styles. In addition, we've extended the supported input types and made some enhancements to existing features.
 
-## Form
-````mdx-code-block
-<Tabs
-  defaultValue="basic"
-  values={[
-    {label: 'Basic', value: 'basic'},
-    {label: 'Multiple', value: 'multiple'},
-  ]}>
+Below is a basic example of the form page. Please visit [ActiveAdmin] for usage guides.
+```ruby {2-6}
+ActiveAdmin.register Post do
+  form do |f|
+    f.input :title
+    ...
+    f.actions
+  end
+end
+```
 
-  <TabItem value="basic">
+## Multiple forms on the same page
+```ruby title="app/admin/users.rb" {2-14}
+ActiveAdmin.register User do
+  form multiple: true do
+    form_section [:admin, resource] do |f|
+      f.input :name
+      ...
+      f.actions
+    end
 
-  Please visit [ActiveAdmin] for usage guides.
-
-  </TabItem>
-  <TabItem value="multiple">
-
-  ```ruby title="app/admin/users.rb" {2-13}
-  ActiveAdmin.register User do
-    form multiple: true do
-      form_section [:admin, resource] do |f|
-        f.input :name
-        ...
-        f.actions
-      end
-
-      form_section [:admin, resource] do |f|
-        f.input :email
-        ...
-        f.actions
-      end
+    form_section [:admin, resource] do |f|
+      f.input :email
+      ...
+      f.actions
     end
   end
-  ```
-
-  </TabItem>
-</Tabs>
-````
+end
+```
 
 ## Inputs
 [Formtastic]'s input helper helps you create input fields quickly. Here is an example output using the `input` as `string` helper:
@@ -286,7 +277,12 @@ f.input :email, as: :email
 ```
 
 ### File
-`:file` - a file field.
+`:file` - a file upload field.
+
+:::tip
+There are many ways to add file fields to your application. Here are a few commonly used methods: [ActiveStorage](https://edgeguides.rubyonrails.org/active_storage_overview.html), [Carrierwave](https://github.com/carrierwaveuploader/carrierwave).
+:::
+
 - **Configuration**: [Formtastic][Formtastic/FileInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control#file-input]
 - **Add-ons**: [Input Group](#input-group)

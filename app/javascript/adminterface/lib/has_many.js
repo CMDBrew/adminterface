@@ -1,4 +1,4 @@
-/* global Event */
+/* global Event, adminterface */
 
 import Sortable from 'sortablejs'
 
@@ -115,6 +115,8 @@ class HasMany {
   _bind () {
     this._bindEvents(this.element)
     this._initSortable()
+
+    adminterface.hasMany = [...adminterface.hasMany, this]
   }
 }
 

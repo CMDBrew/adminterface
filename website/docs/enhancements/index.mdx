@@ -1,19 +1,34 @@
 ---
-sidebar_position: 3
-description: Adminterface Guide for Batch Actions.
+sidebar_position: 2
+description: Adminterface Guide for the Index Page.
 ---
 
-# Batch Actions
+# Index Page
+Adminterface inherits the functionalities from [ActiveAdmin] and applies [Bootstrap] styles. In addition, we've made some enhancements to existing features.
 
+Below is a basic example of the index page. Please visit [ActiveAdmin] for usage guides.
+```ruby {2-8}
+ActiveAdmin.register Post do
+  index do
+    selectable_column
+    id_column
+    column :title
+    ...
+    actions
+  end
+end
+```
+
+## Batch Actions
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 ````
 
-We've enhanced the `batch_action` feature to make it more customizable and extendable. We only list the adjustments we've made in the sections below. Please visit [ActiveAdmin] for basic usage guides.
+We've enhanced the `batch_action` feature to make it more customizable and extendable. We only list the adjustments we've made in the sections below. Please visit [ActiveAdmin][ActiveAdmin/batch-actions] for basic usage guides.
 
-## Inputs
+### Inputs
 :::caution
 
 The following input types are currently not supported:
@@ -74,7 +89,7 @@ We've updated input type namings to match with Formtastic inputs for consistency
 </Tabs>
 ````
 
-## Confirm Dialog
+### Confirm Dialog
 You can specify the configurations for the confirm dialogue by passing in the `confirm_dialog` option. Visit the [confirm dialog guide][Confirm Dialog] for more information.
 
 ```ruby title="e.g., app/admin/users.rb" {2-5}
@@ -132,6 +147,7 @@ import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.e
 </Tabs>
 ````
 
-[ActiveAdmin]: https://activeadmin.info/9-batch-actions.html
-[Customizing the Form]: /docs/guides/customizing-the-form
-[Confirm Dialog]: /docs/guides/confirm-dialog
+[ActiveAdmin]: https://activeadmin.info/3-index-pages.html
+[ActiveAdmin/batch-actions]: https://activeadmin.info/9-batch-actions.html
+[Bootstrap]: https://getbootstrap.com/docs/5.0/getting-started/introduction/
+[Confirm Dialog]: /docs/enhancements/components#confirm-dialog

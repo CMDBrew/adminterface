@@ -69,9 +69,8 @@ class PasswordInputShowPasswordTest < ActiveAdmin::InputTestCase
       end
     end
 
-    assert form.has_selector?(".password.input .label-group")
     assert form.has_selector?(".password.input .password-visibility-toggler")
-    assert form.has_selector?(".password.input .password-visibility-toggler span[data-mode='show']")
-    assert form.has_selector?(".password.input .password-visibility-toggler span[data-mode='hide']")
+    assert form.has_selector?(".password.input .password-visibility-toggler i[data-mode='show']")
+    assert form.has_selector?(".password.input .password-visibility-toggler i[data-mode='hide']")
   end
 end

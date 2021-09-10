@@ -1,4 +1,4 @@
-/* global Event, DOMParser */
+/* global Event, DOMParser, adminterface */
 
 import { Modal } from 'bootstrap'
 import { serializeObject } from './utils'
@@ -108,6 +108,8 @@ class ConfirmDialog {
     document.body.dispatchEvent(beforeOpenEvent)
     dialogConfirm.show()
     document.body.dispatchEvent(afterOpenEvent)
+
+    adminterface.confirmDialog = this
   }
 }
 

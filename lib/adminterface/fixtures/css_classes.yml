@@ -35,9 +35,9 @@ filters:
 flash:
   alert: alert-warning
   error: alert-danger
-  notice: alert-info
+  notice: alert-success
 footer:
-  body: bg-light rounded p-2 small text-muted
+  body: small text-muted
   wrapper: mt-3 text-center
 form:
   actions:
@@ -45,7 +45,7 @@ form:
     submit: btn btn-primary
   error: alert alert-danger
   has_many:
-    destroy: text-secondary
+    destroy: text-danger
     heading: h5
     item: border rounded mb-3 p-3
     new: null
@@ -65,8 +65,11 @@ index_as_grid:
   item: d-flex flex-column
 index_as_table:
   actions:
-    group: btn-group
-    item: btn btn-sm btn-light
+    dropdown:
+      toggle: btn btn-sm btn-light
+    buttons:
+      group: btn-group
+      item: btn btn-sm btn-light
   table: table
   wrapper: table-responsive
 panel:
@@ -87,7 +90,7 @@ status_tag:
   'yes': badge bg-success
 table_for: table
 table_tools:
-  btn: btn btn-sm btn-light
+  btn: btn btn-light
   confirm_dialog:
     cancel: btn btn-link
     ok: btn btn-primary

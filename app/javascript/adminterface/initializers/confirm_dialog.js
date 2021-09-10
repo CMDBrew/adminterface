@@ -15,7 +15,9 @@ Rails.confirm = function (message, element) {
     __SkipConfirmation = false
   }
 
-  window.confirmDialog = new ConfirmDialog(message, inputs, options, onConfirm)
+  /* eslint-disable no-new */
+  new ConfirmDialog(message, inputs, options, onConfirm)
+  /* eslint-enable no-new */
 
   return false
 }

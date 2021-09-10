@@ -4,11 +4,11 @@ description: Adminterface Configuration Guide for Scoping, CSS, Components, and 
 ---
 
 # Configuration
-
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
+import Link from '@docusaurus/Link';
 ````
 
 We've kept existing functionalities and extended them to make it easier for you to customize your application. Please see [ActiveAdmin] for basic configurations and usage guides.
@@ -469,47 +469,75 @@ Aside from the basic options, we also added the following:
 ````
 
 ## Theme
-You can customize the theme of your application by overwriting the Sass variables.
+Adminterface provides a list of variables that you can use to customize the theme for your application.
+To customize the theme of your Adminterface application, you can:
+
+1. Create a stylesheet that holds all the variables that you want to overwrite.
+   ```scss title="app/javascript/stylesheets/_adminterface_variables.scss"
+   $primary: #8E6DBF;
+   ...
+   ```
+
+2. Import the stylesheet inside the `active_admin.scss` file.
+   ```scss title="app/javascript/stylesheets/active_admin.scss" {1}
+   @import "adminterface_variables";
+   @import "~@cmdbrew/adminterface/src/scss/base";
+   ```
+
+   :::tip
+   The line `@import "adminterface_variables";` has to be before the line that imports our stylesheets `@imoprt "~@cmdbrew/adminterface/…";`
+   You can check the [official Sass guide](https://sass-lang.com/documentation/variables#configuring-modules) to see how variable overwrites work.
+   :::
+
+### Adminterface
+The variables are for customizing the application's layouts and the styles for the custom components.
 
 ````mdx-code-block
 import AdminterfaceVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/mixins/_variables.scss';
-import BootstrapVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/bootstrap/_variables.scss';
-import FlatpickrVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/flatpickr/_variables.scss';
-import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/trix/_variables.scss';
 
-<Tabs
-  defaultValue="adminterface"
-  values={[
-    {label: 'Basic', value: 'adminterface'},
-    {label: 'Bootstrap', value: 'bootstrap'},
-    {label: 'Flatpickr', value: 'flatpickr'},
-    {label: 'Trix', value: 'trix'},
-  ]}>
-
-  <TabItem value="adminterface">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/mixins/_variables.scss">
+<details className="btn">
+  <summary>Show available variables</summary>
+  <div>
+    <CodeBlock className="language-scss">
       {AdminterfaceVars}
     </CodeBlock>
-  </TabItem>
+  </div>
+</details>
+````
 
-  <TabItem value="bootstrap">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/bootstrap/_variables.scss">
-      {BootstrapVars}
-    </CodeBlock>
-  </TabItem>
+### Bootstrap
+The variables are for customizing the styles for Bootstrap components. You can find the complete list of available variables for Bootstrap on the <Link to="https://github.com/twbs/bootstrap/blob/main/scss/_variables.scss">official repo</Link>.
 
-  <TabItem value="flatpickr">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/flatpickr/_variables.scss">
+### Flatpickr
+The variables are for customizing the styles for the [`:date_picker`](/docs/enhancements/form#datepicker) and [`:datetime_picker`](/docs/enhancements/form#datetimepicker) components.
+
+````mdx-code-block
+import FlatpickrVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/flatpickr/_variables.scss';
+
+<details className="btn">
+  <summary>Show available variables</summary>
+  <div>
+    <CodeBlock className="language-scss">
       {FlatpickrVars}
     </CodeBlock>
-  </TabItem>
+  </div>
+</details>
+````
 
-  <TabItem value="trix">
-    <CodeBlock className="language-scss" title="app/assets/stylesheets/adminterface/vendors/trix/_variables.scss">
-      {FlatpickrVars}
+### Trix
+The variables are for customizing the styles for the [`:rich_text_area`](/docs/enhancements/form#richtextarea) component.
+
+````mdx-code-block
+import TrixVars from '!!raw-loader!@site/../app/assets/stylesheets/adminterface/vendors/trix/_variables.scss';
+
+<details className="btn">
+  <summary>Show available variables</summary>
+  <div>
+    <CodeBlock className="language-scss">
+      {TrixVars}
     </CodeBlock>
-  </TabItem>
-</Tabs>
+  </div>
+</details>
 ````
 
 [ActiveAdmin]: https://activeadmin.info/1-general-configuration.html

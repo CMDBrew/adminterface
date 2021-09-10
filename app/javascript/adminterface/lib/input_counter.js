@@ -1,3 +1,5 @@
+/* global adminterface */
+
 class InputCounter {
   constructor (element, options) {
     const defaults = {
@@ -62,6 +64,8 @@ class InputCounter {
   _bind () {
     this._count()
     this.element.addEventListener('keyup', (_e) => this._count())
+
+    adminterface.inputCounter = [...adminterface.inputCounter, this]
   }
 }
 

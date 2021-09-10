@@ -2,6 +2,7 @@ module Adminterface
   module Generators
     class InstallGenerator < Rails::Generators::Base
       desc "Installs Adminterface and generates necessary files and migrations"
+      source_root File.expand_path("templates", __dir__)
 
       def install_rails_addons
         invoke "action_text:install"
@@ -15,6 +16,10 @@ module Adminterface
 
       def install_action_text_for_comments
         generate "adminterface:comments"
+      end
+
+      def add_samples
+        template "dashboard.rb", "app/admin/dashboard.rb"
       end
 
       private

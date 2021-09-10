@@ -79,13 +79,6 @@
   legend { margin-bottom: 0; }
   legend.label { font-size: $font-size-base; }
 
-  .input-fragment {
-    .field_with_error {
-      display: flex;
-      width: 100%;
-    }
-  }
-
   .fragments-group {
     display: flex;
     flex-direction: row;
@@ -198,17 +191,9 @@
         input[type='checkbox']:checked + label { color: $danger; }
 
         label.form-check-label {
-          padding-left: $spacer;
-
           span,
           i {
             display: none;
-          }
-
-          &::before {
-            @extend %aa-icon;
-
-            content: map-get($aa-icons, 'form-has-many-destroy');
           }
         }
       }

@@ -1,11 +1,10 @@
 import HeaderToggler from '../lib/header_toggler'
 
 document.addEventListener('DOMContentLoaded', () => {
-  const $togglers = document.querySelectorAll('[data-aa-header-toggler]')
-  window.headerTogglers = []
-
-  $togglers.forEach((el) => {
+  const togglerTriggerList = [].slice.call(document.querySelectorAll('[data-aa-header-toggler]'))
+  togglerTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaHeaderToggler || {})
-    window.headerTogglers.push(new HeaderToggler(el, options))
+
+    return new HeaderToggler(el, options)
   })
 })

@@ -112,10 +112,10 @@ class IndexAsTableTest < ActiveAdmin::BaseTestCase
                 <td class="col col-id">1</td>
                 <td class="col col-name">john</td>
                 <td class="col col-actions">
-                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}">
-                    <a class="view_link member_link #{default_css_classes.dig(:actions, :item)}" title="View" href="/fake/path">View</a>
-                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :item)}" title="Edit" href="/fake/path">Edit</a>
-                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :item)}" title="Delete" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
+                  <div class="table_actions #{default_css_classes.dig(:actions, :buttons, :group)}">
+                    <a class="view_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="View" href="/fake/path">View</a>
+                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="Edit" href="/fake/path">Edit</a>
+                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="Delete" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
                   </div>
                 </td>
               </tr>
@@ -123,10 +123,10 @@ class IndexAsTableTest < ActiveAdmin::BaseTestCase
                 <td class="col col-id">2</td>
                 <td class="col col-name">mary</td>
                 <td class="col col-actions">
-                  <div class="table_actions #{default_css_classes.dig(:actions, :group)}">
-                    <a class="view_link member_link #{default_css_classes.dig(:actions, :item)}" title="View" href="/fake/path">View</a>
-                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :item)}" title="Edit" href="/fake/path">Edit</a>
-                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :item)}" title="Delete" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
+                  <div class="table_actions #{default_css_classes.dig(:actions, :buttons, :group)}">
+                    <a class="view_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="View" href="/fake/path">View</a>
+                    <a class="edit_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="Edit" href="/fake/path">Edit</a>
+                    <a class="delete_link member_link #{default_css_classes.dig(:actions, :buttons, :item)}" title="Delete" data-confirm="#{I18n.t(:delete_confirmation, scope: "active_admin")}" data-aa-confirm-dialog="#{escape_hash(confirm_dialog_config)}" rel="nofollow" data-method="delete" href="/fake/path">Delete</a>
                   </div>
                 </td>
               </tr>

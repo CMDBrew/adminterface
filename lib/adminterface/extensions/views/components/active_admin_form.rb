@@ -2,6 +2,14 @@ module Adminterface
   module Extensions
     module Views
       module ActiveAdminForm
+        def input(...)
+          default_field_error_proc = ::ActionView::Base.field_error_proc
+          ::ActionView::Base.field_error_proc = proc { |html_tag, _instance_tag| html_tag }
+          super
+        ensure
+          ::ActionView::Base.field_error_proc = default_field_error_proc
+        end
+
         def action(method, options = {})
           if method.eql?(:submit)
             options.reverse_merge!(button_html: {class: form_css_classes.dig(:actions, :submit)})

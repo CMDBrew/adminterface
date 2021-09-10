@@ -1,12 +1,11 @@
 import { PasswordVisibilityToggler } from '../../lib/inputs/password_input'
 
 const PasswordVisibilityTogglerInit = function (element) {
-  element.querySelectorAll('[data-aa-password-visibility-toggler]').forEach((el) => {
+  const visibilityTriggerList = [].slice.call(element.querySelectorAll('[data-aa-password-visibility-toggler]'))
+  visibilityTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaPasswordVisibilityToggler || {})
 
-    /* eslint-disable no-new */
-    new PasswordVisibilityToggler(el, options)
-    /* eslint-enable no-new */
+    return new PasswordVisibilityToggler(el, options)
   })
 }
 

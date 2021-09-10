@@ -1,4 +1,4 @@
-/* global Event */
+/* global Event, adminterface */
 
 import ConfirmDialog from './confirm_dialog'
 import CheckboxToggler from './checkbox_toggler'
@@ -99,6 +99,8 @@ class BatchActions {
     this._bindLinks()
     this._bindConfirm()
     this._bindSelector()
+
+    adminterface.batchActions = this
   }
 }
 
