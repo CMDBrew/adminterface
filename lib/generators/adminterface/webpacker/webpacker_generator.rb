@@ -38,6 +38,7 @@ module Adminterface
       def install_assets
         template "active_admin.js", "app/javascript/packs/active_admin.js"
         template "active_admin.scss", "app/javascript/stylesheets/active_admin.scss"
+        template "print.scss", "app/javascript/packs/active_admin/print.scss"
       end
 
       def update_active_admin_configs
@@ -46,10 +47,7 @@ module Adminterface
 
       def remove_activeadmin_dependencies
         run "yarn remove @activeadmin/activeadmin"
-
-        remove_file "app/javascript/packs/active_admin/print.scss"
         remove_file "config/webpack/plugins/jquery.js"
-
         gsub_file "config/webpack/environment.js", "environment.plugins.prepend('jquery', jquery)\n", ""
         gsub_file "config/webpack/environment.js", "const jquery = require('./plugins/jquery')\n", ""
       end

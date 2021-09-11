@@ -1,4 +1,4 @@
-import * as Bootstrap from 'bootstrap'
+import { Dropdown } from 'bootstrap'
 
 document.addEventListener('DOMContentLoaded', () => {
   const shouldToggle =
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (shouldToggle) {
     document.querySelectorAll('#header .dropdown-toggle.active').forEach((element) => {
-      const dropdown = Bootstrap.Dropdown.getOrCreateInstance(element)
+      const dropdown = Dropdown.getOrCreateInstance(element)
       dropdown.show()
       element.blur()
     })

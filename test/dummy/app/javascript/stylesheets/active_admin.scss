@@ -8,10 +8,9 @@
 // $sidebar-width: 242px;
 
 // Active Admin's got SASS!
+// @import "../packs/active_admin/print";
 @import "../../../../../app/assets/stylesheets/adminterface/base";
 @import "adminterface/layouts/navigation_bottom"
-// @import "~@activeadmin/activeadmin/src/scss/mixins";
-// @import "~@activeadmin/activeadmin/src/scss/base";
 
 // Overriding any non-variable Sass must be done after the fact.
 // For example, to change the default status-tag color:
