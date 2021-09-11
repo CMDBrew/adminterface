@@ -1,14 +1,3 @@
-@import "./vendors/bootstrap/variables";
-@import "bootstrap/scss/bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons";
-@import "flatpickr/dist/flatpickr";
-@import "tom-select/dist/css/tom-select.bootstrap5";
-@import "./mixins/all";
-@import "./placeholders/all";
-@import "./helpers/all";
-@import "./vendors/all";
-@import "./components/all";
-
 // Header
 .navbar-toggler {
   display: none;
@@ -23,7 +12,7 @@
 
 // Main
 #wrapper {
-  padding: $spacer 0;
+  padding: 1rem 0;
 }
 
 // Table

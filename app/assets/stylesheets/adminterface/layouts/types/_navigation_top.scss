@@ -5,7 +5,7 @@ $_title-bar: map-get($layout-navigation-top, 'title_bar');
 $_title-bar-height: map-get($_title-bar, 'height');
 $_title-bar-zindex: map-get($_title-bar, "z-index");
 
-%layout-navigation-top {
+body.layout-navigation-top {
   grid-template-areas:
     "header"
     "title_bar"
@@ -31,5 +31,3 @@ $_title-bar-zindex: map-get($_title-bar, "z-index");
     #filters.aside { top: calc(#{$_header-height} + #{$_title-bar-height}); }
   }
 }
-
-body.layout-navigation-top { @extend %layout-navigation-top; }

@@ -7,5 +7,14 @@
 @import "./placeholders/all";
 @import "./helpers/all";
 @import "./vendors/all";
-@import "./layouts/all";
 @import "./components/all";
+
+/* stylelint-disable no-invalid-position-at-import-rule */
+@media screen {
+  @import "./layouts/all";
+}
+
+@media print {
+  @import "./print";
+}
+/* stylelint-enable no-invalid-position-at-import-rule */
