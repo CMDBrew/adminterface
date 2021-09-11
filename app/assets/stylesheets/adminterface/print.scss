@@ -1,0 +1,67 @@
+@import "./vendors/bootstrap/variables";
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons";
+@import "flatpickr/dist/flatpickr";
+@import "tom-select/dist/css/tom-select.bootstrap5";
+@import "./mixins/all";
+@import "./placeholders/all";
+@import "./helpers/all";
+@import "./vendors/all";
+@import "./components/all";
+
+// Header
+.navbar-toggler {
+  display: none;
+}
+
+// TitleBar
+#title_bar {
+  #titlebar_right {
+    display: none;
+  }
+}
+
+// Main
+#wrapper {
+  padding: $spacer 0;
+}
+
+// Table
+.col-actions,
+.table_tools {
+  display: none;
+}
+
+// Sidebars
+#filters_sidebar_section {
+  display: none;
+}
+
+// Index
+#index_footer {
+  .download_links,
+  .pagination_per_page,
+  .paginator {
+    display: none;
+  }
+}
+
+// Show
+#new_active_admin_comment {
+  display: none;
+}
+
+// Form
+.formtastic {
+  fieldset {
+    &.has_many_fields {
+      ol li.handle,
+      .has-many-actions {
+        display: none;
+      }
+    }
+    &.actions { display: none; }
+
+    .has_many_add { display: none; }
+  }
+}
