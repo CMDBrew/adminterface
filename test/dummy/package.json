@@ -1,6 +1,10 @@
 {
   "name": "adminterface_dummy_app",
   "version": "1.0.0",
+  "scripts": {
+    "webpack:stats": "npx webpack --config config/webpack/development.js --json > stats.json",
+    "webpack:analyze": "yarn webpack:stats && yarn webpack-bundle-analyzer stats.json public/packs"
+  },
   "dependencies": {
     "@rails/actiontext": "^6.1.3-2",
     "@rails/webpacker": "5.4.0",
@@ -9,6 +13,7 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "webpack-bundle-analyzer": "^4.4.2",
     "webpack-dev-server": "^3.11.2"
   }
 }

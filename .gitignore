@@ -11,6 +11,7 @@
 /test/dummy/tmp/
 /test/dummy/public/packs-test
 /test/dummy/public/packs
+/test/dummy/stats.json
 .byebug_history
 /coverage
 node_modules/
