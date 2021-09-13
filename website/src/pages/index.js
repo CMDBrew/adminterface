@@ -27,7 +27,7 @@ function HomepageHeader() {
               </Link>
               <Link
                 className={`button button--secondary button--lg ${styles.buttonsButton}`}
-                to="/docs/intro">
+                to="https://demo.adminterface.io/">
                 Try Demo
               </Link>
             </div>

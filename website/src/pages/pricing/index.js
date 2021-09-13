@@ -38,8 +38,7 @@ function FAQs() {
                 <h3 className={styles.question}>Do you have a sample app I could look at to see the features?</h3>
               </summary>
               <div>
-                {/* @TODO: replace the links */}
-                Check our <Link to="#">demo app</Link> to preview the features. However, we encourage you to <Link to="#">download our demo app</Link> and experience the customizability yourself.
+                Check our <Link to="https://demo.adminterface.io/">demo app</Link> to preview the features. However, we encourage you to <Link to="https://github.com/CMDBrew/demo.adminterface.io">download our demo app</Link> and experience the customizability yourself.
               </div>
             </details>
             <details className={styles.faq}>
