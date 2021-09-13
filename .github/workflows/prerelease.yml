@@ -51,3 +51,16 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: cmdbrew
+
+  delete_previous_rc_versions:
+    needs: [npm, ruby]
+    name: Delete previous release candidates
+    runs-on: ubuntu-latest
+    steps:
+      - uses: smartsquaregmbh/delete-old-packages@v0.3.1
+        with:
+          keep: 2
+          version-pattern: "^\\d+\\.\\d+\\.\\d+(-|\\.)rc\\d+$"
+          dry-run: false
+          names: |
+            adminterface
