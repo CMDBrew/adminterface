@@ -7,6 +7,21 @@
   font-size: 3rem;
 }
 
+.subHeading {
+  font-size: 20px;
+  line-height: 1.5;
+}
+
+.cardNotice {
+  background: rgba(#6dbf8e, 0.15);
+
+  a {
+    color: #6dbf8e;
+    text-decoration: underline;
+    font-weight: bold;
+  }
+}
+
 .discountFrom {
   margin-bottom: 10px !important;
   padding: 5px 10px;
