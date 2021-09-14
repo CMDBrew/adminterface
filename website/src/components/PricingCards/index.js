@@ -58,17 +58,17 @@ export function PricingRow() {
       <PricingCardCol
         name="Personal"
         price="Free forever"
-        purchaseUrl="https://nelsonlee986971.typeform.com/to/EPATakNk"
+        purchaseUrl="https://form.typeform.com/to/EPATakNk"
         purchaseBtnText="Register for the beta"
         purchaseBtnClassName="button--secondary">
-        <p>For personal or non-commercial projects. Free forever. <Link to="/docs/terms#fees-and-license">Check eligibility</Link>.</p>
+        <p>For personal or non-commercial projects. <Link to="/docs/terms#fees-and-license">Check eligibility</Link>.</p>
       </PricingCardCol>
       <PricingCardCol
         name="Commercial"
         price={149}
         priceSuffix="/year"
         discountFrom={["$", <s>249/year</s>, ", 40% off for early adopters"]}
-        purchaseUrl="https://nelsonlee986971.typeform.com/to/EPATakNk"
+        purchaseUrl="https://form.typeform.com/to/EPATakNk"
         purchaseBtnText="Register for the beta">
         <p>Build one project with Adminterface.</p>
       </PricingCardCol>
@@ -79,7 +79,7 @@ export function PricingRow() {
         purchaseBtnText="Contact us"
         purchaseBtnClassName="button--success">
         <p className={styles.subHeading}>
-          Don't see a plan that fits your needs? Or, need a volume commercial license plan?&nbsp;
+          Don't see a plan that fits your needs? Looking for a volume commercial license plan?&nbsp;
         </p>
       </PricingCardCol>
     </div>
