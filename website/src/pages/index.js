@@ -22,12 +22,12 @@ function HomepageHeader() {
             <div className={styles.buttons}>
               <Link
                 className={`button button--primary button--lg ${styles.buttonsButton}`}
-                to="/docs/intro">
+                to="/pricing">
                 Get Started
               </Link>
               <Link
                 className={`button button--secondary button--lg ${styles.buttonsButton}`}
-                to="/docs/intro">
+                to="https://demo.adminterface.io/">
                 Try Demo
               </Link>
             </div>

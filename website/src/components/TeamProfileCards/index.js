@@ -1,6 +1,8 @@
 import React from 'react';
 import Translate from '@docusaurus/Translate';
 import Link from '@docusaurus/Link';
+import styles from './styles.module.scss';
+import clsx from 'clsx';
 
 function WebsiteLink({to, children}) {
   return (
@@ -30,7 +32,7 @@ function TeamProfileCard({
               alt={`${name}'s avatar`}
             />
             <div className="avatar__intro">
-              <h3 className="avatar__name">{name}</h3>
+              <h3 className={clsx('avatar__name', styles.name)}>{name}</h3>
             </div>
           </div>
         </div>

@@ -63,8 +63,12 @@ html[data-theme='dark'] .header-github-link::before {
 
 .text-nowrap { white-space: nowrap; }
 .footer--dark { --ifm-footer-background-color: #242526; }
-.button--primary { color: white !important; }
 .card { box-shadow: rgba(0, 0, 0, 0.1) 0 1px 2px 0, rgba(0, 0, 0, 0.1) 0 0 0 1px; }
+
+.button--primary,
+.button--success {
+  color: white !important;
+}
 
 div[class^='announcementBar_'] {
   --site-announcement-bar-stripe-color1: hsl(var(--site-primary-hue-saturation), 85%);
