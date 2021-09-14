@@ -56,7 +56,7 @@ export function PricingRow() {
     /* @TODO: add purchase urls */
     <div className="row">
       <PricingCardCol
-        name="Community"
+        name="Personal"
         price="Free forever"
         purchaseUrl="https://nelsonlee986971.typeform.com/to/EPATakNk"
         purchaseBtnText="Register for the beta"
@@ -65,19 +65,21 @@ export function PricingRow() {
       </PricingCardCol>
       <PricingCardCol
         name="Commercial"
-        price="149"
+        price={149}
         priceSuffix="/year"
-        discountFrom={["$", <s>249</s>, ", 40% off for early adopters"]}
+        discountFrom={["$", <s>249/year</s>, ", 40% off for early adopters"]}
         purchaseUrl="https://nelsonlee986971.typeform.com/to/EPATakNk"
         purchaseBtnText="Register for the beta">
         <p>Build one project with Adminterface.</p>
       </PricingCardCol>
       <PricingCardCol
         name="Enterprise"
-        cardClassName="cardNotice">
+        cardClassName="cardNotice"
+        purchaseUrl="/community/support#contact-us"
+        purchaseBtnText="Contact us"
+        purchaseBtnClassName="button--success">
         <p className={styles.subHeading}>
-        Don't see a plan that fits your needs? Or, need a volume license plan?&nbsp;
-          <Link to="/community/support#contact-us">Contact us!</Link>
+          Don't see a plan that fits your needs? Or, need a volume commercial license plan?&nbsp;
         </p>
       </PricingCardCol>
     </div>
