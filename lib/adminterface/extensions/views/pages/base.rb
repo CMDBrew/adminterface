@@ -15,8 +15,9 @@ module Adminterface
             div id: "meta-tags-for-js" do
               meta name: "countries", content: ::Adminterface::Data::Countries.call(I18n.locale).to_json
               meta name: "time_zones", content: ::Adminterface::Data::TimeZones.call(I18n.locale).to_json
-              meta name: "inputs", content: inputs_components.to_json
               meta name: "translations", content: I18n.t("active_admin").to_json
+              meta name: "components", content: {inputs: inputs_components}.to_json
+              meta name: "css_classes", content: {confirm_dialog: confirm_dialog_css_classes}.to_json
             end
           end
 
@@ -158,6 +159,6 @@ end
 ActiveAdmin::Views::Pages::Base.class_eval do
   include Adminterface::Configs::Finders
   prepend Adminterface::Extensions::Views::Pages::Base
-  has_css_classes_for :html, :flash
+  has_css_classes_for :html, :flash, :confirm_dialog
   has_components_for :flash, :sidebar, :header, :inputs
 end

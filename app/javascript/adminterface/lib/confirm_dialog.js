@@ -1,7 +1,7 @@
 /* global Event, DOMParser, adminterface */
 
 import { Modal } from 'bootstrap'
-import { serializeObject } from './utils'
+import { serializeObject, deepMergeObject } from './utils'
 import FlatpickerInit from '../initializers/flatpickr'
 import TomSelect from '../initializers/tom_select'
 import Input from './input'
@@ -9,15 +9,19 @@ import PasswordVisibilityTogglerInit from '../initializers/inputs/password_input
 
 class ConfirmDialog {
   constructor (message, inputs, options, callback) {
+    const metaForTranslations = (document.querySelector('#meta-tags-for-js meta[name="translations"]') || {})
+    const metaForCssClasses = (document.querySelector('#meta-tags-for-js meta[name="css_classes"]') || {})
+    const cssClasses = (JSON.parse(metaForCssClasses.content) || {}).confirm_dialog
+    const translations = (JSON.parse(metaForTranslations.content) || {}).confirm_dialog
     const defaults = {
       buttons: {
         ok: {
-          text: 'Confirm',
-          class: 'btn btn-primary'
+          text: translations.ok,
+          class: cssClasses.ok
         },
         cancel: {
-          text: 'Cancel',
-          class: 'btn btn-link'
+          text: translations.cancel,
+          class: cssClasses.cancel
         }
       }
     }
@@ -30,7 +34,7 @@ class ConfirmDialog {
       afterOpen: new Event('confirm_dialog:after_open')
     }
 
-    this.options = { ...defaults, ...options }
+    this.options = deepMergeObject(defaults, options)
     this._bind()
   }
 

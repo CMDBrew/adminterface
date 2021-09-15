@@ -14,8 +14,8 @@ class SelectInput extends BaseInput {
   }
 
   _defaultInputHTMLOptions () {
-    const meta = (document.querySelector('#meta-tags-for-js meta[name="inputs"]') || {})
-    const content = JSON.parse(meta.content)
+    const metaForComponents = (document.querySelector('#meta-tags-for-js meta[name="components"]') || {})
+    const components = JSON.parse(metaForComponents.content)
     const options = {
       class: `form-select ${this.options.as}`
     }
@@ -25,7 +25,7 @@ class SelectInput extends BaseInput {
       if (typeof (this.tom_select) === 'object') {
         options['data-aa-tom-select'] = this.tom_select
       } else {
-        options['data-aa-tom-select'] = content.tom_select
+        options['data-aa-tom-select'] = (components.inputs || {}).tom_select
       }
     }
 
