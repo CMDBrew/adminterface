@@ -1,6 +1,6 @@
 /* global adminterface */
 
-class Dropdown {
+class DetachedDropdown {
   constructor (element, options) {
     const defaults = {
       menu: '.dropdown-menu'
@@ -32,4 +32,4 @@ class Dropdown {
   }
 }
 
-export default Dropdown
+export default DetachedDropdown

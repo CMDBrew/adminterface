@@ -220,8 +220,8 @@ Here is an example of adding a custom counter to an input:
 </Tabs>
 ````
 
-### Dropdown
-Adminterface uses Dropdown inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
+### Detached Dropdown
+Adminterface uses `DetachedDropdown` inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
 
 Here is an example of adding a detached dropdown to an element:
 
@@ -236,7 +236,7 @@ Here is an example of adding a detached dropdown to an element:
   <TabItem value="javascript">
 
   ```javascript
-  import { Dropdown } from '@cmdbrew/adminterface'
+  import { DetachedDropdown } from '@cmdbrew/adminterface'
 
   document.addEventListener('DOMContentLoaded', () => {
     const dropdownTriggerList = [].slice.call(element.querySelectorAll('.my-dropdown'))
@@ -244,7 +244,7 @@ Here is an example of adding a detached dropdown to an element:
       meun: '.my-dropdown-menu'
     }
 
-    dropdownTriggerList.map((el) => new Dropdown(el, options))
+    dropdownTriggerList.map((el) => new DetachedDropdown(el, options))
   })
   ```
 
