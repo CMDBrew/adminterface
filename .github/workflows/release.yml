@@ -44,3 +44,21 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: cmdbrew
+
+  delete_rc_versions:
+    needs: [npm, ruby]
+    name: Delete release candidates for the current version
+    runs-on: ubuntu-latest
+    steps:
+      - id: get-version
+        run: |
+          version=$(echo ${GITHUB_REF#refs/*/} | cut -dv -f2)
+          echo "current release version is $version"
+          echo "::set-output name=version::$version"
+      - uses: smartsquaregmbh/delete-old-packages@v0.3.1
+        with:
+          keep: 0
+          version-pattern: "${{ steps.get-version.outputs.version }}(-|\\.)rc\\d+$"
+          dry-run: true
+          names: |
+            adminterface
