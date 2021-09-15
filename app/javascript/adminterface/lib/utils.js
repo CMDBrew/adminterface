@@ -108,9 +108,20 @@ function getObjectValue (data, path) {
   return data
 }
 
+function deepMergeObject (target, source) {
+  for (const key of Object.keys(source)) {
+    if (source[key] instanceof Object) Object.assign(source[key], deepMergeObject(target[key], source[key]))
+  }
+
+  Object.assign(target || {}, source)
+  return target
+}
+
 export {
   cookieGet,
   cookieSet,
+  deepMergeObject,
+  getObjectValue,
   hasTurbolinks,
   queryString,
   queryStringToParams,
@@ -118,6 +129,5 @@ export {
   serializeObject,
   toHTMLAttrString,
   toQueryString,
-  turbolinksVisit,
-  getObjectValue
+  turbolinksVisit
 }
