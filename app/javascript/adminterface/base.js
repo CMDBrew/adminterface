@@ -2,7 +2,7 @@ import 'bootstrap'
 import './initializers'
 import InputCounter from './lib/input_counter'
 import ConfirmDialog from './lib/confirm_dialog'
-import Dropdown from './lib/dropdown'
+import DetachedDropdown from './lib/detached_dropdown'
 
 window.adminterface = {
   batchActions: null,
@@ -24,4 +24,4 @@ window.adminterface = {
   tooltip: []
 }
 
-export { ConfirmDialog, InputCounter, Dropdown }
+export { ConfirmDialog, InputCounter, DetachedDropdown }
