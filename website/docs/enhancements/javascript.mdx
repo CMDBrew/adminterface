@@ -113,7 +113,7 @@ We've installed the required plugins and enabled the following when the DOM load
 When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
 
 ```javascript title="Inside your browser JavaScript console"
-> window.adminterface
+> adminterface
 {batchActions: BatchActions, confirmDialog: null, dropdown: Array(0), filters: {…}, flatpickr: Array(2), …}
 ```
 
@@ -169,6 +169,104 @@ Here is an example of adding a custom confirm dialog:
 ````
 
 
+### DetachedDropdown
+Adminterface uses `DetachedDropdown` inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
+
+Here is an example of adding a detached dropdown to an element:
+
+````mdx-code-block
+<Tabs
+  defaultValue="javascript"
+  values={[
+    {label: 'JavaScript', value: 'javascript'},
+    {label: 'HTML', value: 'html'}
+  ]}>
+
+  <TabItem value="javascript">
+
+  ```javascript
+  import { DetachedDropdown } from '@cmdbrew/adminterface'
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const dropdownTriggerList = [].slice.call(element.querySelectorAll('.my-dropdown'))
+    const options = {
+      meun: '.my-dropdown-menu'
+    }
+
+    dropdownTriggerList.map((el) => new DetachedDropdown(el, options))
+  })
+  ```
+
+  </TabItem>
+  <TabItem value="html">
+
+  ```html
+  <div class="my-dropdown dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+      Dropdown link
+    </a>
+
+    <ul class="my-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
+      <li><a class="dropdown-item" href="#">Action</a></li>
+      <li><a class="dropdown-item" href="#">Another action</a></li>
+      <li><a class="dropdown-item" href="#">Something else here</a></li>
+    </ul>
+  </div>
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+### Input
+Adminterface uses `Input` to determine which input to render based on the configuration in `adminterface.inputs.mapping` to provide consistent APIs to define the behaviour of form inputs for both frontend and backend.
+
+```javascript title="Inside your browser JavaScript console"
+> adminterface.inputs.mapping
+{string: ƒ, number: ƒ, url: ƒ, phone: ƒ, password: ƒ, …}
+```
+
+Here is how you can use the `Input` class to return the HTML of an input type.
+```javascript
+// Import the Input class
+import { Input } from '@cmdbrew/adminterface'
+
+// Render input
+const html = (new Input("name", {as: "string"})).render()
+
+// Log to console
+console.log(html)
+```
+
+Here is a basic example of how you can add a custom input to the Adminterface frontend.
+```javascript
+// Import the input you want to extend from
+import { BaseInput } from '@cmdbrew/adminterface'
+
+// Define your custom input
+class CustomStringInput extends BaseInput {
+  _defaultInputHTMLOptions () {
+    const options = {
+      class: `form-control custom-class ${this.options.as}`,
+      type: 'string'
+    }
+
+    return { ...super._defaultInputHTMLOptions(), ...options }
+  }
+
+  render () {
+    return this._inputWrapping(`
+      ${this._labelHTML()}
+      ${this._inputHTML()}
+      <p>My Custom Input!</p>
+    `)
+  }
+}
+
+// Update the mapping
+adminterface.inputs.mapping.string = CustomStringInput
+```
+
 ### InputCounter
 Adminterface uses InputCounter for text inputs. See the guides on [Customizing the Form](/docs/enhancements/form#text) for more information.
 
@@ -212,55 +310,6 @@ Here is an example of adding a custom counter to an input:
       <li class="my-input-counter-char-count"></li>
       <li class="my-input-counter-char-left"></li>
       <li class="my-input-counter-char-limit"></li>
-    </ul>
-  </div>
-  ```
-
-  </TabItem>
-</Tabs>
-````
-
-### Detached Dropdown
-Adminterface uses `DetachedDropdown` inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
-
-Here is an example of adding a detached dropdown to an element:
-
-````mdx-code-block
-<Tabs
-  defaultValue="javascript"
-  values={[
-    {label: 'JavaScript', value: 'javascript'},
-    {label: 'HTML', value: 'html'}
-  ]}>
-
-  <TabItem value="javascript">
-
-  ```javascript
-  import { DetachedDropdown } from '@cmdbrew/adminterface'
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const dropdownTriggerList = [].slice.call(element.querySelectorAll('.my-dropdown'))
-    const options = {
-      meun: '.my-dropdown-menu'
-    }
-
-    dropdownTriggerList.map((el) => new DetachedDropdown(el, options))
-  })
-  ```
-
-  </TabItem>
-  <TabItem value="html">
-
-  ```html
-  <div class="my-dropdown dropdown">
-    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
-      Dropdown link
-    </a>
-
-    <ul class="my-dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuLink">
-      <li><a class="dropdown-item" href="#">Action</a></li>
-      <li><a class="dropdown-item" href="#">Another action</a></li>
-      <li><a class="dropdown-item" href="#">Something else here</a></li>
     </ul>
   </div>
   ```
