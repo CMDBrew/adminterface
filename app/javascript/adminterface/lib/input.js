@@ -1,3 +1,4 @@
+import BaseInput from './inputs/base_input'
 import BooleanInput from './inputs/boolean_input'
 import CheckBoxesInput from './inputs/check_boxes_input'
 import ColorInput from './inputs/color_input'
@@ -14,11 +15,36 @@ import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
 import { PasswordInput } from './inputs/password_input'
+import adminterface from '../config'
+
+adminterface.inputs.mapping = {
+  string: StringInput,
+  number: StringInput,
+  url: StringInput,
+  phone: StringInput,
+  password: PasswordInput,
+  color: ColorInput,
+  hidden: HiddenInput,
+  text: TextInput,
+  datalist: DatalistInput,
+  switch: SwitchInput,
+  boolean: BooleanInput,
+  check_boxes: CheckBoxesInput,
+  radio: RadioInput,
+  select: SelectInput,
+  country: CountryInput,
+  time_zone: TimeZoneInput,
+  date_picker: DatePickerInput,
+  datepicker: DatePickerInput,
+  time_picker: TimePickerInput,
+  datetime_picker: DateTimePickerInput
+}
 
 class Input {
   constructor (name, options) {
     this.name = name
     this.options = options
+    this.mapping = adminterface.inputs.mapping
   }
 
   _configs () {
@@ -45,49 +71,36 @@ class Input {
   }
 
   render () {
-    let InputClass
     const configs = this._configs()
     const as = configs.as
     const options = configs.options
+    const InputClass = this.mapping[as]
 
-    if (/^(string|number|url|phone)$/.test(as)) {
-      InputClass = StringInput
-    } else if (as === 'password') {
-      InputClass = PasswordInput
-    } else if (as === 'color') {
-      InputClass = ColorInput
-    } else if (as === 'hidden') {
-      InputClass = HiddenInput
-    } else if (as === 'text') {
-      InputClass = TextInput
-    } else if (as === 'datalist') {
-      InputClass = DatalistInput
-    } else if (as === 'switch') {
-      InputClass = SwitchInput
-    } else if (as === 'boolean') {
-      InputClass = BooleanInput
-    } else if (as === 'check_boxes') {
-      InputClass = CheckBoxesInput
-    } else if (as === 'radio') {
-      InputClass = RadioInput
-    } else if (as === 'select') {
-      InputClass = SelectInput
-    } else if (as === 'country') {
-      InputClass = CountryInput
-    } else if (as === 'time_zone') {
-      InputClass = TimeZoneInput
-    } else if (/^(date_picker|datepicker)$/.test(as)) {
-      InputClass = DatePickerInput
-    } else if (as === 'time_picker') {
-      InputClass = TimePickerInput
-    } else if (as === 'datetime_picker') {
-      InputClass = DateTimePickerInput
-    } else {
+    if (!InputClass) {
       throw new Error(`Unsupported input type: {${this.name}: ${as}}`)
     }
 
-    return (new InputClass(this.name, options)).render()
+    return (new InputClass(this.name, { ...options, as: as })).render()
   }
 }
 
-export default Input
+export {
+  Input,
+  BaseInput,
+  BooleanInput,
+  CheckBoxesInput,
+  ColorInput,
+  CountryInput,
+  DatalistInput,
+  DatePickerInput,
+  DateTimePickerInput,
+  HiddenInput,
+  RadioInput,
+  SelectInput,
+  StringInput,
+  SwitchInput,
+  TextInput,
+  TimePickerInput,
+  TimeZoneInput,
+  PasswordInput
+}

@@ -4,7 +4,7 @@ import { Modal } from 'bootstrap'
 import { serializeObject, deepMergeObject } from './utils'
 import FlatpickerInit from '../initializers/flatpickr'
 import TomSelect from '../initializers/tom_select'
-import Input from './input'
+import { Input } from './input'
 import PasswordVisibilityTogglerInit from '../initializers/inputs/password_input'
 
 class ConfirmDialog {
