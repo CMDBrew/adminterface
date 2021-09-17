@@ -1,8 +1,7 @@
 /* global adminterface */
-
 import TomSelect from 'tom-select'
 
-const onDOMReady = function (element) {
+const initTomSelect = function (element) {
   const tomSelectTriggerList = [].slice.call(element.querySelectorAll('[data-aa-tom-select]'))
   const tomSelectInstances = tomSelectTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaTomSelect || {})
@@ -14,9 +13,11 @@ const onDOMReady = function (element) {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  onDOMReady(document)
+  initTomSelect(document)
 
   document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    onDOMReady(el.detail.dialogForm)
+    initTomSelect(el.detail.dialogForm)
   })
 })
+
+export default initTomSelect

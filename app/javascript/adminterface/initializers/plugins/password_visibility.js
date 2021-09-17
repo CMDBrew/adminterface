@@ -1,18 +1,23 @@
 import PasswordVisibility from '../../lib/plugins/password_visibility'
+import initBootstrap from '../bootstrap'
 
-const onDOMReady = function (element) {
+const initPasswordVisibility = function (element) {
   const visibilityTriggerList = [].slice.call(element.querySelectorAll('[data-aa-password-visibility]'))
   visibilityTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaPasswordVisibility || {})
+    const instance = new PasswordVisibility(el, options)
 
-    return new PasswordVisibility(el, options)
+    initBootstrap(instance.eventTarget)
+    return instance
   })
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  onDOMReady(document)
+  initPasswordVisibility(document)
 
   document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    onDOMReady(el.detail.dialogForm)
+    initPasswordVisibility(el.detail.dialogForm)
   })
 })
+
+export default initPasswordVisibility
