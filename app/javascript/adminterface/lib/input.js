@@ -1,3 +1,4 @@
+/* global adminterface */
 import BaseInput from './inputs/base_input'
 import BooleanInput from './inputs/boolean_input'
 import CheckBoxesInput from './inputs/check_boxes_input'
@@ -14,7 +15,7 @@ import SwitchInput from './inputs/switch_input'
 import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
-import { PasswordInput } from './inputs/password_input'
+import PasswordInput from './inputs/password_input'
 import config from '../config'
 
 config.inputs.mapping = {

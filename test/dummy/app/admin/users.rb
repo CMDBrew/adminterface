@@ -20,7 +20,7 @@ ActiveAdmin.register User do
   filter :created_at
 
   batch_action :update, form: {
-    name: {as: :password, password_visibility: true},
+    name: :string,
     updated_at: :date_picker
   }, confirm_dialog: {
     buttons: {

@@ -1,4 +1,4 @@
-import InputCounter from '../lib/input_counter'
+import InputCounter from '../../lib/plugins/input_counter'
 
 const onDOMReady = function (element) {
   const inputCounterTriggerList = [].slice.call(element.querySelectorAll('[data-aa-input-counter]'))

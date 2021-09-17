@@ -1,5 +1,5 @@
 /* global DOMParser, adminterface */
-import { toHTMLCssString } from './utils'
+import { toHTMLCssString } from '../utils'
 
 class InputCounter {
   constructor (element, options) {
