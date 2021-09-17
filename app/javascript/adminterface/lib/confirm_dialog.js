@@ -10,9 +10,9 @@ class ConfirmDialog {
     const translations = getObjectValue(adminterface, 'meta.translations.confirm_dialog')
     const defaults = {
       buttons: {
-        ok: {
-          text: translations.ok,
-          class: cssClasses.ok
+        confirm: {
+          text: translations.confirm,
+          class: cssClasses.confirm
         },
         cancel: {
           text: translations.cancel,
@@ -26,7 +26,9 @@ class ConfirmDialog {
     this.callback = callback
     this.events = {
       beforeOpen: new Event('confirm_dialog:before_open'),
-      afterOpen: new Event('confirm_dialog:after_open')
+      afterOpen: new Event('confirm_dialog:after_open'),
+      confirm: new Event('confirm_dialog:confirm'),
+      cancel: new Event('confirm_dialog:cancel')
     }
 
     this.options = deepMergeObject(defaults, options)
@@ -47,7 +49,7 @@ class ConfirmDialog {
             </div>
             <div class='modal-footer'>
               <button type='button' class='${(buttons.cancel || {}).class}' data-bs-dismiss='modal'>${(buttons.cancel || {}).text}</button>
-              <button id="modal-dialog-confirm-button" type='button' class='${(buttons.ok || {}).class}'>${(buttons.ok || {}).text}</button>
+              <button id="modal-dialog-confirm-button" type='button' class='${(buttons.confirm || {}).class}'>${(buttons.confirm || {}).text}</button>
             </div>
           </div>
         </div>
@@ -74,29 +76,35 @@ class ConfirmDialog {
     const _self = this
     const dialogEl = this._create()
     const dialogForm = dialogEl.querySelector('#modal-dialog-confirm-form') || {}
-    const cancelButton = dialogEl.querySelector('#modal-dialog-confirm-button') || {}
+    const confirmButton = dialogEl.querySelector('#modal-dialog-confirm-button') || {}
     const beforeOpenEvent = this.events.beforeOpen
     const afterOpenEvent = this.events.afterOpen
+    const confirmEvent = this.events.confirm
+    const cancelEvent = this.events.cancel
     const serializeForm = serializeObject
     const dialogConfirm = new Modal(dialogEl, {
       keyboard: true,
       backdrop: 'static'
     })
 
-    cancelButton.addEventListener('click', function (e) {
+    confirmButton.addEventListener('click', function (_e) {
       _self.callback(serializeForm(dialogForm))
       dialogConfirm.hide()
+      confirmEvent.detail = { dialogForm }
+      document.dispatchEvent(confirmEvent)
     })
 
     dialogEl.addEventListener('hidden.bs.modal', function (_e) {
       dialogEl.remove()
+      cancelEvent.detail = { dialogForm }
+      document.dispatchEvent(cancelEvent)
     })
 
     beforeOpenEvent.detail = { dialogForm }
     afterOpenEvent.detail = { dialogForm }
-    document.body.dispatchEvent(beforeOpenEvent)
+    document.dispatchEvent(beforeOpenEvent)
     dialogConfirm.show()
-    document.body.dispatchEvent(afterOpenEvent)
+    document.dispatchEvent(afterOpenEvent)
 
     adminterface.confirmDialog = this
   }

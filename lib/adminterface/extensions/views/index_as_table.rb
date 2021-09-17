@@ -43,9 +43,9 @@ module Adminterface
         def confirm_dialog_config
           {
             buttons: {
-              ok: {
-                text: I18n.t(:ok, scope: "active_admin.confirm_dialog"),
-                class: confirm_dialog_css_classes[:ok]
+              confirm: {
+                text: I18n.t(:confirm, scope: "active_admin.confirm_dialog"),
+                class: confirm_dialog_css_classes[:confirm]
               },
               cancel: {
                 text: I18n.t(:cancel, scope: "active_admin.confirm_dialog"),

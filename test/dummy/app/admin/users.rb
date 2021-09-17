@@ -24,7 +24,7 @@ ActiveAdmin.register User do
     updated_at: :date_picker
   }, confirm_dialog: {
     buttons: {
-      ok: {class: "btn btn-danger", text: "Confirm!!!"}
+      confirm: {class: "btn btn-danger", text: "Confirm!!!"}
     }
   } do |ids, inputs|
     # inputs is a hash of all the form fields you requested

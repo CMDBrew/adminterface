@@ -14,10 +14,10 @@ const initTomSelect = function (element) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initTomSelect(document)
+})
 
-  document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    initTomSelect(el.detail.dialogForm)
-  })
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initTomSelect(el.detail.dialogForm)
 })
 
 export default initTomSelect

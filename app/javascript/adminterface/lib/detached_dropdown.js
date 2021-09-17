@@ -28,7 +28,7 @@ class DetachedDropdown {
       _self._append(_self.element, $menu)
     })
 
-    adminterface.dropdown = [...adminterface.dropdown, this]
+    adminterface.detachedDropdown = [...adminterface.detachedDropdown, this]
   }
 }
 

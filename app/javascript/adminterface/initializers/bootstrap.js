@@ -13,10 +13,10 @@ const initBootstrap = function (element) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initBootstrap(document)
+})
 
-  document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    initBootstrap(el.detail.dialogForm)
-  })
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initBootstrap(el.detail.dialogForm)
 })
 
 export default initBootstrap

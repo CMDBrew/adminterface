@@ -37,9 +37,9 @@ module Adminterface
         options = @options[:confirm_dialog] || {}
         {
           buttons: {
-            ok: {
-              text: I18n.t(:ok, scope: "active_admin.batch_actions.confirm_dialog"),
-              class: table_tools_css_classes.dig(:confirm_dialog, :ok)
+            confirm: {
+              text: I18n.t(:confirm, scope: "active_admin.batch_actions.confirm_dialog"),
+              class: table_tools_css_classes.dig(:confirm_dialog, :confirm)
             },
             cancel: {
               text: I18n.t(:cancel, scope: "active_admin.batch_actions.confirm_dialog"),

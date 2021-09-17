@@ -96,7 +96,7 @@ You can specify the configurations for the confirm dialogue by passing in the `c
 ActiveAdmin.register User do
   batch_action :flag, confirm_dialog: {
     buttons: {
-      ok: {class: "btn btn-danger", text: "Confirm!!!"}
+      confirm: {class: "btn btn-danger", text: "Confirm!!!"}
     }
   } do |ids, inputs|
     ...
@@ -125,7 +125,7 @@ import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.e
   table_tools:
     confirm_dialog:
       cancel: btn btn-link
-      ok: btn btn-primary
+      confirm: btn btn-primary
   ```
 
   </TabItem>
@@ -141,7 +141,7 @@ import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.e
       batch_actions:
         confirm_dialog:
           cancel: Cancel
-          ok: Okay!
+          confirm: Okay!
   ```
   </TabItem>
 </Tabs>

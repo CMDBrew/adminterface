@@ -325,15 +325,24 @@ header:
 | `breakpoint`  | `String`                 | Use [Bootstrap]'s breakpoints. Available options are `sm`, `md`, `lg`, `xl`, `xxl` or `null`
 
 ### Inputs
-`inputs:` — formtastic input components
+`inputs:` — formtastic and JavaScript input components.
 
-| Option               | Type                       | Description
-| :------------------- | :------------------------- | :------------------
-| `date_picker`        | Nested `key: value` pairs  | See [Flatpickr] for config options.
-| `datetime_picker`    | Nested `key: value` pairs  | See [Flatpickr] for config options.
-| `tom_select`         | Nested `key: value` pairs  | See [TomSelect] for config options.
-| `text.counter.type`  | `String`                   | The mode for counting. Available options are `letter`, `word`
-| `text.counter.limit` | `Integer`                  | Maximum count
+You can add configurations for any available input types. You can find the default input types inside the [Form Page guide](/docs/enhancements/form#inputs).
+
+| Option          | Type               | Description
+| :-------------- | :------------------| :------------------
+| `INPUT_TYPE.js` | `Array`            | Configure JavaScript plugins for the input, please see the [JavaScript guide](/docs/enhancements/javascript#plugins).
+
+:::tip
+It is also possible to add custom input types. For example:
+
+```yaml
+inputs:
+  my_custom_input:
+    ...
+```
+Please see [the official Formtastic guide](https://github.com/formtastic/formtastic#modified--custom-inputs) and our [JavaScript guide](docs/enhancements/javascript#add-a-custom-input-type) for more information.
+:::
 
 ### Sidebar
 `sidebar:` — filters on the index page.

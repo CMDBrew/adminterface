@@ -4,10 +4,10 @@ en:
     batch_actions:
       confirm_dialog:
         cancel: Cancel
-        ok: Confirm
+        confirm: Confirm
     confirm_dialog:
       cancel: Cancel
-      ok: Confirm
+      confirm: Confirm
     dashboard_welcome:
       call_to_action: To add dashboard sections, checkout <code>app/admin/dashboard.rb</code>
       footnote: |

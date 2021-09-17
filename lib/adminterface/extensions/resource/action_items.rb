@@ -54,9 +54,9 @@ module Adminterface
               icon_class = active_admin_config.components.dig(:action_items, :destroy, :icon_class)
               confirm_dialog_config = {
                 buttons: {
-                  ok: {
-                    text: I18n.t(:ok, scope: "active_admin.confirm_dialog"),
-                    class: active_admin_config.css_classes.dig(:confirm_dialog, :ok)
+                  confirm: {
+                    text: I18n.t(:confirm, scope: "active_admin.confirm_dialog"),
+                    class: active_admin_config.css_classes.dig(:confirm_dialog, :confirm)
                   },
                   cancel: {
                     text: I18n.t(:cancel, scope: "active_admin.confirm_dialog"),

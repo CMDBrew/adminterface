@@ -7,6 +7,10 @@ description: Working with Adminterface's JavaScript.
 # JavaScript
 Bring Adminterface to life with JavaScript. Learn about plugins, our data and programmatic API options, and more.
 
+````mdx-code-block
+import CodeBlock from '@theme/CodeBlock';
+````
+
 :::tip
 We've rewritten ActiveAdmin's JavaScript and made it more flexible. In addition, [jQuery](https://jquery.com/) is no longer a dependency.
 :::
@@ -15,6 +19,78 @@ We've rewritten ActiveAdmin's JavaScript and made it more flexible. In addition,
 import Tabs from '@theme/Tabs';
 import TabItem from '@theme/TabItem';
 ````
+
+## Quick Start
+When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
+
+```javascript title="Inside your browser JavaScript console"
+> adminterface
+{batchActions: BatchActions, confirmDialog: null, detachedDropdown: Array(0), filters: {…}, flatpickr: Array(2), …}
+```
+
+You can export commonly used components so that you can attach them programmatically.
+
+```javascript
+import * as Adminterface from '@cmdbrew/adminterface'
+```
+
+## Initializers
+Adminterface comes with initializers that you can hook into your custom JavaScript when manipulating DOM dynamically.
+
+| Name                     | Params    | Description
+| :----------------------- | :-------- | :-----------------------
+| `initFlatpickr`          | `element` | Find and initialize [flatpickr] for child elements with the `[data-aa-flatpickr]` attribute within the `element`.
+| `initTomeSelect`         | `element` | Find and initialize [TomSelect] for child elements with the `[data-aa-tom-select]` attribute within the `element`.
+| `initInputCounter`       | `element` | Find and initialize [Input Counter](#input-counter) for child elements with the `[data-aa-input-counter]` attribute within the `element`.
+| `initPasswordVisibility` | `element` | Find and initialize [PasswordVisibility](#password-visiblity) for child elements with the `[data-aa-password-visibility]` attribute within the `element`.
+| `initBootstrap`          | `element` | Find and initialize [Bootstrap's JavaScript](#bootstrap) for child elements matched the specified selectors within the `element`.
+| `initDetachedDropdown`   | `element` | Find and initialize [Detached Dropdown](#detached-dropdown) for child elements with the `.dropdown` class within the `element`.
+
+### Template
+All initializers follow a similar format. You can also add custom initializers as you see fit. Here is an example of the [flatpickr] initializer.
+````mdx-code-block
+import flatpickrInitializer from '!!raw-loader!@site/../app/javascript/adminterface/initializers/plugins/flatpickr.js';
+
+<CodeBlock className="language-javascript">
+  {flatpickrInitializer}
+</CodeBlock>
+````
+
+### Usage
+You can call these initializers on a specific event or dynamically inside your script.
+
+```javascript
+import {
+  initBootstrap,
+  initDetachedDropdown,
+  initFlatpickr,
+  initInputCounter,
+  initPasswordVisibility,
+  initTomeSelect
+} from '@cmdbrew/adminterface'
+
+// Call initializers inside a function
+const myFunction = (element) => {
+  initBootstrap(element)
+  initDetachedDropdown(element)
+  initFlatpickr(element)
+  initInputCounter(element)
+  initPasswordVisibility(element)
+  initTomeSelect(element)
+}
+
+// Call initializers on a specific event
+document.addEventListener('customEvent', () => {
+  const el = document.getElementById("my-element")
+
+  initBootstrap(el)
+  initDetachedDropdown(el)
+  initFlatpickr(el)
+  initInputCounter(el)
+  initPasswordVisibility(el)
+  initTomeSelect(el)
+})
+```
 
 ## Bootstrap
 We've installed the required plugins and enabled the following when the DOM loads by default, so you don't have to initialize them yourself.
@@ -109,38 +185,102 @@ We've installed the required plugins and enabled the following when the DOM load
 </Tabs>
 ````
 
-## Adminterface
-When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
+## Confirm Dialog
+Confirm dialogs are popups that ask the user for confirmation when performing a specific action. Adminterface uses ConfirmDialog for batch action and delete confirmations. See the guides on [BatchActions](/docs/enhancements/index#batch-actions) and [ConfirmDialog](/docs/enhancements/components#confirm-dialog) for more information.
 
-```javascript title="Inside your browser JavaScript console"
-> adminterface
-{batchActions: BatchActions, confirmDialog: null, dropdown: Array(0), filters: {…}, flatpickr: Array(2), …}
-```
+### Configuration
+You can override the default configurations by following the instructions below:
 
-You can export commonly used components so that you can attach them programmatically.
-
-```javascript
-import * as Adminterface from '@cmdbrew/adminterface'
-```
-
-### ConfirmDialog
-Adminterface uses ConfirmDialog for batch action and delete confirmations. See the guides on [BatchActions](/docs/enhancements/index#batch-actions) and [ConfirmDialog](/docs/enhancements/components#confirm-dialog) for more information.
-
-Here is an example of adding a custom confirm dialog:
+| Name      | Description
+| :---------| ------------
+| `confirm` | The confirm button
+| `cancel`  | The cancel button
 
 ````mdx-code-block
+import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
+
 <Tabs
-  defaultValue="javascript"
+  defaultValue="css_class"
   values={[
-    {label: 'JavaScript', value: 'javascript'}
+    {label: 'CSS Class', value: 'css_class'},
+    {label: 'Translation', value: 'translation'},
   ]}>
 
-  <TabItem value="javascript">
+  <TabItem value="css_class">
+  To update the default CSS classes, you can create a <code>css_claases.yml</code> and specify the changes. See <a href="/docs/start/configuration#css-classes">Configuration</a> for more information.
+  <br/>
+  <br/>
 
-  ```javascript
-  import { ConfirmDialog } from '@cmdbrew/adminterface'
+  ```yaml title="e.g., config/adminterface/admin/css_classes.yml" {2-5}
+  ---
+  confirm_dialog:
+    cancel: btn btn-light
+    confirm: btn btn-primary
+  ```
 
-  document.addEventListener('DOMContentLoaded', () => {
+  </TabItem>
+  <TabItem value="translation">
+  To update the translations, you can create an <code>active_admin.en.yml</code> file and specify the keys you want to update.
+  <br/>
+  <br/>
+
+  ```yaml title="config/locales/active_admin.en.yml" {4-7}
+  ---
+  en:
+    active_admin:
+      confirm_dialog:
+        cancel: Cancel
+        confirm: Okay!
+  ```
+  </TabItem>
+</Tabs>
+````
+
+### Events
+We've exposed a few events for hooking into the modal dialog's functionality.
+
+| Type                         | Description
+| :--------------------------- | ------------
+| `confirm_dialog:before_open` | This event fires before the dialog is shown
+| `confirm_dialog:after_open`  | This event fires after the dialog is shown
+| `confirm_dialog:confirm`     | This event fires after the user clicks the confirm button
+| `confirm_dialog:cancel`      | This event fires after the user clicks the cancel button
+
+
+```javascript
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  // Add your custom code here...
+  console.log(el.detail.dialogForm)
+})
+```
+
+### Usage
+You can specify the configurations by passing in the data option inside your HTML.
+
+```ruby {3-10}
+  link_to(
+    "Confirm", "fake/path",
+    data: {
+      confirm: "My confirm message",
+      "aa-confirm-dialog": {
+        buttons: {
+          confirm: {text: "Okay!"}
+        }
+      }
+    }
+  )
+```
+
+You can also trigger the dialog programmatically. Here is an example for adding a confirm dialog to a specific page:
+
+```javascript
+import { ConfirmDialog } from '@cmdbrew/adminterface'
+
+document.addEventListener('DOMContentLoaded', () => {
+  const targetClassList = ['admin_users', 'show']
+  const bodyClassList = document.body.classList
+
+  if (targetClassList.every((v) => bodyClassList.contains(v))) {
     const message = 'Tell me about yourself!'
     const inputs = {
       name: 'string',
@@ -148,7 +288,7 @@ Here is an example of adding a custom confirm dialog:
     }
     const options = {
       buttons: {
-        ok: {
+        confirm: {
           text: 'Okay',
           class: 'btn btn-success'
         },
@@ -161,17 +301,20 @@ Here is an example of adding a custom confirm dialog:
     const onConfirm = () => alert('confirmed!')
 
     new ConfirmDialog(message, inputs, options, onConfirm)
-  })
-  ```
+  }
+})
+```
 
-  </TabItem>
-</Tabs>
-````
-
-
-### DetachedDropdown
+## Detached Dropdown
 Adminterface uses `DetachedDropdown` inside the `#active_admin_content` element to detach the dropdown menu and append it to the `body` to prevent overflow cutoffs from scrollable parent elements.
 
+### Configuration
+| Name      | Description
+| :---------| ------------
+| `menu`    | The selector for the element that should be append to `body` when the dropdown opens
+
+
+### Usage
 Here is an example of adding a detached dropdown to an element:
 
 ````mdx-code-block
@@ -190,7 +333,7 @@ Here is an example of adding a detached dropdown to an element:
   document.addEventListener('DOMContentLoaded', () => {
     const dropdownTriggerList = [].slice.call(element.querySelectorAll('.my-dropdown'))
     const options = {
-      meun: '.my-dropdown-menu'
+      menu: '.my-dropdown-menu'
     }
 
     dropdownTriggerList.map((el) => new DetachedDropdown(el, options))
@@ -218,14 +361,75 @@ Here is an example of adding a detached dropdown to an element:
 </Tabs>
 ````
 
-### Input
+## Inputs
 Adminterface uses `Input` to determine which input to render based on the configuration in `adminterface.inputs.mapping` to provide consistent APIs to define the behaviour of form inputs for both frontend and backend.
+
+### Configuration
+You can view the input mapping from your browser console.
 
 ```javascript title="Inside your browser JavaScript console"
 > adminterface.inputs.mapping
 {string: ƒ, number: ƒ, url: ƒ, phone: ƒ, password: ƒ, …}
 ```
 
+### Plugins
+Adminterface comes with a set of JS plugins to make form inputs more dynamic.
+
+:::tip
+You can add custom plugins or disable the default plugins by updating the configurations files for `components`. Learn more in the [Configuration guide](docs/start/configuration#components).
+:::
+
+Plugins are defined inside the `js` key as an `array` of key value paris. For example:
+```yaml {3-6}
+inputs:
+  date_picker:
+    js:
+      - name: flatpickr
+        default: true
+        options:
+          altFormat: Y-m-d
+          enableTime: false
+```
+
+| Option    | Type               | Description
+| :-------- | :----------------- | :------------------
+| `name`    | `String`           | The name of the plugin
+| `default` | `Boolean`          | Whether to enable this plugin by default
+| `options` | `key: value` pairs | Vendor specific configurations for the plugin
+
+#### Input Counter
+Limit the number of letters/words that the user can insert inside the `:text` input.
+
+```yaml {5-6}
+js:
+  - name: input-counter
+    default: false
+    options:
+      limit: 300
+      type: letter
+```
+| Option  | Type      | Description
+| :------ | :---------| :------------------
+| `type`  | `String`  | The mode for counting. Available options are `letter`, `word`
+| `limit` | `Integer` | Maximum count
+
+#### Password Visibility
+Add a reveal password button to the `:password` field.
+```yaml {5-6}
+js:
+  - name: password-visibility
+    default: false
+```
+
+#### Flatpickr
+Add a date and time picker. See [Flatpickr] for configuration options.
+
+#### TomSelect
+Add a Javascript select input. See [TomSelect] for configuration options.
+
+
+### Usage
+#### Return HTML based on an input type
 Here is how you can use the `Input` class to return the HTML of an input type.
 ```javascript
 // Import the Input class
@@ -238,13 +442,14 @@ const html = (new Input("name", {as: "string"})).render()
 console.log(html)
 ```
 
-Here is a basic example of how you can add a custom input to the Adminterface frontend.
+#### Change an input type to a custom class
+Here is an example for changing an input type to use a custom input:
 ```javascript
 // Import the input you want to extend from
-import { BaseInput } from '@cmdbrew/adminterface'
+import { StringInput } from '@cmdbrew/adminterface'
 
 // Define your custom input
-class CustomStringInput extends BaseInput {
+class CustomStringInput extends StringInput {
   _defaultInputHTMLOptions () {
     const options = {
       class: `form-control custom-class ${this.options.as}`,
@@ -267,53 +472,104 @@ class CustomStringInput extends BaseInput {
 adminterface.inputs.mapping.string = CustomStringInput
 ```
 
-### InputCounter
-Adminterface uses InputCounter for text inputs. See the guides on [Customizing the Form](/docs/enhancements/form#text) for more information.
+#### Add a custom input type
+Here is an example for adding a custom input type:
+```javascript
+// Import the input you want to extend from
+import { BaseInput } from '@cmdbrew/adminterface'
 
-Here is an example of adding a custom counter to an input:
-
-````mdx-code-block
-<Tabs
-  defaultValue="javascript"
-  values={[
-    {label: 'JavaScript', value: 'javascript'},
-    {label: 'HTML', value: 'html'}
-  ]}>
-
-  <TabItem value="javascript">
-
-  ```javascript
-  import { InputCounter } from '@cmdbrew/adminterface'
-
-  document.addEventListener('DOMContentLoaded', () => {
-    const inputCounterTriggerList = [].slice.call(element.querySelectorAll('.my-input-counter'))
+// Define your custom input
+class MyCustomInput extends BaseInput {
+  _defaultInputHTMLOptions () {
     const options = {
-      type: 'letter',
-      containerClass: '.my-input-counter-container',
-      charCountClass: '.my-input-counter-char-count',
-      charLeftClass: '.my-input-counter-char-left',
-      charLimitClass: '.my-input-counter-char-limit',
-      limit: 150
+      class: `form-control custom-class ${this.options.as}`,
+      type: 'string'
     }
 
-    inputCounterTriggerList.map((el) => new InputCounter(el, options))
+    return { ...super._defaultInputHTMLOptions(), ...options }
+  }
+
+  render () {
+    return this._inputWrapping(`
+      ${this._labelHTML()}
+      ${this._inputHTML()}
+      <p>My Custom Input!</p>
+    `)
+  }
+}
+
+// Add the custom type to the mapping
+adminterface.inputs.mapping.my_custom_input = MyCustomInput
+```
+
+You can now use this custom input type inside your batch action form. You can learn more about the Batch Action form in the [Index Page doc](/docs/enhancements/index#batch-actions).
+```ruby {3}
+ActiveAdmin.register User do
+  batch_action :custom, form: {
+    reason: :my_custom_input,
+  } do |ids, inputs|
+    # ...
+  end
+end
+```
+
+#### Add a custom plugin for an input type
+Here we will show you an example of how you can add a custom plugin to an input type.
+
+First, add your custom component to a configurations file:
+```yaml title="config/adminterface/admin/users/components.yml" {3-9}
+...
+inputs:
+  string:
+    js:
+      - name: my-custom-plugin
+        default: false
+        options:
+          myOption: "test"
+```
+
+Next, load the components configuration file inside your resource and add an input:
+```ruby title="app/admin/users.rb" {2,4-6}
+ActiveAdmin.register User do
+  config.components = YAML.load_file(Rails.root.join("config/adminterface/admin/users/components.yml").to_s)
+
+  form do |f|
+    f.input :name, as: :string, my_custom_plugin: true
+  end
+end
+```
+
+You can see that `data-aa-my-custom-plugin="{"myOption":"test"}"` has been added into the input element if you inspect the element from the browser console.
+
+Finally, you can attach custom JavaScript for this plugin:
+```javascript
+class MyCustomPlugin {
+  constructor (element, options) {
+    // Add your custom code...
+  }
+}
+
+// Find and iniatilzie the plugin for elements that match the selector
+const initMyCustomPlugin = function (element) {
+  const myCustomPluginTriggerList = [].slice.call(element.querySelectorAll('[data-aa-my-custom-plugin]'))
+
+  myCustomPluginTriggerList.map((el) => {
+    const options = JSON.parse(el.dataset.aaMyCustomPlugin || {})
+
+    return new MyCustomPlugin(el, options)
   })
-  ```
+}
 
-  </TabItem>
-  <TabItem value="html">
+// Load the plugin on DOM ready
+document.addEventListener('DOMContentLoaded', () => {
+  initMyCustomPlugin(document)
+})
 
-  ```html
-  <div class="my-input-counter-container">
-    <textarea class="my-input-counter"></textarea>
-    <ul>
-      <li class="my-input-counter-char-count"></li>
-      <li class="my-input-counter-char-left"></li>
-      <li class="my-input-counter-char-limit"></li>
-    </ul>
-  </div>
-  ```
+// Load the plugin on the `confirm_dialog:before_open` event
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initMyCustomPlugin(el.detail.dialogForm)
+})
+```
 
-  </TabItem>
-</Tabs>
-````
+[Flatpickr]: https://flatpickr.js.org/
+[TomSelect]: https://tom-select.js.org/

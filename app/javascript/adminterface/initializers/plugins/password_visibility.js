@@ -14,10 +14,10 @@ const initPasswordVisibility = function (element) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initPasswordVisibility(document)
+})
 
-  document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    initPasswordVisibility(el.detail.dialogForm)
-  })
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initPasswordVisibility(el.detail.dialogForm)
 })
 
 export default initPasswordVisibility

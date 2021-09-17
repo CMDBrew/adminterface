@@ -12,10 +12,10 @@ const initInputCounter = function (element) {
 
 document.addEventListener('DOMContentLoaded', () => {
   initInputCounter(document)
+})
 
-  document.body.addEventListener('confirm_dialog:before_open', (el) => {
-    initInputCounter(el.detail.dialogForm)
-  })
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initInputCounter(el.detail.dialogForm)
 })
 
 export default initInputCounter

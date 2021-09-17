@@ -3,17 +3,15 @@
 const config = {
   batchActions: null,
   confirmDialog: null,
-  dropdown: [],
+  detachedDropdown: [],
   filters: {},
   flatpickr: [],
   hasMany: [],
   headerToggler: [],
   inputCounter: [],
+  passwordVisibility: [],
   inputs: {
-    mapping: {},
-    password: {
-      visibility: []
-    }
+    mapping: {}
   },
   perPage: {},
   popover: [],

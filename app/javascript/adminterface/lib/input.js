@@ -81,7 +81,11 @@ class Input {
       throw new Error(`Unsupported input type: {${this.name}: ${as}}`)
     }
 
-    return (new InputClass(this.name, { ...options, as: as })).render()
+    const input = new InputClass(this.name, { ...options, as: as })
+    adminterface.inputs[as] = adminterface.inputs[as] || []
+    adminterface.inputs[as].push(input)
+
+    return input.render()
   }
 }
 

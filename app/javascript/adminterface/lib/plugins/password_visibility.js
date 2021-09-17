@@ -63,7 +63,7 @@ class PasswordVisibility {
     })
 
     this.eventTarget = group
-    adminterface.inputs.password.visibility = [...adminterface.inputs.password.visibility, this]
+    adminterface.passwordVisibility = [...adminterface.passwordVisibility, this]
   }
 }
 
