@@ -1,3 +1,4 @@
+/* global adminterface */
 import SelectInput from './select_input'
 import { toHTMLAttrString } from '../utils'
 
@@ -49,14 +50,13 @@ class CountryInput extends SelectInput {
   }
 
   _getAllCountries () {
-    const meta = (document.querySelector('#meta-tags-for-js meta[name="countries"]') || {})
-    const content = JSON.parse(meta.content)
+    const countries = adminterface.meta.countries
 
-    if (content.error) {
-      console.error(content)
+    if (countries.error) {
+      console.error(countries)
       return []
     } else {
-      return content
+      return countries
     }
   }
 

@@ -1,27 +1,22 @@
 /* global adminterface */
-
 import flatpickr from 'flatpickr'
 
-const FlatpickerInit = function (element) {
-  const flatpickrTriggerList = [].slice.call(element.querySelectorAll('[data-aa-datepicker]'))
+const onDOMReady = (element) => {
+  const datePickerTriggerList = [].slice.call(element.querySelectorAll('[data-aa-flatpickr]'))
 
-  const flatpickrInstances = flatpickrTriggerList.map((el) => {
-    const options = JSON.parse(el.dataset.aaDatepicker || {})
+  const datePickerInstances = datePickerTriggerList.map((el) => {
+    const options = JSON.parse(el.dataset.aaFlatpickr || {})
 
-    const defaults = {
-      enableTime: true,
-      altFormat: 'Y-m-d, h:i K',
-      altInput: true,
-      dateFormat: 'Y-m-d H:i:00',
-      time_24hr: false
-    }
-
-    return flatpickr(el, { ...defaults, ...options })
+    return flatpickr(el, options)
   })
 
-  adminterface.flatpickr = [...adminterface.flatpickr, ...flatpickrInstances]
+  adminterface.flatpickr = [...adminterface.flatpickr, ...datePickerInstances]
 }
 
-document.addEventListener('DOMContentLoaded', () => FlatpickerInit(document))
+document.addEventListener('DOMContentLoaded', () => {
+  onDOMReady(document)
 
-export default FlatpickerInit
+  document.body.addEventListener('confirm_dialog:before_open', (el) => {
+    onDOMReady(el.detail.dialogForm)
+  })
+})

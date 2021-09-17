@@ -1,6 +1,6 @@
 import InputCounter from '../lib/input_counter'
 
-const InputCounterInit = function (element) {
+const onDOMReady = function (element) {
   const inputCounterTriggerList = [].slice.call(element.querySelectorAll('[data-aa-input-counter]'))
 
   inputCounterTriggerList.map((el) => {
@@ -10,6 +10,10 @@ const InputCounterInit = function (element) {
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => InputCounterInit(document))
+document.addEventListener('DOMContentLoaded', () => {
+  onDOMReady(document)
 
-export default InputCounterInit
+  document.body.addEventListener('confirm_dialog:before_open', (el) => {
+    onDOMReady(el.detail.dialogForm)
+  })
+})

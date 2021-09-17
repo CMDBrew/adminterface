@@ -2,26 +2,21 @@
 
 import TomSelect from 'tom-select'
 
-const TomSelectInit = function (element) {
+const onDOMReady = function (element) {
   const tomSelectTriggerList = [].slice.call(element.querySelectorAll('[data-aa-tom-select]'))
   const tomSelectInstances = tomSelectTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaTomSelect || {})
 
-    const defaults = {
-      plugins: ['remove_button'],
-      persist: false,
-      createOnBlur: false,
-      create: false
-    }
-
-    return new TomSelect(element, { ...defaults, ...options })
+    return new TomSelect(el, options)
   })
 
   adminterface.tomSelect = [...adminterface.tomSelect, ...tomSelectInstances]
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-  TomSelectInit(document)
-})
+  onDOMReady(document)
 
-export default TomSelectInit
+  document.body.addEventListener('confirm_dialog:before_open', (el) => {
+    onDOMReady(el.detail.dialogForm)
+  })
+})

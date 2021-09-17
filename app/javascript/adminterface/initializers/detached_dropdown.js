@@ -1,10 +1,14 @@
 import DetachedDropdown from '../lib/detached_dropdown'
 
-const DetachedDropdownInit = function (element) {
+const onDOMReady = function (element) {
   const dropdownTriggerList = [].slice.call(element.querySelectorAll('.dropdown'))
   dropdownTriggerList.map((el) => new DetachedDropdown(el, {}))
 }
 
-document.addEventListener('DOMContentLoaded', () => DetachedDropdownInit(document.getElementById('active_admin_content')))
+document.addEventListener('DOMContentLoaded', () => {
+  onDOMReady(document.getElementById('active_admin_content'))
 
-export default DetachedDropdownInit
+  document.body.addEventListener('confirm_dialog:before_open', (el) => {
+    onDOMReady(el.detail.dialogForm)
+  })
+})

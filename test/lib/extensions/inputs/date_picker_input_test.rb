@@ -11,6 +11,10 @@ module DatePickerInputScenarios
     @date_picker_config ||= Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :date_picker)
   end
 
+  def flatpickr_config
+    @flatpickr_config ||= date_picker_config[:js].find { |x| x[:name].eql?("flatpickr") }
+  end
+
   included do
     test "wrapper" do
       assert find_wrapper(@form).present?
@@ -31,8 +35,8 @@ module DatePickerInputScenarios
 
     test "js data options" do
       assert_equal(
-        date_picker_config.to_json,
-        @form.find('input.form-control[type="date"]')["data-aa-datepicker"]
+        flatpickr_config[:options].sort.to_h.to_json,
+        @form.find('input.form-control[type="date"]')["data-aa-flatpickr"]
       )
     end
   end

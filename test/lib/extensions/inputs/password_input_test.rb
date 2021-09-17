@@ -65,7 +65,7 @@ class PasswordInputShowPasswordTest < ActiveAdmin::InputTestCase
   test "renders visibility" do
     form = build_form do |f|
       f.inputs do
-        f.input :secret, as: :password, visibility: true
+        f.input :secret, as: :password, password_visibility: true
       end
     end
 

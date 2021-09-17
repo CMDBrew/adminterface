@@ -15,9 +15,9 @@ import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
 import { PasswordInput } from './inputs/password_input'
-import adminterface from '../config'
+import config from '../config'
 
-adminterface.inputs.mapping = {
+config.inputs.mapping = {
   string: StringInput,
   number: StringInput,
   url: StringInput,

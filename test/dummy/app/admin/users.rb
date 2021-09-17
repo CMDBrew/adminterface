@@ -20,7 +20,7 @@ ActiveAdmin.register User do
   filter :created_at
 
   batch_action :update, form: {
-    name: :string,
+    name: {as: :password, password_visibility: true},
     updated_at: :date_picker
   }, confirm_dialog: {
     buttons: {
@@ -87,8 +87,8 @@ ActiveAdmin.register User do
           column(span: 6) { f.input :email }
         end
 
-        f.input :password, visibility: true, input_html: {autocomplete: "new-password"}
-        f.input :biography, counter: true
+        f.input :password, password_visibility: true, input_html: {autocomplete: "new-password"}
+        f.input :biography, input_counter: true
         f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
           k.inputs(class: "row") do
             k.input :fullname, wrapper_html: {class: "col-lg-6"}

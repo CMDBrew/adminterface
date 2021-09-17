@@ -10,6 +10,7 @@ module Adminterface
           require_relative("../extensions/inputs/base/choices")
           require_relative("../extensions/inputs/base/groupish")
           require_relative("../extensions/inputs/base/stringish")
+          require_relative("../extensions/inputs/base/pluginish")
         end
 
         initializer "inputs" do |_app|

@@ -31,15 +31,39 @@ index_as_grid:
   breakpoint: lg
 inputs:
   date_picker:
-    altFormat: Y-m-d
-    enableTime: false
+    js:
+      - name: flatpickr
+        default: true
+        options:
+          altFormat: Y-m-d
+          enableTime: false
   datetime_picker:
-    altFormat: Y-m-d, h:i K
-    enableTime: true
+    js:
+      - name: flatpickr
+        default: true
+        options:
+          altFormat: Y-m-d, h:i K
+          enableTime: true
+  select:
+    js:
+      - name: tom-select
+        default: false
+        options:
+          plugins:
+            - remove_button
+          persist: false
+          createOnBlur: false
+          create: false
   text:
-    counter:
-      limit: 300
-      type: letter
-  tom_select: null
+    js:
+      - name: input-counter
+        default: false
+        options:
+          limit: 300
+          type: letter
+  password:
+    js:
+      - name: password-visibility
+        default: false
 sidebar:
   position: right

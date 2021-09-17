@@ -1,4 +1,5 @@
-import { toHTMLAttrString } from '../utils'
+import { toHTMLAttrString, toSnakeCase } from '../utils'
+import Pluginish from './base/pluginish'
 
 class BaseInput {
   constructor (name, options) {
@@ -8,11 +9,13 @@ class BaseInput {
     this.label_html_options = this.options.label_html || {}
     this.input_html_options = this.options.input_html || {}
     this.label = options.label || name.charAt(0).toUpperCase() + name.slice(1)
+    this.type = toSnakeCase(this.constructor.name.replace(/(Input$)/, ''))
+    this.pluginish = new Pluginish(this.type, this.options)
   }
 
   _defaultWrapperHTMLOptions () {
     return {
-      class: `mb-3 input ${this.constructor.name.replace(/(Input$)/, '').toLowerCase()}`
+      class: `mb-3 input ${this.type}`
     }
   }
 
@@ -32,11 +35,13 @@ class BaseInput {
   }
 
   _defaultInputHTMLOptions () {
-    return {
+    const options = {
       class: `form-control ${this.options.as}`,
       name: this.name,
       id: `batch-form-${this.name}`
     }
+
+    return { ...options, ...this.pluginish.attributes() }
   }
 
   _inputHTMLOptions () {

@@ -17,19 +17,7 @@ module Adminterface
 
         def input_html_options
           opts = options[:input_html] || {}
-          super.merge(class: "form-select #{opts[:class]}".squish).merge(tom_select_options)
-        end
-
-        def tom_select_options
-          return {} if tom_select.blank?
-
-          {data: {"aa-tom-select": tom_select}}
-        end
-
-        private
-
-        def tom_select
-          options[:tom_select] || inputs_config.dig(:tom_select)
+          super.merge(class: "form-select #{opts[:class]}".squish)
         end
       end
     end

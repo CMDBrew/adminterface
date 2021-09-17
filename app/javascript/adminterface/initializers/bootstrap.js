@@ -2,7 +2,7 @@
 
 import { Popover, Tooltip } from 'bootstrap'
 
-const BootstrapInit = function (element) {
+const onDOMReady = function (element) {
   const popoverTriggerList = [].slice.call(element.querySelectorAll('[data-bs-toggle="popover"]'))
   const tooltipTriggerList = [].slice.call(element.querySelectorAll('[data-bs-toggle="tooltip"]'))
   const popoverInstances = popoverTriggerList.map((el) => new Popover(el))
@@ -12,6 +12,10 @@ const BootstrapInit = function (element) {
   adminterface.tooltip = [...adminterface.tooltip, ...tooltipInstances]
 }
 
-document.addEventListener('DOMContentLoaded', () => BootstrapInit(document))
+document.addEventListener('DOMContentLoaded', () => {
+  onDOMReady(document)
 
-export default BootstrapInit
+  document.body.addEventListener('confirm_dialog:before_open', (el) => {
+    onDOMReady(el.detail.dialogForm)
+  })
+})

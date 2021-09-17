@@ -1,10 +1,12 @@
-/* global adminterface */
+/* global DOMParser, adminterface */
+import { toHTMLCssString } from './utils'
 
 class InputCounter {
   constructor (element, options) {
     const defaults = {
       type: 'letter',
       containerClass: '.input-counter-container',
+      statsContainerClass: '.input-counter-stats',
       charCountClass: '.input-counter-char-count',
       charLeftClass: '.input-counter-char-left',
       charLimitClass: '.input-counter-char-limit',
@@ -61,7 +63,27 @@ class InputCounter {
     if (elLimit) elLimit.innerHTML = limit.toString()
   }
 
+  _insert () {
+    const el = this.element
+    const wrapper = document.createElement('div')
+
+    const statsHtml = `
+      <ul class="${toHTMLCssString(this.options.statsContainerClass)}">
+        <li class="${toHTMLCssString(this.options.charCountClass)}"></li>
+        <li class="${toHTMLCssString(this.options.charLeftClass)}"></li>
+        <li class="${toHTMLCssString(this.options.charLimitClass)}"></li>
+      </ul>
+    `
+    const statsNode = new DOMParser().parseFromString(statsHtml, 'text/html').body.childNodes[0]
+
+    el.parentNode.insertBefore(wrapper, el)
+    wrapper.classList.add(toHTMLCssString(this.options.containerClass))
+    wrapper.appendChild(el)
+    wrapper.appendChild(statsNode)
+  }
+
   _bind () {
+    this._insert()
     this._count()
     this.element.addEventListener('keyup', (_e) => this._count())
 

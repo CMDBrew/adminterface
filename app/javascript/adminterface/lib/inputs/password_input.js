@@ -1,12 +1,12 @@
 /* global adminterface */
-
 import BaseInput from './base_input'
 import { getObjectValue } from '../utils'
 
 class PasswordVisibilityToggler {
   constructor (element, options) {
     const defaults = {
-      activeClass: 'show'
+      activeClass: 'show',
+      trigger: '.password-visibility-toggler'
     }
 
     this.element = element
@@ -16,20 +16,20 @@ class PasswordVisibilityToggler {
   }
 
   _bind () {
-    const $element = this.element
-    const $group = this.element.closest('.password.input')
-    const $input = $group.querySelector('input')
+    const group = this.element.closest('.password.input')
+    const trigger = group.querySelector(this.options.trigger)
+    const input = group.querySelector('input')
     const activeClass = this.options.activeClass
 
-    $element.addEventListener('click', function (e) {
+    trigger.addEventListener('click', function (e) {
       e.preventDefault()
 
-      if ($element.classList.contains(activeClass)) {
-        $element.classList.remove(activeClass)
-        $input.type = 'password'
+      if (trigger.classList.contains(activeClass)) {
+        trigger.classList.remove(activeClass)
+        input.type = 'password'
       } else {
-        $element.classList.add(activeClass)
-        $input.type = 'text'
+        trigger.classList.add(activeClass)
+        input.type = 'text'
       }
     })
 
@@ -39,12 +39,10 @@ class PasswordVisibilityToggler {
 
 class PasswordInput extends BaseInput {
   constructor (name, options) {
-    const meta = (document.querySelector('#meta-tags-for-js meta[name="translations"]') || {})
-    const I18n = JSON.parse(meta.content)
+    const translations = adminterface.meta.translations
 
     super(name, options)
-    this.visibility = this.options.visibility
-    this.translations = (getObjectValue(I18n, 'inputs.password') || {})
+    this.translations = (getObjectValue(translations, 'inputs.password') || {})
   }
 
   _defaultInputHTMLOptions () {
@@ -55,19 +53,29 @@ class PasswordInput extends BaseInput {
     return { ...super._defaultInputHTMLOptions(), ...options }
   }
 
-  _labelHTML () {
-    if (this.visibility) {
-      return `
-        <div class="label-group">
-          ${super._labelHTML()}
-          <div class="password-visibility-toggler" data-aa-password-visibility-toggler=true>
-            <span data-mode="show">${getObjectValue(this.translations, 'visibility.show')}</span>
-            <span data-mode="hide">${getObjectValue(this.translations, 'visibility.hide')}</span>
-          </div>
-        </div>
-      `
+  _inputGroupWrapping (input) {
+    return `
+      <div class="input-group">
+        ${input}
+        ${this._visibilityToggler()}
+      </div>
+    `
+  }
+
+  _visibilityToggler () {
+    return `
+      <div class="input-group-text password-visibility-toggler">
+        <i data-mode="show" data-bs-toggle="tooltip" title="${getObjectValue(this.translations, 'visibility.show')}"></i>
+        <i data-mode="hide" data-bs-toggle="tooltip" title="${getObjectValue(this.translations, 'visibility.hide')}"></i>
+      </div>
+    `
+  }
+
+  _inputHTML () {
+    if (this.pluginish.enabled('password-visibility')) {
+      return this._inputGroupWrapping(super._inputHTML())
     } else {
-      return super._labelHTML()
+      return super._inputHTML()
     }
   }
 }

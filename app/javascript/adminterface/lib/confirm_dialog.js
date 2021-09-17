@@ -1,18 +1,13 @@
 /* global Event, DOMParser, adminterface */
 
 import { Modal } from 'bootstrap'
-import { serializeObject, deepMergeObject } from './utils'
-import FlatpickerInit from '../initializers/flatpickr'
-import TomSelect from '../initializers/tom_select'
+import { serializeObject, deepMergeObject, getObjectValue } from './utils'
 import { Input } from './input'
-import PasswordVisibilityTogglerInit from '../initializers/inputs/password_input'
 
 class ConfirmDialog {
   constructor (message, inputs, options, callback) {
-    const metaForTranslations = (document.querySelector('#meta-tags-for-js meta[name="translations"]') || {})
-    const metaForCssClasses = (document.querySelector('#meta-tags-for-js meta[name="css_classes"]') || {})
-    const cssClasses = (JSON.parse(metaForCssClasses.content) || {}).confirm_dialog
-    const translations = (JSON.parse(metaForTranslations.content) || {}).confirm_dialog
+    const cssClasses = getObjectValue(adminterface, 'meta.cssClasses.confirm_dialog')
+    const translations = getObjectValue(adminterface, 'meta.translations.confirm_dialog')
     const defaults = {
       buttons: {
         ok: {
@@ -70,12 +65,6 @@ class ConfirmDialog {
     return html
   }
 
-  _initPlugins (el) {
-    FlatpickerInit(el)
-    TomSelect(el)
-    PasswordVisibilityTogglerInit(el)
-  }
-
   _create () {
     const dialogNode = new DOMParser().parseFromString(this._template(), 'text/html').body.childNodes[0]
     return document.body.appendChild(dialogNode)
@@ -97,10 +86,6 @@ class ConfirmDialog {
     cancelButton.addEventListener('click', function (e) {
       _self.callback(serializeForm(dialogForm))
       dialogConfirm.hide()
-    })
-
-    dialogEl.addEventListener('shown.bs.modal', function (_e) {
-      _self._initPlugins(dialogEl)
     })
 
     dialogEl.addEventListener('hidden.bs.modal', function (_e) {

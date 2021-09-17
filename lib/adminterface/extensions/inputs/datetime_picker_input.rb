@@ -5,20 +5,6 @@ module Adminterface
         include Base
         include Base::Stringish
         prepend Base::Groupish
-
-        def input_html_options
-          super.merge(flatpickr_options)
-        end
-
-        def flatpickr_options
-          {data: {"aa-datepicker": flatpickr}}
-        end
-
-        private
-
-        def flatpickr
-          options[:flatpickr] || inputs_config.dig(:datetime_picker)
-        end
       end
     end
   end

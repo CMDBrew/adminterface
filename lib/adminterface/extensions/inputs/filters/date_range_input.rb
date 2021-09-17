@@ -20,10 +20,16 @@ module Adminterface
           end
 
           def input_html_options_for(input_name, placeholder)
-            super.merge(class: "form-control", data: {"aa-datepicker": {enableTime: false, altFormat: "Y-m-d"}})
+            opts = super
+            opts[:class] = "#{opts[:class]} form-control".squish
+            opts.merge(plugins_options)
           end
 
           private
+
+          def plugins_configs_key
+            :date_picker
+          end
 
           def gt_input
             builder.text_field(gt_input_name, input_html_options_for(gt_input_name, gt_input_placeholder))
