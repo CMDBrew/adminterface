@@ -1,5 +1,6 @@
 import { toHTMLAttrString, toSnakeCase } from '../utils'
 import Pluginish from './base/pluginish'
+import Groupish from './base/groupish'
 
 class BaseInput {
   constructor (name, options) {
@@ -11,6 +12,7 @@ class BaseInput {
     this.label = options.label || name.charAt(0).toUpperCase() + name.slice(1)
     this.type = toSnakeCase(this.constructor.name.replace(/(Input$)/, ''))
     this.pluginish = new Pluginish(this.type, this.options)
+    this.groupish = new Groupish(this.options)
   }
 
   _defaultWrapperHTMLOptions () {
@@ -63,9 +65,18 @@ class BaseInput {
   }
 
   render () {
+    const input = this._inputHTML()
+    let inputHTML
+
+    if (this.groupish._isGroupable()) {
+      inputHTML = this.groupish._groupWrapping(input)
+    } else {
+      inputHTML = input
+    }
+
     return this._inputWrapping(`
       ${this._labelHTML()}
-      ${this._inputHTML()}
+      ${inputHTML}
     `)
   }
 }
