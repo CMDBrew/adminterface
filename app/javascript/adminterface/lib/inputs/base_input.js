@@ -43,7 +43,7 @@ class BaseInput {
       id: `batch-form-${this.name}`
     }
 
-    return { ...options, ...this.pluginish.attributes() }
+    return { ...options, ...this.pluginish.plugins }
   }
 
   _inputHTMLOptions () {
@@ -68,8 +68,8 @@ class BaseInput {
     const input = this._inputHTML()
     let inputHTML
 
-    if (this.groupish._isGroupable()) {
-      inputHTML = this.groupish._groupWrapping(input)
+    if (this.groupish.isGroupable) {
+      inputHTML = this.groupish.groupWrapping(input)
     } else {
       inputHTML = input
     }

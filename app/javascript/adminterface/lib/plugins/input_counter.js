@@ -87,7 +87,7 @@ class InputCounter {
     this._count()
     this.element.addEventListener('keyup', (_e) => this._count())
 
-    addToDebugger(this, 'inputCounter', [])
+    addToDebugger(this, this.constructor.name, [])
   }
 }
 

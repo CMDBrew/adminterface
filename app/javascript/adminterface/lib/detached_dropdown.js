@@ -28,7 +28,7 @@ class DetachedDropdown {
       _self._append(_self.element, $menu)
     })
 
-    addToDebugger(this, 'detachedDropdown', [])
+    addToDebugger(this, this.constructor.name, [])
   }
 }
 

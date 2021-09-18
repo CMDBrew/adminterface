@@ -46,7 +46,7 @@ class HeaderToggler {
       }
     })
 
-    addToDebugger(this, 'headerToggler', [])
+    addToDebugger(this, this.constructor.name, [])
   }
 }
 

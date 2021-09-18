@@ -158,9 +158,13 @@ function addToDebugger (data, path, defaultValue) {
   setObjectValue(adminterface, debuggerPath, results)
 }
 
+function camalize (str) {
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
+}
+
 export {
   addToDebugger,
-  toSnakeCase,
+  camalize,
   cookieGet,
   cookieSet,
   deepMergeObject,
@@ -170,8 +174,9 @@ export {
   queryStringToParams,
   serializeArray,
   serializeObject,
-  toHTMLCssString,
   toHTMLAttrString,
+  toHTMLCssString,
   toQueryString,
+  toSnakeCase,
   turbolinksVisit
 }

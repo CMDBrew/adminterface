@@ -100,7 +100,7 @@ class BatchActions {
     this._bindConfirm()
     this._bindSelector()
 
-    addToDebugger(this, 'batchActions', {})
+    addToDebugger(this, this.constructor.name, {})
   }
 }
 

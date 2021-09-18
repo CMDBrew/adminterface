@@ -7,13 +7,13 @@ const initBootstrap = function (element) {
 
   popoverTriggerList.map((el) => {
     const instance = new Popover(el)
-    addToDebugger(instance, 'popover', [])
+    addToDebugger(instance, instance.constructor.name, [])
     return instance
   })
 
   tooltipTriggerList.map((el) => {
     const instance = new Tooltip(el)
-    addToDebugger(instance, 'tooltip', [])
+    addToDebugger(instance, instance.constructor.name, [])
     return instance
   })
 }

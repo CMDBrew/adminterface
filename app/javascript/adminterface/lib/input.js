@@ -83,7 +83,7 @@ class Input {
     }
 
     const input = new InputClass(this.name, { ...options, as: as })
-    addToDebugger(input, `inputs.${as}`, [])
+    addToDebugger(input, `${this.constructor.name}.${input.constructor.name}`, [])
 
     return input.render()
   }

@@ -8,7 +8,7 @@ const initTomSelect = function (element) {
     const options = JSON.parse(el.dataset.aaTomSelect || {})
     const instance = new TomSelect(el, options)
 
-    addToDebugger(instance, 'tomSelect', [])
+    addToDebugger(instance, instance.constructor.name, [])
     return instance
   })
 }

@@ -4,6 +4,25 @@ class Groupish {
     this.options = options
     this.prepend = options.prepend
     this.append = options.append
+    this.isGroupable = this._isGroupable()
+    this.isGrouped = this._isGrouped()
+  }
+
+  groupWrapping (html) {
+    const prependHTML = this.prepend || ''
+    const appendHTML = this.append || ''
+
+    if (this.isGrouped) {
+      return `
+        <div class="input-group">
+          ${prependHTML}
+          ${html}
+          ${appendHTML}
+        </div>
+      `
+    } else {
+      return html
+    }
   }
 
   _groupableTypes () {
@@ -24,25 +43,12 @@ class Groupish {
     ]
   }
 
-  _isGroupable () {
-    return this._groupableTypes().includes(this.type)
+  _isGrouped () {
+    return !!this.prepend || !!this.append
   }
 
-  _groupWrapping (html) {
-    const prependHTML = this.prepend || ''
-    const appendHTML = this.append || ''
-
-    if (this.prepend || this.append) {
-      return `
-        <div class="input-group">
-          ${prependHTML}
-          ${html}
-          ${appendHTML}
-        </div>
-      `
-    } else {
-      return html
-    }
+  _isGroupable () {
+    return this._groupableTypes().includes(this.type)
   }
 }
 

@@ -116,7 +116,7 @@ class HasMany {
     this._bindEvents(this.element)
     this._initSortable()
 
-    addToDebugger(this, 'hasMany', [])
+    addToDebugger(this, this.constructor.name, [])
   }
 }
 

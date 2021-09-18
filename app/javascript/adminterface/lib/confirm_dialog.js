@@ -106,7 +106,7 @@ class ConfirmDialog {
     dialogConfirm.show()
     document.dispatchEvent(afterOpenEvent)
 
-    addToDebugger(this, 'confirmDialog', {})
+    addToDebugger(this, this.constructor.name, {})
   }
 }
 

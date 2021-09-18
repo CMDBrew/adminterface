@@ -30,27 +30,11 @@ import * as Adminterface from '@cmdbrew/adminterface'
 ## Debugging
 When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
 
-| Name        | Params     | Description
-| :---------- | :--------- | :-----------------------
-| `debug`     | `Boolean`  | Whether to enable the `observer`
-| `observer`  | `Object`   | Track Adminterface's JavaScript instances if `debug = true`
-| `meta`      | `Object`   | Configurations passed from the backend to the frontend
-| `clear`     | `Function` | Clears the `observer` object
-
 ```javascript title="Inside your browser JavaScript console"
 // Enables the debugger
 > adminterface.debug = true
-
-// Check the adminterface object
-> adminterface
-{debug: true, observer: {…}, meta: {…}, clear: ƒ}
-
-// Check the observer object
-> adminterface.observer
-{inputs: {…}, flatpickr: Array(1), confirmDialog: ConfirmDialog}
-
-// Clear the observer object
-> adminterface.clear()
+// List available commands and properties
+> adminterface.help()
 ```
 
 ## Initializers

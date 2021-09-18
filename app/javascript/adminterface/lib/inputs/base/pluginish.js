@@ -38,23 +38,22 @@ class Pluginish {
   constructor (key, options) {
     this.key = key
     this.options = options
-  }
-
-  attributes () {
-    return Object.assign({}, ...this._configs())
+    this.plugins = this._plugins()
   }
 
   enabled (name) {
-    return getObjectValue(this.attributes(), `data-aa-${name}`)
+    return getObjectValue(this.plugins, `data-aa-${name}`)
   }
 
   _plugins () {
-    return getObjectValue(adminterface, `meta.components.inputs.${this.key}.js`)
+    return Object.assign({}, ...this._configs())
   }
 
   _configs () {
-    if (this._plugins()) {
-      return this._plugins().map((plugin) => (new Config(plugin, this.options)).attributes())
+    const plugins = getObjectValue(adminterface, `meta.components.inputs.${this.key}.js`)
+
+    if (plugins) {
+      return plugins.map((plugin) => (new Config(plugin, this.options)).attributes())
     } else {
       return []
     }

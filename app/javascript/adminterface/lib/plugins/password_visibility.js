@@ -63,7 +63,7 @@ class PasswordVisibility {
     })
 
     this.eventTarget = group
-    addToDebugger(this, 'passwordVisibility', [])
+    addToDebugger(this, this.constructor.name, [])
   }
 }
 
