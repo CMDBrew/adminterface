@@ -1,16 +1,16 @@
-/* global adminterface */
 import flatpickr from 'flatpickr'
+import { addToDebugger } from '../../lib/utils'
 
 const initFlatpickr = (element) => {
   const flatpickrTriggerList = [].slice.call(element.querySelectorAll('[data-aa-flatpickr]'))
 
-  const flatpickrInstances = flatpickrTriggerList.map((el) => {
+  flatpickrTriggerList.map((el) => {
     const options = JSON.parse(el.dataset.aaFlatpickr || {})
+    const instance = flatpickr(el, options)
 
-    return flatpickr(el, options)
+    addToDebugger(instance, 'flatpickr', [])
+    return instance
   })
-
-  adminterface.flatpickr = [...adminterface.flatpickr, ...flatpickrInstances]
 }
 
 document.addEventListener('DOMContentLoaded', () => {

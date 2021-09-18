@@ -21,17 +21,36 @@ import TabItem from '@theme/TabItem';
 ````
 
 ## Quick Start
-When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
-
-```javascript title="Inside your browser JavaScript console"
-> adminterface
-{batchActions: BatchActions, confirmDialog: null, detachedDropdown: Array(0), filters: {…}, flatpickr: Array(2), …}
-```
-
 You can export commonly used components so that you can attach them programmatically.
 
 ```javascript
 import * as Adminterface from '@cmdbrew/adminterface'
+```
+
+## Debugging
+When the DOM loads, the app attaches JavasScript for each component to the `window.adminterface` object to give you a whole picture of the entire application and allow quick debugging.
+
+| Name        | Params     | Description
+| :---------- | :--------- | :-----------------------
+| `debug`     | `Boolean`  | Whether to enable the `observer`
+| `observer`  | `Object`   | Track Adminterface's JavaScript instances if `debug = true`
+| `meta`      | `Object`   | Configurations passed from the backend to the frontend
+| `clear`     | `Function` | Clears the `observer` object
+
+```javascript title="Inside your browser JavaScript console"
+// Enables the debugger
+> adminterface.debug = true
+
+// Check the adminterface object
+> adminterface
+{debug: true, observer: {…}, meta: {…}, clear: ƒ}
+
+// Check the observer object
+> adminterface.observer
+{inputs: {…}, flatpickr: Array(1), confirmDialog: ConfirmDialog}
+
+// Clear the observer object
+> adminterface.clear()
 ```
 
 ## Initializers
@@ -362,13 +381,13 @@ Here is an example of adding a detached dropdown to an element:
 ````
 
 ## Inputs
-Adminterface uses `Input` to determine which input to render based on the configuration in `adminterface.inputs.mapping` to provide consistent APIs to define the behaviour of form inputs for both frontend and backend.
+Adminterface uses `Input` to determine which input to render based on the configuration in `adminterface.meta.inputs` to provide consistent APIs to define the behaviour of form inputs for both frontend and backend.
 
 ### Configuration
 You can view the input mapping from your browser console.
 
 ```javascript title="Inside your browser JavaScript console"
-> adminterface.inputs.mapping
+> adminterface.meta.inputs
 {string: ƒ, number: ƒ, url: ƒ, phone: ƒ, password: ƒ, …}
 ```
 
@@ -469,7 +488,7 @@ class CustomStringInput extends StringInput {
 }
 
 // Update the mapping
-adminterface.inputs.mapping.string = CustomStringInput
+adminterface.meta.inputs.string = CustomStringInput
 ```
 
 #### Add a custom input type
@@ -499,7 +518,7 @@ class MyCustomInput extends BaseInput {
 }
 
 // Add the custom type to the mapping
-adminterface.inputs.mapping.my_custom_input = MyCustomInput
+adminterface.meta.inputs.my_custom_input = MyCustomInput
 ```
 
 You can now use this custom input type inside your batch action form. You can learn more about the Batch Action form in the [Index Page doc](/docs/enhancements/index#batch-actions).

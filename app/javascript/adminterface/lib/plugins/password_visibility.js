@@ -1,5 +1,5 @@
 /* global DOMParser, adminterface */
-import { getObjectValue, toHTMLCssString } from '../utils'
+import { getObjectValue, toHTMLCssString, addToDebugger } from '../utils'
 
 class PasswordVisibility {
   constructor (element, options) {
@@ -63,7 +63,7 @@ class PasswordVisibility {
     })
 
     this.eventTarget = group
-    adminterface.passwordVisibility = [...adminterface.passwordVisibility, this]
+    addToDebugger(this, 'passwordVisibility', [])
   }
 }
 

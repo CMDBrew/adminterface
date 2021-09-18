@@ -1,6 +1,4 @@
-/* global adminterface */
-
-import { cookieSet, cookieGet } from './utils'
+import { cookieSet, cookieGet, addToDebugger } from './utils'
 
 class HeaderToggler {
   constructor (element, options) {
@@ -48,7 +46,7 @@ class HeaderToggler {
       }
     })
 
-    adminterface.headerToggler = [...adminterface.headerToggler, this]
+    addToDebugger(this, 'headerToggler', [])
   }
 }
 

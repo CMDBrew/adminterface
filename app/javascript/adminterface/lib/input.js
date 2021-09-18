@@ -17,8 +17,9 @@ import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
 import PasswordInput from './inputs/password_input'
 import config from '../config'
+import { addToDebugger } from './utils'
 
-config.inputs.mapping = {
+config.meta.inputs = {
   string: StringInput,
   number: StringInput,
   url: StringInput,
@@ -45,7 +46,7 @@ class Input {
   constructor (name, options) {
     this.name = name
     this.options = options
-    this.mapping = adminterface.inputs.mapping
+    this.mapping = adminterface.meta.inputs
   }
 
   _configs () {
@@ -82,8 +83,7 @@ class Input {
     }
 
     const input = new InputClass(this.name, { ...options, as: as })
-    adminterface.inputs[as] = adminterface.inputs[as] || []
-    adminterface.inputs[as].push(input)
+    addToDebugger(input, `inputs.${as}`, [])
 
     return input.render()
   }

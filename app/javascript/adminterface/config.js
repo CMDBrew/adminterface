@@ -1,22 +1,14 @@
 /* global adminterface */
 
 const config = {
-  batchActions: null,
-  confirmDialog: null,
-  detachedDropdown: [],
-  filters: {},
-  flatpickr: [],
-  hasMany: [],
-  headerToggler: [],
-  inputCounter: [],
-  passwordVisibility: [],
-  inputs: {
-    mapping: {}
-  },
-  perPage: {},
-  popover: [],
-  tomSelect: [],
-  tooltip: []
+  debug: false,
+  observer: {},
+  meta: {},
+  clear: () => {
+    adminterface.observer = {}
+    console.log('observer cleared')
+    return true
+  }
 }
 
 const onDOMReady = () => {
@@ -31,7 +23,7 @@ const onDOMReady = () => {
   const countries = JSON.parse(metaForCountries.content)
   const timeZones = JSON.parse(metaForTimeZones.content)
 
-  adminterface.meta = { components, countries, translations, cssClasses, timeZones }
+  adminterface.meta = { ...adminterface.meta, components, countries, translations, cssClasses, timeZones }
 }
 
 document.addEventListener('DOMContentLoaded', onDOMReady)

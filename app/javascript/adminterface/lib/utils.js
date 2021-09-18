@@ -1,5 +1,4 @@
-/* global Turbolinks */
-
+/* global Turbolinks, adminterface */
 function hasTurbolinks () {
   return (typeof Turbolinks !== 'undefined' && Turbolinks.supported)
 }
@@ -130,7 +129,37 @@ function toHTMLCssString (string) {
   return string.replace(/[.#]/, '')
 }
 
+function setObjectValue (obj, path, value) {
+  const pList = path.split('.')
+  const len = pList.length
+
+  for (let i = 0; i < len - 1; i++) {
+    const elem = pList[i]
+    if (!obj[elem]) obj[elem] = {}
+    obj = obj[elem]
+  }
+
+  obj[pList[len - 1]] = value
+}
+
+function addToDebugger (data, path, defaultValue) {
+  if (!adminterface.debug) return
+
+  const debuggerPath = `observer.${path}`
+  const value = getObjectValue(adminterface, debuggerPath) || defaultValue
+  let results
+
+  if (Array.isArray(defaultValue)) {
+    results = [...value, data]
+  } else {
+    results = data
+  }
+
+  setObjectValue(adminterface, debuggerPath, results)
+}
+
 export {
+  addToDebugger,
   toSnakeCase,
   cookieGet,
   cookieSet,
