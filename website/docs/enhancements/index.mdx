@@ -64,7 +64,13 @@ We've updated input type namings to match with Formtastic inputs for consistency
       notes:  :text,
       hide:   :boolean,
     } do |ids, inputs|
-      # ...
+      User.where(id: ids).update(
+        reason: inputs[:reason],
+        notes: inputs[:notes],
+        hide: inputs[:hide]
+      )
+
+      redirect_to(collection_path, notice: "Successfully updated #{ids.count} users!")
     end
   end
   ```
@@ -80,7 +86,13 @@ We've updated input type namings to match with Formtastic inputs for consistency
       notes: {as: :text, input_html: {value: "custom-class"}},
       hide: {as: :switch}
     } do |ids, inputs|
-      ...
+      User.where(id: ids).update(
+        reason: inputs[:reason],
+        notes: inputs[:notes],
+        hide: inputs[:hide]
+      )
+
+      redirect_to(collection_path, notice: "Successfully updated #{ids.count} users!")
     end
   end
   ```

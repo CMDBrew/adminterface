@@ -66,7 +66,10 @@ Adminterface comes with initializers that you can hook into your custom JavaScri
 | `initDetachedDropdown`   | `element` | Find and initialize [Detached Dropdown](#detached-dropdown) for child elements with the `.dropdown` class within the `element`.
 
 ### Template
-All initializers follow a similar format. You can also add custom initializers as you see fit. Here is an example of the [flatpickr] initializer.
+All initializers follow a similar format. You can also add custom initializers as you see fit.
+
+For example, here is how we initialize [flatpickr] inside Adminterface:
+
 ````mdx-code-block
 import flatpickrInitializer from '!!raw-loader!@site/../app/javascript/adminterface/initializers/plugins/flatpickr.js';
 
@@ -397,24 +400,6 @@ Adminterface comes with a set of JS plugins to make form inputs more dynamic.
 :::tip
 You can add custom plugins or disable the default plugins by updating the configurations files for `components`. Learn more in the [Configuration guide](docs/start/configuration#components).
 :::
-
-Plugins are defined inside the `js` key as an `array` of key value paris. For example:
-```yaml {3-6}
-inputs:
-  date_picker:
-    js:
-      - name: flatpickr
-        default: true
-        options:
-          altFormat: Y-m-d
-          enableTime: false
-```
-
-| Option    | Type               | Description
-| :-------- | :----------------- | :------------------
-| `name`    | `String`           | The name of the plugin
-| `default` | `Boolean`          | Whether to enable this plugin by default
-| `options` | `key: value` pairs | Vendor specific configurations for the plugin
 
 #### Input Counter
 Limit the number of letters/words that the user can insert inside the `:text` input.
