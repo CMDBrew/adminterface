@@ -8,9 +8,9 @@ class BatchActionSelectorTest < ActiveAdmin::BaseTestCase
   def confirm_dialog_config
     @confirm_dialog_config ||= {
       buttons: {
-        ok: {
+        confirm: {
           text: "OK",
-          class: default_css_classes.dig(:confirm_dialog, :ok)
+          class: default_css_classes.dig(:confirm_dialog, :confirm)
         },
         cancel: {
           text: "Cancel",

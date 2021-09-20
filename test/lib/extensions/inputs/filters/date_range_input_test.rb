@@ -36,13 +36,13 @@ module Filters
 
     test "js data options" do
       assert_equal(
-        {enableTime: false, altFormat: "Y-m-d"}.to_json,
-        @form.find('input.form-control[type="text"][id="q_updated_at_gteq_datetime"]')["data-aa-datepicker"]
+        {enableTime: false, altFormat: "Y-m-d"}.sort.to_h.to_json,
+        @form.find('input.form-control[type="text"][id="q_updated_at_gteq_datetime"]')["data-aa-flatpickr"]
       )
 
       assert_equal(
-        {enableTime: false, altFormat: "Y-m-d"}.to_json,
-        @form.find('input.form-control[type="text"][id="q_updated_at_lteq_datetime"]')["data-aa-datepicker"]
+        {enableTime: false, altFormat: "Y-m-d"}.sort.to_h.to_json,
+        @form.find('input.form-control[type="text"][id="q_updated_at_lteq_datetime"]')["data-aa-flatpickr"]
       )
     end
   end

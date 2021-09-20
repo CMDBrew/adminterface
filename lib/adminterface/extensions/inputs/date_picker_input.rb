@@ -9,17 +9,7 @@ module Adminterface
         def input_html_options
           opts = super
           opts[:class] = "#{opts[:class]} form-control".squish
-          opts.merge(flatpickr_options)
-        end
-
-        def flatpickr_options
-          {data: {"aa-datepicker": flatpickr}}
-        end
-
-        private
-
-        def flatpickr
-          options[:flatpickr] || inputs_config.dig(:date_picker)
+          opts
         end
       end
     end

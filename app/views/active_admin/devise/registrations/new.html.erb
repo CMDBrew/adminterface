@@ -9,8 +9,8 @@
     resource.class.authentication_keys.each_with_index { |key, index|
       f.input key, label: t("active_admin.devise."+key.to_s+".title"), input_html: { autofocus: index.zero? }
     }
-    f.input :password, visibility: true, label: t("active_admin.devise.password.title")
-    f.input :password_confirmation, visibility: true, label: t("active_admin.devise.password_confirmation.title")
+    f.input :password, label: t("active_admin.devise.password.title")
+    f.input :password_confirmation, label: t("active_admin.devise.password_confirmation.title")
   end
   f.actions do
     f.action :submit,

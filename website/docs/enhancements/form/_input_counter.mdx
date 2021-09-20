@@ -1,0 +1,28 @@
+#### Input Counter
+You can enable counter by passing the `counter:` option. See the [Configuration](/docs/start/configuration#inputs) guide for instructions on how to update the default options.
+
+:::caution
+To ensure data integrity, you should also implement server-side validations.
+:::
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="basic"
+  values={[
+    {label: 'Basic', value: 'basic'},
+    {label: 'Options', value: 'options'},
+  ]}>
+
+  <TabItem value="basic">
+    <pre>
+      f.input :{props.name}, as: :{props.type}, input_counter: true
+    </pre>
+  </TabItem>
+  <TabItem value="options">
+    <pre>
+      f.input :{props.name}, as: :{props.type}, input_counter: &#123;type: "word", limit: 10&#125;
+    </pre>
+  </TabItem>
+</Tabs>

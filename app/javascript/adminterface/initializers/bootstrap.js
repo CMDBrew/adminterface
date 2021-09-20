@@ -1,17 +1,29 @@
-/* global adminterface */
-
 import { Popover, Tooltip } from 'bootstrap'
+import { addToDebugger } from '../lib/utils'
 
-const BootstrapInit = function (element) {
+const initBootstrap = function (element) {
   const popoverTriggerList = [].slice.call(element.querySelectorAll('[data-bs-toggle="popover"]'))
   const tooltipTriggerList = [].slice.call(element.querySelectorAll('[data-bs-toggle="tooltip"]'))
-  const popoverInstances = popoverTriggerList.map((el) => new Popover(el))
-  const tooltipInstances = tooltipTriggerList.map((el) => new Tooltip(el))
 
-  adminterface.popover = [...adminterface.popover, ...popoverInstances]
-  adminterface.tooltip = [...adminterface.tooltip, ...tooltipInstances]
+  popoverTriggerList.map((el) => {
+    const instance = new Popover(el)
+    addToDebugger(instance, instance.constructor.name, [])
+    return instance
+  })
+
+  tooltipTriggerList.map((el) => {
+    const instance = new Tooltip(el)
+    addToDebugger(instance, instance.constructor.name, [])
+    return instance
+  })
 }
 
-document.addEventListener('DOMContentLoaded', () => BootstrapInit(document))
+document.addEventListener('DOMContentLoaded', () => {
+  initBootstrap(document)
+})
 
-export default BootstrapInit
+document.addEventListener('confirm_dialog:before_open', (el) => {
+  initBootstrap(el.detail.dialogForm)
+})
+
+export default initBootstrap

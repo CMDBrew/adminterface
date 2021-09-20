@@ -23,7 +23,7 @@ ActiveAdmin.register Post do
 end
 ```
 
-## Multiple forms on the same page
+## Multiple forms
 ```ruby title="app/admin/users.rb" {2-14}
 ActiveAdmin.register User do
   form multiple: true do
@@ -41,6 +41,75 @@ ActiveAdmin.register User do
   end
 end
 ```
+
+## Nested forms
+We've replaced jQuery with [SortableJS]. However, nested forms work the same as [ActiveAdmin](https://activeadmin.info/5-forms.html#nested-resources).
+
+```ruby title="app/admin/posts.rb" {6-8}
+ActiveAdmin.register Post do
+  form do |f|
+    ...
+
+    f.inputs do
+      f.has_many :taggings, sortable: :position, sortable_start: 1 do |t|
+        t.input :tag
+      end
+    end
+
+    ...
+  end
+end
+```
+
+The `has_many` fields do not support Arbre elements natively. See [Github issue #4043](https://github.com/activeadmin/activeadmin/issues/4043). Here are a couple of workaround examples:
+
+````mdx-code-block
+<Tabs
+  defaultValue="columns"
+  values={[
+    {label: 'Columns', value: 'columns'},
+    {label: 'Arbre', value: 'arbre'},
+  ]}>
+
+  <TabItem value="columns">
+
+  ```ruby title="app/admin/users.rb" {3-4,6-8}
+  ActiveAdmin.register User do
+    f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+      k.inputs(class: "row") do
+        k.input :fullname, wrapper_html: {class: "col-lg-6"}
+      end +
+        k.inputs(class: "row") do
+          k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+          k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+        end
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="arbre">
+
+  ```ruby title="app/admin/users.rb" {6-8}
+  ActiveAdmin.register User do
+    f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+      k.inputs(class: "row") do
+        k.input :fullname, wrapper_html: {class: "col-lg-6"}
+      end +
+        Arbre::Context.new do
+          para "some hint texts"
+        end.to_s +
+        k.inputs(class: "row") do
+          k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+          k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+        end
+    end
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
 
 ## Inputs
 [Formtastic]'s input helper helps you create input fields quickly. Here is an example output using the `input` as `string` helper:
@@ -101,21 +170,31 @@ f.input :accept, as: :boolean
 `:check_boxes` - a set of checkbox inputs. Alternative to `:select` for ActiveRecord-associations: `has_many`, and `has_and_belongs_to_many`.
 - **Configuration**: [Formtastic][Formtastic/CheckBoxesInput]
 - **Styling**: [Bootstrap][Bootstrap/checks-radios#checks]
-- **Add-ons**: [Inline Options](#inline-radio--check-options)
 
 ```ruby
 f.input :interests, as: :check_boxes, collection: %w[movies sports]
 ```
 
+````mdx-code-block
+import CheckBoxesInlinish from './form/_inlinish.mdx';
+
+<CheckBoxesInlinish name="interests" type="check_boxes" collection="%w[movies sports]" />
+````
+
 ### Color
 `:color` - a color select using the [Bootstrap] color component. New in HTML5.
 - **Configuration**: [Formtastic][Formtastic/StringInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control#color]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :favorite_color, as: :color
 ```
+
+````mdx-code-block
+import ColorGroupish from './form/_groupish.mdx';
+
+<ColorGroupish name="favorite_color" type="color" />
+````
 
 ### Country
 `:country` - a select menu of country names. Default for column types: `:string` with name `"country"`.
@@ -133,7 +212,6 @@ BatchAction form only supports:
 
 - **Configuration**: [Formtastic][Formtastic/CountryInput], [CountrySelect]
 - **Styling**: [Bootstrap][Bootstrap/select]
-- **Add-ons**: [Input Group](#input-group)
 
 ````mdx-code-block
 <Tabs
@@ -176,21 +254,31 @@ BatchAction form only supports:
 </Tabs>
 ````
 
+````mdx-code-block
+import CountryGroupish from './form/_groupish.mdx';
+
+<CountryGroupish name="country" type="country" />
+````
+
 ### Datalist
 `:datalist` - a text field with an accompanying [datalist tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/datalist) which provides options for auto-completion.
 - **Configuration**: [Formtastic][Formtastic/DatalistInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :friend, as: :datalist, collection: %w[john mary]
 ```
 
+````mdx-code-block
+import DatalistGroupish from './form/_groupish.mdx';
+
+<DatalistGroupish name="friend" type="datalist" />
+````
+
 ### DatePicker
 `:date_picker` or `:datepicker` (ActiveAdmin compatibility) - a date select. Alternative to `:date` using the [Flatpickr] library replacing the jQuery date picker in [ActiveAdmin]
 - **Configuration**: [Formtastic][Formtastic/StringInput], [Configuration]
 - **Styling**: [Bootstrap][Bootstrap/form-control], [Flatpickr]
-- **Add-ons**: [Input Group](#input-group)
 
 ````mdx-code-block
 <Tabs
@@ -217,6 +305,12 @@ f.input :friend, as: :datalist, collection: %w[john mary]
 </Tabs>
 ````
 
+````mdx-code-block
+import DatePickerGroupish from './form/_groupish.mdx';
+
+<DatePickerGroupish name="published_at" type="date_picker" />
+````
+
 ### DateSelect
 `:date_select` - a date select. Default for column types: `:date`.
 - **Configuration**: [Formtastic][Formtastic/DateSelectInput]
@@ -230,7 +324,6 @@ f.input :published_at, as: :date_select
 `:datetime_picker` - a date and time select. Alternative to `:datetime` using the [Flatpickr] library replacing the jQuery date picker in [ActiveAdmin].
 - **Configuration**: [Formtastic][Formtastic/StringInput], [Configuration]
 - **Styling**: [Bootstrap][Bootstrap/form-control], [Flatpickr]
-- **Add-ons**: [Input Group](#input-group)
 
 ````mdx-code-block
 <Tabs
@@ -257,6 +350,12 @@ f.input :published_at, as: :date_select
 </Tabs>
 ````
 
+````mdx-code-block
+import DateTimePickerGroupish from './form/_groupish.mdx';
+
+<DateTimePickerGroupish name="published_at" type="datetime_picker" />
+````
+
 ### DateTimeSelect
 `:datetime_select` - a date and time select. Default for column types: `:datetime`.
 - **Configuration**: [Formtastic][Formtastic/DateTimeSelectInput]
@@ -270,11 +369,16 @@ f.input :published_at, as: :datetime_select
 `:email` - a text field (just like string). Default for columns with name matching `"email"`. New in HTML5. Works on some mobile browsers already.
 - **Configuration**: [Formtastic][Formtastic/EmailInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :email, as: :email
 ```
+
+````mdx-code-block
+import EmailGroupish from './form/_groupish.mdx';
+
+<EmailGroupish name="email" type="email" />
+````
 
 ### File
 `:file` - a file upload field.
@@ -285,11 +389,16 @@ There are many ways to add file fields to your application. Here are a few commo
 
 - **Configuration**: [Formtastic][Formtastic/FileInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control#file-input]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :attachment, as: :file
 ```
+
+````mdx-code-block
+import FileGroupish from './form/_groupish.mdx';
+
+<FileGroupish name="file" type="file" />
+````
 
 ### Hidden
 `:hidden` - a hidden field. Creates a hidden field (added for compatibility).
@@ -303,17 +412,21 @@ f.input :invisible, as: :hidden
 `:number` - a text field (just like string). Default for column types: `:integer`, `:float`, and `:decimal`.
 - **Configuration**: [Formtastic][Formtastic/NumberInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :price, as: :number
 ```
 
+````mdx-code-block
+import NumberGroupish from './form/_groupish.mdx';
+
+<NumberGroupish name="price" type="number" />
+````
+
 ### Password
 `:password` - a password input. Default for column types: `:string` with name matching "password".
 - **Configuration**: [Formtastic][Formtastic/PasswordInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ````mdx-code-block
 <Tabs
@@ -335,32 +448,48 @@ f.input :price, as: :number
   Add a button to allow users to reveal password.
 
   ```ruby
-  f.input :secret, as: :password, visibility: true
+  f.input :secret, as: :password, password_visibility: true
   ```
 
   </TabItem>
 </Tabs>
 ````
 
+````mdx-code-block
+import PasswordGroupish from './form/_groupish.mdx';
+
+<PasswordGroupish name="secret" type="password" />
+````
+
 ### Phone
 `:phone` - a text field (just like string). Default for columns with name matching `"phone"` or `"fax"`. New in HTML5.
 - **Configuration**: [Formtastic][Formtastic/PhoneInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :telephone, as: :phone
 ```
 
+````mdx-code-block
+import PhoneGroupish from './form/_groupish.mdx';
+
+<PhoneGroupish name="telephone" type="phone" />
+````
+
 ### Radio
 `:radio` - a set of radio inputs. Alternative to `:select` for ActiveRecord-associations: `belongs_to`.
 - **Configuration**: [Formtastic][Formtastic/RadioInput]
 - **Styling**: [Bootstrap][Bootstrap/checks-radios#radios]
-- **Add-ons**: [Inline Options](#inline-radio--check-options)
 
 ```ruby
 f.input :interests, as: :radio, collection: %w[movies sports]
 ```
+
+````mdx-code-block
+import RadioInlinish from './form/_inlinish.mdx';
+
+<RadioInlinish name="interests" type="radio" collection="%w[movies sports]" />
+````
 
 ### Range
 `:range` - a slider field using the [Bootstrap] range component.
@@ -389,17 +518,21 @@ f.input :biography, as: :rich_text_area
 `:search` - a text field (just like string). Default for columns with name matching `"search"`. New in HTML5. Works on Safari.
 - **Configuration**: [Formtastic][Formtastic/SearchInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :keyword, as: :search
 ```
 
+````mdx-code-block
+import SearchGroupish from './form/_groupish.mdx';
+
+<SearchGroupish name="keyword" type="search" />
+````
+
 ### Select
 `:select` - a select menu. Default for ActiveRecord associations: `belongs_to`, `has_many`, and `has_and_belongs_to_many`.
 - **Configuration**: [Formtastic][Formtastic/SelectInput], [TomSelect], [Configuration]
 - **Styling**: [Bootstrap][Bootstrap/select]
-- **Add-ons**: [Input Group](#input-group)
 
 ````mdx-code-block
 <Tabs
@@ -438,15 +571,26 @@ f.input :keyword, as: :search
 </Tabs>
 ````
 
+````mdx-code-block
+import SelectGroupish from './form/_groupish.mdx';
+
+<SelectGroupish name="interests" type="select" attrs="collection: %w[movies sports]" />
+````
+
 ### String
 `:string` - a text field. Default for column types: `:string`
 - **Configuration**: [Formtastic/StringInput]
 - **Styling**: [Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :name, as: :string
 ```
+
+````mdx-code-block
+import StringGroupish from './form/_groupish.mdx';
+
+<StringGroupish name="name" type="string" />
+````
 
 ### Switch
 `:boolean` - a toggle. Alternative to `:boolean` using the [Bootstrap] switch component.
@@ -461,21 +605,31 @@ f.input :accept, as: :switch
 `:text` - a textarea. Default for column types: `:text`
 - **Configuration**: [Formtastic][Formtastic/TextInput], [Configuration]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Counter](#counter)
 
 ```ruby
 f.input :biography, as: :text
 ```
 
+````mdx-code-block
+import TextInputCounter from './form/_input_counter.mdx';
+
+<TextInputCounter name="biography" type="text" />
+````
+
 ### TimePicker
 `:time_select` - a time picker. Alternative to `:time`. New in HTML5.
 - **Configuration**: [Formtastic][Formtastic/StringInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :published_at, as: :time_picker
 ```
+
+````mdx-code-block
+import TimePickerGroupish from './form/_groupish.mdx';
+
+<TimePickerGroupish name="published_at" type="time_picker" />
+````
 
 ### TimeSelect
 `:time_select` - a time select. Default for column types: `:time`.
@@ -496,8 +650,6 @@ BatchAction form only supports:
 
 - **Configuration**: [Formtastic][Formtastic/TimeZoneInput]
 - **Styling**: [Bootstrap][Bootstrap/select]
-- **Add-ons**: [Input Group](#input-group)
-
 
 ````mdx-code-block
 <Tabs
@@ -524,157 +676,25 @@ BatchAction form only supports:
 </Tabs>
 ````
 
+````mdx-code-block
+import TimeZoneGroupish from './form/_groupish.mdx';
+
+<TimeZoneGroupish name="timezone" type="time_zone" attrs="priority_zones: ActiveSupport::TimeZone.us_zones" />
+````
+
 ### URL
 `:url` - a text field (just like string). Default for columns with name matching `"url"`. New in HTML5. Works on some mobile browsers already.
 - **Configuration**: [Formtastic][Formtastic/UrlInput]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
-- **Add-ons**: [Input Group](#input-group)
 
 ```ruby
 f.input :website, as: :url
 ```
 
-## Add-ons
-Check the [Inputs](#inputs) section for inputs work with each add-ons.
-
-### Input Group
-We've added support for [Bootstrap's input-group][Bootstrap/input-group]. Use the `append` and `prepend` options. When you pass in either of them, it will wrap the input inside the `.input-group` element.
-
 ````mdx-code-block
-<Tabs
-  defaultValue="prepend"
-  values={[
-    {label: 'Prepend', value: 'prepend'},
-    {label: 'Append', value: 'append'},
-  ]}>
+import URLGroupish from './form/_groupish.mdx';
 
-  <TabItem value="prepend">
-
-  ```ruby
-  f.input :name, as: :string, prepend: content_tag(:span, "some text", class: "input-group-text")
-  ```
-
-  </TabItem>
-  <TabItem value="append">
-
-  ```ruby
-  f.input :name, as: :string, append: content_tag(:span, "some text", class: "input-group-text")
-  ```
-
-  </TabItem>
-</Tabs>
-````
-
-### Inline Options
-You can pass in `inline: true` to render the options inline.
-
-```ruby
-f.input :interests, as: :check_boxes, collection: %w[movies sports], inline: true
-f.input :interests, as: :radio, collection: %w[movies sports], inline: true
-```
-
-### Counter
-You can enable counter by passing the `counter:` option. See the [Configuration](/docs/start/configuration#inputs) guide for instructions on how to update the default options.
-
-:::caution
-
-To ensure data integrity, you should also implement server-side validations.
-
-:::
-
-````mdx-code-block
-<Tabs
-  defaultValue="basic"
-  values={[
-    {label: 'Basic', value: 'basic'},
-    {label: 'Options', value: 'options'},
-  ]}>
-
-  <TabItem value="basic">
-
-  ```ruby
-  f.input :biography, as: :text, counter: true
-  ```
-
-  </TabItem>
-  <TabItem value="options">
-
-  ```ruby
-  f.input :biography, as: :text, counter: {type: "word", limit: 10}
-  ```
-
-  </TabItem>
-</Tabs>
-````
-
-## Nested Resources
-We've replaced jQuery with [SortableJS]. However, nested forms work the same as [ActiveAdmin](https://activeadmin.info/5-forms.html#nested-resources).
-
-```ruby title="app/admin/posts.rb" {6-8}
-ActiveAdmin.register Post do
-  form do |f|
-    ...
-
-    f.inputs do
-      f.has_many :taggings, sortable: :position, sortable_start: 1 do |t|
-        t.input :tag
-      end
-    end
-
-    ...
-  end
-end
-```
-
-### HasMany & Arbre
-The `has_many` fields do not support Arbre elements natively. See [Github issue #4043](https://github.com/activeadmin/activeadmin/issues/4043). Here are a couple of example workarounds:
-
-````mdx-code-block
-<Tabs
-  defaultValue="columns"
-  values={[
-    {label: 'Columns', value: 'columns'},
-    {label: 'Arbre', value: 'arbre'},
-  ]}>
-
-  <TabItem value="columns">
-
-  ```ruby title="app/admin/users.rb" {3-4,6-8}
-  ActiveAdmin.register User do
-    f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
-      k.inputs(class: "row") do
-        k.input :fullname, wrapper_html: {class: "col-lg-6"}
-      end +
-        k.inputs(class: "row") do
-          k.input :address_line1, wrapper_html: {class: "col-lg-6"}
-          k.input :address_line2, wrapper_html: {class: "col-lg-6"}
-        end
-    end
-  end
-  ```
-
-  </TabItem>
-  <TabItem value="arbre">
-
-  ```ruby title="app/admin/users.rb" {6-8}
-  ActiveAdmin.register User do
-    f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
-      k.inputs(class: "row") do
-        k.input :fullname, wrapper_html: {class: "col-lg-6"}
-      end +
-        Arbre::Context.new do
-          para "some hint texts"
-        end.to_s +
-        k.inputs(class: "row") do
-          k.input :address_line1, wrapper_html: {class: "col-lg-6"}
-          k.input :address_line2, wrapper_html: {class: "col-lg-6"}
-        end
-    end
-  end
-  ```
-
-  </TabItem>
-</Tabs>
+<URLGroupish name="website" type="url" />
 ````
 
 [ActiveAdmin]: https://activeadmin.info/5-forms.html
@@ -685,7 +705,6 @@ The `has_many` fields do not support Arbre elements natively. See [Github issue 
 [Bootstrap/form-control]: https://getbootstrap.com/docs/5.0/forms/form-control/
 [Bootstrap/form-control#color]: https://getbootstrap.com/docs/5.0/forms/form-control#color
 [Bootstrap/form-control#file-input]: https://getbootstrap.com/docs/5.0/forms/form-control#file-input
-[Bootstrap/input-group]: https://getbootstrap.com/docs/5.0/forms/input-group
 [Bootstrap/range]: https://getbootstrap.com/docs/5.0/forms/range/
 [Bootstrap/select]: https://getbootstrap.com/docs/5.0/forms/select/
 [Configuration]: /docs/start/configuration

@@ -19,7 +19,11 @@ module Adminterface
         config.comments_menu = false
         config.comments_order = "created_at DESC"
 
-        meta_tags = {viewport: "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"}
+        meta_tags = {
+          version: Adminterface::VERSION,
+          viewport: "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"
+        }
+
         config.meta_tags_for_logged_out_pages = meta_tags
         config.meta_tags = meta_tags
       end

@@ -1,3 +1,4 @@
+/* global adminterface */
 import SelectInput from './select_input'
 import { toHTMLAttrString } from '../utils'
 
@@ -27,14 +28,13 @@ class TimeZoneInput extends SelectInput {
   }
 
   _getAllTimeZones () {
-    const meta = (document.querySelector('#meta-tags-for-js meta[name="time_zones"]') || {})
-    const content = JSON.parse(meta.content)
+    const timeZones = adminterface.meta.timeZones
 
-    if (content.error) {
-      console.error(content)
+    if (timeZones.error) {
+      console.error(timeZones)
       return []
     } else {
-      return content
+      return timeZones
     }
   }
 

@@ -1,19 +1,18 @@
-/* global Turbolinks */
-
-function hasTurbolinks () {
+/* global Turbolinks, adminterface */
+export function hasTurbolinks () {
   return (typeof Turbolinks !== 'undefined' && Turbolinks.supported)
 }
 
-function turbolinksVisit (params) {
+export function turbolinksVisit (params) {
   const path = [window.location.pathname, '?', toQueryString(params)].join('')
   Turbolinks.visit(path)
 }
 
-function queryString () {
+export function queryString () {
   return (window.location.search || '').replace(/^\?/, '')
 }
 
-function queryStringToParams () {
+export function queryStringToParams () {
   const decode = (value) => decodeURIComponent((value || '').replace(/\+/g, '%20'))
 
   return queryString()
@@ -24,7 +23,7 @@ function queryStringToParams () {
     })
 }
 
-function toHTMLAttrString (obj) {
+export function toHTMLAttrString (obj) {
   const object = obj || {}
   const arr = []
   Object.keys(object).forEach((key) => {
@@ -40,7 +39,7 @@ function toHTMLAttrString (obj) {
   return arr.join(' ')
 }
 
-function toQueryString (params) {
+export function toQueryString (params) {
   const encode = (value) => encodeURIComponent(value || '')
 
   return params
@@ -49,13 +48,13 @@ function toQueryString (params) {
     .join('&')
 }
 
-function serializeArray (form) {
+export function serializeArray (form) {
   const arr = []
 
-  Array.prototype.slice.call(form.elements).forEach(function (field) {
+  Array.prototype.slice.call(form.elements).forEach((field) => {
     if (!field.name || field.disabled || ['file', 'reset', 'submit', 'button'].indexOf(field.type) > -1) return
     if (field.type === 'select-multiple') {
-      Array.prototype.slice.call(field.options).forEach(function (option) {
+      Array.prototype.slice.call(field.options).forEach((option) => {
         if (!option.selected) return
         arr.push({
           name: field.name,
@@ -74,20 +73,20 @@ function serializeArray (form) {
   return arr
 }
 
-function serializeObject (form) {
+export function serializeObject (form) {
   return serializeArray(form).reduce((obj, item) => {
     obj[item.name] = item.value
     return obj
   }, {})
 }
 
-function cookieSet (name, value, expireInSec) {
+export function cookieSet (name, value, expireInSec) {
   const expireAt = new Date()
   expireAt.setTime(expireAt.getTime() + expireInSec * 1000)
   document.cookie = `${name}=${value};expires=${expireAt.toGMTString()};path=/`
 }
 
-function cookieGet (name) {
+export function cookieGet (name) {
   const cookieName = `${name}=`
   const ca = document.cookie.split(';')
   for (let i = 0; i < ca.length; i++) {
@@ -98,7 +97,7 @@ function cookieGet (name) {
   return null
 }
 
-function getObjectValue (data, path) {
+export function getObjectValue (data, path) {
   const arr = path.split('.')
 
   for (let i = 0; typeof data === 'object' && i < arr.length; i++) {
@@ -108,7 +107,7 @@ function getObjectValue (data, path) {
   return data
 }
 
-function deepMergeObject (target, source) {
+export function deepMergeObject (target, source) {
   for (const key of Object.keys(source)) {
     if (source[key] instanceof Object) Object.assign(source[key], deepMergeObject(target[key], source[key]))
   }
@@ -117,17 +116,48 @@ function deepMergeObject (target, source) {
   return target
 }
 
-export {
-  cookieGet,
-  cookieSet,
-  deepMergeObject,
-  getObjectValue,
-  hasTurbolinks,
-  queryString,
-  queryStringToParams,
-  serializeArray,
-  serializeObject,
-  toHTMLAttrString,
-  toQueryString,
-  turbolinksVisit
+export function toSnakeCase (string) {
+  return (
+    string
+      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
+      .map(x => x.toLowerCase())
+      .join('_')
+  )
+}
+
+export function toHTMLCssString (string) {
+  return string.replace(/[.#]/, '')
+}
+
+export function setObjectValue (obj, path, value) {
+  const pList = path.split('.')
+  const len = pList.length
+
+  for (let i = 0; i < len - 1; i++) {
+    const elem = pList[i]
+    if (!obj[elem]) obj[elem] = {}
+    obj = obj[elem]
+  }
+
+  obj[pList[len - 1]] = value
+}
+
+export function addToDebugger (data, path, defaultValue) {
+  if (!adminterface.debug) return
+
+  const debuggerPath = `observer.${path}`
+  const value = getObjectValue(adminterface, debuggerPath) || defaultValue
+  let results
+
+  if (Array.isArray(defaultValue)) {
+    results = [...value, data]
+  } else {
+    results = data
+  }
+
+  setObjectValue(adminterface, debuggerPath, results)
+}
+
+export function camalize (str) {
+  return str.toLowerCase().replace(/[^a-zA-Z0-9]+(.)/g, (m, chr) => chr.toUpperCase())
 }

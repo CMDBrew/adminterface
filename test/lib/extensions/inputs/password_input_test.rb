@@ -60,17 +60,3 @@ class PasswordInputGroupingTest < ActiveAdmin::InputTestCase
     assert form.has_selector?('.input-group input.form-control[type="password"] + span.input-group-text')
   end
 end
-
-class PasswordInputShowPasswordTest < ActiveAdmin::InputTestCase
-  test "renders visibility" do
-    form = build_form do |f|
-      f.inputs do
-        f.input :secret, as: :password, visibility: true
-      end
-    end
-
-    assert form.has_selector?(".password.input .password-visibility-toggler")
-    assert form.has_selector?(".password.input .password-visibility-toggler i[data-mode='show']")
-    assert form.has_selector?(".password.input .password-visibility-toggler i[data-mode='hide']")
-  end
-end

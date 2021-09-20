@@ -1,3 +1,4 @@
+/* global adminterface */
 import BaseInput from './inputs/base_input'
 import BooleanInput from './inputs/boolean_input'
 import CheckBoxesInput from './inputs/check_boxes_input'
@@ -14,10 +15,11 @@ import SwitchInput from './inputs/switch_input'
 import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
-import { PasswordInput } from './inputs/password_input'
-import adminterface from '../config'
+import PasswordInput from './inputs/password_input'
+import config from '../config'
+import { addToDebugger } from './utils'
 
-adminterface.inputs.mapping = {
+config.meta.inputs = {
   string: StringInput,
   number: StringInput,
   url: StringInput,
@@ -44,7 +46,7 @@ class Input {
   constructor (name, options) {
     this.name = name
     this.options = options
-    this.mapping = adminterface.inputs.mapping
+    this.mapping = adminterface.meta.inputs
   }
 
   _configs () {
@@ -80,7 +82,10 @@ class Input {
       throw new Error(`Unsupported input type: {${this.name}: ${as}}`)
     }
 
-    return (new InputClass(this.name, { ...options, as: as })).render()
+    const input = new InputClass(this.name, { ...options, as: as })
+    addToDebugger(input, `${this.constructor.name}.${input.constructor.name}`, [])
+
+    return input.render()
   }
 }
 

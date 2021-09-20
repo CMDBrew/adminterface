@@ -1,0 +1,27 @@
+#### Input Group
+Use the `append` and `prepend` options. When you pass in either of them, it will wrap the input inside the [Bootstrap's input-group][Bootstrap/input-group] element.
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+<Tabs
+  defaultValue="prepend"
+  values={[
+    {label: 'Prepend', value: 'prepend'},
+    {label: 'Append', value: 'append'},
+  ]}>
+
+  <TabItem value="prepend">
+    <pre>
+      f.input :{props.name}, as: :{props.type}, {props.attrs && props.attrs + ", "}prepend: content_tag(:span, "some text", class: "input-group-text")
+    </pre>
+  </TabItem>
+  <TabItem value="append">
+    <pre>
+      f.input :{props.name}, as: :{props.type}, {props.attrs && props.attrs + ", "}append: content_tag(:span, "some text", class: "input-group-text")
+    </pre>
+  </TabItem>
+</Tabs>
+
+
+[Bootstrap/input-group]: https://getbootstrap.com/docs/5.0/forms/input-group

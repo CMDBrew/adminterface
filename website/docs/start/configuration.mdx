@@ -10,8 +10,7 @@ import TabItem from '@theme/TabItem';
 import CodeBlock from '@theme/CodeBlock';
 import Link from '@docusaurus/Link';
 ````
-
-We've kept existing functionalities and extended them to make it easier for you to customize your application. Please see [ActiveAdmin] for basic configurations and usage guides.
+Adminterface extends the configurations from [ActiveAdmin][ActiveAdmin] to make it easier to customize the styles and behaviours of your application.
 
 ## CSS Classes
 Customize the default CSS classes for [ActiveAdmin]'s components. You can view [Bootstrap CSS classes here](https://getbootstrap.com/docs/5.0/getting-started/introduction/) for more references.
@@ -325,15 +324,38 @@ header:
 | `breakpoint`  | `String`                 | Use [Bootstrap]'s breakpoints. Available options are `sm`, `md`, `lg`, `xl`, `xxl` or `null`
 
 ### Inputs
-`inputs:` — formtastic input components
+`inputs:` — formtastic and JavaScript input components.
 
-| Option               | Type                       | Description
-| :------------------- | :------------------------- | :------------------
-| `date_picker`        | Nested `key: value` pairs  | See [Flatpickr] for config options.
-| `datetime_picker`    | Nested `key: value` pairs  | See [Flatpickr] for config options.
-| `tom_select`         | Nested `key: value` pairs  | See [TomSelect] for config options.
-| `text.counter.type`  | `String`                   | The mode for counting. Available options are `letter`, `word`
-| `text.counter.limit` | `Integer`                  | Maximum count
+You can add configurations for any available input types. You can find the default input types inside the [Form Page guide](/docs/enhancements/form#inputs).
+
+Plugins are defined inside the `js` as an `array` of key and value pairs. Please see the [JavaScript guide](/docs/enhancements/javascript#plugins) for the default plugins that comes with Adminterface.
+```yaml {3-6}
+inputs:
+  date_picker:
+    js:
+      - name: flatpickr
+        default: true
+        options:
+          altFormat: Y-m-d
+          enableTime: false
+```
+
+| Option    | Type               | Description
+| :-------- | :----------------- | :------------------
+| `name`    | `String`           | The name of the plugin
+| `default` | `Boolean`          | Whether to enable this plugin by default
+| `options` | `key: value` pairs | Vendor specific configurations for the plugin
+
+:::tip
+It is also possible to add custom input types. For example:
+
+```yaml
+inputs:
+  my_custom_input:
+    ...
+```
+Please see [the official Formtastic guide](https://github.com/formtastic/formtastic#modified--custom-inputs) and our [JavaScript guide](/docs/enhancements/javascript#add-a-custom-input-type) for more information.
+:::
 
 ### Sidebar
 `sidebar:` — filters on the index page.

@@ -32,57 +32,35 @@ class TextInputTest < ActiveAdmin::InputTestCase
 end
 
 class TextInputCounterTest < ActiveAdmin::InputTestCase
-  def counter_config
-    @counter_config ||= Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :text, :counter)
-  end
-
-  test "defaults to disable counter" do
-    form = build_form do |f|
-      f.inputs do
-        f.input :biography, as: :text
-      end
-    end
-
-    refute form.has_selector?(".input.text .input-counter-container")
-    refute form.has_selector?(".input.text .input-counter-stats")
-    refute form.has_selector?(".input.text .input-counter-char-count")
-    refute form.has_selector?(".input.text .input-counter-char-left")
-    refute form.has_selector?(".input.text .input-counter-char-limit")
+  def input_counter_config
+    @input_counter_config ||=
+      Adminterface::Configs::DEFAULTS.dig(:components, :inputs, :text, :js).find { |x| x[:name].eql?("input-counter") }
   end
 
   test "enables counter" do
     form = build_form do |f|
       f.inputs do
-        f.input :biography, as: :text, counter: true
+        f.input :biography, as: :text, input_counter: true
       end
     end
 
-    assert_equal(counter_config.to_json, form.find("textarea")["data-aa-input-counter"])
-    assert form.has_selector?(".input.text .input-counter-container")
-    assert form.has_selector?(".input.text .input-counter-stats")
-    assert form.has_selector?(".input.text .input-counter-char-count")
-    assert form.has_selector?(".input.text .input-counter-char-left")
-    assert form.has_selector?(".input.text .input-counter-char-limit")
+    assert_equal(input_counter_config[:options].sort.to_h.to_json, form.find("textarea")["data-aa-input-counter"])
   end
 
   test "disables counter" do
     form = build_form do |f|
       f.inputs do
-        f.input :biography, as: :text, counter: false
+        f.input :biography, as: :text, input_counter: false
       end
     end
 
-    refute form.has_selector?(".input.text .input-counter-container")
-    refute form.has_selector?(".input.text .input-counter-stats")
-    refute form.has_selector?(".input.text .input-counter-char-count")
-    refute form.has_selector?(".input.text .input-counter-char-left")
-    refute form.has_selector?(".input.text .input-counter-char-limit")
+    refute form.has_selector?("textarea[data-aa-input-counter]")
   end
 
   test "overrides default config" do
     form = build_form do |f|
       f.inputs do
-        f.input :biography, as: :text, counter: {type: "word"}
+        f.input :biography, as: :text, input_counter: {type: "word"}
       end
     end
 

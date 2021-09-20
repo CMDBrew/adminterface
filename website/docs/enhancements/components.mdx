@@ -2,10 +2,8 @@
 sidebar_position: 1
 ---
 
-# Components
-Adminterface provides a set of components that you can use throughout your application.
-
-## Arbre Components
+# Arbre Components
+Adminterface inherits [ActiveAdmin]'s components and applied [Bootstrap] styles. In addition, we've added new components and made some enhancements to the existing ones. Please see [ActiveAdmin] for basic usage guides.
 
 ````mdx-code-block
 import Tabs from '@theme/Tabs';
@@ -17,9 +15,7 @@ import CodeBlock from '@theme/CodeBlock';
 These components works inside `.rb` or `.arb` files within the ActiveAdmin context.
 :::
 
-Adminterface inherits [ActiveAdmin]'s components and applied [Bootstrap] styles. In addition, we've added new components and made some enhancements to the existing ones. Please see [ActiveAdmin] for basic usage guides.
-
-### Icons
+## Icons
 We've added a helper to render icons inside [ActiveAdmin]. The default icons are [Bootstrap Icons] using the `bi` class. If you wish, you can change the default icon class like below:
 ```yml title="config/adminterface/.../css_classes.yml" {2}
 ---
@@ -31,10 +27,10 @@ To render the icon inside Arbre, call:
 aa_icon("bi-alarm")
 ```
 
-### Panels
+## Panels
 See [ActiveAdmin][ActiveAdmin/arbre-components/panels] for usage guides.
 
-#### Optional Title
+### Optional Title
 We've removed the requirements for the `title` param. If you don't pass in the title param or passed in an empty value, the panel header will not be visible.
 
 ```ruby {1,5}
@@ -47,7 +43,7 @@ panel "" do
 end
 ```
 
-#### HTML Options
+### HTML Options
 You can add additional attributes to the panel's header and body using `header_html` and `body_html`.
 
 ````mdx-code-block
@@ -79,7 +75,7 @@ You can add additional attributes to the panel's header and body using `header_h
 </Tabs>
 ````
 
-### Columns
+## Columns
 We've replaced the inline css in ActiveAdmin's columns with [Bootstrap][Bootstrap/layout/grid]. See [ActiveAdmin][ActiveAdmin/arbre-components/columns] for usage guides.
 
 :::caution
@@ -88,7 +84,7 @@ We've replaced the inline css in ActiveAdmin's columns with [Bootstrap][Bootstra
 
 :::
 
-#### Gutter
+### Gutter
 You can change the gutter between columns by passing in your own gutter class.
 
 ````mdx-code-block
@@ -120,7 +116,7 @@ You can change the gutter between columns by passing in your own gutter class.
 </Tabs>
 ````
 
-#### Sizing
+### Sizing
 You can change the breakpoint of the columns by passing in `size`.
 
 ````mdx-code-block
@@ -164,10 +160,10 @@ You can change the breakpoint of the columns by passing in `size`.
 </Tabs>
 ````
 
-### Table For
+## Table For
 See [ActiveAdmin][ActiveAdmin/arbre-components/table_for] for usage guides.
 
-#### Scrolling
+### Scrolling
 You can add scrolling to tables by usings [Bootstrap]'s `.table-responsive` class.
 
 ```ruby {1}
@@ -178,10 +174,10 @@ div class: "table-responsive" do
 end
 ```
 
-### Tabs
+## Tabs
 We've replaced jQuery with [Bootstrap]. See [ActiveAdmin][ActiveAdmin/arbre-components/tabs] for usage guides.
 
-#### HTML Options
+### HTML Options
 You can add additional attributes to the tab's nav and content using `:nav_html` and `:content_html`.
 
 ````mdx-code-block
@@ -215,7 +211,7 @@ You can add additional attributes to the tab's nav and content using `:nav_html`
 </Tabs>
 ````
 
-#### HTTP Tabs
+### HTTP Tabs
 For load-intensive tabs, you might want the page to refresh when the user visits another tab. To achieve this, you can passing `http: true` to it.
 
 :::tip
@@ -258,83 +254,6 @@ ActiveAdmin.register User do
     end
   end
 end
-```
-
-## Confirm Dialog
-Confirm dialogs are popups that ask the user for confirmation when performing a specific action.
-
-### Configuration
-You can specify the configurations by passing in the data option inside your HTML.
-
-```javascript {3-10}
-  link_to(
-    "Confirm", "fake/path",
-    data: {
-      confirm: "My confirm message",
-      "aa-confirm-dialog": {
-        buttons: {
-          ok: {text: "Okay!"}
-        }
-      }
-    }
-  )
-```
-
-You can override the default configurations by following the instructions below:
-
-````mdx-code-block
-import ConfirmCssClass from '!!raw-loader!@site/../config/locales/active_admin.en.yml';
-
-<Tabs
-  defaultValue="css_class"
-  values={[
-    {label: 'CSS Class', value: 'css_class'},
-    {label: 'Translation', value: 'translation'},
-  ]}>
-
-  <TabItem value="css_class">
-  To update the default CSS classes, you can create a <code>css_claases.yml</code> and specify the changes. See <a href="/docs/start/configuration#css-classes">Configuration</a> for more information.
-  <br/>
-  <br/>
-
-  ```yaml title="e.g., config/adminterface/admin/css_classes.yml" {2-5}
-  ---
-  confirm_dialog:
-    cancel: btn btn-light
-    ok: btn btn-primary
-  ```
-
-  </TabItem>
-  <TabItem value="translation">
-  To update the translations, you can create an <code>active_admin.en.yml</code> file and specify the keys you want to update.
-  <br/>
-  <br/>
-
-  ```yaml title="config/locales/active_admin.en.yml" {4-7}
-  ---
-  en:
-    active_admin:
-      confirm_dialog:
-        cancel: Cancel
-        ok: Okay!
-  ```
-  </TabItem>
-</Tabs>
-````
-
-### JavaScript Events
-We've exposed a few events for hooking into the modal dialog's functionality.
-
-| Type                       | Description
-| :------------------------- | ------------
-| `confirm_dialog:before_open` | This event fires before the modal is shown
-| `confirm_dialog:after_open`  | This event fires after the modal is shown
-
-
-```javascript
-document.body.addEventListener("confirm_dialog:before_open", function() {
-  ...
-});
 ```
 
 [ActiveAdmin]: https://activeadmin.info/12-arbre-components.html
