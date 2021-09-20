@@ -43,7 +43,7 @@ Adminterface comes with initializers that you can hook into your custom JavaScri
 | Name                     | Params    | Description
 | :----------------------- | :-------- | :-----------------------
 | `initFlatpickr`          | `element` | Find and initialize [flatpickr] for child elements with the `[data-aa-flatpickr]` attribute within the `element`.
-| `initTomeSelect`         | `element` | Find and initialize [TomSelect] for child elements with the `[data-aa-tom-select]` attribute within the `element`.
+| `initTomSelect`         | `element` | Find and initialize [TomSelect] for child elements with the `[data-aa-tom-select]` attribute within the `element`.
 | `initInputCounter`       | `element` | Find and initialize [Input Counter](#input-counter) for child elements with the `[data-aa-input-counter]` attribute within the `element`.
 | `initPasswordVisibility` | `element` | Find and initialize [PasswordVisibility](#password-visiblity) for child elements with the `[data-aa-password-visibility]` attribute within the `element`.
 | `initBootstrap`          | `element` | Find and initialize [Bootstrap's JavaScript](#bootstrap) for child elements matched the specified selectors within the `element`.
@@ -72,7 +72,7 @@ import {
   initFlatpickr,
   initInputCounter,
   initPasswordVisibility,
-  initTomeSelect
+  initTomSelect
 } from '@cmdbrew/adminterface'
 
 // Call initializers inside a function
@@ -82,7 +82,7 @@ const myFunction = (element) => {
   initFlatpickr(element)
   initInputCounter(element)
   initPasswordVisibility(element)
-  initTomeSelect(element)
+  initTomSelect(element)
 }
 
 // Call initializers on a specific event
@@ -94,7 +94,7 @@ document.addEventListener('customEvent', () => {
   initFlatpickr(el)
   initInputCounter(el)
   initPasswordVisibility(el)
-  initTomeSelect(el)
+  initTomSelect(el)
 })
 ```
 
@@ -192,7 +192,7 @@ We've installed the required plugins and enabled the following when the DOM load
 ````
 
 ## Confirm Dialog
-Confirm dialogs are popups that ask the user for confirmation when performing a specific action. Adminterface uses ConfirmDialog for batch action and delete confirmations. See the guides on [BatchActions](/docs/enhancements/index#batch-actions) and [ConfirmDialog](/docs/enhancements/components#confirm-dialog) for more information.
+Confirm dialogs are popups that ask the user for confirmation when performing a specific action. Adminterface uses ConfirmDialog for batch action and delete confirmations. See the guides on [BatchActions](/docs/enhancements/index#batch-actions) and [ConfirmDialog](/docs/enhancements/index#confirm-dialog) for more information.
 
 ### Configuration
 You can override the default configurations by following the instructions below:
