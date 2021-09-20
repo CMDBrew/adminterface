@@ -1,0 +1,19 @@
+---
+- - :ignore_group
+  - test
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-09-20 23:23:18.982112000 Z
+- - :ignore_group
+  - development
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-09-20 23:23:23.714123000 Z
+- - :ignore_group
+  - devDependencies
+  - :who:
+    :why:
+    :versions: []
+    :when: 2021-09-20 23:23:29.175199000 Z
