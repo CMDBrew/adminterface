@@ -31,10 +31,10 @@
     "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
-    "@popperjs/core": "^2.9.2",
+    "@popperjs/core": "^2.10.1",
     "@rails/actiontext": "^6.1.4",
     "@rails/ujs": "^6.1.4",
-    "bootstrap": "^5.0.1",
+    "bootstrap": "^5.1.1",
     "bootstrap-icons": "^1.5.0",
     "flatpickr": "^4.6.9",
     "resolve-url-loader": "^4.0.0",
