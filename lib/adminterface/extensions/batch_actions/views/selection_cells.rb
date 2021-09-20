@@ -15,14 +15,14 @@ module Adminterface
 
         def input_html
           input type: "checkbox", id: "collection_selection_toggle_all",
-            name: "collection_selection_toggle_all", class: "toggle_all form-check-input"
+                name: "collection_selection_toggle_all", class: "toggle_all form-check-input"
         end
       end
 
       module ResourceSelectionCell
         def build(resource)
           input type: "checkbox", id: "batch_action_item_#{resource.id}", value: resource.id,
-            class: "collection_selection form-check-input", name: "collection_selection[]"
+                class: "collection_selection form-check-input", name: "collection_selection[]"
         end
       end
     end

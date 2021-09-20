@@ -10,20 +10,20 @@ on:
 
 jobs:
   lint:
+    name: Run linters
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.0
           bundler: default
           bundler-cache: true
-
       - name: Run linters
         run: |
           bundle exec rails prepare_assets
+          bundle exec standardrb
           yarn lint
 
   docs:
@@ -57,14 +57,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler: default
           bundler-cache: true
-
       - name: Run tests
         env:
           DATABASE_URL: "sqlite3:adminterface_test"
@@ -99,14 +97,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler: default
           bundler-cache: true
-
       - name: Run tests
         env:
           DATABASE_URL: mysql2://root:password@127.0.0.1:3306/test
@@ -141,14 +137,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
-
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: ${{ matrix.ruby }}
           bundler: default
           bundler-cache: true
-
       - name: Run tests
         env:
           DATABASE_URL: postgres://postgres:password@localhost:5432/test
