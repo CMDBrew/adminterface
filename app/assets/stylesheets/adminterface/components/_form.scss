@@ -88,7 +88,7 @@
 
     .fragment {
       flex: 1;
-      padding: 0 $spacer / 4;
+      padding: 0 calc(#{$spacer} / 4);
       margin-bottom: $spacer;
     }
   }

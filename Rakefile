@@ -21,6 +21,11 @@ task :prepare_assets do
   system "(cd test/dummy && yarn install --frozen-lockfile)"
 end
 
+# Generate dependency licenses
+task :licenses do
+  system "bundle exec license_finder report --decisions_file reports/dependency_decisions.yml --format json > reports/licenses.json"
+end
+
 # Custom Rails stats command
 task stats: :statsetup
 task :statsetup do
