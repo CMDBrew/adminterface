@@ -20,26 +20,26 @@ import config from '../config'
 import { addToDebugger } from './utils'
 
 config.meta.inputs = {
-  string: StringInput,
-  number: StringInput,
-  url: StringInput,
-  phone: StringInput,
-  password: PasswordInput,
-  color: ColorInput,
-  hidden: HiddenInput,
-  text: TextInput,
-  datalist: DatalistInput,
-  switch: SwitchInput,
   boolean: BooleanInput,
   check_boxes: CheckBoxesInput,
-  radio: RadioInput,
-  select: SelectInput,
+  color: ColorInput,
   country: CountryInput,
-  time_zone: TimeZoneInput,
+  datalist: DatalistInput,
   date_picker: DatePickerInput,
   datepicker: DatePickerInput,
+  datetime_picker: DateTimePickerInput,
+  hidden: HiddenInput,
+  number: StringInput,
+  password: PasswordInput,
+  phone: StringInput,
+  radio: RadioInput,
+  select: SelectInput,
+  string: StringInput,
+  switch: SwitchInput,
+  text: TextInput,
   time_picker: TimePickerInput,
-  datetime_picker: DateTimePickerInput
+  time_zone: TimeZoneInput,
+  url: StringInput
 }
 
 class Input {
