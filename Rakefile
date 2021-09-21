@@ -23,7 +23,7 @@ end
 
 # Generate dependency licenses
 task :licenses do
-  system "bundle exec license_finder report --decisions_file reports/dependency_decisions.yml --format json > reports/licenses.json"
+  system "bundle exec license_finder report --decisions_file reports/dependency_decisions.yml --format json --save reports/licenses.json"
 end
 
 # Custom Rails stats command
