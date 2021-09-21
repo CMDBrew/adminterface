@@ -59,6 +59,38 @@ jobs:
         with:
           keep: 0
           version-pattern: "${{ steps.get-version.outputs.version }}(-|\\.)rc\\d+$"
-          dry-run: true
+          dry-run: false
           names: |
             adminterface
+
+  docs:
+    needs: release
+    name: Publish docs
+    runs-on: ubuntu-latest
+    env:
+      working-directory: ./website
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: '12.x'
+      - uses: webfactory/ssh-agent@v0.5.0
+        with:
+          ssh-private-key: ${{ secrets.GH_PAGES_DEPLOY_RSA }}
+      - name: Create env file
+        working-directory: ${{ env.working-directory }}
+        run: |
+          cat << EOF >> .env
+          APPLICATION_ID=${{ secrets.ALGOLIA_APPLICATION_ID }}
+          API_KEY=${{ secrets.ALGOLIA_API_KEY }}
+          EOF
+      - name: Release to GitHub Pages
+        working-directory: ${{ env.working-directory }}
+        env:
+          USE_SSH: true
+          GIT_USER: git
+        run: |
+          git config --global user.email "${{ secrets.GH_PAGES_DEPLOY_USER_EMAIL }}"
+          git config --global user.name "${{ secrets.GH_PAGES_DEPLOY_USER_NAME }}"
+          yarn install --frozen-lockfile
+          yarn deploy
