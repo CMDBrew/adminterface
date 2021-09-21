@@ -82,9 +82,7 @@ module SiteTitleTest
   module LoggedOut
     class DefaultTest < ActiveAdmin::BaseTestCase
       setup do
-        namespace =
-          stub_namespace(site_title: "Hello World", site_title_image: nil,
-                         site_title_image_logged_out: nil, site_title_link: nil)
+        namespace = stub_namespace(site_title: "Hello World", site_title_image: nil, site_title_link: nil)
 
         @component =
           render_arbre_component({namespace: namespace}, mock_action_view) do
@@ -113,8 +111,7 @@ module SiteTitleTest
     class WithLinkTest < ActiveAdmin::BaseTestCase
       setup do
         namespace =
-          stub_namespace(site_title: "Hello World", site_title_image: nil,
-                         site_title_image_logged_out: nil, site_title_link: "https://www.example.com")
+          stub_namespace(site_title: "Hello World", site_title_image: nil, site_title_link: "https://www.example.com")
 
         @component =
           render_arbre_component({namespace: namespace}, mock_action_view) do
@@ -133,40 +130,12 @@ module SiteTitleTest
       end
     end
 
-    class WithLoggedOutImageTest < ActiveAdmin::BaseTestCase
+    class WithImageTest < ActiveAdmin::BaseTestCase
       setup do
         namespace =
           stub_namespace(
             site_title: "Hello World",
             site_title_image: "https://www.example.com/assets/logged_in.png",
-            site_title_image_logged_out: "https://www.example.com/assets/logged_out.png",
-            site_title_link: nil
-          )
-
-        @component =
-          render_arbre_component({namespace: namespace}, mock_action_view) do
-            insert_tag ::ActiveAdmin::Views::SiteTitle, assigns[:namespace], false
-          end
-      end
-
-      test "displays logged_out image" do
-        html =
-          <<~HTML
-            <div class="title">
-              <img class="image" alt="Hello World" src="https://www.example.com/assets/logged_out.png" />
-            </div>
-          HTML
-        assert_html html, @component.content
-      end
-    end
-
-    class WithoutLoggedOutImageTest < ActiveAdmin::BaseTestCase
-      setup do
-        namespace =
-          stub_namespace(
-            site_title: "Hello World",
-            site_title_image: "https://www.example.com/assets/logged_in.png",
-            site_title_image_logged_out: nil,
             site_title_link: nil
           )
 
