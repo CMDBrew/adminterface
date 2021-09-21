@@ -59,7 +59,7 @@ jobs:
         with:
           keep: 0
           version-pattern: "${{ steps.get-version.outputs.version }}(-|\\.)rc\\d+$"
-          dry-run: true
+          dry-run: false
           names: |
             adminterface
 
