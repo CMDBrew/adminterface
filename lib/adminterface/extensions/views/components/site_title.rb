@@ -7,20 +7,10 @@ module Adminterface
             :div
           end
 
-          def site_title_image
-            @site_title_image ||= site_title_image_config
-          end
-
           private
 
           def title_image
-            helpers.image_tag(site_title_image_config, class: "image", alt: title_text)
-          end
-
-          def site_title_image_config
-            return @namespace.site_title_image(helpers) if logged_in
-
-            @namespace.site_title_image_logged_out(helpers).presence || @namespace.site_title_image(helpers)
+            helpers.image_tag(site_title_image, class: "image", alt: title_text)
           end
         end
       end
