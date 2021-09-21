@@ -35,9 +35,9 @@ class Config {
 }
 
 class Pluginish {
-  constructor (key, options) {
-    this.key = key
+  constructor (options) {
     this.options = options
+    this.as = options.as
     this.plugins = this._plugins()
   }
 
@@ -50,7 +50,7 @@ class Pluginish {
   }
 
   _configs () {
-    const plugins = getObjectValue(adminterface, `meta.components.inputs.${this.key}.js`)
+    const plugins = getObjectValue(adminterface, `meta.components.inputs.${this.as}.js`)
 
     if (plugins) {
       return plugins.map((plugin) => (new Config(plugin, this.options)).attributes())
