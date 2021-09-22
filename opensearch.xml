@@ -4,8 +4,8 @@
   <ShortName>Adminterface</ShortName>
   <Description>Search Adminterface</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://cmdbrew.github.io/adminterface/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://cmdbrew.github.io/adminterface/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://cmdbrew.github.io/adminterface/opensearch.xml" />
-  <moz:SearchForm>https://cmdbrew.github.io/adminterface/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://www.adminterface.io/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://www.adminterface.io/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://www.adminterface.io/opensearch.xml" />
+  <moz:SearchForm>https://www.adminterface.io/</moz:SearchForm>
 </OpenSearchDescription>
