@@ -1,5 +1,5 @@
+/* global adminterface */
 import TomSelect from 'tom-select'
-import { addToDebugger } from '../../lib/utils'
 
 const initTomSelect = function (element) {
   const tomSelectTriggerList = [].slice.call(element.querySelectorAll('[data-aa-tom-select]'))
@@ -8,7 +8,7 @@ const initTomSelect = function (element) {
     const options = JSON.parse(el.dataset.aaTomSelect || {})
     const instance = new TomSelect(el, options)
 
-    addToDebugger(instance, instance.constructor.name, [])
+    adminterface.addObserver(el, instance, instance.constructor.name)
     return instance
   })
 }
