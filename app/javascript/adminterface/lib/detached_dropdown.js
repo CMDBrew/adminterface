@@ -1,5 +1,4 @@
-import { addToDebugger } from './utils'
-
+/* global adminterface */
 class DetachedDropdown {
   constructor (element, options) {
     const defaults = {
@@ -28,7 +27,7 @@ class DetachedDropdown {
       _self._append(_self.element, $menu)
     })
 
-    addToDebugger(this, this.constructor.name, [])
+    adminterface.addObserver(this.element, this, this.constructor.name)
   }
 }
 

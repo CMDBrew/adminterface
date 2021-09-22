@@ -1,4 +1,4 @@
-/* global Turbolinks, adminterface */
+/* global Turbolinks */
 export function hasTurbolinks () {
   return (typeof Turbolinks !== 'undefined' && Turbolinks.supported)
 }
@@ -140,22 +140,6 @@ export function setObjectValue (obj, path, value) {
   }
 
   obj[pList[len - 1]] = value
-}
-
-export function addToDebugger (data, path, defaultValue) {
-  if (!adminterface.debug) return
-
-  const debuggerPath = `observer.${path}`
-  const value = getObjectValue(adminterface, debuggerPath) || defaultValue
-  let results
-
-  if (Array.isArray(defaultValue)) {
-    results = [...value, data]
-  } else {
-    results = data
-  }
-
-  setObjectValue(adminterface, debuggerPath, results)
 }
 
 export function camalize (str) {

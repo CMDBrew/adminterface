@@ -1,5 +1,5 @@
-/* global DOMParser */
-import { toHTMLCssString, addToDebugger } from '../utils'
+/* global DOMParser, adminterface */
+import { toHTMLCssString } from '../utils'
 
 class InputCounter {
   constructor (element, options) {
@@ -87,7 +87,7 @@ class InputCounter {
     this._count()
     this.element.addEventListener('keyup', (_e) => this._count())
 
-    addToDebugger(this, this.constructor.name, [])
+    adminterface.addObserver(this.element, this, this.constructor.name)
   }
 }
 

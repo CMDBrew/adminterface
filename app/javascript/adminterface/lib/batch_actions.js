@@ -1,8 +1,7 @@
-/* global Event */
+/* global Event, adminterface */
 import ConfirmDialog from './confirm_dialog'
 import CheckboxToggler from './checkbox_toggler'
 import TableCheckboxToggler from './table_checkbox_toggler'
-import { addToDebugger } from './utils'
 
 class BatchActions {
   constructor (element) {
@@ -100,7 +99,7 @@ class BatchActions {
     this._bindConfirm()
     this._bindSelector()
 
-    addToDebugger(this, this.constructor.name, {})
+    adminterface.addObserver(this.element, this, this.constructor.name)
   }
 }
 
