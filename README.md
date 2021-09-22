@@ -3,7 +3,7 @@
 
 An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
 
-[![](preview.jpg)](https://cmdbrew.github.io/adminterface)
+[![](preview.jpg)](https://adminterface.io)
 
 ## Dependencies
 - Rails >= 6.0
@@ -38,7 +38,7 @@ An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
    ```
 
 ## Documentation
-Check our [website](https://cmdbrew.github.io/adminterface) to find in-depth documentation for everything that Adminterface offers.
+Check our [website](https://adminterface.io) to find in-depth documentation for everything that Adminterface offers.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).

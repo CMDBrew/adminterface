@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid'
 
 const info = {
   title: 'ADMINTERFACE',
-  docURL: 'https://cmdbrew.github.io/adminterface'
+  docURL: 'https://adminterface.io'
 }
 
 const admonitionStyles = {
