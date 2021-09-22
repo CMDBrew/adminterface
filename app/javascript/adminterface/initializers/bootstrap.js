@@ -1,5 +1,5 @@
+/* global adminterface */
 import { Popover, Tooltip } from 'bootstrap'
-import { addToDebugger } from '../lib/utils'
 
 const initBootstrap = function (element) {
   const popoverTriggerList = [].slice.call(element.querySelectorAll('[data-bs-toggle="popover"]'))
@@ -7,13 +7,13 @@ const initBootstrap = function (element) {
 
   popoverTriggerList.map((el) => {
     const instance = new Popover(el)
-    addToDebugger(instance, instance.constructor.name, [])
+    adminterface.addObserver(el, instance, instance.constructor.name)
     return instance
   })
 
   tooltipTriggerList.map((el) => {
     const instance = new Tooltip(el)
-    addToDebugger(instance, instance.constructor.name, [])
+    adminterface.addObserver(el, instance, instance.constructor.name)
     return instance
   })
 }

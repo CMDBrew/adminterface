@@ -16,10 +16,8 @@ import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
 import PasswordInput from './inputs/password_input'
-import config from '../config'
-import { addToDebugger } from './utils'
 
-config.meta.inputs = {
+const inputMapping = {
   boolean: BooleanInput,
   check_boxes: CheckBoxesInput,
   color: ColorInput,
@@ -83,13 +81,12 @@ class Input {
     }
 
     const input = new InputClass(this.name, { ...options, as: as })
-    addToDebugger(input, `${this.constructor.name}.${input.constructor.name}`, [])
-
     return input.render()
   }
 }
 
 export {
+  inputMapping,
   Input,
   BaseInput,
   BooleanInput,
