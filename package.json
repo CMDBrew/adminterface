@@ -11,7 +11,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "author": "I-Lung Lee <ilung@hey.com>",
-  "license": "See LICENSE.md",
+  "license": "See LICENSE in LICENSE.md",
   "scripts": {
     "prepublishOnly": "rm -rf src && cp -R app/javascript/adminterface src && cp -R app/assets/stylesheets/adminterface src/scss",
     "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
