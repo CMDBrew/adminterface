@@ -36,6 +36,7 @@ inputs:
         default: true
         options:
           altFormat: Y-m-d
+          altInput: true
           enableTime: false
   datepicker:
     <<: *DATE_PICKER_CONFIGS
@@ -45,6 +46,7 @@ inputs:
         default: true
         options:
           altFormat: Y-m-d, h:i K
+          altInput: true
           enableTime: true
   select:
     js:
