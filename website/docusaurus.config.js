@@ -5,8 +5,9 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'Adminterface',
   tagline: 'An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
-  url: 'https://cmdbrew.github.io',
-  baseUrl: '/adminterface/',
+  url: 'https://adminterface.io',
+  baseUrl: '/',
+  trailingSlash: false,
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',

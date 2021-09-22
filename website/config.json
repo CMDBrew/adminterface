@@ -1,10 +1,10 @@
 {
   "index_name": "adminterface",
   "start_urls": [
-    "https://cmdbrew.github.io/adminterface"
+    "https://adminterface.io"
   ],
   "sitemap_urls": [
-    "https://cmdbrew.github.io/adminterface/sitemap.xml"
+    "https://adminterface.io/sitemap.xml"
   ],
   "sitemap_alternate_links": true,
   "stop_urls": [

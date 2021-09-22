@@ -6,7 +6,7 @@ The Open Source Guides website has a collection of resources for individuals, co
 - [Building Welcoming Communities](https://opensource.guide/building-community/)
 
 ## Code of Conduct
-We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://cmdbrew.github.io/adminterface/code-of-conduct) so that you can understand what actions will and will not be tolerated.
+We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://adminterface.io/code-of-conduct) so that you can understand what actions will and will not be tolerated.
 
 ## Contributing to the code
 ### Installation
@@ -74,4 +74,4 @@ If you decided to contribute to our source, we appreciate your time and will do 
 7. Send a [pull request](https://github.com/CMDBrew/adminterface/pulls).
 
 ## License
-By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://cmdbrew.github.io/adminterface/license).
+By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://adminterface.io/docs/terms).
