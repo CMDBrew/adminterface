@@ -11,17 +11,18 @@
   "license": "See LICENSE in LICENSE.md",
   "scripts": {
     "prepublishOnly": "rm -rf src && cp -R app/javascript/adminterface src && cp -R app/assets/stylesheets/adminterface src/scss",
-    "lint": "npx stylelint 'app/assets/stylesheets/**/*.scss' && standard",
+    "lint": "npx stylelint app/assets/stylesheets/**/*.scss && standard",
     "deps": "./bin/rails licenses",
     "fix": "standard --fix",
+    "test": "npx jest",
     "release": "standard-version && yarn deps",
     "release:minor": "standard-version --release-as minor && yarn deps",
     "release:patch": "standard-version --release-as patch && yarn deps",
     "release:major": "standard-version --release-as major && yarn deps"
   },
   "devDependencies": {
-    "@babel/core": "^7.11.4",
-    "@babel/preset-env": "^7.11.0",
+    "@babel/core": "^7.15.5",
+    "@babel/preset-env": "^7.15.6",
     "standard": "^16.0.3",
     "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",

@@ -83,6 +83,7 @@ export function serializeObject (form) {
 export function cookieSet (name, value, expireInSec) {
   const expireAt = new Date()
   expireAt.setTime(expireAt.getTime() + expireInSec * 1000)
+
   document.cookie = `${name}=${value};expires=${expireAt.toGMTString()};path=/`
 }
 
