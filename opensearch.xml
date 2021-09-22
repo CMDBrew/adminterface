@@ -4,8 +4,8 @@
   <ShortName>Adminterface</ShortName>
   <Description>Search Adminterface</Description>
   <InputEncoding>UTF-8</InputEncoding>
-  <Image width="16" height="16" type="image/x-icon">https://www.adminterface.io/img/favicon.ico</Image>
-  <Url type="text/html" method="get" template="https://www.adminterface.io/search?q={searchTerms}"/>
-  <Url type="application/opensearchdescription+xml" rel="self" template="https://www.adminterface.io/opensearch.xml" />
-  <moz:SearchForm>https://www.adminterface.io/</moz:SearchForm>
+  <Image width="16" height="16" type="image/x-icon">https://adminterface.io/img/favicon.ico</Image>
+  <Url type="text/html" method="get" template="https://adminterface.io/search?q={searchTerms}"/>
+  <Url type="application/opensearchdescription+xml" rel="self" template="https://adminterface.io/opensearch.xml" />
+  <moz:SearchForm>https://adminterface.io/</moz:SearchForm>
 </OpenSearchDescription>
