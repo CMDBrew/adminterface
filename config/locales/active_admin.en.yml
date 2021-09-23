@@ -11,7 +11,7 @@ en:
     dashboard_welcome:
       call_to_action: To add dashboard sections, checkout <code>app/admin/dashboard.rb</code>
       footnote: |
-        Check our <a href="https://cmdbrew.github.io/adminterface/" target="_blank" rel="noopener noreferrer">website</a>
+        Check our <a href="https://adminterface.io/" target="_blank" rel="noopener noreferrer">website</a>
         to find in-depth documentation for everything that Adminterface offers.
       welcome: Welcome to Adminterface. This is the default dashboard page.
     devise:

@@ -1,3 +1,4 @@
+/* global adminterface */
 import { toHTMLAttrString, toSnakeCase } from '../utils'
 import Pluginish from './base/pluginish'
 import Groupish from './base/groupish'
@@ -11,14 +12,16 @@ class BaseInput {
     this.input_html_options = this.options.input_html || {}
     this.label = options.label || name.charAt(0).toUpperCase() + name.slice(1)
     this.type = toSnakeCase(this.constructor.name.replace(/(Input$)/, ''))
-    this.pluginish = new Pluginish(this.type, this.options)
+    this.pluginish = new Pluginish(this.options)
     this.groupish = new Groupish(this.options)
   }
 
   _defaultWrapperHTMLOptions () {
-    return {
-      class: `mb-3 input ${this.type}`
-    }
+    const uuid = adminterface.addObserver(null, this, `Input.${this.constructor.name}`)
+    const configs = { class: `mb-3 input ${this.type}` }
+
+    if (uuid) configs['data-observer-id'] = uuid
+    return configs
   }
 
   _wrapperHTMLOptions () {

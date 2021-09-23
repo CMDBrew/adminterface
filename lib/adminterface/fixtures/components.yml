@@ -30,19 +30,23 @@ header:
 index_as_grid:
   breakpoint: lg
 inputs:
-  date_picker:
+  date_picker: &DATE_PICKER_CONFIGS
     js:
       - name: flatpickr
         default: true
         options:
           altFormat: Y-m-d
+          altInput: true
           enableTime: false
+  datepicker:
+    <<: *DATE_PICKER_CONFIGS
   datetime_picker:
     js:
       - name: flatpickr
         default: true
         options:
           altFormat: Y-m-d, h:i K
+          altInput: true
           enableTime: true
   select:
     js:

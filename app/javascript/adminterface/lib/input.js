@@ -16,30 +16,28 @@ import TextInput from './inputs/text_input'
 import TimePickerInput from './inputs/time_picker_input'
 import TimeZoneInput from './inputs/time_zone_input'
 import PasswordInput from './inputs/password_input'
-import config from '../config'
-import { addToDebugger } from './utils'
 
-config.meta.inputs = {
-  string: StringInput,
-  number: StringInput,
-  url: StringInput,
-  phone: StringInput,
-  password: PasswordInput,
-  color: ColorInput,
-  hidden: HiddenInput,
-  text: TextInput,
-  datalist: DatalistInput,
-  switch: SwitchInput,
+const inputMapping = {
   boolean: BooleanInput,
   check_boxes: CheckBoxesInput,
-  radio: RadioInput,
-  select: SelectInput,
+  color: ColorInput,
   country: CountryInput,
-  time_zone: TimeZoneInput,
+  datalist: DatalistInput,
   date_picker: DatePickerInput,
   datepicker: DatePickerInput,
+  datetime_picker: DateTimePickerInput,
+  hidden: HiddenInput,
+  number: StringInput,
+  password: PasswordInput,
+  phone: StringInput,
+  radio: RadioInput,
+  select: SelectInput,
+  string: StringInput,
+  switch: SwitchInput,
+  text: TextInput,
   time_picker: TimePickerInput,
-  datetime_picker: DateTimePickerInput
+  time_zone: TimeZoneInput,
+  url: StringInput
 }
 
 class Input {
@@ -83,13 +81,12 @@ class Input {
     }
 
     const input = new InputClass(this.name, { ...options, as: as })
-    addToDebugger(input, `${this.constructor.name}.${input.constructor.name}`, [])
-
     return input.render()
   }
 }
 
 export {
+  inputMapping,
   Input,
   BaseInput,
   BooleanInput,
