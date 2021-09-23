@@ -13,7 +13,16 @@ module.exports = {
   favicon: 'img/favicon.ico',
   organizationName: 'cmdbrew',
   projectName: 'adminterface',
+  scripts: [
+    {
+      src: 'https://plausible.io/js/plausible.js',
+      async: true,
+      defer: true,
+      'data-domain': 'adminterface.io'
+    }
+  ],
   themeConfig: {
+    image: "img/preview.jpg",
     colorMode: {
       defaultMode: 'light',
       disableSwitch: false,
