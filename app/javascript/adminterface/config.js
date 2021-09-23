@@ -102,19 +102,19 @@ window.adminterface = {
   addObserver: function (target, data, path) {
     if (!this.debug) return
 
-    const uuid = uuidv4()
-    const observer = { observerId: uuid, path: path, data: data }
+    const id = uuidv4()
+    const observer = { id: id, path: path, data: data }
     this._getPristineObservers()
 
-    if (target) target.setAttribute('data-observer-id', uuid)
+    if (target) target.setAttribute('data-observer-id', id)
 
     this._observers = [...this._observers, observer]
-    return uuid
+    return id
   },
   _getPristineObservers: function () {
     const observers = this._observers || []
-    const uuids = this._trackers().map(el => el.dataset.observerUuid)
-    this._observers = observers.filter(item => uuids.includes(item.uuid))
+    const ids = this._trackers().map(el => el.dataset.observerId)
+    this._observers = observers.filter(item => ids.includes(item.id))
     return this._observers
   },
   _addMeta: function (name) {
