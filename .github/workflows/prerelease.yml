@@ -25,7 +25,7 @@ jobs:
           registry-url: https://npm.pkg.github.com/
       - run: |
           gem install gem-release
-          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          GEM_VERSION=$(gem bump -v patch --pretend --no-commit | awk '{ print $4 }')
           npm version $GEM_VERSION-rc$GITHUB_RUN_ID --no-git-tag-version
       - run: yarn install
       - run: yarn publish
@@ -45,7 +45,7 @@ jobs:
           bundler-cache: true
       - run: |
           gem install gem-release
-          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          GEM_VERSION=$(gem bump -v patch --pretend --no-commit | awk '{ print $4 }')
           gem bump -v $GEM_VERSION.rc$GITHUB_RUN_ID --no-commit
       - name: Publish to GitHub Ruby Gem
         uses: jstastny/publish-gem-to-github@master
