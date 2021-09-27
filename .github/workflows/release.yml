@@ -33,7 +33,7 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
-  ruby:
+  ruby_github:
     name: Publish Ruby gem on Github
     runs-on: ubuntu-latest
     needs: release
@@ -45,8 +45,32 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           owner: cmdbrew
 
+  ruby_rubygems:
+    name: Publish Ruby gem on rubygems.org
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 3.0
+          bundler: default
+          bundler-cache: true
+      - name: Setup credentials
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+        env:
+          GEM_HOST_API_KEY: "${{secrets.RUBYGEMS_API_KEY}}"
+      - name: Publish to rubygems.org
+        run: |
+          gem build *.gemspec
+          gem push *.gem
+
   delete_rc_versions:
-    needs: [npm, ruby]
+    needs: [npm, ruby_github]
     name: Delete release candidates for the current version
     runs-on: ubuntu-latest
     steps:
