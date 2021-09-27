@@ -18,20 +18,6 @@ module Adminterface
           EOF
         end
 
-        if File.exist?(Rails.root.join(".npmrc"))
-          append_to_file ".npmrc" do
-            <<~EOF
-              @cmdbrew:registry=https://npm.pkg.github.com
-            EOF
-          end
-        else
-          create_file ".npmrc" do
-            <<~EOF
-              @cmdbrew:registry=https://npm.pkg.github.com
-            EOF
-          end
-        end
-
         run "yarn add @cmdbrew/adminterface@v#{find_npm_version}"
       end
 

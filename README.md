@@ -15,9 +15,7 @@ An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
 ## Quick Start
 1. Add the following to your application's Gemfile:
    ```ruby
-   source "https://rubygems.pkg.github.com/cmdbrew" do
-     gem "adminterface"
-   end
+   gem "adminterface"
    ```
 2. Then execute:
    ```bash
