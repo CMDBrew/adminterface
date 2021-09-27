@@ -19,7 +19,7 @@ jobs:
           bundler: default
           bundler-cache: true
       - name: Set up NPM
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14.x
           registry-url: https://npm.pkg.github.com/
@@ -27,7 +27,8 @@ jobs:
           gem install gem-release
           GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
           npm version $GEM_VERSION-rc$GITHUB_RUN_ID --no-git-tag-version
-      - run: npm publish
+      - run: yarn install
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
