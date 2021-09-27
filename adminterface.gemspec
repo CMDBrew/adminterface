@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.homepage = "https://adminterface.io"
   spec.summary = "An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin."
   spec.description = "An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin."
-  spec.license = "Nonstandard"
+  spec.license = "See LICENSE in LICENSE.md"
 
   spec.metadata["homepage_uri"] = spec.homepage
   spec.metadata["source_code_uri"] = "https://github.com/cmdbrew/adminterface"
