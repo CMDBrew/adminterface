@@ -7,9 +7,6 @@
     "src/**/*"
   ],
   "repository": "git://github.com/cmdbrew/adminterface.git",
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "author": "I-Lung Lee <ilung@hey.com>",
   "license": "See LICENSE in LICENSE.md",
   "scripts": {
