@@ -26,8 +26,7 @@
     "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",
     "stylelint-config-standard": "^22.0.0",
-    "stylelint-scss": "^3.19.0",
-    "jest": "^27.2.1"
+    "stylelint-scss": "^3.19.0"
   },
   "dependencies": {
     "@popperjs/core": "^2.10.1",
