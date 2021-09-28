@@ -15,6 +15,7 @@
   "scripts": {
     "prepublishOnly": "rm -rf src && cp -R app/javascript/adminterface src && cp -R app/assets/stylesheets/adminterface src/scss",
     "lint": "npx stylelint app/assets/stylesheets/**/*.scss && standard",
+    "deps": "./bin/rails licenses",
     "fix": "standard --fix",
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
