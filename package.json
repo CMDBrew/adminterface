@@ -19,11 +19,13 @@
     "release": "standard-version",
     "release:minor": "standard-version --release-as minor",
     "release:patch": "standard-version --release-as patch",
-    "release:major": "standard-version --release-as major"
+    "release:major": "standard-version --release-as major",
+    "test": "jest"
   },
   "devDependencies": {
     "@babel/core": "^7.11.4",
     "@babel/preset-env": "^7.11.0",
+    "jest": "^27.2.1",
     "standard": "^16.0.3",
     "standard-version": "^9.3.1",
     "stylelint": "^13.13.1",
