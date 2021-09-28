@@ -1,7 +1,7 @@
 /* global Event, DOMParser, adminterface */
 
 import { Modal } from 'bootstrap'
-import { serializeObject, deepMergeObject, getObjectValue, addToDebugger } from './utils'
+import { serializeObject, deepMergeObject, getObjectValue } from './utils'
 import { Input } from './input'
 
 class ConfirmDialog {
@@ -106,7 +106,7 @@ class ConfirmDialog {
     dialogConfirm.show()
     document.dispatchEvent(afterOpenEvent)
 
-    addToDebugger(this, this.constructor.name, {})
+    adminterface.addObserver(dialogEl, this, this.constructor.name)
   }
 }
 

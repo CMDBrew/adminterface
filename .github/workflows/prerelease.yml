@@ -19,15 +19,16 @@ jobs:
           bundler: default
           bundler-cache: true
       - name: Set up NPM
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@v2
         with:
           node-version: 14.x
           registry-url: https://npm.pkg.github.com/
       - run: |
           gem install gem-release
-          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          GEM_VERSION=$(gem bump -v patch --pretend --no-commit | awk '{ print $4 }')
           npm version $GEM_VERSION-rc$GITHUB_RUN_ID --no-git-tag-version
-      - run: npm publish
+      - run: yarn install
+      - run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
@@ -44,7 +45,7 @@ jobs:
           bundler-cache: true
       - run: |
           gem install gem-release
-          GEM_VERSION=$(gem bump --pretend --no-commit | awk '{ print $3 }')
+          GEM_VERSION=$(gem bump -v patch --pretend --no-commit | awk '{ print $4 }')
           gem bump -v $GEM_VERSION.rc$GITHUB_RUN_ID --no-commit
       - name: Publish to GitHub Ruby Gem
         uses: jstastny/publish-gem-to-github@master

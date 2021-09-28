@@ -1,6 +1,5 @@
-/* global Event */
+/* global Event, adminterface */
 import Sortable from 'sortablejs'
-import { addToDebugger } from './utils'
 
 class HasMany {
   constructor (element) {
@@ -116,7 +115,7 @@ class HasMany {
     this._bindEvents(this.element)
     this._initSortable()
 
-    addToDebugger(this, this.constructor.name, [])
+    adminterface.addObserver(this.element, this, this.constructor.name, [])
   }
 }
 

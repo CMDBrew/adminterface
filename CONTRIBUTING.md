@@ -6,7 +6,7 @@ The Open Source Guides website has a collection of resources for individuals, co
 - [Building Welcoming Communities](https://opensource.guide/building-community/)
 
 ## Code of Conduct
-We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://cmdbrew.github.io/adminterface/code-of-conduct) so that you can understand what actions will and will not be tolerated.
+We've adopted a Code of Conduct that we expect project participants to adhere to. Please [read the full text](https://adminterface.io/code-of-conduct) so that you can understand what actions will and will not be tolerated.
 
 ## Contributing to the code
 ### Installation
@@ -73,5 +73,53 @@ If you decided to contribute to our source, we appreciate your time and will do 
 6. Ensure relevant commits are grouped and follow the [Conventional Commit Messages](#conventional-commit-messages) format.
 7. Send a [pull request](https://github.com/CMDBrew/adminterface/pulls).
 
+## Release Candidates
+Adminterface hosts release candidate builds on Github packages. If you wish to test a pre-publish build, please follow the steps below:
+
+### Installation
+1. Add the following to your application's Gemfile:
+   ```ruby
+   source "https://rubygems.pkg.github.com/cmdbrew" do
+     # Replace [VERSION] with the target RC version
+     gem "adminterface", [VERSION]
+   end
+   ```
+2. Then execute:
+   ```bash
+   $ bundle install
+   ```
+3. Add an `.npmrc` file and add the following line
+   ```shell
+   @cmdbrew:registry=https://npm.pkg.github.com
+   ```
+4. Install ActiveAdmin (If you haven't)
+   ```bash
+   $ rails g active_admin:install --use_webpacker
+   ```
+5. Install Adminterface
+   ```bash
+   $ rails g adminterface:install
+   ```
+6. Migrate your database and start the server
+   ```bash
+   $ rails db:migrate
+   $ rails server
+   ```
+
+### Upgrading
+1. Replace the version of `adminterface` inside `Gemfile`
+   ```ruby
+   source "https://rubygems.pkg.github.com/cmdbrew" do
+     # Replace [VERSION] with the target RC version
+     gem "adminterface", [VERSION]
+   end
+   ```
+2. Run `bundle install`
+3. Replace the version of `adminterface` inside `package.json`
+   ```bash
+   # Replace [VERSION] with the target RC version
+   yarn upgrade @cmdbrew/adminterface@[VERSION]
+   ```
+
 ## License
-By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://cmdbrew.github.io/adminterface/license).
+By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://adminterface.io/docs/terms).

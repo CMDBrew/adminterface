@@ -21,7 +21,7 @@ ActiveAdmin.register User do
 
   batch_action :update, form: {
     name: :string,
-    updated_at: :date_picker
+    updated_at: :datetime_picker
   }, confirm_dialog: {
     buttons: {
       confirm: {class: "btn btn-danger", text: "Confirm!!!"}

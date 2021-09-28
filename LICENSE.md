@@ -56,16 +56,16 @@ You will:
 * Pay the fee set forth in Section "Fees".
 
 ## Fees and License
-Please refer to [Pricing](https://cmdbrew.github.io/adminterface/pricing) for our license fees.
+Please refer to [Pricing](https://adminterface.io/pricing) for our license fees.
 
 * **Personal:** Free forever. The Software is free of charge for Personal Purposes.
 
 * **Commercial:** The software is being used for Non-Personal Purposes. Requires a yearly license subscription fee.
 
-* **Payment Terms:** The yearly license subscription fee, as paid at time of purchase or license renewal, (the "Subscription") for each domain operating a Non-Personal Purpose app, is due at the time of Licence purchase until your subscription expires. 
-  * All fees are exclusive of taxes. You are responsible for any taxes, duties, or other charges imposed by any governmental authority on amounts paid by you pursuant hereto (except for any taxes imposed on our income). 
-  * Payment must be made in U.S. dollars by Credit Card. 
-  * Interest will accrue on any past-due amount at the rate of 1.8% per month, compounded monthly, or the highest rate permitted by applicable Law, whichever is less. You will reimburse us immediately for all costs we incur in relation to any overdue amount, including attorney fees and collection-agency fees, whether or not a formal complaint is filed, and no notice of default is required. 
+* **Payment Terms:** The yearly license subscription fee, as paid at time of purchase or license renewal, (the "Subscription") for each domain operating a Non-Personal Purpose app, is due at the time of Licence purchase until your subscription expires.
+  * All fees are exclusive of taxes. You are responsible for any taxes, duties, or other charges imposed by any governmental authority on amounts paid by you pursuant hereto (except for any taxes imposed on our income).
+  * Payment must be made in U.S. dollars by Credit Card.
+  * Interest will accrue on any past-due amount at the rate of 1.8% per month, compounded monthly, or the highest rate permitted by applicable Law, whichever is less. You will reimburse us immediately for all costs we incur in relation to any overdue amount, including attorney fees and collection-agency fees, whether or not a formal complaint is filed, and no notice of default is required.
   * In the event that any amount becomes overdue, we may, in our sole discretion, and in addition to any other remedy available at law, in equity, or hereunder: (i) suspend or revoke your License, (ii) withhold new licenses, or (iii) terminate this Agreement. You will pay all amounts due hereunder in full, without any setoff, deduction, or withholding for any reason, except as may be permitted by applicable Law. No refunds will be granted or paid.
 
 ## Making Copies
@@ -78,7 +78,7 @@ You may alter, modify, or extend the Software for your own use, or commission a 
 CMDBrew Studio Inc. does not provide direct phone support at this time. No representations or guarantees are made regarding the response time in which e-mail support questions are answered, but we will do our best to respond quickly.
 
 ## Open-Source Components
-The Software makes use of certain [Open-Source Components or other licensing](https://cmdbrew.github.io/adminterface/docs/start/dependencies/) that does not restrict commercial use. Your use of Open-Source Components, including those on which the Software relies, is subject to the terms and conditions of the applicable open-source licenses. A copy of each license can be found at https://choosealicense.com/licenses/.
+The Software makes use of certain [Open-Source Components or other licensing](https://adminterface.io/docs/start/dependencies/) that does not restrict commercial use. Your use of Open-Source Components, including those on which the Software relies, is subject to the terms and conditions of the applicable open-source licenses. A copy of each license can be found at https://choosealicense.com/licenses/.
 
 ## Ownership
 CMDBrew Studio Inc. is the sole and exclusive owner of all right, title, and interest in and to the Software, all Updates thereto, all Official Extensions based thereon, and all Intellectual Property Rights in each of the foregoing, subject only to the rights of third parties in Open-Source Components and the License granted hereunder. You acknowledge that you have no ownership interest in the Software and that, except for the License granted hereunder, nothing herein or elsewhere grants to you or any third party (by implication, waiver, estoppel or otherwise) any right, title, or interest (including any Intellectual Property Right) in or to the Software or any portion thereof.
