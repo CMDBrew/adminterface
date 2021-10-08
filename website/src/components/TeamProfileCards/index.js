@@ -66,16 +66,23 @@ export function ActiveTeamRow() {
   return (
     <div className="row">
       <TeamProfileCardCol
+        name="Codey Du"
+        githubUrl="https://github.com/dulerong">
+        <Translate id="team.profile.dulerong.body">
+          Vue.js front end developer. Enjoys testing using Jest and Cypress. Loves contributing to open source.
+        </Translate>
+      </TeamProfileCardCol>
+      <TeamProfileCardCol
         name="I-Lung Lee"
         githubUrl="https://github.com/ilunglee">
-        <Translate id="team.profile.I-Lung Lee.body">
+        <Translate id="team.profile.ilunglee.body">
           Creator of Adminterface and its predecessors, passionate about anything software-related, loves Ruby and RoR.
         </Translate>
       </TeamProfileCardCol>
       <TeamProfileCardCol
         name="Richard Wang"
         githubUrl="https://github.com/richchw">
-        <Translate id="team.profile.Richard Wang.body">
+        <Translate id="team.profile.richchw.body">
           Project Manager and Developer. Writes docs and experiment things here and there.
         </Translate>
       </TeamProfileCardCol>
