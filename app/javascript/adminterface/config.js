@@ -10,7 +10,7 @@ const info = {
 
 const admonitionStyles = {
   heading: {
-    head: 'font-weight: bold; color: #3C324C; background: #9e82c8;',
+    head: 'font-weight: bold; color: #3C324C; background: #9E82C8;',
     body: 'color: white; background: #3C324C;'
   },
   success: {

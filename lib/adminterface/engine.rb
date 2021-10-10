@@ -11,5 +11,9 @@ module Adminterface
     include ::Adminterface::Initializers::ViewHelpers
     include ::Adminterface::Initializers::Views
     include ::Adminterface::Initializers::Comments
+
+    config.after_initialize do
+      ::Adminterface::License.verify!
+    end
   end
 end
