@@ -26,6 +26,20 @@ jobs:
           bundle exec standardrb
           yarn lint
 
+  jest:
+    name: Run Jest tests
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up NPM
+        uses: actions/setup-node@v2
+        with:
+          node-version: 14.x
+      - name: Run tests
+        run: |
+          yarn install
+          yarn test
+
   docs:
     name: Build Docusaurus site
     runs-on: ubuntu-latest
