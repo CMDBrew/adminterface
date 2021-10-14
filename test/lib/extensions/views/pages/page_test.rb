@@ -1,4 +1,4 @@
-require "test_case/active_admin/base_test_case"
+require "test_helper"
 
 class PageTest < ActiveAdmin::BaseTestCase
   class PageResource < ActiveAdmin::Page

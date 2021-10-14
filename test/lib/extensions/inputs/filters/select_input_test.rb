@@ -1,4 +1,4 @@
-require "test_case/active_admin/filter_test_case"
+require "test_helper"
 
 module Filters
   class SelectInputTest < ActiveAdmin::FilterTestCase

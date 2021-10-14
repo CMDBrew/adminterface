@@ -1,4 +1,4 @@
-require "test_case/active_admin/input_test_case"
+require "test_helper"
 
 module TimePickerInputScenarios
   extend ActiveSupport::Concern

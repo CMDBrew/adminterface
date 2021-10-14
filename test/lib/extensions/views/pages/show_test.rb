@@ -1,4 +1,4 @@
-require "test_case/active_admin/base_test_case"
+require "test_helper"
 
 module ShowPageTest
   class ShowPageView < ::ActiveAdmin::IntegrationTestHelper::MockActionView

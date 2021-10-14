@@ -1,4 +1,4 @@
-require "test_case/active_admin/base_test_case"
+require "test_helper"
 
 class SidebarSectionTest < ActiveAdmin::BaseTestCase
   def default_css_classes
