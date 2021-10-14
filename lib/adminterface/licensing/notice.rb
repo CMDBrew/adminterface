@@ -13,10 +13,9 @@ module Adminterface
       def call
         return unless Rails.env.development?
 
-        log("==============================")
-        log(heading)
-        log(body)
-        log("==============================")
+        log("========================================")
+        log(messages)
+        log("========================================")
       end
 
       private
@@ -25,34 +24,26 @@ module Adminterface
         msgs.each { |x| puts(x) }
       end
 
-      def attributes
-        response
-          .slice(:adminterface_version, :license, :license_key, :app_name)
-          .sort.to_h
-      end
-
       def external?
         !!external
       end
 
-      def heading(title = "Adminterface:")
+      def title
+        "Adminterface #{response[:adminterface_version]} (\"#{response[:license]}\")"
+      end
+
+      def messages
         return title unless external?
 
-        ["#{title} verifying license on #{endpoint}", verified]
+        [title, "=> Verifying license on #{endpoint}", verified]
       end
 
       def verified
         if !!response[:verified]
-          Rainbow("[#{response[:status]}] License verified").green
+          Rainbow("=> [#{response[:status]}] License verified").green
         else
-          Rainbow("[#{response[:status]}] #{response[:error]}").red
+          Rainbow("=> [#{response[:status]}] #{response[:error]}").red
         end
-      end
-
-      def body
-        attributes
-          .reject { |_k, v| v.blank? }
-          .map { |k, v| "* #{k}: #{v}" }
       end
     end
   end
