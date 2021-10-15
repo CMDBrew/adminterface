@@ -30,7 +30,7 @@ module.exports = {
     },
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
-      content: '⭐️ Adminterface is currently in public beta. <a href="https://form.typeform.com/to/EPATakNk" target="_blank" rel="noopener noreferrer">Register for the beta access</a> ⭐',
+      content: '⭐️ Adminterface is currently in public beta ⭐',
       isCloseable: false, // Defaults to `true`.
     },
     hideableSidebar: true,
