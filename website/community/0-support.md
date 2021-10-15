@@ -6,12 +6,6 @@ sidebar_label: Support
 description: Ways to get involved with Adminterface's community.
 ---
 
-````mdx-code-block
-import BetaNotice from "../_partials/betaNotice.mdx"
-
-<BetaNotice />
-````
-
 # Support
 There are many ways to get involved with Adminterface's community.
 
