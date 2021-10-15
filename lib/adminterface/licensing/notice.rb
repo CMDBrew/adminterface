@@ -2,10 +2,11 @@ module Adminterface
   module Licensing
     class Notice
       extend Adminterface::Callable
-      attr_reader :response, :external, :endpoint
+      attr_reader :response, :license_key, :external, :endpoint
 
-      def initialize(response, external: true, endpoint: nil)
+      def initialize(response, license_key, external: true, endpoint: nil)
         @response = response
+        @license_key = license_key
         @external = external
         @endpoint = endpoint
       end
@@ -35,14 +36,17 @@ module Adminterface
       def messages
         return title unless external?
 
-        [title, "=> Verifying license on #{endpoint}", verified]
+        [title, "=> Verifying license on #{endpoint}", verified].flatten
       end
 
       def verified
         if !!response[:verified]
-          Rainbow("=> [#{response[:status]}] License verified").green
+          Rainbow("=> [#{response[:status]}] #{response[:message]}").green
         else
-          Rainbow("=> [#{response[:status]}] #{response[:error]}").red
+          [
+            Rainbow("=> [#{response[:status]}] #{response[:message]}").red,
+            Rainbow("=> license_key: #{license_key}").red
+          ]
         end
       end
     end

@@ -27,6 +27,10 @@ module Adminterface
     autoload :Personal, "adminterface/licensing/personal"
   end
 
+  module Encryption
+    autoload :Encryptor, "adminterface/encryption/encryptor"
+  end
+
   # License key
   mattr_accessor :license_key
   @@license_key = nil

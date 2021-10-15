@@ -17,13 +17,13 @@ module Adminterface
       def call
         response = send_and_cache_request.with_indifferent_access
         Adminterface::Licensing::Notice
-          .call(response, **{external: request?, endpoint: ENDPOINT})
+          .call(response, license_key, **{external: request?, endpoint: ENDPOINT})
         response
       end
 
       def payload
         {
-          license_key: license_key,
+          license_key: encrypted_license_key,
           license: license,
           adminterface_version: Adminterface::VERSION,
           rails_version: Rails::VERSION::STRING,
@@ -35,6 +35,11 @@ module Adminterface
       end
 
       private
+
+      def encrypted_license_key
+        @encrypted_license_key ||=
+          license_key && Adminterface::Encryption::Encryptor.call(license_key)
+      end
 
       def send_and_cache_request
         return cached_response if has_cached_response?
@@ -64,7 +69,7 @@ module Adminterface
       end
 
       def return_error(status, exception_message = "")
-        payload.merge(status: status, error: exception_message).stringify_keys!
+        payload.merge(status: status, message: exception_message).stringify_keys!
       end
 
       def cache_response(status, response, time: 1.hour.to_i)

@@ -9,7 +9,8 @@ module Licensing
     end
 
     def response
-      @response ||= VCR.use_cassette(cassette_path) { service.call }
+      @response ||=
+        VCR.use_cassette(cassette_path, match_requests_on: %i[host path method]) { service.call }
     end
 
     def service
@@ -17,8 +18,8 @@ module Licensing
     end
 
     included do
-      test "sends correct license_key" do
-        assert_equal license_key, service.payload[:license_key]
+      test "sends encrypted license_key" do
+        assert_not_equal license_key, service.payload[:license_key]
       end
 
       test "sends correct license" do
