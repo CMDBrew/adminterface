@@ -45,6 +45,8 @@ group :test do
   # For system and integration tests
   gem "capybara"
   gem "webdrivers"
+  gem "webmock"
+  gem "vcr"
   # For test coverage reports
   gem "simplecov", require: false
 end

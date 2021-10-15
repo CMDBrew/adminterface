@@ -1,5 +1,3 @@
-require "test_case/active_admin/base_test_case"
-
 class ActiveAdmin::InputTestCase < ActiveAdmin::BaseTestCase
   class FormView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def protect_against_forgery?

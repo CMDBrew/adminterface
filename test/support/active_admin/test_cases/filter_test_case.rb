@@ -1,5 +1,3 @@
-require "test_case/active_admin/base_test_case"
-
 class ActiveAdmin::FilterTestCase < ActiveAdmin::BaseTestCase
   class FilterView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
     def collection_path
