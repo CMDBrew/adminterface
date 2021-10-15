@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.2.0](https://github.com/CMDBrew/adminterface/compare/v0.1.0...v0.2.0) (2021-10-15)
+
+
+### Features
+
+* add license checker ([e9f114f](https://github.com/CMDBrew/adminterface/commits/e9f114f3a298185c66541392ba8eacaa5addb20d))
+* license_key encryption ([081e90a](https://github.com/CMDBrew/adminterface/commits/081e90a549263db213fa4fdfb607df57649ceb07))
+
+
+### Bug Fixes
+
+* only check license when starting rails server ([5b47829](https://github.com/CMDBrew/adminterface/commits/5b478298d28f301e501e8ffaafca40e8c8080b56))
+
 ## 0.1.0 (2021-09-25)
 
 
