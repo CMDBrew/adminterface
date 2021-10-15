@@ -16,6 +16,11 @@ Every pricing plan will always include all features. There are absolutely no fun
 ## One license per project
 Each license permits you to run one commercial project in the production environment.
 
+## Purchase a license
+We are currently working on the customer's dashboard. But, for now, you can purchase a license from the "Register for the beta" link on https://adminterface.io/pricing.
+
+You will receive a copy of your license key through email after we have confirmed your purchase.
+
 ## Add the license key
 Create and add the `license_key` into the following file in your project:
 ```ruby title="config/initializers/adminterface.rb" {2,6,9}
@@ -30,9 +35,6 @@ Adminterface.setup do |config|
   # config.license_key = ENV["ADMINTERFACE_LICENSE_KEY"]
 end
 ```
-
-## Purchase a license
-We are currently working on the customer's dashboard. But, for now, you can purchase a license from the "Register for the beta" link on https://adminterface.io/pricing.
 
 ## License verification
 When the application initializes, it pings our server with some information about the current Adminterface installation.
