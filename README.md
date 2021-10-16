@@ -1,5 +1,7 @@
 # Adminterface <!-- omit in toc -->
 [![CI](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4dbedfdf21a2d675d2ca/maintainability)](https://codeclimate.com/github/CMDBrew/adminterface/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/4dbedfdf21a2d675d2ca/test_coverage)](https://codeclimate.com/github/CMDBrew/adminterface/test_coverage)
 [![gem](https://img.shields.io/gem/v/adminterface?color=%23E9573F&label=rubygems.org)](https://rubygems.org/gems/adminterface)
 [![npm](https://img.shields.io/npm/v/@cmdbrew/adminterface?color=%230273B4&label=npmjs.com)](https://www.npmjs.com/package/@cmdbrew/adminterface)
 

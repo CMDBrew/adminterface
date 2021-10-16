@@ -49,4 +49,6 @@ group :test do
   gem "vcr"
   # For test coverage reports
   gem "simplecov", require: false
+  gem "simplecov_json_formatter", require: false
+  gem "simplecov-console", require: false
 end

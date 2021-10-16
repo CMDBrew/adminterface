@@ -68,7 +68,6 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
       BUNDLE_PATH_RELATIVE_TO_CWD: true
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -86,6 +85,14 @@ jobs:
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
           bundle exec rails test
+      - name: Prepare artifacts for codeclimate
+        run: |
+          mv coverage/coverage.json coverage/raw.sqlite.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
+      - name: Save partial coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/raw.sqlite.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
 
   mysql:
     runs-on: ubuntu-latest
@@ -99,7 +106,6 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
       BUNDLE_PATH_RELATIVE_TO_CWD: true
-
     services:
       mysql:
         image: mysql:8
@@ -108,7 +114,6 @@ jobs:
           MYSQL_DATABASE: test
         ports: ['3306:3306']
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -126,6 +131,14 @@ jobs:
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
           bundle exec rails test
+      - name: Prepare artifacts for codeclimate
+        run: |
+          mv coverage/coverage.json coverage/raw.mysql.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
+      - name: Save partial coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/raw.mysql.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
 
   postgres:
     needs: [lint, docs]
@@ -139,7 +152,6 @@ jobs:
     env:
       BUNDLE_GEMFILE: ${{ github.workspace }}/gemfiles/${{ matrix.gemfile }}.gemfile
       BUNDLE_PATH_RELATIVE_TO_CWD: true
-
     services:
       postgres:
         image: postgres:12
@@ -148,7 +160,6 @@ jobs:
           POSTGRES_PASSWORD: password
           POSTGRES_DB: test
         ports: ['5432:5432']
-
     steps:
       - uses: actions/checkout@v2
       - name: Set up Ruby
@@ -166,3 +177,29 @@ jobs:
           bundle exec rails prepare_assets
           bundle exec rails db:test:prepare
           bundle exec rails test
+      - name: Prepare artifacts for codeclimate
+        run: |
+          mv coverage/coverage.json coverage/raw.postgres.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
+      - name: Save partial coverage as an artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: coverage
+          path: coverage/raw.postgres.${{ matrix.ruby }}.${{ matrix.gemfile }}.json
+
+  codeclimate:
+    needs: [sqlite, mysql, postgres]
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download partial coverages
+        uses: actions/download-artifact@v2
+        with:
+          name: coverage
+          path: coverage
+      - name: Format, sum & upload results to Code Climate
+        uses: paambaati/codeclimate-action@v3.0.0
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+        with:
+          debug: true
+          coverageLocations: coverage/raw.*.json:simplecov
