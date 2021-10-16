@@ -1,5 +1,7 @@
 # Adminterface <!-- omit in toc -->
 [![CI](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml)
+[![gem](https://img.shields.io/gem/v/adminterface?color=%23E9573F&label=rubygems.org)](https://rubygems.org/gems/adminterface)
+[![npm](https://img.shields.io/npm/v/@cmdbrew/adminterface?color=%230273B4&label=npmjs.com)](https://www.npmjs.com/package/@cmdbrew/adminterface)
 
 An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
 
