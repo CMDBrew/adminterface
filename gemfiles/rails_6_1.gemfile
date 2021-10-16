@@ -34,6 +34,8 @@ group :test do
   gem "webmock"
   gem "vcr"
   gem "simplecov", require: false
+  gem "simplecov_json_formatter", require: false
+  gem "simplecov-console", require: false
 end
 
 gemspec path: "../"

@@ -81,6 +81,7 @@ GEM
       zeitwerk (~> 2.3)
     addressable (2.7.0)
       public_suffix (>= 2.0.2, < 5.0)
+    ansi (1.5.0)
     appraisal (2.4.0)
       bundler
       rake
@@ -322,6 +323,10 @@ GEM
       docile (~> 1.1)
       simplecov-html (~> 0.11)
       simplecov_json_formatter (~> 0.1)
+    simplecov-console (0.9.1)
+      ansi
+      simplecov
+      terminal-table
     simplecov-html (0.12.3)
     simplecov_json_formatter (0.1.3)
     sixarm_ruby_unaccent (1.2.0)
@@ -340,6 +345,8 @@ GEM
       rubocop-performance (= 1.11.2)
     standardrb (1.0.0)
       standard
+    terminal-table (3.0.1)
+      unicode-display_width (>= 1.1.1, < 3)
     thor (1.1.0)
     tilt (2.0.10)
     toml (0.2.0)
@@ -397,6 +404,8 @@ DEPENDENCIES
   rails (~> 6.1.0)
   sassc-rails
   simplecov
+  simplecov-console
+  simplecov_json_formatter
   sqlite3
   standardrb
   vcr

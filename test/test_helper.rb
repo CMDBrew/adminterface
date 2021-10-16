@@ -1,5 +1,15 @@
 # Add SimpleCov for coverage reports
 require "simplecov"
+require "simplecov-console"
+require "simplecov_json_formatter"
+
+SimpleCov.formatter = SimpleCov::Formatter::MultiFormatter.new(
+  [
+    SimpleCov::Formatter::HTMLFormatter,
+    SimpleCov::Formatter::Console,
+    SimpleCov::Formatter::JSONFormatter
+  ]
+)
 
 SimpleCov.start :rails do
   add_filter "test"
