@@ -189,6 +189,7 @@ jobs:
   codeclimate:
     needs: [sqlite, mysql, postgres]
     runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
     steps:
       - uses: actions/checkout@v2
       - name: Download partial coverages
