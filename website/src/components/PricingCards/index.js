@@ -26,7 +26,7 @@ function PricingCard({
           {price && (
             <h1 className={styles.price}>
               <span>{typeof(price) === 'number' ? `$${price}` : price}</span>
-              {priceSuffix && <sub className={styles.priceSuffix}>{priceSuffix}</sub>}
+              {priceSuffix && <small className={styles.priceSuffix}>{priceSuffix}</small>}
             </h1>
           )}
         </div>
@@ -66,8 +66,8 @@ export function PricingRow() {
       <PricingCardCol
         name="Commercial"
         price={149}
-        priceSuffix="/year"
-        discountFrom={["$", <s>249/year</s>, ", 40% off for early adopters"]}
+        priceSuffix={["USD", <br/>, "/year"]}
+        discountFrom={["$", <s>249 USD / year</s>, ", 40% off for early adopters"]}
         purchaseUrl="https://form.typeform.com/to/EPATakNk"
         purchaseBtnText="Get a License">
         <p>Build one project with Adminterface.</p>
