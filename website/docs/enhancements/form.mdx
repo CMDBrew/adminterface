@@ -1,5 +1,5 @@
 ---
-sidebar_position: 3
+sidebar_position: 4
 description: Adminterface Guide for the Form(new, edit) Page.
 ---
 
@@ -277,7 +277,7 @@ import DatalistGroupish from './form/_groupish.mdx';
 
 ### DatePicker
 `:date_picker` or `:datepicker` (ActiveAdmin compatibility) - a date select. Alternative to `:date` using the [Flatpickr] library replacing the jQuery date picker in [ActiveAdmin]
-- **Configuration**: [Formtastic][Formtastic/StringInput], [Configuration]
+- **Configuration**: [Formtastic][Formtastic/StringInput], [Customizations]
 - **Styling**: [Bootstrap][Bootstrap/form-control], [Flatpickr]
 
 ````mdx-code-block
@@ -322,7 +322,7 @@ f.input :published_at, as: :date_select
 
 ### DateTimePicker
 `:datetime_picker` - a date and time select. Alternative to `:datetime` using the [Flatpickr] library replacing the jQuery date picker in [ActiveAdmin].
-- **Configuration**: [Formtastic][Formtastic/StringInput], [Configuration]
+- **Configuration**: [Formtastic][Formtastic/StringInput], [Customizations]
 - **Styling**: [Bootstrap][Bootstrap/form-control], [Flatpickr]
 
 ````mdx-code-block
@@ -531,7 +531,7 @@ import SearchGroupish from './form/_groupish.mdx';
 
 ### Select
 `:select` - a select menu. Default for ActiveRecord associations: `belongs_to`, `has_many`, and `has_and_belongs_to_many`.
-- **Configuration**: [Formtastic][Formtastic/SelectInput], [TomSelect], [Configuration]
+- **Configuration**: [Formtastic][Formtastic/SelectInput], [TomSelect], [Customizations]
 - **Styling**: [Bootstrap][Bootstrap/select]
 
 ````mdx-code-block
@@ -603,7 +603,7 @@ f.input :accept, as: :switch
 
 ### Text
 `:text` - a textarea. Default for column types: `:text`
-- **Configuration**: [Formtastic][Formtastic/TextInput], [Configuration]
+- **Configuration**: [Formtastic][Formtastic/TextInput], [Customizations]
 - **Styling**: [Bootstrap][Bootstrap/form-control]
 
 ```ruby
@@ -707,7 +707,7 @@ import URLGroupish from './form/_groupish.mdx';
 [Bootstrap/form-control#file-input]: https://getbootstrap.com/docs/5.0/forms/form-control#file-input
 [Bootstrap/range]: https://getbootstrap.com/docs/5.0/forms/range/
 [Bootstrap/select]: https://getbootstrap.com/docs/5.0/forms/select/
-[Configuration]: /docs/start/configuration
+[Customizations]: /docs/enhancements/customizations
 [CountrySelect]: https://github.com/stefanpenner/country_select
 [Flatpickr]: https://flatpickr.js.org/
 [Formtastic]: https://github.com/formtastic/formtastic
