@@ -33,6 +33,7 @@ group :test do
   gem "webdrivers"
   gem "webmock"
   gem "vcr"
+  gem "mocha"
   gem "simplecov", require: false
   gem "simplecov_json_formatter", require: false
   gem "simplecov-console", require: false

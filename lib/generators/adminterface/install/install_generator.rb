@@ -4,37 +4,35 @@ module Adminterface
       desc "Installs Adminterface and generates necessary files and migrations"
       source_root File.expand_path("templates", __dir__)
 
-      def install_rails_addons
-        invoke "action_text:install"
-      end
+      class_option :skip_action_text,
+        type: :boolean, default: false,
+        desc: "Skip installation of ActionText for comments"
+      class_option :skip_examples,
+        type: :boolean, default: false,
+        desc: "Skip adding sample admin files"
+      class_option :webpacker,
+        type: :boolean, default: true,
+        desc: "Install assets with webpacker"
+      class_option :version,
+        aliases: "-v", type: :string, default: Adminterface::VERSION,
+        desc: "Install with a specific version"
 
       def install_assets
-        install_webpacker? do
-          generate "adminterface:webpacker"
-        end
+        return unless options[:webpacker]
+
+        generate "adminterface:webpacker -v #{options[:version]}"
       end
 
       def install_action_text_for_comments
+        return if options[:skip_action_text]
+
         generate "adminterface:comments"
       end
 
-      def add_samples
+      def add_examples
+        return if options[:skip_examples]
+
         template "dashboard.rb", "app/admin/dashboard.rb"
-      end
-
-      private
-
-      def install_webpacker?
-        return yield if defined?(Webpacker)
-
-        puts Rainbow("Adminterface requires webpacker:").yellow
-        if yes?("Install webpacker and continue?")
-          gem "webpacker"
-          rails_command "webpacker:install"
-          yield
-        else
-          puts Rainbow("Installation aborted").red
-        end
       end
     end
   end
