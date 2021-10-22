@@ -19,6 +19,13 @@ Installs Adminterface and generates necessary files and migrations
 $ rails g adminterface:install
 ```
 
+| Options              | Alias | Default                 | Descriptions
+| :------------------- | :---- | :---------------------- | :-------------------
+| `--skip_action_text` |       | `false`                 | Skip installation of ActionText for comments
+| `--skip_examples`    |       | `false`                 | Skip adding sample admin files
+| `--webpacker`        |       | `true`                  | Install assets with webpacker
+| `--version`          | `-v`  | `Adminterface::VERSION` | Install with a specific version
+
 This will:
 - Install Rails `action_text` and `active_storage`
 - Run `rails g adminterface:comments`
@@ -53,6 +60,10 @@ Install Stylesheets and JavaScripts using Webpacker
 ```bash
 $ rails g adminterface:webpacker
 ```
+
+| Options              | Alias | Default                 | Descriptions
+| :------------------- | :---- | :---------------------- | :-------------------
+| `--version`          | `-v`  | `Adminterface::VERSION` | Install with a specific version
 
 This will:
 - Add `resolve-url-loader` to `environment.js`

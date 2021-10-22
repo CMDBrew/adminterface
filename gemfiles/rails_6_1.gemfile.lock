@@ -212,6 +212,7 @@ GEM
     mini_magick (4.11.0)
     mini_mime (1.0.3)
     minitest (5.14.4)
+    mocha (1.13.0)
     multi_json (1.15.0)
     multi_xml (0.6.0)
     multipart-post (2.1.1)
@@ -396,6 +397,7 @@ DEPENDENCIES
   gem-release
   letter_opener
   license_finder
+  mocha
   mysql2
   omniauth
   omniauth-oauth2

@@ -1,6 +1,7 @@
 {
   "name": "adminterface_dummy_app",
   "version": "1.0.0",
+  "license": "MIT",
   "scripts": {
     "webpack:stats": "npx webpack --config config/webpack/development.js --json > stats.json",
     "webpack:analyze": "yarn webpack:stats && yarn webpack-bundle-analyzer stats.json public/packs"

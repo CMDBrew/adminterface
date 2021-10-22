@@ -25,8 +25,18 @@ require_relative "../test/dummy/config/environment"
 ActiveRecord::Migrator.migrations_paths = [File.expand_path("../test/dummy/db/migrate", __dir__)]
 ActiveRecord::Migrator.migrations_paths << File.expand_path("../db/migrate", __dir__)
 require "rails/test_help"
+require "minitest/autorun"
+require "mocha/minitest"
 
 Dir["#{ENGINE_ROOT}/test/support/**/*.rb"].sort.each { |f| require f }
+
+# For generators
+require "rails/generators/test_case"
+require "generators/adminterface/comments/comments_generator"
+require "generators/adminterface/configs/configs_generator"
+require "generators/adminterface/install/install_generator"
+require "generators/adminterface/views/views_generator"
+require "generators/adminterface/webpacker/webpacker_generator"
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.respond_to?(:fixture_path=)

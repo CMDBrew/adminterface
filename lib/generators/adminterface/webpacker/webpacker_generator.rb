@@ -2,11 +2,24 @@ module Adminterface
   module Generators
     class WebpackerGenerator < Rails::Generators::Base
       desc "Install Stylesheets and JavaScripts using Webpacker"
+      source_root File.expand_path("templates", __dir__)
+
       class_option :version,
         aliases: "-v", type: :string, default: Adminterface::VERSION,
         desc: "Install with a specific npm package version"
 
-      source_root File.expand_path("templates", __dir__)
+      def install_webpacker
+        return if webpacker_installed?
+
+        puts Rainbow("Adminterface requires webpacker:").yellow
+        if yes?("Install webpacker and continue?")
+          gem "webpacker"
+          rails_command "webpacker:install"
+        else
+          puts Rainbow("Installation aborted").red
+          abort
+        end
+      end
 
       def install_packages
         insert_into_file "config/webpack/environment.js", after: /require\(('|")@rails\/webpacker\1\);?\n/ do
@@ -18,7 +31,7 @@ module Adminterface
           EOF
         end
 
-        run "yarn add @cmdbrew/adminterface@v#{find_npm_version}"
+        run "yarn add @cmdbrew/adminterface@#{npm_version}"
       end
 
       def install_assets
@@ -44,11 +57,12 @@ module Adminterface
 
       private
 
-      def find_npm_version
-        version = options[:version]
-        return version unless version.include?(".rc")
+      def webpacker_installed?
+        defined?(Webpacker)
+      end
 
-        version.gsub(".rc", "-rc")
+      def npm_version
+        options[:version].gsub(".rc", "-rc")
       end
     end
   end

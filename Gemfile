@@ -47,6 +47,7 @@ group :test do
   gem "webdrivers"
   gem "webmock"
   gem "vcr"
+  gem "mocha"
   # For test coverage reports
   gem "simplecov", require: false
   gem "simplecov_json_formatter", require: false

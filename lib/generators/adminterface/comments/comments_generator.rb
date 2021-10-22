@@ -11,6 +11,10 @@ module Adminterface
         ActiveRecord::Migration.next_migration_number(next_migration_number)
       end
 
+      def install_action_text
+        invoke "action_text:install"
+      end
+
       def create_initializer
         template "active_admin_comment_action_text.rb",
           "config/initializers/active_admin_comment_action_text.rb"
