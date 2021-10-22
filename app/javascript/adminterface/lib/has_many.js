@@ -51,54 +51,57 @@ class HasMany {
   }
 
   _bindAddEvent (el) {
-    el.addEventListener('click', (e) => {
-      let beforeAdd
-      const el = e.target
-      const parent = this.element
+    el.addEventListener('click', (e) => this._bindAddEventCallBack(e))
+  }
 
-      e.preventDefault()
-      parent.dispatchEvent(beforeAdd = this.events.addBefore, [parent])
+  _bindAddEventCallBack (e) {
+    let beforeAdd
+    const el = e.target
+    const parent = this.element
+    e.preventDefault()
+    parent.dispatchEvent(beforeAdd = this.events.addBefore, [parent])
 
-      if (!beforeAdd.defaultPrevented) {
-        let index = parent.dataset.hasManyIndex || parent.querySelectorAll(this.options.item).length - 1
-        parent.setAttribute('data-has-many-index', ++index)
+    if (!beforeAdd.defaultPrevented) {
+      let index = parent.dataset.hasManyIndex || parent.querySelectorAll(this.options.item).length - 1
+      parent.setAttribute('data-has-many-index', ++index)
 
-        const regex = new RegExp(el.dataset.placeholder, 'g')
-        const html = el.dataset.html.replaceAll(regex, index)
-        const newNode = document.createElement('div')
-        newNode.innerHTML = html
+      const regex = new RegExp(el.dataset.placeholder, 'g')
+      const html = el.dataset.html.replace(regex, index)
+      const newNode = document.createElement('div')
+      newNode.innerHTML = html
 
-        const fieldset = newNode.firstElementChild
-        const $list = this.element.querySelector(this.options.list)
+      const fieldset = newNode.firstElementChild
+      const $list = this.element.querySelector(this.options.list)
 
-        $list.appendChild(fieldset)
-        this._bindEvents(fieldset)
-        this._recomputePosition()
+      $list.appendChild(fieldset)
+      this._bindEvents(fieldset)
+      this._recomputePosition()
 
-        const addAfterEvent = this.events.addAfter
-        addAfterEvent.detail = { fieldset, parent }
-        return parent.dispatchEvent(this.events.addAfter)
-      }
-    })
+      const addAfterEvent = this.events.addAfter
+      addAfterEvent.detail = { fieldset, parent }
+      return parent.dispatchEvent(this.events.addAfter)
+    }
   }
 
   _bindRemoveEvent (el) {
-    el.addEventListener('click', (e) => {
-      const el = e.target
-      const parent = this.element
-      const fieldset = el.closest(this.options.item)
-      const removeBeforeEvent = this.events.removeBefore
-      const removeAfterEvent = this.events.removeAfter
+    el.addEventListener('click', (e) => this._bindRemoveEventCallBack(e))
+  }
 
-      e.preventDefault()
-      this._recomputePosition()
+  _bindRemoveEventCallBack (e) {
+    const el = e.target
+    const parent = this.element
+    const fieldset = el.closest(this.options.item)
+    const removeBeforeEvent = this.events.removeBefore
+    const removeAfterEvent = this.events.removeAfter
 
-      removeBeforeEvent.detail = { fieldset, parent }
-      removeAfterEvent.detail = { fieldset, parent }
-      parent.dispatchEvent(removeBeforeEvent)
-      fieldset.remove()
-      return parent.dispatchEvent(removeAfterEvent)
-    })
+    e.preventDefault()
+    this._recomputePosition()
+
+    removeBeforeEvent.detail = { fieldset, parent }
+    removeAfterEvent.detail = { fieldset, parent }
+    parent.dispatchEvent(removeBeforeEvent)
+    fieldset.remove()
+    return parent.dispatchEvent(removeAfterEvent)
   }
 
   _bindEvents (el) {
