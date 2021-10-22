@@ -5,7 +5,7 @@
 [![gem](https://img.shields.io/gem/v/adminterface?color=%23E9573F&label=rubygems.org)](https://rubygems.org/gems/adminterface)
 [![npm](https://img.shields.io/npm/v/@cmdbrew/adminterface?color=%230273B4&label=npmjs.com)](https://www.npmjs.com/package/@cmdbrew/adminterface)
 
-An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.
+A gem that brings Bootstrap 5, advanced customizability, and other goodies into ActiveAdmin
 
 [![](preview.jpg)](https://adminterface.io)
 
