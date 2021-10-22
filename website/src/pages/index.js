@@ -15,8 +15,9 @@ function HomepageHeader() {
       <div className="container">
         <div className="row">
           <div className="col col--7 margin-bottom--lg">
+            <div class="badge badge--danger badge--code margin-bottom--sm">MADE FOR RUBY ON RAILS</div>
             <h1 className="hero__title">
-              Build <b>functional</b> web apps <b>quickly</b>, focus on your <b>core needs</b>
+              Build <b>functional</b> and <b>beautiful</b> web apps <b>faster</b> with ActiveAdmin
             </h1>
             <p className="hero__subtitle">{siteConfig.tagline}</p>
             <div className={styles.buttons}>

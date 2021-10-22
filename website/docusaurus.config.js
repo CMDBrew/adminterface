@@ -4,7 +4,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').DocusaurusConfig} */
 module.exports = {
   title: 'Adminterface',
-  tagline: 'An add-on that brings Bootstrap 5 and other goodies into ActiveAdmin.',
+  tagline: 'A gem that brings Bootstrap 5, advanced customizability, and other goodies into ActiveAdmin',
   url: 'https://adminterface.io',
   baseUrl: '/',
   trailingSlash: false,
@@ -57,10 +57,16 @@ module.exports = {
         },
         {to: 'pricing', label: 'Pricing', position: 'left'},
         {href: '/docs/intro', label: 'v0.2.0 🚧', position: 'right'},
+        // {
+        //   href: 'http://rubyonrails.org',
+        //   position: 'right',
+        //   className: 'header-icon header-rails-link',
+        //   'aria-label': 'Ruby on Rails',
+        // },
         {
           href: 'https://github.com/CMDBrew/adminterface',
           position: 'right',
-          className: 'header-github-link',
+          className: 'header-icon header-github-link',
           'aria-label': 'GitHub repository',
         },
       ],

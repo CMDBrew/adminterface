@@ -68,14 +68,14 @@ export function PricingRow() {
         price={149}
         priceSuffix={["USD", <br/>, "/year"]}
         discountFrom={["$", <s>249 USD / year</s>, ", 40% off for early adopters"]}
-        purchaseUrl="https://form.typeform.com/to/EPATakNk"
+        purchaseUrl="https://buy.stripe.com/bIYbJy2ul0btf3G7sw"
         purchaseBtnText="Get a License">
         <p>Build one project with Adminterface.</p>
       </PricingCardCol>
       <PricingCardCol
         name="Enterprise"
         cardClassName="cardNotice"
-        purchaseUrl="https://form.typeform.com/to/EPATakNk"
+        purchaseUrl="https://form.typeform.com/to/XEpIALQv"
         purchaseBtnText="Contact Us"
         purchaseBtnClassName="button--success">
         <p className={styles.subHeading}>
