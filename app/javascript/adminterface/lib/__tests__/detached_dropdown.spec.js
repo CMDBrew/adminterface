@@ -1,4 +1,3 @@
-/* eslint-env jest */
 import DetachedDropdownClass from '../detached_dropdown'
 
 describe('DetachedDropdown', () => {
