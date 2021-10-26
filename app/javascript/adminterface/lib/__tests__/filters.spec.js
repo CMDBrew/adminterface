@@ -1,4 +1,3 @@
-/* eslint-env jest */
 import Filters from '../filters'
 import * as utilModule from '../utils'
 
