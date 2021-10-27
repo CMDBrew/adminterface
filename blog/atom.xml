@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://adminterface.io/blog</id>
+    <title>Adminterface Blog</title>
+    <updated>2021-10-28T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://adminterface.io/blog"/>
+    <subtitle>Adminterface Blog</subtitle>
+    <icon>https://adminterface.io/img/favicon.ico</icon>
+    <entry>
+        <title type="html"><![CDATA[Introducing Adminterface]]></title>
+        <id>introducing-adminterface</id>
+        <link href="https://adminterface.io/blog/introducing-adminterface"/>
+        <updated>2021-10-28T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[How it all started]]></summary>
+        <author>
+            <name>Richard Wang</name>
+            <uri>https://github.com/richchw</uri>
+        </author>
+    </entry>
+</feed>

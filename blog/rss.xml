@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rss version="2.0">
+    <channel>
+        <title>Adminterface Blog</title>
+        <link>https://adminterface.io/blog</link>
+        <description>Adminterface Blog</description>
+        <lastBuildDate>Thu, 28 Oct 2021 00:00:00 GMT</lastBuildDate>
+        <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
+        <generator>https://github.com/jpmonette/feed</generator>
+        <item>
+            <title><![CDATA[Introducing Adminterface]]></title>
+            <link>https://adminterface.io/blog/introducing-adminterface</link>
+            <guid>introducing-adminterface</guid>
+            <pubDate>Thu, 28 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[How it all started]]></description>
+        </item>
+    </channel>
+</rss>
