@@ -542,7 +542,7 @@ const initMyCustomPlugin = function (element) {
   const myCustomPluginTriggerList = [].slice.call(element.querySelectorAll('[data-aa-my-custom-plugin]'))
 
   myCustomPluginTriggerList.map((el) => {
-    const options = JSON.parse(el.dataset.aaMyCustomPlugin || {})
+    const options = JSON.parse(el.dataset.aaMyCustomPlugin || '{}')
 
     return new MyCustomPlugin(el, options)
   })

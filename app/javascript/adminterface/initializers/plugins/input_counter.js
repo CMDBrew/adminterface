@@ -4,7 +4,7 @@ const initInputCounter = function (element) {
   const inputCounterTriggerList = [].slice.call(element.querySelectorAll('[data-aa-input-counter]'))
 
   inputCounterTriggerList.map((el) => {
-    const options = JSON.parse(el.dataset.aaInputCounter || {})
+    const options = JSON.parse(el.dataset.aaInputCounter || '{}')
 
     return new InputCounter(el, options)
   })
