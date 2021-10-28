@@ -7,7 +7,7 @@ class CommentsGeneratorTest < GeneratorTestCase
   teardown :teardown_app
 
   def stub_action_text_installation
-    described_class.any_instance.stubs(:invoke).with("action_text:install").returns(true)
+    described_class.any_instance.stubs(:rails_command).with("action_text:install").returns(true)
   end
 
   test "installs action text" do

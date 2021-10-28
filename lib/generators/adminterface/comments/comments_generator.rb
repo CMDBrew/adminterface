@@ -12,7 +12,7 @@ module Adminterface
       end
 
       def install_action_text
-        invoke "action_text:install"
+        rails_command "action_text:install"
       end
 
       def create_initializer
