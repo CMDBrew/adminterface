@@ -4,13 +4,13 @@ module Adminterface
       desc "Installs Adminterface and generates necessary files and migrations"
       source_root File.expand_path("templates", __dir__)
 
-      class_option :skip_action_text,
+      class_option :skip_comments,
         type: :boolean, default: false,
         desc: "Skip installation of ActionText for comments"
       class_option :skip_examples,
         type: :boolean, default: false,
         desc: "Skip adding sample admin files"
-      class_option :webpacker,
+      class_option :use_webpacker,
         type: :boolean, default: true,
         desc: "Install assets with webpacker"
       class_option :version,
@@ -18,13 +18,13 @@ module Adminterface
         desc: "Install with a specific version"
 
       def install_assets
-        return unless options[:webpacker]
+        return unless options[:use_webpacker]
 
         generate "adminterface:webpacker -v #{options[:version]}"
       end
 
-      def install_action_text_for_comments
-        return if options[:skip_action_text]
+      def install_comments
+        return if options[:skip_comments]
 
         generate "adminterface:comments"
       end
