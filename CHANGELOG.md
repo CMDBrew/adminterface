@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.2.1](https://github.com/CMDBrew/adminterface/compare/v0.2.0...v0.2.1) (2021-10-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* install_generator options should be consistent with activeadmin
+
+### Bug Fixes
+
+* fallback value for JSON.parse should be '{}' instead of {} ([727a2ba](https://github.com/CMDBrew/adminterface/commits/727a2bab65145a06428d35408861ad680c08cccd))
+* missing thor class for invoke when installing action_text ([e749441](https://github.com/CMDBrew/adminterface/commits/e749441cc9929307899247d09eff3d46943c180f))
+
+
+* install_generator options should be consistent with activeadmin ([5a36c01](https://github.com/CMDBrew/adminterface/commits/5a36c01a4f1505476a125c1a085c8864665012c8))
+
 ## [0.2.0](https://github.com/CMDBrew/adminterface/compare/v0.1.0...v0.2.0) (2021-10-15)
 
 
