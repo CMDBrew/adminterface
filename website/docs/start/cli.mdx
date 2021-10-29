@@ -4,6 +4,9 @@ description: Adminterface Command Line Reference.
 ---
 
 # Command Line Reference
+````mdx-code-block
+import InstallNotice from "../../_partials/installNotice.mdx"
+````
 
 ## Generators
 ````mdx-code-block
@@ -14,6 +17,8 @@ import CodeBlock from '@theme/CodeBlock';
 
 ### Install
 Installs Adminterface and generates necessary files and migrations
+
+<InstallNotice />
 
 ```bash
 $ rails g adminterface:install
@@ -50,14 +55,12 @@ This will:
 :::
 
 ### Webpacker
+Install Stylesheets and JavaScripts using Webpacker
 
 :::caution
-
 We don't currently support using Sprockets
-
 :::
 
-Install Stylesheets and JavaScripts using Webpacker
 ```bash
 $ rails g adminterface:webpacker
 ```
