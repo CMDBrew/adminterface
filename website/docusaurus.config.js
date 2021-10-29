@@ -58,12 +58,6 @@ module.exports = {
         },
         {to: 'pricing', label: 'Pricing', position: 'left'},
         {href: '/docs/intro', label: 'v0.2.0 🚧', position: 'right'},
-        // {
-        //   href: 'http://rubyonrails.org',
-        //   position: 'right',
-        //   className: 'header-icon header-rails-link',
-        //   'aria-label': 'Ruby on Rails',
-        // },
         {
           href: 'https://github.com/CMDBrew/adminterface',
           position: 'right',

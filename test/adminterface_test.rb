@@ -9,4 +9,10 @@ class AdminterfaceTest < ActiveSupport::TestCase
     npm_version = JSON.parse(File.read("#{ENGINE_ROOT}/package.json"))["version"]
     assert_equal Adminterface::VERSION, npm_version
   end
+
+  test "ensures doc version matches with ruby version" do
+    doc = File.read("#{ENGINE_ROOT}/website/docusaurus.config.js")
+    regex = Regexp.new("v#{Adminterface::VERSION}")
+    assert doc.match?(regex)
+  end
 end
