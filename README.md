@@ -50,7 +50,7 @@ Check our [website](https://adminterface.io) to find in-depth documentation for 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-Adminterface is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See [our Terms of Service in full text](LICENSE.md) for more information.
+Adminterface is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See our [Terms of Service in full text](LICENSE.md) for more information.
 
 ### For Commerical License
 Get a license at https://adminterface.io/pricing, then create and add the `license_key` into the following file in your project:
