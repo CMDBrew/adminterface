@@ -121,5 +121,18 @@ Adminterface hosts release candidate builds on Github packages. If you wish to t
    yarn upgrade @cmdbrew/adminterface@[VERSION]
    ```
 
+### Releasing (maintainers only)
+We use Github Actions to publish releases based on the git tags automatically. See [`.github/workflows/release.yml`](https://github.com/CMDBrew/adminterface/.github/workflows/release.yml) for more information.
+1. Update Gem version in [`lib/adminterface/version.rb`](https://github.com/CMDBrew/adminterface/lib/adminterface/version.rb)
+2. Update NPM package version in [`package.json`](https://github.com/CMDBrew/adminterface/package.json)
+3. Update doc version in [`website/docusaurus.config.js`](https://github.com/CMDBrew/adminterface/website/docusaurus.config.js)
+4. Run `yarn release` to update license dependencies
+5. Create a tag using git and push it to the repo
+   ```bash
+   version="v0.x.x"
+   git tag ${version}
+   git push origin ${version}
+   ```
+
 ## License
 By contributing to Adminterface, you agree that your contributions will be licensed under its [License](https://adminterface.io/docs/terms).
