@@ -6,6 +6,9 @@ module Adminterface
       CONFIGS = Adminterface::Configs::DEFAULTS
 
       included do
+        # Language direction ltr or rtl
+        register :lang_dir, "ltr", :string_symbol_or_proc
+
         # The default component configs
         register :components, CONFIGS[:components]
 

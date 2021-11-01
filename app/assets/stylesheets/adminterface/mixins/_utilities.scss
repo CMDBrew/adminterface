@@ -37,3 +37,7 @@
   -webkit-box-shadow: #{$value};
   -moz-box-shadow: #{$value};
 }
+
+@mixin lang-dir-rtl {
+  @at-root { html[dir="rtl"] & { @content; } }
+}

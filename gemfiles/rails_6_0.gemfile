@@ -14,7 +14,7 @@ group :development, :test do
   gem "pg"
   gem "mysql2"
   gem "sqlite3"
-  gem "webpacker", "~> 5.0"
+  gem "webpacker", "~> 5.4.3"
   gem "faker"
   gem "factory_bot_rails"
   gem "devise"

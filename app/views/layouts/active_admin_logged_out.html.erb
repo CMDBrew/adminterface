@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="<%=I18n.locale%>">
+<html lang="<%=I18n.locale%>" dir="<%= ActiveAdmin.application.lang_dir(self) %>">
   <head>
     <meta http-equiv="Content-type" content="text/html; charset=utf-8">
     <title><%= [@page_title, ActiveAdmin.application.site_title(self)].compact.join(" | ") %></title>

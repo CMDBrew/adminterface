@@ -5,6 +5,8 @@ module Adminterface
         module Base
           def build(*args)
             super
+            set_attribute :dir,
+              render_or_call_method_or_proc_on(self, active_admin_config.lang_dir(self))
             build_breakpoint_helpers
             build_meta_tags_for_js
           end

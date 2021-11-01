@@ -1,9 +1,7 @@
 module ActiveAdmin::IntegrationTestHelper
   def with_resources_during(example)
     load_resources { yield }
-
     example.run
-
     load_resources {}
   end
 

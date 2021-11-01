@@ -18,7 +18,7 @@ group :development, :test do
   gem "pg"
   gem "mysql2"
   gem "sqlite3"
-  gem "webpacker", "~> 5.0"
+  gem "webpacker", "~> 5.4.3"
 
   # Use Factory to create fake data
   gem "faker"
