@@ -43,7 +43,7 @@ class HeaderTest < ActiveAdmin::BaseTestCase
           <div class="site_title navbar-brand">
             <div class="title">Awesome Admin</div>
           </div>
-          <button class="navbar-toggler" data-bs-target="#header-nav" data-bs-toggle="collapse">
+          <button class="navbar-toggler" data-bs-target="#header-nav" data-bs-toggle="collapse" aria-expanded="false">
             <span class="navbar-toggler-icon"></span>
           </button>
           <div id="header-nav" class="collapse navbar-collapse">
