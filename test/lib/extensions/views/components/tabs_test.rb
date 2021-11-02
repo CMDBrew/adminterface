@@ -34,11 +34,11 @@ module TabsTest
     test "nav #content" do
       html =
         <<~HTML
-          <li class="nav-item">
-            <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1" href="#tab-1">tab-1</a>
+          <li class="nav-item" role="presentation">
+            <a id="tab-1-tab" aria-controls="tab-1" class="nav-link active" aria-selected="true" data-bs-toggle="tab" data-bs-target="#tab-1" href="#tab-1">tab-1</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" href="#tab-2">tab-2</a>
+          <li class="nav-item" role="presentation">
+            <a id="tab-2-tab" aria-controls="tab-2" class="nav-link" aria-selected="false" data-bs-toggle="tab" data-bs-target="#tab-2" href="#tab-2">tab-2</a>
           </li>
         HTML
       assert_html html, @nav.content
@@ -59,12 +59,16 @@ module TabsTest
       html =
         <<~HTML
           <ul class="nav nav-tabs my-tabs-nav" role="tablist">
-            <li class="nav-item"><a class="nav-link active" data-bs-toggle="tab" data-bs-target="#tab-1" href="#tab-1">tab-1</a></li>
-            <li class="nav-item"><a class="nav-link" data-bs-toggle="tab" data-bs-target="#tab-2" href="#tab-2">tab-2</a></li>
+            <li class="nav-item" role="presentation">
+              <a id="tab-1-tab" aria-controls="tab-1" class="nav-link active" aria-selected="true" data-bs-toggle="tab" data-bs-target="#tab-1" href="#tab-1">tab-1</a>
+            </li>
+            <li class="nav-item" role="presentation">
+              <a id="tab-2-tab" aria-controls="tab-2" class="nav-link" aria-selected="false" data-bs-toggle="tab" data-bs-target="#tab-2" href="#tab-2">tab-2</a>
+            </li>
           </ul>
           <div class="tab-content my-tabs-content">
-            <div id="tab-1" class="tab-pane active"></div>
-            <div id="tab-2" class="tab-pane"></div>
+            <div id="tab-1" aria-labelledby="tab-1-tab" class="tab-pane active" role="tabpanel"></div>
+            <div id="tab-2" aria-labelledby="tab-2-tab" class="tab-pane" role="tabpanel"></div>
           </div>
         HTML
       assert_html html, @component.content
@@ -99,11 +103,11 @@ module TabsTest
     test "nav #content" do
       html =
         <<~ERB
-          <li class="nav-item">
-            <a class="nav-link active" href="https://example.com?anchor_id=my-tabs&tab=tab-1#my-tabs">tab-1</a>
+          <li class="nav-item" role="presentation">
+            <a id="tab-1-tab" aria-controls="tab-1" class="nav-link active" aria-selected="true" href="https://example.com?anchor_id=my-tabs&tab=tab-1#my-tabs">tab-1</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="https://example.com?anchor_id=my-tabs&tab=tab-2#my-tabs">tab-2</a>
+          <li class="nav-item" role="presentation">
+            <a id="tab-2-tab" aria-controls="tab-2" class="nav-link" aria-selected="false" href="https://example.com?anchor_id=my-tabs&tab=tab-2#my-tabs">tab-2</a>
           </li>
         ERB
       assert_html html, @nav.content.gsub("&amp\;", "&")
