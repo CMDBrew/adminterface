@@ -18,7 +18,7 @@ task :prepare_assets do
   system "rm -rf test/dummy/public/packs"
   system "rm -rf test/dummy/public/packs-test"
   system "yarn install --frozen-lockfile"
-  system "(cd test/dummy && yarn install --frozen-lockfile)"
+  system "cd test/dummy && yarn install --frozen-lockfile"
 end
 
 # Generate dependency licenses
