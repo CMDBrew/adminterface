@@ -25,7 +25,7 @@ module Adminterface
 
             meta_tags = {
               version: Adminterface::VERSION,
-              viewport: "width=device-width, height=device-height, initial-scale=1.0, user-scalable=no"
+              viewport: "width=device-width, height=device-height, initial-scale=1.0"
             }
 
             config.meta_tags_for_logged_out_pages = meta_tags

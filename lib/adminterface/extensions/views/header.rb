@@ -26,7 +26,8 @@ module Adminterface
         end
 
         def navbar_toggler
-          button(class: "navbar-toggler", 'data-bs-target': "##{ID}", 'data-bs-toggle': "collapse") do
+          button(class: "navbar-toggler", 'data-bs-target': "##{ID}",
+                 'data-bs-toggle': "collapse", "aria-expanded": "false") do
             span class: "navbar-toggler-icon"
           end
         end

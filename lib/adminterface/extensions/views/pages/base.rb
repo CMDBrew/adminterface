@@ -102,7 +102,8 @@ module Adminterface
             div class: "flashes" do
               flash_messages.each do |type, messages|
                 [*messages].each do |message|
-                  div class: "flash flash_#{type} alert #{flash_css_classes[type.to_sym]} #{flash_dismissible_class}".squish do
+                  div class: "flash flash_#{type} alert #{flash_css_classes[type.to_sym]} #{flash_dismissible_class}".squish,
+                      role: "alert" do
                     text_node(message)
                     button(class: "btn-close", "data-bs-dismiss": "alert", "aria-label": "Close") if flash_dismissible?
                   end

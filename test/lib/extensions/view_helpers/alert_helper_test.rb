@@ -18,8 +18,8 @@ module AlertHelperTest
 
       html =
         <<~ERB
-          <div class="flash flash_alert alert #{flash_css_classes[:alert]}">Alert</div>
-          <div class="flash flash_notice alert #{flash_css_classes[:notice]}">Notice</div>
+          <div class="flash flash_alert alert #{flash_css_classes[:alert]}" role="alert">Alert</div>
+          <div class="flash flash_notice alert #{flash_css_classes[:notice]}" role="alert">Notice</div>
         ERB
 
       assert_html html, @view.output_buffer

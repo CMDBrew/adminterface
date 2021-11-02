@@ -4,7 +4,9 @@ module Adminterface
       module AlertHelper
         def flashes_html
           flash.each do |type, msg|
-            concat(content_tag(:div, msg, class: "flash flash_#{type} alert #{flash_css_classes[type.to_sym]}".squish))
+            concat(content_tag(:div, msg,
+              class: "flash flash_#{type} alert #{flash_css_classes[type.to_sym]}".squish,
+              role: "alert"))
           end
           nil
         end
