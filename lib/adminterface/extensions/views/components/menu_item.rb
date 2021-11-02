@@ -15,8 +15,13 @@ module Adminterface
             end
           end
 
-          def item_class(item)
-            "#{item.html_options[:class]} #{item.current?(assigns[:current_tab]) ? "active" : nil}".squish
+          def current_item_options(item)
+            return {} unless item.current?(assigns[:current_tab])
+
+            {
+              class: "#{item.html_options[:class]} active".squish,
+              "aria-current": "page"
+            }
           end
         end
       end
@@ -51,7 +56,7 @@ ActiveAdmin::Views::MenuItem.class_eval do
     end
 
     if url
-      item_options = item.html_options.merge(class: item_class(item)).delete_if { |_k, v| v.blank? }
+      item_options = item.html_options.merge(current_item_options(item)).delete_if { |_k, v| v.blank? }
       text_node link_to(menu_label, url, **item_options)
     else
       span menu_label, item.html_options.merge(class: "navbar-text")
