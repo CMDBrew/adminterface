@@ -47,7 +47,10 @@ ActiveAdmin::Views::DropdownMenu.class_eval do
     button_options[:class] = "#{button_options[:class]} dropdown-toggle".squish
     options[:class] = "#{options[:class]} dropdown".squish
 
-    @button = build_button(name, button_options.merge("data-bs-toggle": "dropdown"))
+    @button = build_button(
+      name,
+      button_options.merge("data-bs-toggle": "dropdown", role: "button", "aria-expanded": "false")
+    )
     @menu = build_menu(menu_options)
 
     super(options)

@@ -25,7 +25,7 @@ class DropDownMenuTest < ActiveAdmin::BaseTestCase
   test "#content" do
     html =
       <<~ERB
-        <a class="dropdown-toggle dropdown_menu_button" data-bs-toggle="dropdown" href="#">test</a>
+        <a class="dropdown-toggle dropdown_menu_button" data-bs-toggle="dropdown" role="button" aria-expanded="false" href="#">test</a>
         <ul class="dropdown_menu_list dropdown-menu">
           <li>
             <a class="dropdown-item" href="#">link 1</a>
