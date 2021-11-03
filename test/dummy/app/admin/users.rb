@@ -80,31 +80,57 @@ ActiveAdmin.register User do
   end
 
   form do |f|
-    panel do
-      f.inputs do
-        columns do
-          column(span: 6) { f.input :name }
-          column(span: 6) { f.input :email }
-        end
+    if f.object.new_record?
+      panel do
+        f.inputs do
+          columns do
+            column(span: 6) { f.input :name }
+            column(span: 6) { f.input :email }
+          end
 
-        f.input :password, password_visibility: true, input_html: {autocomplete: "new-password"}
-        f.input :biography, input_counter: true
-        f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
-          k.inputs(class: "row") do
-            k.input :fullname, wrapper_html: {class: "col-lg-6"}
-          end +
-            k.inputs(class: "row") do
-              k.input :address_line1, wrapper_html: {class: "col-lg-6"}
-              k.input :address_line2, wrapper_html: {class: "col-lg-6"}
-              k.input :city
-              k.input :state
-              k.input :zip_code
-              k.input :country
-            end
+          f.input :password, password_visibility: true, input_html: {autocomplete: "new-password"}
+          f.input :biography, input_counter: true
         end
       end
-      f.actions
+    else
+      tabs http: true do
+        tab :profile do
+          panel do
+            f.inputs do
+              columns do
+                column(span: 6) { f.input :name }
+                column(span: 6) { f.input :email }
+              end
+
+              f.input :password, password_visibility: true, input_html: {autocomplete: "new-password"}
+              f.input :biography, input_counter: true
+            end
+          end
+        end
+
+        tab :addresses do
+          panel do
+            f.inputs do
+              f.has_many :user_addresses, allow_destroy: true, sortable: :position, sortable_start: 1 do |k|
+                k.inputs(class: "row") do
+                  k.input :fullname, wrapper_html: {class: "col-lg-6"}
+                end +
+                  k.inputs(class: "row") do
+                    k.input :address_line1, wrapper_html: {class: "col-lg-6"}
+                    k.input :address_line2, wrapper_html: {class: "col-lg-6"}
+                    k.input :city
+                    k.input :state
+                    k.input :zip_code
+                    k.input :country
+                  end
+              end
+            end
+          end
+        end
+      end
     end
+
+    f.actions
   end
 
   sidebar "Customer Details", only: :show do
