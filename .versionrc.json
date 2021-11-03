@@ -14,6 +14,6 @@
     {"type": "perf", "hidden": true},
     {"type": "test", "hidden": true}
   ],
-  "commitUrlFormat": "https://github.com/CMDBrew/adminterface/commits/{{hash}}",
+  "commitUrlFormat": "https://github.com/CMDBrew/adminterface/commit/{{hash}}",
   "compareUrlFormat": "https://github.com/CMDBrew/adminterface/compare/{{previousTag}}...{{currentTag}}"
 }
