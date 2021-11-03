@@ -79,6 +79,8 @@ module TabsTest
     class HttpTabsView < ::ActiveAdmin::IntegrationTestHelper::MockActionView
       def url_for(*args)
         options = args.extract_options!
+        options.delete(:controller)
+        options.delete(:action)
         anchor = options[:anchor].present? ? "##{options.delete(:anchor)}" : ""
 
         if options[:tab].present?

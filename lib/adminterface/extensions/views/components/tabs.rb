@@ -6,14 +6,9 @@ module Adminterface
           def build_menu_item(title, options, &_block)
             fragment = options.fetch(:id, fragmentize(title))
             html_options = options.fetch(:html_options, {})
+
             li html_options.merge(class: "nav-item", role: "presentation") do
-              if @http
-                params[:tab] ||= @default_tab || fragment
-                link_to(title, url_for(tab: fragment, anchor: id, anchor_id: id), **toggler_options(fragment))
-              else
-                options = toggler_options(fragment).merge(data: {"bs-toggle": "tab", "bs-target": "##{fragment}"})
-                link_to(title, "##{fragment}", **options)
-              end
+              @http ? link_to_http(title, fragment) : link_to_js(title, fragment)
             end
           end
 
@@ -39,6 +34,24 @@ module Adminterface
           end
 
           private
+
+          def link_to_js(title, fragment)
+            options = toggler_options(fragment).merge(data: {"bs-toggle": "tab", "bs-target": "##{fragment}"})
+            link_to(title, "##{fragment}", **options)
+          end
+
+          def link_to_http(title, fragment)
+            params[:tab] ||= @default_tab || fragment
+
+            link_to(title,
+              url_for(controller: resource_scope[:controller],
+                      action: resource_scope[:action], tab: fragment, anchor: id, anchor_id: id),
+              **toggler_options(fragment))
+          end
+
+          def resource_scope
+            session.fetch(:resource_scope, {}).with_indifferent_access
+          end
 
           def toggler_options(fragment)
             defaults = {id: "#{fragment}-tab", "aria-controls": fragment}

@@ -9,9 +9,17 @@ module Adminterface
 
       def set_resource_scope
         session[:resource_scope] = {
-          controller: controller_name,
-          action: action_name
+          controller: controller_path,
+          action: action_name_pairing(action_name)
         }
+      end
+
+      def action_name_pairing(name)
+        case name
+        when "create" then "new"
+        when "update" then "edit"
+        else name
+        end
       end
 
       def reset_tab
@@ -26,30 +34,26 @@ module Adminterface
       def same_controller?
         return true if resource_scope[:controller].blank?
 
-        resource_scope[:controller] == controller_name
+        resource_scope[:controller] == controller_path
       end
 
       def same_action?
-        return true if resource_scope[:action].blank?
-
-        case resource_scope[:action]
-        when "edit", "update" then %w[edit update].include? action_name
-        else action_name == resource_scope[:action]
-        end
+        resource_scope[:action].presence &&
+          action_name_pairing(action_name).eql?(resource_scope[:action])
       end
 
       def resource_scope
-        session.fetch(:resource_scope, {})
+        session.fetch(:resource_scope, {}).with_indifferent_access
       end
     end
   end
 end
 
 # Overwrite activeadmin/lib/active_admin/base_controller.rb
-ActiveSupport.on_load(:active_admin) do
+ActiveAdmin.after_load do
   ActiveAdmin::BaseController.class_eval do
     prepend Adminterface::Extensions::BaseController
     before_action :reset_tab, if: :should_reset_tab?
-    after_action :set_resource_scope
+    before_action :set_resource_scope
   end
 end
