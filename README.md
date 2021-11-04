@@ -10,11 +10,11 @@ A gem that brings Bootstrap 5, advanced customizability, and other goodies into 
 [![](preview.jpg)](https://adminterface.io)
 
 ## Dependencies
-- Rails >= 6.0
-- Ruby >= 2.7
-- ActiveAdmin ~> 2.9
-- Bootstrap ~> 5
-- Webpacker >= 5.0
+- [Ruby](https://www.ruby-lang.org/en/) >= 2.7
+- [Rails](http://rubyonrails.org/) >= 6.0
+- [ActiveAdmin](https://github.com/activeadmin/activeadmin) ~> 2.9
+- [Bootstrap](https://getbootstrap.com/) ~> 5.1.3
+- [Webpacker](https://github.com/rails/webpacker) ~> 5.0
 
 ## Quick Start
 1. Add the following to your application's Gemfile:
