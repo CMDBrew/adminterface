@@ -1149,10 +1149,10 @@
   resolved "https://registry.yarnpkg.com/@orchidjs/sifter/-/sifter-0.7.2.tgz#17221a07deb6f5c79af6cafdee27a9e3a22826f8"
   integrity sha512-DYahAnfeaTtWEiVhxTm+4npAt9gn4ODbR5gNDp16XqhWtFn9/i9uJS5paUvlQ74a3/mL86IazlkXCVXsZJAWhQ==
 
-"@popperjs/core@^2.10.1":
-  version "2.10.1"
-  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.1.tgz#728ecd95ab207aab8a9a4e421f0422db329232be"
-  integrity sha512-HnUhk1Sy9IuKrxEMdIRCxpIqPw6BFsbYSEUO9p/hNw5sMld/+3OLMWQP80F8/db9qsv3qUjs7ZR5bS/R+iinXw==
+"@popperjs/core@^2.10.2":
+  version "2.10.2"
+  resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
+  integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
 "@rails/actiontext@^6.1.4":
   version "6.1.4"
