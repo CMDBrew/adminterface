@@ -46,13 +46,48 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixtures :all
 end
 
+module NokogiriToHashHelpers
+  refine Nokogiri::XML::Node do
+    def to_hash
+      {kind: allowed_type_names[node_type], name: name}.tap do |hash|
+        if namespace
+          hash[:nshref] = namespace.href
+          hash[:nsprefix] = namespace.prefix
+        end
+
+        hash[:text] = text
+
+        if element?
+          hash[:attributes] = attribute_nodes.map(&:to_hash).sort_by { |x| x[:name] }
+          hash[:children] =
+            children.map(&:to_hash)
+              .sort { |a, b| [a[:kind], a[:name]] <=> [b[:kind], b[:name]] }
+        end
+      end
+    end
+
+    def allowed_type_names
+      {1 => "element", 2 => "attribute", 3 => "text", 4 => "cdata", 8 => "comment"}
+    end
+  end
+
+  refine Nokogiri::XML::Document do
+    def to_hash
+      root.to_hash
+    end
+  end
+end
+
 class ActiveSupport::TestCase < Minitest::Test
+  using NokogiriToHashHelpers
+
   def assert_html(expected, actual)
     assert_equal unify_html(expected), unify_html(actual)
   end
 
   def unify_html(html)
-    html.split("\n").map(&:strip).join.gsub(/\s+/, " ").gsub(/>\s+</, "><")
+    formatted_html = html.split("\n").map(&:strip).join.gsub(/\s+/, " ").gsub(/>\s+</, "><")
+    Nokogiri::XML(formatted_html).to_hash
   end
 
   def escape_hash(hash)
