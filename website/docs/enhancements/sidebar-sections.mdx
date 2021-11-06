@@ -1,0 +1,101 @@
+---
+sidebar_label: Sidebar Sections
+sidebar_position: 5
+description: Adminterface Guide for the Sidebar Sections.
+---
+
+# Sidebar Sections
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+Adminterface inherits the functionalities from [ActiveAdmin] and made some enhancements to existing features.
+
+Below is a basic example of adding a sidebar section. Please visit [ActiveAdmin] for usage guides.
+```ruby {2-4}
+ActiveAdmin.register Post do
+  sidebar "Post Details" do
+    attributes_table_for resource, :title, :body, :published_at
+  end
+end
+```
+
+## Position
+You can specify the individual position of the `sidebar_section`. To update the default value, please [see the "Sidebar" section in the Customizations Guide](/docs/enhancements/customizations#sidebar).
+
+| Option        | Type     | Description
+| :------------ | :------- | :------------------
+| `position`    | `Symbol` | The placement for the sidebar. Available options are `left`, or `right`
+
+````mdx-code-block
+<Tabs
+  defaultValue="left"
+  values={[
+    {label: 'Left', value: 'left'},
+    {label: 'Right', value: 'right'},
+  ]}>
+
+  <TabItem value="left">
+
+  ```ruby {2-4}
+  ActiveAdmin.register Post do
+    sidebar "Post Details", position: :left do
+      attributes_table_for resource, :title, :body, :published_at
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="right">
+
+  ```ruby {2-4}
+  ActiveAdmin.register Post do
+    sidebar "Post Details", position: :right do
+      attributes_table_for resource, :title, :body, :published_at
+    end
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## Optional Title
+We've removed the requirements for the `title` param. If you don't pass in the title param or passed in an empty value, the panel header will not be visible.
+
+````mdx-code-block
+<Tabs
+  defaultValue="with-title"
+  values={[
+    {label: 'With Title', value: 'with-title'},
+    {label: 'Without Title', value: 'without-title'},
+  ]}>
+
+  <TabItem value="with-title">
+
+  ```ruby {2-4}
+  ActiveAdmin.register Post do
+    sidebar "Post Details" do
+      attributes_table_for resource, :title, :body, :published_at
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="without-title">
+
+  ```ruby {2-4}
+  ActiveAdmin.register Post do
+    sidebar only: :show do
+      attributes_table_for resource, :title, :body, :published_at
+    end
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+[ActiveAdmin]: https://activeadmin.info/7-sidebars.html
