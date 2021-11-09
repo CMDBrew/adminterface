@@ -1,6 +1,6 @@
 {
   "name": "@cmdbrew/adminterface",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "JavaScript dependencies for gem `adminterface`",
   "main": "src/base.js",
   "files": [
