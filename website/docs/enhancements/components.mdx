@@ -256,6 +256,45 @@ ActiveAdmin.register User do
 end
 ```
 
+## Dropdown
+We've replaced the dropdown with [Bootstrap's dropdown](https://getbootstrap.com/docs/5.1/components/dropdowns/).
+
+### HTML Options
+You can add additional attributes to the dropdown's button and menu using `:button` and `:menu`.
+
+````mdx-code-block
+<Tabs
+  defaultValue="button"
+  values={[
+    {label: 'Button', value: 'button'},
+    {label: 'Menu', value: 'menu'},
+  ]}>
+
+  <TabItem value="button">
+
+  ```ruby {1}
+  dropdown_menu("More Options", button: {class: "btn btn-light"}) do
+    item "Publish Post", publish_admin_post_path(post)
+    item_divider
+    item "Archive Post", archive_admin_post_path(post), class: "text-danger"
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="menu">
+
+  ```ruby {1}
+  dropdown_menu("More Options", menu: {class: "dropdown-menu-end"}) do
+    item "Publish Post", publish_admin_post_path(post)
+    item_divider
+    item "Archive Post", archive_admin_post_path(post), class: "text-danger"
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
 [ActiveAdmin]: https://activeadmin.info/12-arbre-components.html
 [ActiveAdmin/arbre-components/columns]: https://activeadmin.info/12-arbre-components.html#columns
 [ActiveAdmin/arbre-components/panels]: https://activeadmin.info/12-arbre-components.html#panels
