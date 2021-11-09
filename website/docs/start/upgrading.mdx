@@ -1,0 +1,23 @@
+---
+sidebar_position: 2
+description: Adminterface Upgrading Guide.
+---
+
+# Upgrading
+We kept the NPM package and the Ruby gem versions in sync. When upgrading, please ensure you update them both.
+
+## Update the Gem
+Replace `$VERSION` with the target version.
+```ruby title="Gemfile"
+gem "adminterface", "$VERSION"
+```
+And, run:
+```bash
+bundle install
+```
+
+## Update the NPM package
+Replace `$VERSION` with the target version, and run:
+```bash
+yarn upgrade @cmdbrew/adminterface@$VERSION
+```

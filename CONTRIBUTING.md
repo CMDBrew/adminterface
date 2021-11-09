@@ -107,18 +107,16 @@ Adminterface hosts release candidate builds on Github packages. If you wish to t
    ```
 
 ### Upgrading
-1. Replace the version of `adminterface` inside `Gemfile`
+1. Replace `$VERSION` with the target RC version.
    ```ruby
    source "https://rubygems.pkg.github.com/cmdbrew" do
-     # Replace [VERSION] with the target RC version
-     gem "adminterface", [VERSION]
+     gem "adminterface", "$VERSION"
    end
    ```
 2. Run `bundle install`
-3. Replace the version of `adminterface` inside `package.json`
+3. Replace `$VERSION` with the target RC version, and run:
    ```bash
-   # Replace [VERSION] with the target RC version
-   yarn upgrade @cmdbrew/adminterface@[VERSION]
+   yarn upgrade @cmdbrew/adminterface@$VERSION
    ```
 
 ## Releasing (maintainers only)
