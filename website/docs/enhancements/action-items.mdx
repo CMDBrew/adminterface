@@ -1,0 +1,79 @@
+---
+sidebar_label: Action Items
+sidebar_position: 6
+description: Adminterface Guide for the Action Items.
+---
+
+# Action Items
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+````
+
+Adminterface inherits the functionalities from [ActiveAdmin] and made some enhancements to existing features.
+
+Below is a basic example of adding an action item. Please visit [ActiveAdmin] for usage guides.
+```ruby {2-4}
+ActiveAdmin.register Post do
+  action_item :view, only: :show do
+    link_to 'View on site', post_path(post) if post.published?
+  end
+end
+```
+
+## Priority
+You can order the position of the buttons by passing in the `priority` option.
+
+| Option     | Type      | Default | Description
+| :--------- | :-------- | :------ | :------------------
+| `priority` | `Integer` | `99`    | From left to right
+
+```ruby {2-8}
+ActiveAdmin.register Post do
+  action_item :google, priority: 2 do
+    link_to "Google", "https://www.google.com"
+  end
+
+  action_item :twitter, priority: 1 do
+    link_to "Twitter", "https://www.twitter.com"
+  end
+end
+```
+
+## Group
+You can group buttons into [Bootstrap's button groups][Bootstrap/button-group] by passing in the `group` option.
+
+| Option   | Type      | Default | Description
+| :------- | :-------- | :------ | :------------------
+| `group`  | `Integer` | `99`    | From left to right
+
+```ruby {2-8}
+ActiveAdmin.register Post do
+  action_item :google, group: 2 do
+    link_to "Google", "https://www.google.com"
+  end
+
+  action_item :twitter, group: 2 do
+    link_to "Twitter", "https://www.twitter.com"
+  end
+end
+```
+
+## Dropdown
+You can also add a dropdown menu to an action item.
+
+```ruby {2-8}
+ActiveAdmin.register Post do
+  action_item :options do
+    dropdown_menu("More Options", button: {class: "btn btn-light"}, menu: {class: "dropdown-menu-end"}) do
+      item "Publish Post", publish_admin_post_path(post)
+      item_divider
+      item "Archive Post", archive_admin_post_path(post), class: "text-danger"
+    end
+  end
+end
+```
+
+[ActiveAdmin]: https://activeadmin.info/8-custom-actions.html#action-items
+[Bootstrap/button-group]: https://getbootstrap.com/docs/5.1/components/button-group/
