@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    adminterface (0.2.2)
+    adminterface (0.2.3)
       activeadmin (~> 2.9)
       httparty (>= 0.18)
       image_processing (~> 1.0)
