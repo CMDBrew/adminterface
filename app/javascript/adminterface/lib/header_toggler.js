@@ -38,16 +38,18 @@ class HeaderToggler {
       this._add()
     }
 
-    this.element.addEventListener('click', function (e) {
-      e.preventDefault()
-      if ($container.classList.contains(_self.options.activeClass)) {
-        _self._remove()
-      } else {
-        _self._add()
-      }
-    })
+    this.element.addEventListener('click', (e) => this._clickCallback(e, $container, _self))
 
     adminterface.addObserver(this.element, this, this.constructor.name)
+  }
+
+  _clickCallback (e, $container, _self) {
+    e.preventDefault()
+    if ($container.classList.contains(_self.options.activeClass)) {
+      _self._remove()
+    } else {
+      _self._add()
+    }
   }
 }
 
