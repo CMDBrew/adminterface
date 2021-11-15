@@ -16,7 +16,13 @@ A gem that brings Bootstrap 5, advanced customizability, and other goodies into 
 - [Bootstrap](https://getbootstrap.com/) ~> 5.1.3
 - [Webpacker](https://github.com/rails/webpacker) ~> 5.0
 
-## Quick Start
+## Get Started
+- [Documentation](https://adminterface.io/docs/intro)
+- [Demo](https://demo.adminterface.io)
+- [Issue tracker](https://github.com/CMDBrew/adminterface/issues)
+- [Discussions and feature requests](https://github.com/CMDBrew/adminterface/discussions)
+
+## Installation
 1. Add the following to your application's Gemfile:
    ```ruby
    gem "adminterface"
@@ -42,9 +48,6 @@ A gem that brings Bootstrap 5, advanced customizability, and other goodies into 
    $ rails db:migrate
    $ rails server
    ```
-
-## Documentation
-Check our [website](https://adminterface.io) to find in-depth documentation for everything that Adminterface offers.
 
 ## Contributing
 See [CONTRIBUTING.md](CONTRIBUTING.md).
