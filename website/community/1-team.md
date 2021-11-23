@@ -9,8 +9,8 @@ import {
   ActiveTeamRow,
 } from '@site/src/components/TeamProfileCards';
 
-## Active Team
-The Adminterface team works on the core functionality, as well as the documentation website. Current members of the team are listed in alphabetical order below.
+## Core Team
+The Adminterface team works on the core functionality, as well as the documentation website. Core members of the team are listed in alphabetical order below.
 
 <ActiveTeamRow />
 

@@ -1,3 +1,14 @@
+> ## ⛔️ DEPRECATED: THIS GEM IS NO LONGER BEING MAINTAINED
+> Due to personal reasons, we can no longer continue to maintain this gem. As a result, we are no longer accepting or merging pull requests.
+>
+> To help with the transition, we've changed the license to MIT and removed the license verification for commercial uses. For alternatives, please check out other excellent solutions listed in the [ActiveAdmin Wiki](https://github.com/activeadmin/activeadmin/wiki).
+>
+> Thank you to all who contributed and who used Adminterface in their projects. We couldn't have made it this far without your support.
+>
+> Until next time.
+>
+> — I-Lung, Richard Wang, and the Adminterface team
+
 # Adminterface <!-- omit in toc -->
 [![CI](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4dbedfdf21a2d675d2ca/maintainability)](https://codeclimate.com/github/CMDBrew/adminterface/maintainability)

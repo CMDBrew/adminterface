@@ -8,6 +8,7 @@
 /* You can override the default Infima variables here. */
 :root {
   --site-primary-hue-saturation: 264, 58%;
+  --site-danger-hue-saturation: 358, 95%;
   --ifm-color-primary: #8e6dbf;
   --ifm-color-primary-dark: #7e58b6;
   --ifm-color-primary-darker: #764eb1;
@@ -79,8 +80,8 @@ html[data-theme='dark'] .header-github-link::before {
 }
 
 div[class^='announcementBar_'] {
-  --site-announcement-bar-stripe-color1: hsl(var(--site-primary-hue-saturation), 85%);
-  --site-announcement-bar-stripe-color2: hsl(var(--site-primary-hue-saturation), 95%);
+  --site-announcement-bar-stripe-color1: hsl(var(--site-danger-hue-saturation), 85%);
+  --site-announcement-bar-stripe-color2: hsl(var(--site-danger-hue-saturation), 95%);
 
   font-weight: bold;
   background:

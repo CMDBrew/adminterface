@@ -49,15 +49,6 @@ const FeatureList = [
       </>
     ),
   },
-  {
-    title: 'Actively Maintained',
-    Svg: require('../../static/img/features/maintain.svg').default,
-    description: (
-      <>
-        Adminterface is actively maintained and updated to bring you all the goodies from Rails and ActiveAdmin.
-      </>
-    ),
-  },
 ];
 
 function Feature({Svg, title, description}) {

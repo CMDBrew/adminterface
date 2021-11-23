@@ -30,7 +30,7 @@ module.exports = {
     },
     announcementBar: {
       id: 'support_us', // Any value that will identify this message.
-      content: '⭐️ Adminterface is currently in public beta ⭐',
+      content: '⛔️ This gem is no longer being maintained. Please visit the <a href="https://github.com/activeadmin/activeadmin/wiki">ActiveAdmin Wiki</a> page for alternative solutions ⛔️',
       isCloseable: false, // Defaults to `true`.
     },
     hideableSidebar: true,
