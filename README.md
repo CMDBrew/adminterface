@@ -53,20 +53,4 @@ A gem that brings Bootstrap 5, advanced customizability, and other goodies into 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-Adminterface is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See our [Terms of Service in full text](LICENSE.md) for more information.
-
-### For Commerical License
-Get a license at https://adminterface.io/pricing, then create and add the `license_key` into the following file in your project:
-```ruby
-# config/initializers/adminterface.rb
-Adminterface.setup do |config|
-  config.license_key = "**********************"
-
-  ## Use Rails credentials:
-  ## doc: https://edgeguides.rubyonrails.org/security.html#custom-credentials
-  # config.license_key = Rails.application.credentials.adminterface[:license_key]
-
-  ## Or, use environment variables:
-  # config.license_key = ENV["ADMINTERFACE_LICENSE_KEY"]
-end
-```
+The gem is available as open source under the terms of the [MIT License](LICENSE.md).

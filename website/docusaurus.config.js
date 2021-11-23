@@ -56,7 +56,6 @@ module.exports = {
           position: 'left',
           activeBaseRegex: `/community/`,
         },
-        {to: 'pricing', label: 'Pricing', position: 'left'},
         {href: '/docs/intro', label: 'v0.2.3 🚧', position: 'right'},
         {
           href: 'https://github.com/CMDBrew/adminterface',
