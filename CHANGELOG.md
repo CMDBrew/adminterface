@@ -2,17 +2,24 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
-### [0.2.3](https://github.com/CMDBrew/adminterface/compare/v0.2.2...v0.2.3) (2021-11-09)
+## [0.3.0](https://github.com/CMDBrew/adminterface/compare/v0.2.3...v0.3.0) (2021-11-26)
 
 
-#### Build
+### Features
+
+* RTL support ([64459e6](https://github.com/CMDBrew/adminterface/commit/64459e61daa62c5ef736a0cc06328874c7f537bc))
+
+## [0.2.3](https://github.com/CMDBrew/adminterface/compare/v0.2.2...v0.2.3) (2021-11-09)
+
+
+### Build
 
 * **deps:** bump @popperjs/core to v2.10.2 ([f7cb681](https://github.com/CMDBrew/adminterface/commit/f7cb681cd744e83b0702b732acd58b00a63ccc0a))
 
-### [0.2.2](https://github.com/CMDBrew/adminterface/compare/v0.2.1...v0.2.2) (2021-11-03)
+## [0.2.2](https://github.com/CMDBrew/adminterface/compare/v0.2.1...v0.2.2) (2021-11-03)
 
 
-#### Bug Fixes
+### Bug Fixes
 
 * add "aria-current": "page" to active nav link ([6cbc538](https://github.com/CMDBrew/adminterface/commit/6cbc538efeee86138450c1cc1aef491bf725a8d8))
 * add aria attrs to tabs ([547807b](https://github.com/CMDBrew/adminterface/commit/547807b034bddb1079380729ec5e2209ee409b5c))
@@ -23,10 +30,10 @@ All notable changes to this project will be documented in this file. See [standa
 * remove user-scalable="no" from meta ([bda3b2f](https://github.com/CMDBrew/adminterface/commit/bda3b2fea20de05438f50aa3012529a0feac4792))
 * bump Bootstrap to v5.1.3 to address sass parser issues when compiling. See [twbs/bootstrap#35011](https://github.com/twbs/bootstrap/issues/35011) ([46fc25d](https://github.com/CMDBrew/adminterface/commit/46fc25d4682fdf3eb662084d76b4e4360d1913fa))
 
-### [0.2.1](https://github.com/CMDBrew/adminterface/compare/v0.2.0...v0.2.1) (2021-10-29)
+## [0.2.1](https://github.com/CMDBrew/adminterface/compare/v0.2.0...v0.2.1) (2021-10-29)
 
 
-#### Bug Fixes
+### Bug Fixes
 
 * fallback value for JSON.parse should be '{}' instead of {} ([727a2ba](https://github.com/CMDBrew/adminterface/commit/727a2bab65145a06428d35408861ad680c08cccd))
 * missing thor class for invoke when installing action_text ([e749441](https://github.com/CMDBrew/adminterface/commit/e749441cc9929307899247d09eff3d46943c180f))
