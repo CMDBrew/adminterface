@@ -6,6 +6,12 @@
     .flatpickr-next-month {
       padding: 5px 10px;
 
+      svg {
+        @include lang-dir-rtl {
+          @include transform(rotate(180deg));
+        }
+      }
+
       &:hover svg {
         fill: $flatpickr-ctrl-hover-bg;
       }

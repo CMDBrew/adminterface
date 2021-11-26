@@ -1,4 +1,7 @@
 ActiveAdmin.setup do |config|
+  # == Language Dir
+  config.lang_dir = proc { !!params[:rtl] ? "rtl" : "ltr" }
+
   # == Site Title
   #
   # Set the title that is displayed on the main layout

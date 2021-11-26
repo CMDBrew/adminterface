@@ -1,5 +1,7 @@
 module.exports = {
   plugins: [
+    require('postcss-rtlcss'),
+    // require('rtlcss'),
     require('postcss-import'),
     require('postcss-flexbugs-fixes'),
     require('postcss-preset-env')({

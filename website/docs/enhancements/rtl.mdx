@@ -1,0 +1,173 @@
+---
+sidebar_label: RTL
+sidebar_position: 2
+description: Learn how to enable support for right-to-left text in Adminterface.
+---
+
+# RTL
+````mdx-code-block
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+import CodeBlock from '@theme/CodeBlock';
+import Link from '@docusaurus/Link';
+````
+There are about 12 languages written from right to left (e.g., Arabic, Hebrew, etc.) with more than 300 million native speakers. Learn how to enable support for right-to-left text in Adminterface to support these users.
+
+## Get Familiar
+Adminterface uses [Bootstrap], so the RTL support is inherited from Bootstrap using [the RTLCSS project][RTLCSS].
+
+## Configuration
+To change the language direction to RTL, you can specify the `lang_dir` configuration at different levels.
+
+| Option     | Type                          | Default  | Description
+| :--------- | :---------------------------- | :------- | :------------------
+| `lang_dir` | `String`, `Symbol`, or `Proc` | `ltr`    | Change the `dir` attribute for `html`.
+
+````mdx-code-block
+<Tabs
+  defaultValue="global"
+  values={[
+    {label: 'Global', value: 'global'},
+    {label: 'Namespace', value: 'namespace'},
+    {label: 'Resource', value: 'resource'}
+  ]}>
+
+  <TabItem value="global">
+  This will change the default configurations globally for the entire app.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-6}
+  ActiveAdmin.setup do
+    # Options 1: Set a fixed value
+    config.lang_dir = "rtl"
+
+    # Options 2: Use a proc
+    config.lang_dir = proc { !!params[:rtl] ? "rtl" : "ltr" }
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="namespace">
+  This will change the default configurations for the specified namespace.
+  <br/>
+  <br/>
+
+  ```ruby title="config/initializers/active_admin.rb" {2-8}
+  ActiveAdmin.setup do
+    config.namespace :site_1 do |site|
+      # Options 1: Set a fixed value
+      site.lang_dir = "rtl"
+
+      # Options 2: Use a proc
+      site.lang_dir = proc { !!params[:rtl] ? "rtl" : "ltr" }
+    end
+  end
+  ```
+
+  </TabItem>
+  <TabItem value="resource">
+  This will only change the configurations for this resource.
+  <br/>
+  <br/>
+
+  ```ruby title="app/admin/users.rb" {2-6}
+  ActiveAdmin.register User do
+    # Options 1: Set a fixed value
+    config.lang_dir = "rtl"
+
+    # Options 2: Use a proc
+    config.lang_dir = proc { !!params[:rtl] ? "rtl" : "ltr" }
+  end
+  ```
+
+  </TabItem>
+</Tabs>
+````
+
+## Implementation
+
+### Requirements
+1. Make sure you are using `webpacker ~> 5.4.3` and run `bundle install`
+   ```ruby title="Gemfile"
+   gem "webpacker", "~> 5.4.3"
+   ```
+2. Upgrade postcss NPM packages:
+   ```bash
+   # upgrade webpacker to 5.4.3
+   $ yarn upgrade @rails/webpacker@5.4.3
+
+   # upgrade postcss
+   $ yarn add postcss@^8.3.11
+
+   # upgrade postcss-loader
+   $ yarn add postcss-loader@4.2.0
+   ```
+3. Hotfix postcss loader error for PostCSS 8 ([rails/webpacker/issues#2784](https://github.com/rails/webpacker/issues/2784))
+   ```javascript title="config/webpack/environment.js" {3-11}
+   const { environment } = require('@rails/webpacker')
+
+   environment.loaders.keys().forEach(loaderName => {
+     const loader = environment.loaders.get(loaderName)
+     loader.use.forEach(loaderConfig => {
+       if (loaderConfig.options && loaderConfig.options.config) {
+         loaderConfig.options.postcssOptions = loaderConfig.options.config
+         delete loaderConfig.options.config
+       }
+     })
+   })
+   ```
+
+### RTL only
+1. Install `rtlcss`
+
+   ```bash
+   $ yarn add rtlcss
+   ```
+2. Add to `rtlcss` to `postcss.config.js`
+
+   ```javascript title="postcss.config.js" {3}
+   module.exports = {
+     plugins: [
+       require('rtlcss'),
+       ...
+     ]
+   }
+   ```
+3. Set the entire application to RTL
+   ```ruby title="config/initializers/active_admin.rb"
+   ActiveAdmin.setup do
+     config.lang_dir = "rtl"
+   end
+   ```
+
+### LTR and RTL at the same time
+:::caution
+You can enable both RTL and LTR in your project. However, please be aware that loading both files can be a real performance bottleneck.
+:::
+
+1. Install `postcss-rtlcss`
+
+   ```bash
+   $ yarn add postcss-rtlcss
+   ```
+2. Add to `postcss-rtlcss` to `postcss.config.js`
+
+   ```javascript title="postcss.config.js" {3}
+   module.exports = {
+     plugins: [
+       require('postcss-rtlcss'),
+       ...
+     ]
+   }
+   ```
+3. Now you can follow the instructions in [Configuration](#configuration) to configure your application
+
+## Additional Resources
+- [Bootstrap RTL][Bootstrap]
+- [MDN Web Docs](https://developer.mozilla.org/en-US/docs/Web/HTML/Global_attributes/dir)
+- [the RTLCSS project][RTLCSS]
+- [RTL Styling 101](https://rtlstyling.com/posts/rtl-styling)
+
+[Bootstrap]: https://getbootstrap.com/docs/5.1/getting-started/rtl/
+[RTLCSS]: https://rtlcss.com/

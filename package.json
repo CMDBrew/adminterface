@@ -1,6 +1,6 @@
 {
   "name": "@cmdbrew/adminterface",
-  "version": "0.2.3",
+  "version": "0.3.0",
   "description": "JavaScript dependencies for gem `adminterface`",
   "main": "src/base.js",
   "files": [
@@ -8,7 +8,7 @@
   ],
   "repository": "git://github.com/cmdbrew/adminterface.git",
   "author": "I-Lung Lee <ilung@hey.com>",
-  "license": "See LICENSE in LICENSE.md",
+  "license": "MIT",
   "private": false,
   "scripts": {
     "prepublishOnly": "rm -rf src && cp -R app/javascript/adminterface src && cp -R app/assets/stylesheets/adminterface src/scss",

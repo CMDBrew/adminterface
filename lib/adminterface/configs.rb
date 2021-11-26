@@ -10,7 +10,11 @@ module Adminterface
     }.call.freeze
 
     module Configurable
-      attr_writer :components, :css_classes, :comments_pager, :comments_per_page, :pager, :comments_input
+      attr_writer :lang_dir, :components, :css_classes, :comments_pager, :comments_per_page, :pager, :comments_input
+
+      def lang_dir(...)
+        @lang_dir || namespace.lang_dir(...)
+      end
 
       def components
         namespace.components.deep_merge(@components || {})

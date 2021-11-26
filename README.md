@@ -1,3 +1,14 @@
+> ## ⛔️ DEPRECATED: THIS GEM IS NO LONGER BEING MAINTAINED
+> Due to personal reasons, we can no longer continue to maintain this gem. As a result, we are no longer accepting or merging pull requests.
+>
+> To help with the transition, we've changed the license to MIT and removed the license verification for commercial uses. For alternatives, please check out other excellent solutions listed in the [ActiveAdmin Wiki](https://github.com/activeadmin/activeadmin/wiki).
+>
+> Thank you to all who contributed and who used Adminterface in their projects. We couldn't have made it this far without your support.
+>
+> Until next time.
+>
+> — I-Lung, Richard Wang, and the Adminterface team
+
 # Adminterface <!-- omit in toc -->
 [![CI](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/CMDBrew/adminterface/actions/workflows/ci.yml)
 [![Maintainability](https://api.codeclimate.com/v1/badges/4dbedfdf21a2d675d2ca/maintainability)](https://codeclimate.com/github/CMDBrew/adminterface/maintainability)
@@ -53,20 +64,4 @@ A gem that brings Bootstrap 5, advanced customizability, and other goodies into 
 See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
-Adminterface is free for personal and non-commercial use and with a yearly subscription for commercial purposes. See our [Terms of Service in full text](LICENSE.md) for more information.
-
-### For Commerical License
-Get a license at https://adminterface.io/pricing, then create and add the `license_key` into the following file in your project:
-```ruby
-# config/initializers/adminterface.rb
-Adminterface.setup do |config|
-  config.license_key = "**********************"
-
-  ## Use Rails credentials:
-  ## doc: https://edgeguides.rubyonrails.org/security.html#custom-credentials
-  # config.license_key = Rails.application.credentials.adminterface[:license_key]
-
-  ## Or, use environment variables:
-  # config.license_key = ENV["ADMINTERFACE_LICENSE_KEY"]
-end
-```
+The gem is available as open source under the terms of the [MIT License](LICENSE.md).
